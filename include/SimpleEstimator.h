@@ -15,6 +15,15 @@ public:
     void prepare() override ;
     cardStat estimate(PathQuery *q) override ;
 
+private:
+    uint32_t numLabels = 0;
+    uint32_t numPairs = 0;
+    uint32_t distinctFromNodes = 0;
+    uint32_t distinctToNodes = 0;
+    void printGraphInfo();
+    cardStat estimateLeaf(std::string reg_exp);
+    cardStat estimatePathTree(PathTree *p);
+    cardStat estimateConcat(cardStat left, cardStat right);
 };
 
 
