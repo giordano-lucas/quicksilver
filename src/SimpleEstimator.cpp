@@ -95,10 +95,11 @@ cardStat SimpleEstimator::estimateLeaf(std::string regExp) {
 cardStat SimpleEstimator::estimateConcat(cardStat left, cardStat right) {
 
     // join operation (slides p.49):
-    // uint32_t noPaths = floor(std::min(left.noPaths*(right.noPaths/right.noOut),
-//                                      right.noPaths*(left.noPaths/left.noIn)));
-    // Nikolay comment: use only this
-    uint32_t noPaths = floor(left.noPaths*(right.noPaths/right.noOut));
+     uint32_t noPaths = floor(std::min(left.noPaths*(right.noPaths/right.noOut),
+                                      right.noPaths*(left.noPaths/left.noIn)));
+
+     // Nikolay comment: use only this (be aware, this brings you down from 6k to 44k on the leaderboard!)
+    // uint32_t noPaths = floor(left.noPaths*(right.noPaths/right.noOut));
 
     // apply reduction factor:
     uint32_t noOut = left.noOut * (((double) noPaths)/left.noPaths);
