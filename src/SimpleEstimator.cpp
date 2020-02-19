@@ -13,7 +13,7 @@ void SimpleEstimator::prepare() {
 
     // adj holds pairs of the form (edgeLabel, to)
     // reverse_adj holds pairs of the form (edgeLabel, from)
-    printGraphInfo();
+    //printGraphInfo();
 
     // do your prep here
     numPairs = graph->getNoDistinctEdges();
