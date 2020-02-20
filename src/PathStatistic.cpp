@@ -1,14 +1,19 @@
 #include "PathStatistic.h"
 
 void PathStatistic::construct(const std::shared_ptr<SimpleGraph> &g) {
-    for(auto edges : g->adj){
-        if(edges.size() != 0) distinct_s++;
+     syn1.resize(g->getNoLabels());
+    for(u_int32_t s =0;  s <g->adj.size() ; ++s ){
+        
+        for (auto edge : edgeList){
+            uint32_t l = edge.second;
+            syn1[l].in++;
+        }
     }
-    for(auto edges : g->reverse_adj){
-        if(edges.size() != 0) distinct_t++;
+    for(auto edgeList : g->reverse_adj){
+        for (auto edge : edgeList){
+            syn1[edge.second].out++;
+        }
     }
-    distinct_l = g->getNoLabels();
-    distinct_e = g->getNoDistinctEdges();
 }
 PathStatistic estimateConcat(PathStatistic p);
 PathStatistic estimateUnion(PathStatistic p);
