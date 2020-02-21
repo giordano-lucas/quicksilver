@@ -47,7 +47,7 @@ cardStat SimpleEstimator::estimate(PathQuery *q) {
                 cardinalityStat.noPaths/cardinalityStat.noOut,
                 cardinalityStat.noIn/cardinalityStat.noOut
         };
-    }
+}
 }
 
 cardPathStat SimpleEstimator::estimatePathTree(PathTree *path) {
