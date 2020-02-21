@@ -34,10 +34,16 @@ cardStat SimpleEstimator::estimate(PathQuery *q) {
         return cardinalityStat;
     } else if (s.compare("*")==0) {
         // s is '*', t is constant
-        return cardStat{1, cardinalityStat.noPaths/cardinalityStat.noOut, cardinalityStat.noIn/cardinalityStat.noOut};
+        return cardStat{
+            1,
+            cardinalityStat.noPaths/cardinalityStat.noOut,
+            cardinalityStat.noIn/cardinalityStat.noOut};
     } else {
         // t is '*', s is constant
-        return cardStat{cardinalityStat.noOut/cardinalityStat.noIn, cardinalityStat.noPaths/cardinalityStat.noIn, 1};
+        return cardStat{
+            cardinalityStat.noOut/cardinalityStat.noIn,
+            cardinalityStat.noPaths/cardinalityStat.noIn,
+            1};
     }
 }
 

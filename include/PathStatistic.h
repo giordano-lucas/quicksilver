@@ -39,8 +39,7 @@ public:
 
 private:
     std::vector<Syn1> syn1;
-    std::vector<std::vector<Syn2>> syn2; // for each pair of label (l1,l2), we can index syn2 by  | syn2[l1][l2] if l1 <= l2 
-                                         //                                                       | syn2[l2][l1] if l1 >  l2
+    std::vector<std::vector<Syn2>> syn2;
     u_int32_t diameter;
 };
 

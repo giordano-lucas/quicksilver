@@ -29,33 +29,28 @@ void PathStatistic::construct(const std::shared_ptr<SimpleGraph> &g) {
         }
     }
     // *** SYNAPSE 2 Statistics ***
-    //resize syn2
-    syn2.resize(g->getNoLabels()); //each label has at least one associated pair (at least the pair (l,l) )
-    for (uint32_t l1= 0  ; l1 < g->getNoLabels() ; l1++){  // for example : label 0 can be associated with labels in {0,1,...,L-1} => size of L
-                                                           //               label 1 can not be associated with label 0             => size of L-1
-                                                           //               label l1 can not be associated with label {0,..,l1-1}  => size of L-l1
-        syn2[l1].resize(g->getNoLabels() - l1);
+    //resize syn2 to a L xL matrix
+    syn2.resize(g->getNoLabels());
+    for (uint32_t l1= 0  ; l1 < g->getNoLabels() ; l1++){
+        syn2[l1].resize(g->getNoLabels());
     }
     //compute middle
     for(uint32_t middle = 0; middle < g->reverse_adj.size() ; ++middle){
-        std::vector<bool> visitL1(g->getNoLabels(), false);
-        for (auto edgel1 : g->reverse_adj[middle]){ //use reverse adj since we are interested in incoming edge l1 to middle
-            uint32_t l1 = edgel1.second;
-            if (!visitL1[l1] && middle < g->adj.size()) { //check that middle has at least one outgoing edge
-                visitL1[l1] = true;
+        std::vector<std::vector<bool>> visitL1L2(g->getNoLabels(), std::vector<bool>(g->getNoLabels(),false));
+        for (auto edgeL1 : g->reverse_adj[middle]){ //use reverse adj since we are interested in incoming edge l1 to middle
+            uint32_t l1 = edgeL1.second;
+            if (middle < g->adj.size()) { //check that middle has at least one outgoing edge
                 std::vector<bool> visitL2(g->getNoLabels(), false);
-                for (auto edgel2 : g->adj[middle]){ // - join on middle element
+                for (auto edgeL2 : g->adj[middle]){ // - join on middle element
                                                     // - use adj since we are interested in outgoing edge l2 from middle
-                    uint32_t l2 = edgel2.second;
-                    if (!visitL2[l2]) {
-                        visitL2[l2] = true;
-                        if  (l1 <= l2)  {syn2[l1][l2].middle++;} //check that syn2 can be indexed with [l1][l2]
-                        else            {syn2[l2][l1].middle++;}
+                    uint32_t l2 = edgeL2.second;
+                    if (!visitL1L2[l1][l2]) {
+                        visitL1L2[l1][l2] = true;
+                        syn2[l1][l2].middle++;}
                     }
                 }
             }
         }
-    }
     //compute syn2.in
     for(auto edgeListL2 : g->reverse_adj){  //use reverse adj since we are interested in incoming edge l2 to target node
         std::vector<std::vector<bool>> visitL1L2(g->getNoLabels(), std::vector<bool>(g->getNoLabels(),false));
@@ -67,15 +62,19 @@ void PathStatistic::construct(const std::shared_ptr<SimpleGraph> &g) {
                     uint32_t l1 = edgeL1.second;
                     if (!visitL1L2[l2][l1]) {
                         visitL1L2[l2][l1] = true;
-                        if  (l1 <= l2)  {syn2[l1][l2].in++;} //check that syn2 can be indexed with [l1][l2]
-                        else            {syn2[l2][l1].in++;}
+                        syn2[l1][l2].in++;
                     }
                 }
             }
 
         }
     }
-    /* TO DO */
+    /* TO DO : compute syn2.two */
+
+    /*
+     * idea : during the computation of "middle" and "in" store which nodes are in "middle" and "in" (2 lists uint32 )
+     * then traverse adj list and count all paths of length 1  : (middle)--l2-->(in)
+     * */
 }
 /* /!\ ONLY VALID FOR LEFT-DEEP PATH TREE /!\*/
 cardPathStat PathStatistic::estimateConcat(cardPathStat left, cardPathStat right){
