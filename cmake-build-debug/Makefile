@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/anirak/Documents/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /home/anirak/Documents/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
+RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/anirak/Desktop/Database Technology/Project 2/quicksilver"
+CMAKE_SOURCE_DIR = /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/anirak/Desktop/Database Technology/Project 2/quicksilver/cmake-build-debug"
+CMAKE_BINARY_DIR = /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = "/home/anirak/Desktop/Database Technology/Project 2/quicksilv
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/anirak/Documents/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/anirak/Documents/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/anirak/Desktop/Database Technology/Project 2/quicksilver/cmake-build-debug/CMakeFiles" "/home/anirak/Desktop/Database Technology/Project 2/quicksilver/cmake-build-debug/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/anirak/Desktop/Database Technology/Project 2/quicksilver/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -149,6 +149,33 @@ src/PathQuery.s: src/PathQuery.cpp.s
 src/PathQuery.cpp.s:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/PathQuery.cpp.s
 .PHONY : src/PathQuery.cpp.s
+
+src/PathStatistic.o: src/PathStatistic.cpp.o
+
+.PHONY : src/PathStatistic.o
+
+# target to build an object file
+src/PathStatistic.cpp.o:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/PathStatistic.cpp.o
+.PHONY : src/PathStatistic.cpp.o
+
+src/PathStatistic.i: src/PathStatistic.cpp.i
+
+.PHONY : src/PathStatistic.i
+
+# target to preprocess a source file
+src/PathStatistic.cpp.i:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/PathStatistic.cpp.i
+.PHONY : src/PathStatistic.cpp.i
+
+src/PathStatistic.s: src/PathStatistic.cpp.s
+
+.PHONY : src/PathStatistic.s
+
+# target to generate assembly for a file
+src/PathStatistic.cpp.s:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/PathStatistic.cpp.s
+.PHONY : src/PathStatistic.cpp.s
 
 src/PathTree.o: src/PathTree.cpp.o
 
@@ -292,11 +319,14 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... quicksilver"
 	@echo "... edit_cache"
+	@echo "... quicksilver"
 	@echo "... src/PathQuery.o"
 	@echo "... src/PathQuery.i"
 	@echo "... src/PathQuery.s"
+	@echo "... src/PathStatistic.o"
+	@echo "... src/PathStatistic.i"
+	@echo "... src/PathStatistic.s"
 	@echo "... src/PathTree.o"
 	@echo "... src/PathTree.i"
 	@echo "... src/PathTree.s"

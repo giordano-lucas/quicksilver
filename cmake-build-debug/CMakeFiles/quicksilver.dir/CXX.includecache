@@ -26,6 +26,16 @@ PathTree.h
 iostream
 -
 
+../include/PathStatistic.h
+memory
+-
+SimpleGraph.h
+../include/SimpleGraph.h
+Estimator.h
+../include/Estimator.h
+cstdint
+-
+
 ../include/PathTree.h
 string
 -
@@ -37,6 +47,8 @@ Estimator.h
 ../include/Estimator.h
 SimpleGraph.h
 ../include/SimpleGraph.h
+PathStatistic.h
+../include/PathStatistic.h
 
 ../include/SimpleGraph.h
 unordered_map
@@ -54,11 +66,9 @@ fstream
 Graph.h
 ../include/Graph.h
 
-/home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/SimpleEstimator.cpp
-cmath
--
-SimpleGraph.h
-/home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/SimpleGraph.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/PathStatistic.cpp
+PathStatistic.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/PathStatistic.h
 SimpleEstimator.h
-/home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/SimpleEstimator.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEstimator.h
 

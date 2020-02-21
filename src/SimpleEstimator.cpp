@@ -15,23 +15,7 @@ void SimpleEstimator::prepare() {
     // reverse_adj holds pairs of the form (edgeLabel, from)
     //printGraphInfo();
 
-    // do your prep here
-    numPairs = graph->getNoDistinctEdges();
-    numLabels = graph->getNoLabels();
-
-    // calculate the number of distinct 's' nodes
-    for  (auto halfEdges : graph->adj) {
-        if (halfEdges.size() > 0) {
-            distinctFromNodes++;
-        }
-    }
-
-    // calculate the number of distinct 't' nodes
-    for  (auto halfEdges : graph->reverse_adj) {
-        if (halfEdges.size() > 0) {
-            distinctToNodes++;
-        }
-    }
+    pathStatistic.construct(graph);
 
 }
 
@@ -41,7 +25,8 @@ cardStat SimpleEstimator::estimate(PathQuery *q) {
     PathTree *path = q->path;
     std::string s = q->s;
     std::string t = q->t;
-    cardStat cardinalityStat = estimatePathTree(path);
+    cardPathStat cardinalityPathStat = estimatePathTree(path); 
+    cardStat cardinalityStat = cardinalityPathStat.stat;
 
     // process the query depending on its 's' and 't' nodes:
     if (s.compare("*")==0 and t.compare("*")==0) {
@@ -57,56 +42,32 @@ cardStat SimpleEstimator::estimate(PathQuery *q) {
     }
 }
 
-cardStat SimpleEstimator::estimatePathTree(PathTree *path) {
+cardPathStat SimpleEstimator::estimatePathTree(PathTree *path) {
 
     // path can be only in two states: either isLeaf() or isConcat()
     if (path->isLeaf()) {
         return estimateLeaf(path->data);
     } else if (path->isConcat()) {
-        cardStat leftStat = estimatePathTree(path->left);
-        cardStat rightStat = estimatePathTree(path->right);
-        return estimateConcat(leftStat, rightStat);
+        cardPathStat leftStat = estimatePathTree(path->left);
+        cardPathStat rightStat = estimatePathTree(path->right);
+        return pathStatistic.estimateConcat(leftStat, rightStat);
     }
+    throw "Illegal argument";
 }
 
 // reg_exp is simple regular path expression
-cardStat SimpleEstimator::estimateLeaf(std::string regExp) {
+cardPathStat SimpleEstimator::estimateLeaf(std::string regExp) {
     if (regExp.size() != 2) {
         throw "Illegal argument";
     }
-
+    uint32_t l = (regExp[0] - '0');  // NEED CORRECTION : what if l is of multiple digits ?
     char operation = regExp[1];
     switch(operation) {
-        case '>':
-            return cardStat{distinctFromNodes / numLabels,
-                            numPairs / numLabels,
-                            distinctToNodes / numLabels};
-        case '<':
-            return cardStat{distinctToNodes / numLabels,
-                            numPairs / numLabels,
-                            distinctFromNodes/ numLabels};
-        case '+':
-            // TODO: improve, it should return more than just 'l>'
-            return cardStat{distinctFromNodes / numLabels,
-                            numPairs / numLabels,
-                            distinctToNodes / numLabels};
+        case '>': return pathStatistic.estimateGreater(l); 
+        case '<': return pathStatistic.estimateLower(l);
+        case '+': return pathStatistic.estimateKleene(l);
     }
-}
-
-cardStat SimpleEstimator::estimateConcat(cardStat left, cardStat right) {
-
-    // join operation (slides p.49):
-     uint32_t noPaths = floor(std::min(left.noPaths*(right.noPaths/right.noOut),
-                                      right.noPaths*(left.noPaths/left.noIn)));
-
-     // Nikolay comment: use only this (be aware, this brings you down from 6k to 44k on the leaderboard!)
-    // uint32_t noPaths = floor(left.noPaths*(right.noPaths/right.noOut));
-
-    // apply reduction factor:
-    uint32_t noOut = left.noOut * (((double) noPaths)/left.noPaths);
-    uint32_t noIn = right.noIn * (((double) noPaths)/right.noPaths);
-
-    return cardStat {noOut, noPaths, noIn};
+    throw "Illegal argument";
 }
 
 void SimpleEstimator::printGraphInfo() {

@@ -3,6 +3,7 @@
 
 #include "Estimator.h"
 #include "SimpleGraph.h"
+#include "PathStatistic.h"
 
 class SimpleEstimator : public Estimator {
 
@@ -16,14 +17,11 @@ public:
     cardStat estimate(PathQuery *q) override ;
 
 private:
-    uint32_t numLabels = 0;
-    uint32_t numPairs = 0;
-    uint32_t distinctFromNodes = 0;
-    uint32_t distinctToNodes = 0;
+    PathStatistic pathStatistic;
     void printGraphInfo();
-    cardStat estimateLeaf(std::string reg_exp);
-    cardStat estimatePathTree(PathTree *p);
-    cardStat estimateConcat(cardStat left, cardStat right);
+    cardPathStat estimateLeaf(std::string reg_exp);
+    cardPathStat estimatePathTree(PathTree *p);
+    cardPathStat estimateConcat(cardPathStat left, cardPathStat right);
 };
 
 
