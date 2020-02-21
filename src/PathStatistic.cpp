@@ -30,23 +30,33 @@ void PathStatistic::construct(const std::shared_ptr<SimpleGraph> &g) {
     /* TO DO */
 }
 /* /!\ ONLY VALID FOR LEFT-DEEP PATH TREE /!\*/
-cardStat estimateConcat(cardStat c){
-    return cardStat{c.noOut * (syn2[l1][l2].middle / syn1[l1].in),c.noPaths * (syn2[l1][l2].two / syn1[l1].in),c.in * (syn2[l1][l2].in / syn1[l1].in)};
+cardPathStat estimateConcat(cardPathStat left, cardPathStat right){
+    uint32_t l1 = left.l;
+    uint32_t l2 = right.l;
+    Syn2 syn2concat = (l1 <= l2)? syn2[l1][l2]: syn2[l2][l1];
+    cardStat res =  cardStat{
+                        left.stat.noOut   * (syn2concat.middle / syn1[l1].in),
+                        left.stat.noPaths * (syn2concat.two    / syn1[l1].in),
+                        left.stat.noIn    * (syn2concat.in     / syn1[l1].in)
+                    };
+    return cardPathStat{l2, res};
 }
 
-cardStat PathStatistic::estimateGreater(uint32_t l) {
-    return cardStat{syn1[l].out, syn1[l].pairs, syn1[l].in};
+cardPathStat PathStatistic::estimateGreater(uint32_t l) {
+    cardStat res =  cardStat{syn1[l].out, syn1[l].pairs, syn1[l].in};
+    return cardPathStat{l, res};
 }
-cardStat PathStatistic::estimateLower(uint32_t l){
-    return cardStat{syn1[l].in, syn1[l].pairs, syn1[l].out};
+cardPathStat PathStatistic::estimateLower(uint32_t l){
+    cardStat res = cardStat{syn1[l].in, syn1[l].pairs, syn1[l].out};
+    return cardPathStat{l, res};
 }
 cardStat estimateUnion(cardStat min, cardStat max){
     return cardStat{max.noOut + min.noOut/2, max.path + min.path/2, max.noIn + min.noIn/2};
 }
-cardStat PathStatistic::estimateKleene(uint32_t l){
+cardPathStat PathStatistic::estimateKleene(uint32_t l){
     cardStat res = estimateGreater(l); //path of length 1     
     for (uint32_t i = 0 ; i < 4 ; ++i){
         res = estimateUnion(res, estimateConcat(res))
     }
-    return res;
+    return cardPathStat{l,res};
 }

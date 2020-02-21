@@ -6,6 +6,10 @@
 #include "Estimator.h"
 #include <cstdint>
 
+struct cardPathStat{
+    uint32_t l;
+    cardStat stat; 
+}
 struct Syn1{
     uint32_t out    =0;  // * number of nodes in G which have outgoing edge labeled with l
     uint32_t in     =0;  // * number of nodes in G which have incoming edge labeled with l
@@ -27,11 +31,11 @@ class PathStatistic {
 public:
     virtual ~PathStatistic() = default;
     void construct(const std::shared_ptr<SimpleGraph> &g);
-    cardStat estimateConcat(cardStat c);
-    cardStat estimateUnion(cardStat c1, cardStat c2);
-    cardStat estimateGreater(uint32_t l);
-    cardStat estimateLower(uint32_t l);
-    cardStat estimateKleene(uint32_t l);
+    cardPathStat estimateConcat(cardPathStat left, cardPathStat right);
+    cardPathStat estimateUnion(cardStat c1, cardStat c2);
+    cardPathStat estimateGreater(uint32_t l);
+    cardPathStat estimateLower(uint32_t l);
+    cardPathStat estimateKleene(uint32_t l);
 
 private:
     std::vector<Syn1> syn1;

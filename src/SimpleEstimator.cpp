@@ -41,7 +41,8 @@ cardStat SimpleEstimator::estimate(PathQuery *q) {
     PathTree *path = q->path;
     std::string s = q->s;
     std::string t = q->t;
-    cardStat cardinalityStat = estimatePathTree(path);
+    cardPathStat cardinalityPathStat = estimatePathTree(path); 
+    cardStat cardinalityStat = cardinalityPathStat.stat;
 
     // process the query depending on its 's' and 't' nodes:
     if (s.compare("*")==0 and t.compare("*")==0) {
@@ -56,20 +57,20 @@ cardStat SimpleEstimator::estimate(PathQuery *q) {
     }
 }
 
-cardStat SimpleEstimator::estimatePathTree(PathTree *path) {
+cardPathStat SimpleEstimator::estimatePathTree(PathTree *path) {
 
     // path can be only in two states: either isLeaf() or isConcat()
     if (path->isLeaf()) {
         return estimateLeaf(path->data);
     } else if (path->isConcat()) {
-        cardStat leftStat = estimatePathTree(path->left);
-        cardStat rightStat = estimatePathTree(path->right);
+        cardPathStat leftStat = estimatePathTree(path->left);
+        cardPathStat rightStat = estimatePathTree(path->right);
         return estimateConcat(leftStat, rightStat);
     }
 }
 
 // reg_exp is simple regular path expression
-cardStat SimpleEstimator::estimateLeaf(std::string regExp) {
+cardPathStat SimpleEstimator::estimateLeaf(std::string regExp) {
     if (regExp.size() != 2) {
         throw "Illegal argument";
     }

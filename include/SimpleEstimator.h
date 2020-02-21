@@ -19,9 +19,9 @@ public:
 private:
     PathStatistic pathStatistic;
     void printGraphInfo();
-    cardStat estimateLeaf(std::string reg_exp);
-    cardStat estimatePathTree(PathTree *p);
-    cardStat estimateConcat(cardStat left, cardStat right);
+    cardPathStat estimateLeaf(std::string reg_exp);
+    cardPathStat estimatePathTree(PathTree *p);
+    cardPathStat estimateConcat(cardPathStat left, cardPathStat right);
 };
 
 
