@@ -91,12 +91,6 @@
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/Graph.h">
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/PathQuery.h">
-			<Option target="quicksilver"/>
-		</Unit>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/PathStatistic.h">
-			<Option target="quicksilver"/>
-		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/PathTree.h">
 			<Option target="quicksilver"/>
 		</Unit>
@@ -110,9 +104,6 @@
 			<Option target="quicksilver"/>
 		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/PathQuery.cpp">
-			<Option target="quicksilver"/>
-		</Unit>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/PathStatistic.cpp">
 			<Option target="quicksilver"/>
 		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/PathTree.cpp">

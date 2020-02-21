@@ -5,15 +5,6 @@ CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o
  ../include/PathQuery.h
  ../include/PathTree.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/PathQuery.cpp
-CMakeFiles/quicksilver.dir/src/PathStatistic.cpp.o
- ../include/Estimator.h
- ../include/Graph.h
- ../include/PathQuery.h
- ../include/PathStatistic.h
- ../include/PathTree.h
- ../include/SimpleEstimator.h
- ../include/SimpleGraph.h
- /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/PathStatistic.cpp
 CMakeFiles/quicksilver.dir/src/PathTree.cpp.o
  ../include/PathTree.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/PathTree.cpp
@@ -21,7 +12,6 @@ CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o
  ../include/Estimator.h
  ../include/Graph.h
  ../include/PathQuery.h
- ../include/PathStatistic.h
  ../include/PathTree.h
  ../include/SimpleEstimator.h
  ../include/SimpleGraph.h
@@ -31,7 +21,6 @@ CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o
  ../include/Evaluator.h
  ../include/Graph.h
  ../include/PathQuery.h
- ../include/PathStatistic.h
  ../include/PathTree.h
  ../include/SimpleEstimator.h
  ../include/SimpleEvaluator.h
@@ -46,7 +35,6 @@ CMakeFiles/quicksilver.dir/src/main.cpp.o
  ../include/Evaluator.h
  ../include/Graph.h
  ../include/PathQuery.h
- ../include/PathStatistic.h
  ../include/PathTree.h
  ../include/SimpleEstimator.h
  ../include/SimpleEvaluator.h

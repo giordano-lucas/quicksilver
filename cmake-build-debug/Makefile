@@ -150,33 +150,6 @@ src/PathQuery.cpp.s:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/PathQuery.cpp.s
 .PHONY : src/PathQuery.cpp.s
 
-src/PathStatistic.o: src/PathStatistic.cpp.o
-
-.PHONY : src/PathStatistic.o
-
-# target to build an object file
-src/PathStatistic.cpp.o:
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/PathStatistic.cpp.o
-.PHONY : src/PathStatistic.cpp.o
-
-src/PathStatistic.i: src/PathStatistic.cpp.i
-
-.PHONY : src/PathStatistic.i
-
-# target to preprocess a source file
-src/PathStatistic.cpp.i:
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/PathStatistic.cpp.i
-.PHONY : src/PathStatistic.cpp.i
-
-src/PathStatistic.s: src/PathStatistic.cpp.s
-
-.PHONY : src/PathStatistic.s
-
-# target to generate assembly for a file
-src/PathStatistic.cpp.s:
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/PathStatistic.cpp.s
-.PHONY : src/PathStatistic.cpp.s
-
 src/PathTree.o: src/PathTree.cpp.o
 
 .PHONY : src/PathTree.o
@@ -324,9 +297,6 @@ help:
 	@echo "... src/PathQuery.o"
 	@echo "... src/PathQuery.i"
 	@echo "... src/PathQuery.s"
-	@echo "... src/PathStatistic.o"
-	@echo "... src/PathStatistic.i"
-	@echo "... src/PathStatistic.s"
 	@echo "... src/PathTree.o"
 	@echo "... src/PathTree.i"
 	@echo "... src/PathTree.s"
