@@ -9,7 +9,7 @@
 struct cardPathStat{
     uint32_t l;
     cardStat stat; 
-}
+};
 struct Syn1{
     uint32_t out    =0;  // * number of nodes in G which have outgoing edge labeled with l
     uint32_t in     =0;  // * number of nodes in G which have incoming edge labeled with l
@@ -32,7 +32,7 @@ public:
     virtual ~PathStatistic() = default;
     void construct(const std::shared_ptr<SimpleGraph> &g);
     cardPathStat estimateConcat(cardPathStat left, cardPathStat right);
-    cardPathStat estimateUnion(cardStat c1, cardStat c2);
+    cardPathStat estimateUnion(cardPathStat c1, cardPathStat c2);
     cardPathStat estimateGreater(uint32_t l);
     cardPathStat estimateLower(uint32_t l);
     cardPathStat estimateKleene(uint32_t l);

@@ -5,12 +5,22 @@ CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o: ../include/PathQuery.h
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o: ../src/PathQuery.cpp
 
+CMakeFiles/quicksilver.dir/src/PathStatistic.cpp.o: ../include/Estimator.h
+CMakeFiles/quicksilver.dir/src/PathStatistic.cpp.o: ../include/Graph.h
+CMakeFiles/quicksilver.dir/src/PathStatistic.cpp.o: ../include/PathQuery.h
+CMakeFiles/quicksilver.dir/src/PathStatistic.cpp.o: ../include/PathStatistic.h
+CMakeFiles/quicksilver.dir/src/PathStatistic.cpp.o: ../include/PathTree.h
+CMakeFiles/quicksilver.dir/src/PathStatistic.cpp.o: ../include/SimpleEstimator.h
+CMakeFiles/quicksilver.dir/src/PathStatistic.cpp.o: ../include/SimpleGraph.h
+CMakeFiles/quicksilver.dir/src/PathStatistic.cpp.o: ../src/PathStatistic.cpp
+
 CMakeFiles/quicksilver.dir/src/PathTree.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/src/PathTree.cpp.o: ../src/PathTree.cpp
 
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/Estimator.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/Graph.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/PathQuery.h
+CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/PathStatistic.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/SimpleEstimator.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/SimpleGraph.h
@@ -20,6 +30,7 @@ CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/Estimator.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/Evaluator.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/Graph.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/PathQuery.h
+CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/PathStatistic.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/SimpleEstimator.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/SimpleEvaluator.h
@@ -34,6 +45,7 @@ CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/Estimator.h
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/Evaluator.h
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/Graph.h
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/PathQuery.h
+CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/PathStatistic.h
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/SimpleEstimator.h
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/SimpleEvaluator.h

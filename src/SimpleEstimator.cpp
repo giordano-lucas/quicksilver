@@ -15,23 +15,7 @@ void SimpleEstimator::prepare() {
     // reverse_adj holds pairs of the form (edgeLabel, from)
     //printGraphInfo();
 
-    // do your prep here
-    numPairs = graph->getNoDistinctEdges();
-    numLabels = graph->getNoLabels();
-
-    // calculate the number of distinct 's' nodes
-    for  (auto halfEdges : graph->adj) {
-        if (halfEdges.size() > 0) {
-            distinctFromNodes++;
-        }
-    }
-
-    // calculate the number of distinct 't' nodes
-    for  (auto halfEdges : graph->reverse_adj) {
-        if (halfEdges.size() > 0) {
-            distinctToNodes++;
-        }
-    }
+    pathStatistic.construct(graph);
 
 }
 
@@ -65,8 +49,9 @@ cardPathStat SimpleEstimator::estimatePathTree(PathTree *path) {
     } else if (path->isConcat()) {
         cardPathStat leftStat = estimatePathTree(path->left);
         cardPathStat rightStat = estimatePathTree(path->right);
-        return estimateConcat(leftStat, rightStat);
+        return pathStatistic.estimateConcat(leftStat, rightStat);
     }
+    throw "Illegal argument";
 }
 
 // reg_exp is simple regular path expression
@@ -74,13 +59,14 @@ cardPathStat SimpleEstimator::estimateLeaf(std::string regExp) {
     if (regExp.size() != 2) {
         throw "Illegal argument";
     }
-
+    uint32_t l = (regExp[0] - '0');  // NEED CORRECTION : what if l is of multiple digits ?
     char operation = regExp[1];
     switch(operation) {
         case '>': return pathStatistic.estimateGreater(l); 
         case '<': return pathStatistic.estimateLower(l);
         case '+': return pathStatistic.estimateKleene(l);
     }
+    throw "Illegal argument";
 }
 
 void SimpleEstimator::printGraphInfo() {

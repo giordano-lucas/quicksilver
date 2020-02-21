@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o"
+  "CMakeFiles/quicksilver.dir/src/PathStatistic.cpp.o"
   "CMakeFiles/quicksilver.dir/src/PathTree.cpp.o"
   "CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o"
   "CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o"
