@@ -6,7 +6,6 @@
 #include <SimpleEvaluator.h>
 #include <PathQuery.h>
 
-
 std::vector<PathQuery *> parseQueries(std::string &fileName) {
 
     std::vector<PathQuery *> queries {};

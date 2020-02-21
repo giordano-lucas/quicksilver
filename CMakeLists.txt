@@ -19,8 +19,7 @@ set(HEADER_FILES
         include/SimpleGraph.h
         include/SimpleEstimator.h
         include/SimpleEvaluator.h
-        include/PathQuery.h
-        include/PathStatistic.h)
+        )
 
 set(SOURCE_FILES
         src/main.cpp
@@ -29,6 +28,6 @@ set(SOURCE_FILES
         src/SimpleEstimator.cpp
         src/SimpleEvaluator.cpp
         src/PathQuery.cpp
-        src/PathStatistic.cpp)
+        )
 
 add_executable(quicksilver ${SOURCE_FILES} ${HEADER_FILES})
