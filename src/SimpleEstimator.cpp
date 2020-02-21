@@ -76,36 +76,10 @@ cardStat SimpleEstimator::estimateLeaf(std::string regExp) {
 
     char operation = regExp[1];
     switch(operation) {
-        case '>':
-            return cardStat{distinctFromNodes / numLabels,
-                            numPairs / numLabels,
-                            distinctToNodes / numLabels};
-        case '<':
-            return cardStat{distinctToNodes / numLabels,
-                            numPairs / numLabels,
-                            distinctFromNodes/ numLabels};
-        case '+':
-            // TODO: improve, it should return more than just 'l>'
-            return cardStat{distinctFromNodes / numLabels,
-                            numPairs / numLabels,
-                            distinctToNodes / numLabels};
+        case '>': return pathStatistic.estimateGreater(l); 
+        case '<': return pathStatistic.estimateLower(l);
+        case '+': return pathStatistic.estimateKleene(l);
     }
-}
-
-cardStat SimpleEstimator::estimateConcat(cardStat left, cardStat right) {
-
-    // join operation (slides p.49):
-     uint32_t noPaths = floor(std::min(left.noPaths*(right.noPaths/right.noOut),
-                                      right.noPaths*(left.noPaths/left.noIn)));
-
-     // Nikolay comment: use only this (be aware, this brings you down from 6k to 44k on the leaderboard!)
-    // uint32_t noPaths = floor(left.noPaths*(right.noPaths/right.noOut));
-
-    // apply reduction factor:
-    uint32_t noOut = left.noOut * (((double) noPaths)/left.noPaths);
-    uint32_t noIn = right.noIn * (((double) noPaths)/right.noPaths);
-
-    return cardStat {noOut, noPaths, noIn};
 }
 
 void SimpleEstimator::printGraphInfo() {
