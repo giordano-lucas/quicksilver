@@ -8,6 +8,7 @@ SimpleEstimator::SimpleEstimator(std::shared_ptr<SimpleGraph> &g){
     // works only with SimpleGraph
     graph = g;
 }
+// sort on the second item in the pair, then on the first (ascending order)
 
 void SimpleEstimator::prepare() {
 
@@ -35,15 +36,17 @@ cardStat SimpleEstimator::estimate(PathQuery *q) {
     } else if (s.compare("*")==0) {
         // s is '*', t is constant
         return cardStat{
-            1,
-            cardinalityStat.noPaths/cardinalityStat.noOut,
-            cardinalityStat.noIn/cardinalityStat.noOut};
+                cardinalityStat.noOut/cardinalityStat.noIn,
+                cardinalityStat.noPaths/cardinalityStat.noIn,
+                1
+        };
     } else {
         // t is '*', s is constant
         return cardStat{
-            cardinalityStat.noOut/cardinalityStat.noIn,
-            cardinalityStat.noPaths/cardinalityStat.noIn,
-            1};
+                1,
+                cardinalityStat.noPaths/cardinalityStat.noOut,
+                cardinalityStat.noIn/cardinalityStat.noOut
+        };
     }
 }
 
