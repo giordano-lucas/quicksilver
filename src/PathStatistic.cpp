@@ -34,7 +34,7 @@ void PathStatistic::construct(const std::shared_ptr<SimpleGraph> &g) {
     for (uint32_t l1= 0  ; l1 < g->getNoLabels() ; l1++){
         syn2[l1].resize(g->getNoLabels());
     }
-    //compute middle
+    //compute middle and two
     for(uint32_t middle = 0; middle < g->reverse_adj.size() ; ++middle){
         std::vector<std::vector<bool>> visitL1L2(g->getNoLabels(), std::vector<bool>(g->getNoLabels(),false));
         for (auto edgeL1 : g->reverse_adj[middle]){ //use reverse adj since we are interested in incoming edge l1 to middle
@@ -46,8 +46,11 @@ void PathStatistic::construct(const std::shared_ptr<SimpleGraph> &g) {
                     uint32_t l2 = edgeL2.second;
                     if (!visitL1L2[l1][l2]) {
                         visitL1L2[l1][l2] = true;
-                        syn2[l1][l2].middle++;}
+                        syn2[l1][l2].middle++;
+                        }
+                    syn2[l1][l2].two++; //compute syn2.two
                     }
+
                 }
             }
         }
@@ -69,12 +72,6 @@ void PathStatistic::construct(const std::shared_ptr<SimpleGraph> &g) {
 
         }
     }
-    /* TO DO : compute syn2.two */
-
-    /*
-     * idea : during the computation of "middle" and "in" store which nodes are in "middle" and "in" (2 lists uint32 )
-     * then traverse adj list and count all paths of length 1  : (middle)--l2-->(in)
-     * */
 }
 /* /!\ ONLY VALID FOR LEFT-DEEP PATH TREE /!\*/
 cardPathStat PathStatistic::estimateConcat(cardPathStat left, cardPathStat right){
