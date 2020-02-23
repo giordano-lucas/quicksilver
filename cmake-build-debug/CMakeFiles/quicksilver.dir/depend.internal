@@ -4,10 +4,10 @@
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o
  ../include/PathQuery.h
  ../include/PathTree.h
- /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/PathQuery.cpp
+ /home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/PathQuery.cpp
 CMakeFiles/quicksilver.dir/src/PathTree.cpp.o
  ../include/PathTree.h
- /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/PathTree.cpp
+ /home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/PathTree.cpp
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o
  ../include/Estimator.h
  ../include/Graph.h
@@ -15,7 +15,7 @@ CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o
  ../include/PathTree.h
  ../include/SimpleEstimator.h
  ../include/SimpleGraph.h
- /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEstimator.cpp
+ /home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/SimpleEstimator.cpp
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o
  ../include/Estimator.h
  ../include/Evaluator.h
@@ -25,11 +25,11 @@ CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o
  ../include/SimpleEstimator.h
  ../include/SimpleEvaluator.h
  ../include/SimpleGraph.h
- /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEvaluator.cpp
+ /home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/SimpleEvaluator.cpp
 CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o
  ../include/Graph.h
  ../include/SimpleGraph.h
- /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleGraph.cpp
+ /home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/SimpleGraph.cpp
 CMakeFiles/quicksilver.dir/src/main.cpp.o
  ../include/Estimator.h
  ../include/Evaluator.h
@@ -39,4 +39,4 @@ CMakeFiles/quicksilver.dir/src/main.cpp.o
  ../include/SimpleEstimator.h
  ../include/SimpleEvaluator.h
  ../include/SimpleGraph.h
- /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/main.cpp
+ /home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/main.cpp

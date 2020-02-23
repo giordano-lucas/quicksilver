@@ -14,6 +14,14 @@ PathQuery.h
 iostream
 -
 
+../include/Evaluator.h
+memory
+-
+Graph.h
+../include/Graph.h
+Estimator.h
+../include/Estimator.h
+
 ../include/Graph.h
 unordered_map
 -
@@ -38,6 +46,20 @@ Estimator.h
 SimpleGraph.h
 ../include/SimpleGraph.h
 
+../include/SimpleEvaluator.h
+memory
+-
+cmath
+-
+SimpleGraph.h
+../include/SimpleGraph.h
+PathTree.h
+../include/PathTree.h
+Evaluator.h
+../include/Evaluator.h
+Graph.h
+../include/Graph.h
+
 ../include/SimpleGraph.h
 unordered_map
 -
@@ -54,11 +76,47 @@ fstream
 Graph.h
 ../include/Graph.h
 
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEstimator.cpp
+/home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/PathQuery.cpp
+PathQuery.h
+/home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/PathQuery.h
+
+/home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/PathTree.cpp
+iostream
+-
+PathTree.h
+/home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/PathTree.h
+
+/home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/SimpleEstimator.cpp
 cmath
 -
 SimpleGraph.h
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleGraph.h
+/home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/SimpleGraph.h
 SimpleEstimator.h
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEstimator.h
+/home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/SimpleEstimator.h
+
+/home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/SimpleEvaluator.cpp
+SimpleEstimator.h
+/home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/SimpleEstimator.h
+SimpleEvaluator.h
+/home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/SimpleEvaluator.h
+
+/home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/SimpleGraph.cpp
+SimpleGraph.h
+/home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/SimpleGraph.h
+
+/home/anirak/Desktop/Database Technology/Project 2/quicksilver/src/main.cpp
+iostream
+-
+chrono
+-
+SimpleGraph.h
+-
+Estimator.h
+-
+SimpleEstimator.h
+-
+SimpleEvaluator.h
+-
+PathQuery.h
+-
 
