@@ -68,17 +68,12 @@ void SimpleEstimator::prepare() {
         for (auto edgeL1 : graph->reverse_adj[middle]){ //use reverse adj since we are interested in incoming edge l1 to middle
             uint32_t l1 = edgeL1.first;
             if (middle < graph->adj.size()) { //check that middle has at least one outgoing edge
-                std::vector<bool> visitL2(graph->getNoLabels(), false);
                 for (auto edgeL2 : graph->adj[middle]) { // - join on middle element
                     // - use adj since we are interested in outgoing edge l2 from middle
                     uint32_t l2 = edgeL2.first;
                     if (!visitL1L2[l1][l2]) {
                         visitL1L2[l1][l2] = true;
                         syn2[l1][l2].middle++;
-                    }
-                    if (visitL1L2[l1][l2] && !visitL2[l2]) {//compute syn2.two
-                        visitL2[l2] = true;
-                        syn2[l1][l2].two++;
                     }
                 }
             }
@@ -90,12 +85,17 @@ void SimpleEstimator::prepare() {
         for (auto edgeL2 : edgeListL2){
             uint32_t l2 = edgeL2.first;
             uint32_t middle = edgeL2.second;  //interested in path l1/l2 to t
+            bool visitL2 = false;
             if (middle < graph->adj.size()){
                 for(auto edgeL1 : graph->reverse_adj[middle]) {  //use reverse adj since we are interested in incoming edge l1 to middle node
                     uint32_t l1 = edgeL1.first;
                     if (!visitL1L2[l1][l2]) {
                         visitL1L2[l1][l2] = true;
                         syn2[l1][l2].in++;
+                    }
+                    if (!visitL2) {
+                        visitL2 = true;
+                        syn2[l1][l2].two++;
                     }
                 }
             }
@@ -133,16 +133,16 @@ cardStat SimpleEstimator::estimate(PathQuery *q) {
     } else if (s.compare("*")==0) {
         // s is '*', t is constant
         return cardStat{
-                cardinalityStat.noOut/cardinalityStat.noIn,
-                cardinalityStat.noPaths/cardinalityStat.noIn,
+                static_cast<uint32_t>(std::ceil(((double) (cardinalityStat.noOut))/ cardinalityStat.noIn)),
+                static_cast<uint32_t>(std::ceil(((double) (cardinalityStat.noPaths)) / cardinalityStat.noIn)),
                 1
         };
     } else {
         // t is '*', s is constant
         return cardStat{
                 1,
-                cardinalityStat.noPaths/cardinalityStat.noOut,
-                cardinalityStat.noIn/cardinalityStat.noOut
+                static_cast<uint32_t>(std::ceil(((double) (cardinalityStat.noPaths)) / cardinalityStat.noOut)),
+                static_cast<uint32_t>(std::ceil(((double) (cardinalityStat.noIn)) / cardinalityStat.noOut))
         };
 }
 }
@@ -196,9 +196,9 @@ cardPathStat SimpleEstimator::estimateConcat(cardPathStat left, cardPathStat rig
     uint32_t l1 = left.l;
     uint32_t l2 = right.l;
     cardStat res =  cardStat{
-            (left.stat.noOut   * syn2[l1][l2].middle) / syn1[l1].in,
-            (left.stat.noPaths * syn2[l1][l2].two)    / syn1[l1].in,
-            (left.stat.noIn    * syn2[l1][l2].in)     / syn1[l1].in
+            static_cast<uint32_t>(left.stat.noOut * (((double)syn2[l1][l2].middle )/ syn1[l1].in)),
+            static_cast<uint32_t>(left.stat.noPaths * (((double)syn2[l1][l2].two) / syn1[l1].in)),
+            static_cast<uint32_t>(left.stat.noIn * (((double)syn2[l1][l2].in) / syn1[l1].in))
     };
     return cardPathStat{l2, res};
 }
