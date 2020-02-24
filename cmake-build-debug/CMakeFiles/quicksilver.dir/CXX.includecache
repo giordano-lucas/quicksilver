@@ -14,6 +14,14 @@ PathQuery.h
 iostream
 -
 
+../include/Evaluator.h
+memory
+-
+Graph.h
+../include/Graph.h
+Estimator.h
+../include/Estimator.h
+
 ../include/Graph.h
 unordered_map
 -
@@ -38,6 +46,20 @@ Estimator.h
 SimpleGraph.h
 ../include/SimpleGraph.h
 
+../include/SimpleEvaluator.h
+memory
+-
+cmath
+-
+SimpleGraph.h
+../include/SimpleGraph.h
+PathTree.h
+../include/PathTree.h
+Evaluator.h
+../include/Evaluator.h
+Graph.h
+../include/Graph.h
+
 ../include/SimpleGraph.h
 unordered_map
 -
@@ -61,4 +83,26 @@ SimpleGraph.h
 /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleGraph.h
 SimpleEstimator.h
 /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEstimator.h
+
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEvaluator.cpp
+SimpleEstimator.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEstimator.h
+SimpleEvaluator.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEvaluator.h
+
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/main.cpp
+iostream
+-
+chrono
+-
+SimpleGraph.h
+-
+Estimator.h
+-
+SimpleEstimator.h
+-
+SimpleEvaluator.h
+-
+PathQuery.h
+-
 

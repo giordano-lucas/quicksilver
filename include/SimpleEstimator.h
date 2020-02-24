@@ -4,7 +4,9 @@
 #include "Estimator.h"
 #include "SimpleGraph.h"
 
+enum op_t {greater,lower,kleene};
 struct cardPathStat{
+    op_t lastOp;
     uint32_t l;
     cardStat stat;
 };
@@ -22,6 +24,10 @@ struct Syn2{
     // uint32_t pairs  =0;  //number of distinct node pairs connected with paths labeled with l1/l2.
     //uint32_t one    =0;  //number of paths labeled l1 from nodes in out to nodes in middle, and
     uint32_t two    =0;  // * number of paths labeled l2 from nodes in middle to nodes in in.
+};
+struct Syn3{
+    uint32_t in  =0;  // * number of nodes in G which have incoming edge labeled l1 and incoming edge labeled l2,
+    uint32_t out =0; // * number of nodes in G which have outgoing edge labeled l1 and outgoing edge labeled l2,
 };
 
 class SimpleEstimator : public Estimator {

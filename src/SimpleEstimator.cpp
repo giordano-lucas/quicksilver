@@ -195,25 +195,43 @@ bool SimpleEstimator::sortPairsL(const std::pair<uint32_t,uint32_t> &a, const st
 cardPathStat SimpleEstimator::estimateConcat(cardPathStat left, cardPathStat right){
     uint32_t l1 = left.l;
     uint32_t l2 = right.l;
-    cardStat res =  cardStat{
-            static_cast<uint32_t>(left.stat.noOut * (((double)syn2[l1][l2].middle )/ syn1[l1].in)),
-            static_cast<uint32_t>(left.stat.noPaths * (((double)syn2[l1][l2].two) / syn1[l1].in)),
-            static_cast<uint32_t>(left.stat.noIn * (((double)syn2[l1][l2].in) / syn1[l1].in))
-    };
-    return cardPathStat{l2, res};
+    cardStat res;
+    if ((left.lastOp == greater && right.lastOp == lower)){
+        res =  cardStat{
+                left.stat.noOut,
+                static_cast<uint32_t>(left.stat.noPaths * (((double)right.stat.noPaths) / syn1[l1].in)),
+                right.stat.noOut
+        };
+    }
+    else if ((left.lastOp == lower && right.lastOp == greater)){
+        res =  cardStat{
+                left.stat.noIn,
+                static_cast<uint32_t>(left.stat.noPaths * (((double)right.stat.noPaths) / syn1[l1].in)),
+                right.stat.noIn
+        };
+    }
+    else {
+        res =  cardStat{
+                static_cast<uint32_t>(left.stat.noOut * (((double)syn2[l1][l2].middle )/ syn1[l1].in)),
+                static_cast<uint32_t>(left.stat.noPaths * (((double)syn2[l1][l2].two) / syn1[l1].in)),
+                static_cast<uint32_t>(left.stat.noIn * (((double)syn2[l1][l2].in) / syn1[l1].in))
+        };
+    }
+
+    return cardPathStat{right.lastOp,l2, res};
 }
 
 cardPathStat SimpleEstimator::estimateGreater(uint32_t l) {
     cardStat res =  cardStat{syn1[l].out, syn1[l].path, syn1[l].in};
-    return cardPathStat{l, res};
+    return cardPathStat{greater,l, res};
 }
 cardPathStat SimpleEstimator::estimateLower(uint32_t l){
     cardStat res = cardStat{syn1[l].in, syn1[l].path, syn1[l].out};
-    return cardPathStat{l, res};
+    return cardPathStat{lower,l, res};
 }
 cardPathStat SimpleEstimator::estimateUnion(cardPathStat min, cardPathStat max){
     cardStat res = cardStat{max.stat.noOut + min.stat.noOut/2, max.stat.noPaths + min.stat.noPaths/2, max.stat.noIn + min.stat.noIn/2};
-    return cardPathStat{min.l, res};
+    return cardPathStat{min.lastOp,min.l, res};
 }
 cardPathStat SimpleEstimator::estimateKleene(uint32_t l){
     cardPathStat path1 = estimateGreater(l); //path of length 1
