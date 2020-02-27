@@ -19,6 +19,10 @@ void SimpleEstimator::prepare() {
     for (uint32_t l1= 0  ; l1 < graph->getNoLabels() ; l1++){
         syn2[l1].resize(graph->getNoLabels());
     }
+    syn3.resize(graph->getNoLabels());
+    for (uint32_t l1= 0  ; l1 < graph->getNoLabels() ; l1++){
+        syn3[l1].resize(graph->getNoLabels());
+    }
 
     // *** SYNAPSE 1 Statistics ***
 
@@ -94,15 +98,64 @@ void SimpleEstimator::prepare() {
                         syn2[l1][l2].in++;
                     }
                     if (!visitL2) {
-                        visitL2 = true;
-                        syn2[l1][l2].two++;
+                       visitL2 = true;
+                       syn2[l1][l2].two++;
                     }
                 }
             }
 
         }
     }
-    /*for (uint32_t l1=0; l1 < syn2.size() ; ++l1){
+
+    // *** SYNAPSE 3 Statistics ***
+    for (uint32_t n = 0 ; n < graph->reverse_adj.size() ; ++n){
+        std::vector<std::vector<bool>> hasL1L2(graph->getNoLabels(), std::vector<bool>(graph->getNoLabels(),false));
+        for (auto edgeL2 : graph->reverse_adj[n]){
+            uint32_t l2 = edgeL2.first;
+            uint32_t s2 = edgeL2.second;
+            bool visitL2 = false;
+            for (auto edgeL1 : graph->reverse_adj[n]){
+                uint32_t l1 = edgeL1.first;
+                uint32_t s1 = edgeL1.second;
+                if (!(l1 == l2 && s1 == s2) && !hasL1L2[l1][l2]) {
+                    hasL1L2[l1][l2] = true;
+                    if (l1 <= l2) syn3[l1][l2].in++; else syn3[l2][l1].in++;
+                }
+                if (!visitL2) {
+                    visitL2 = true;
+                    if (l1 <= l2) syn3[l1][l2].twoIn++; else syn3[l2][l1].twoIn++;
+                }
+            }
+
+        }
+
+    }
+    // *** SYNAPSE 3 Statistics ***
+    for (uint32_t n = 0 ; n < graph->adj.size() ; ++n){
+        std::vector<std::vector<bool>> hasL1L2(graph->getNoLabels(), std::vector<bool>(graph->getNoLabels(),false));
+        for (auto edgeL2 : graph->adj[n]){
+            uint32_t l2 = edgeL2.first;
+            uint32_t s2 = edgeL2.second;
+            bool visitL2 = false;
+            for (auto edgeL1 : graph->adj[n]){
+                uint32_t l1 = edgeL1.first;
+                uint32_t s1 = edgeL1.second;
+                if (!(l1 == l2 && s1 == s2) && !hasL1L2[l1][l2]) {
+                    hasL1L2[l1][l2] = true;
+                    if (l1 <= l2) syn3[l1][l2].out++; else syn3[l2][l1].out++;
+                }
+                if (!visitL2) {
+                    visitL2 = true;
+                    if (l1 <= l2) syn3[l1][l2].twoOut++; else syn3[l2][l1].twoOut++;
+                }
+            }
+
+        }
+
+    }
+
+    /*
+    for (uint32_t l1=0; l1 < syn2.size() ; ++l1){
         fprintf(stderr," Syn1[%d] : out = %d | in = %d | path = %d \n", l1, syn1[l1].out, syn1[l1].in, syn1[l1].path);
     }
     fprintf(stderr,"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ \n");
@@ -112,6 +165,7 @@ void SimpleEstimator::prepare() {
             if (syn2[l1][l2].middle == 0) {syn2[l1][l2].middle++;}
             if (syn2[l1][l2].in     == 0) {syn2[l1][l2].in++;}
             if (syn2[l1][l2].two    == 0) {syn2[l1][l2].two++;}
+            fprintf(stderr," Syn[%d][%d] : in = %d \n", l1,l2, syn3[l1][l2].in);
         }
     }*/
 
@@ -197,20 +251,38 @@ cardPathStat SimpleEstimator::estimateConcat(cardPathStat left, cardPathStat rig
     uint32_t l2 = right.l;
     cardStat res;
     if ((left.lastOp == greater && right.lastOp == lower)){
-        res =  cardStat{
+        uint32_t  syn3In = (l1 <= l2) ? syn3[l1][l2].in: syn3[l2][l1].in;
+        uint32_t  syn3TwoIn = (l1 <= l2) ? syn3[l1][l2].twoIn: syn3[l2][l1].twoIn;
+        /*res =  cardStat{
                 left.stat.noOut,
-                static_cast<uint32_t>(left.stat.noPaths * (((double)right.stat.noPaths) / syn1[l1].in)),
+                static_cast<uint32_t>(left.stat.noPaths *(((double)right.stat.noPaths) / syn1[l1].in)),
                 right.stat.noOut
+        };*/
+        res =  cardStat{
+                static_cast<uint32_t>(left.stat.noOut *(((double)syn3In) / syn1[l1].in)),
+                static_cast<uint32_t>((((double)left.stat.noPaths * syn3TwoIn) / syn1[l1].in)) ,
+                static_cast<uint32_t>(left.stat.noOut *(((double)syn3In) / syn1[l1].in))
         };
     }
     else if ((left.lastOp == lower && right.lastOp == greater)){
-        res =  cardStat{
+        uint32_t  syn3Out   = (l1 <= l2) ? syn3[l1][l2].out: syn3[l2][l1].out;
+        uint32_t  syn3TwoOut= (l1 <= l2) ? syn3[l1][l2].twoOut: syn3[l2][l1].twoOut;
+        /*res =  cardStat{
                 left.stat.noIn,
                 static_cast<uint32_t>(left.stat.noPaths * (((double)right.stat.noPaths) / syn1[l1].in)),
                 right.stat.noIn
+        };*/
+        res =  cardStat{
+                static_cast<uint32_t>(left.stat.noOut *(((double)syn3Out) / syn1[l1].out)),
+                static_cast<uint32_t>((((double)left.stat.noPaths * syn3TwoOut) / syn1[l1].out)) ,
+                static_cast<uint32_t>(left.stat.noOut *(((double)syn3Out) / syn1[l1].out))
         };
     }
     else {
+       if (left.lastOp == lower && right.lastOp == lower){ //if they are both < operation we are looking for path s->l2->l1->t instead of s->l1->l2->t
+            l1 = right.l;
+            l2 = left.l;
+        }
         res =  cardStat{
                 static_cast<uint32_t>(left.stat.noOut * (((double)syn2[l1][l2].middle )/ syn1[l1].in)),
                 static_cast<uint32_t>(left.stat.noPaths * (((double)syn2[l1][l2].two) / syn1[l1].in)),
@@ -221,6 +293,8 @@ cardPathStat SimpleEstimator::estimateConcat(cardPathStat left, cardPathStat rig
     return cardPathStat{right.lastOp,l2, res};
 }
 
+
+
 cardPathStat SimpleEstimator::estimateGreater(uint32_t l) {
     cardStat res =  cardStat{syn1[l].out, syn1[l].path, syn1[l].in};
     return cardPathStat{greater,l, res};
@@ -229,14 +303,16 @@ cardPathStat SimpleEstimator::estimateLower(uint32_t l){
     cardStat res = cardStat{syn1[l].in, syn1[l].path, syn1[l].out};
     return cardPathStat{lower,l, res};
 }
-cardPathStat SimpleEstimator::estimateUnion(cardPathStat min, cardPathStat max){
+cardPathStat SimpleEstimator::estimateUnion(cardPathStat left, cardPathStat right){
+    cardPathStat min = (left.stat.noPaths <= right.stat.noPaths)? left: right;
+    cardPathStat max = (left.stat.noPaths > right.stat.noPaths)? left: right;
     cardStat res = cardStat{max.stat.noOut + min.stat.noOut/2, max.stat.noPaths + min.stat.noPaths/2, max.stat.noIn + min.stat.noIn/2};
-    return cardPathStat{min.lastOp,min.l, res};
+    return cardPathStat{left.lastOp,left.l, res};
 }
 cardPathStat SimpleEstimator::estimateKleene(uint32_t l){
     cardPathStat path1 = estimateGreater(l); //path of length 1
     cardPathStat res   = path1;
-    for (uint32_t i = 0 ; i < 2 ; ++i){
+    for (uint32_t i = 0 ; i < 3 ; ++i){
         res = estimateUnion(res, estimateConcat(res, path1));
     }
     return res;

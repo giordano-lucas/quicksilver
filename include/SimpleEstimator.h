@@ -27,7 +27,9 @@ struct Syn2{
 };
 struct Syn3{
     uint32_t in  =0;  // * number of nodes in G which have incoming edge labeled l1 and incoming edge labeled l2,
+    uint32_t twoIn =0; //* number of path from nodes in syn1[l1].out to nodes in syn3[l1][l2].in
     uint32_t out =0; // * number of nodes in G which have outgoing edge labeled l1 and outgoing edge labeled l2,
+    uint32_t twoOut =0; //* number of path from nodes in syn1[l1].in to nodes in syn3[l1][l2].out
 };
 
 class SimpleEstimator : public Estimator {
@@ -55,6 +57,7 @@ private:
     cardPathStat estimateKleene(uint32_t l);
     std::vector<Syn1> syn1;
     std::vector<std::vector<Syn2>> syn2;
+    std::vector<std::vector<Syn3>> syn3;
 };
 
 
