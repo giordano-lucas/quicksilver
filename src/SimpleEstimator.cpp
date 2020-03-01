@@ -153,22 +153,6 @@ void SimpleEstimator::prepare() {
         }
 
     }
-
-    /*
-    for (uint32_t l1=0; l1 < syn2.size() ; ++l1){
-        fprintf(stderr," Syn1[%d] : out = %d | in = %d | path = %d \n", l1, syn1[l1].out, syn1[l1].in, syn1[l1].path);
-    }
-    fprintf(stderr,"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ \n");
-    for (uint32_t l1=0; l1 < syn2.size() ; ++l1){
-        for (uint32_t l2=0; l2 < syn2[l1].size() ; ++l2){
-            fprintf(stderr," Syn[%d][%d] : mid = %d | in = %d | two = %d \n", l1,l2, syn2[l1][l2].middle, syn2[l1][l2].in, syn2[l1][l2].two);
-            if (syn2[l1][l2].middle == 0) {syn2[l1][l2].middle++;}
-            if (syn2[l1][l2].in     == 0) {syn2[l1][l2].in++;}
-            if (syn2[l1][l2].two    == 0) {syn2[l1][l2].two++;}
-            fprintf(stderr," Syn[%d][%d] : in = %d \n", l1,l2, syn3[l1][l2].in);
-        }
-    }*/
-
 }
 
 cardStat SimpleEstimator::estimate(PathQuery *q) {
@@ -238,7 +222,9 @@ void SimpleEstimator::printGraphInfo() {
     std::cout << "Number of labels: " << graph->getNoLabels() << std::endl;
 }
 //*********************************************************************************************
-
+/**
+ * Sort pairs first by label then by node
+ * */
 bool SimpleEstimator::sortPairsL(const std::pair<uint32_t,uint32_t> &a, const std::pair<uint32_t,uint32_t> &b) {
     if (a.first < b.first) return true;
     if (a.first == b.first) return a.second < b.second;
@@ -253,11 +239,7 @@ cardPathStat SimpleEstimator::estimateConcat(cardPathStat left, cardPathStat rig
     if ((left.lastOp == greater && right.lastOp == lower)){
         uint32_t  syn3In = (l1 <= l2) ? syn3[l1][l2].in: syn3[l2][l1].in;
         uint32_t  syn3TwoIn = (l1 <= l2) ? syn3[l1][l2].twoIn: syn3[l2][l1].twoIn;
-        /*res =  cardStat{
-                left.stat.noOut,
-                static_cast<uint32_t>(left.stat.noPaths *(((double)right.stat.noPaths) / syn1[l1].in)),
-                right.stat.noOut
-        };*/
+
         res =  cardStat{
                 static_cast<uint32_t>(left.stat.noOut *(((double)syn3In) / syn1[l1].in)),
                 static_cast<uint32_t>((((double)left.stat.noPaths * syn3TwoIn) / syn1[l1].in)) ,
@@ -267,11 +249,7 @@ cardPathStat SimpleEstimator::estimateConcat(cardPathStat left, cardPathStat rig
     else if ((left.lastOp == lower && right.lastOp == greater)){
         uint32_t  syn3Out   = (l1 <= l2) ? syn3[l1][l2].out: syn3[l2][l1].out;
         uint32_t  syn3TwoOut= (l1 <= l2) ? syn3[l1][l2].twoOut: syn3[l2][l1].twoOut;
-        /*res =  cardStat{
-                left.stat.noIn,
-                static_cast<uint32_t>(left.stat.noPaths * (((double)right.stat.noPaths) / syn1[l1].in)),
-                right.stat.noIn
-        };*/
+
         res =  cardStat{
                 static_cast<uint32_t>(left.stat.noOut *(((double)syn3Out) / syn1[l1].out)),
                 static_cast<uint32_t>((((double)left.stat.noPaths * syn3TwoOut) / syn1[l1].out)) ,
@@ -312,7 +290,7 @@ cardPathStat SimpleEstimator::estimateUnion(cardPathStat left, cardPathStat righ
 cardPathStat SimpleEstimator::estimateKleene(uint32_t l){
     cardPathStat path1 = estimateGreater(l); //path of length 1
     cardPathStat res   = path1;
-    for (uint32_t i = 0 ; i < 3 ; ++i){
+    for (uint32_t i = 0 ; i < ESTIMATED_AVG_PATH_LENGTH ; ++i){
         res = estimateUnion(res, estimateConcat(res, path1));
     }
     return res;
