@@ -123,6 +123,87 @@ quicksilver/fast:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/build
 .PHONY : quicksilver/fast
 
+src/IndexPath.o: src/IndexPath.cpp.o
+
+.PHONY : src/IndexPath.o
+
+# target to build an object file
+src/IndexPath.cpp.o:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexPath.cpp.o
+.PHONY : src/IndexPath.cpp.o
+
+src/IndexPath.i: src/IndexPath.cpp.i
+
+.PHONY : src/IndexPath.i
+
+# target to preprocess a source file
+src/IndexPath.cpp.i:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexPath.cpp.i
+.PHONY : src/IndexPath.cpp.i
+
+src/IndexPath.s: src/IndexPath.cpp.s
+
+.PHONY : src/IndexPath.s
+
+# target to generate assembly for a file
+src/IndexPath.cpp.s:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexPath.cpp.s
+.PHONY : src/IndexPath.cpp.s
+
+src/IndexPathGraph.o: src/IndexPathGraph.cpp.o
+
+.PHONY : src/IndexPathGraph.o
+
+# target to build an object file
+src/IndexPathGraph.cpp.o:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexPathGraph.cpp.o
+.PHONY : src/IndexPathGraph.cpp.o
+
+src/IndexPathGraph.i: src/IndexPathGraph.cpp.i
+
+.PHONY : src/IndexPathGraph.i
+
+# target to preprocess a source file
+src/IndexPathGraph.cpp.i:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexPathGraph.cpp.i
+.PHONY : src/IndexPathGraph.cpp.i
+
+src/IndexPathGraph.s: src/IndexPathGraph.cpp.s
+
+.PHONY : src/IndexPathGraph.s
+
+# target to generate assembly for a file
+src/IndexPathGraph.cpp.s:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexPathGraph.cpp.s
+.PHONY : src/IndexPathGraph.cpp.s
+
+src/Path.o: src/Path.cpp.o
+
+.PHONY : src/Path.o
+
+# target to build an object file
+src/Path.cpp.o:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/Path.cpp.o
+.PHONY : src/Path.cpp.o
+
+src/Path.i: src/Path.cpp.i
+
+.PHONY : src/Path.i
+
+# target to preprocess a source file
+src/Path.cpp.i:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/Path.cpp.i
+.PHONY : src/Path.cpp.i
+
+src/Path.s: src/Path.cpp.s
+
+.PHONY : src/Path.s
+
+# target to generate assembly for a file
+src/Path.cpp.s:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/Path.cpp.s
+.PHONY : src/Path.cpp.s
+
 src/PathQuery.o: src/PathQuery.cpp.o
 
 .PHONY : src/PathQuery.o
@@ -294,6 +375,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... quicksilver"
+	@echo "... src/IndexPath.o"
+	@echo "... src/IndexPath.i"
+	@echo "... src/IndexPath.s"
+	@echo "... src/IndexPathGraph.o"
+	@echo "... src/IndexPathGraph.i"
+	@echo "... src/IndexPathGraph.s"
+	@echo "... src/Path.o"
+	@echo "... src/Path.i"
+	@echo "... src/Path.s"
 	@echo "... src/PathQuery.o"
 	@echo "... src/PathQuery.i"
 	@echo "... src/PathQuery.s"

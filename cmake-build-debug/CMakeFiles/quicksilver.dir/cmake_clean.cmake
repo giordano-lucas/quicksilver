@@ -1,4 +1,7 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/quicksilver.dir/src/IndexPath.cpp.o"
+  "CMakeFiles/quicksilver.dir/src/IndexPathGraph.cpp.o"
+  "CMakeFiles/quicksilver.dir/src/Path.cpp.o"
   "CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o"
   "CMakeFiles/quicksilver.dir/src/PathTree.cpp.o"
   "CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o"

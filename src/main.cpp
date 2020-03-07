@@ -5,7 +5,9 @@
 #include <SimpleEstimator.h>
 #include <SimpleEvaluator.h>
 #include <PathQuery.h>
-
+#include "Path.h"
+#include "IndexPath.h"
+#include "IndexPathGraph.h"
 std::vector<PathQuery *> parseQueries(std::string &fileName) {
 
     std::vector<PathQuery *> queries {};
@@ -159,12 +161,57 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-    // args
+    //args
     std::string graphFile {argv[1]};
     std::string queriesFile {argv[2]};
 
-    estimatorBench(graphFile, queriesFile);
-//    evaluatorBench(graphFile, queriesFile);
+    //estimatorBench(graphFile, queriesFile);
+    //evaluatorBench(graphFile, queriesFile);
+
+    Node a = 0;
+    Node b = 1;
+    Node c = 2;
+    Label l1 = 0;
+    Label l2 = 1;
+    std::vector<Path> paths{
+    Path(false, std::vector<Label>{l1}, 2, std::vector<Node>{a,b}),
+    Path(false, std::vector<Label>{l2}, 2, std::vector<Node>{b,c}),
+    Path(false, std::vector<Label>{l1}, 2, std::vector<Node>{a,c}),
+    Path(false, std::vector<Label>{l1}, 2, std::vector<Node>{c,b}),
+    Path(false, std::vector<Label>{l1}, 2, std::vector<Node>{b,a}),
+    /*Path(false, std::vector<Label>{l2,l1}, 2, std::vector<Node>{a,b,c}),
+    Path(false, std::vector<Label>{l1,l2}, 2, std::vector<Node>{a,b,c}),
+    Path(false, std::vector<Label>{l1,l2}, 2, std::vector<Node>{a,c,b}),
+    Path(false, std::vector<Label>{l1,l2}, 2, std::vector<Node>{a,c,c})*/
+    };
+    std::cout << "********* SORT ********* \n";
+    std::sort(paths.begin(),paths.end());
+    for (auto p : paths) std::cout << p;
+    std::cout << "****** END SORT ****** \n";
+    IndexPath  index;
+    index.insertSortedAll(paths);
+    std::cout << "********* BUILD K=2 ********* \n";
+    index.buildK2(2);
+    std::cout << "****** END BUILD K=2 ****** \n";
+
+    IndexResult res = index.getPaths(Path::PrefixPath(std::vector<Label>{l1,l2}, 2, std::vector<Node>{a,c}));
+    for (IndexIterator it = res.first; it!= res.second ; ++it){
+        std::cout << it->first;
+    }
+    std::cout << index;
+
+
+    /*Try to compute the index */
+    IndexPathGraph indexGraph;
+
+    auto start = std::chrono::steady_clock::now();
+    try {
+        indexGraph.readFromContiguousFile(graphFile);
+    } catch (std::runtime_error &e) {
+        std::cerr << e.what() << std::endl;
+        return 0;
+    }
+    std::cout << "EGDES = " << indexGraph.getNoEdges();
 
     return 0;
 }

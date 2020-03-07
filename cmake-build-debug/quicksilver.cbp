@@ -91,6 +91,15 @@
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/Graph.h">
 			<Option target="quicksilver"/>
 		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/IndexPath.h">
+			<Option target="quicksilver"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/IndexPathGraph.h">
+			<Option target="quicksilver"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/Path.h">
+			<Option target="quicksilver"/>
+		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/PathTree.h">
 			<Option target="quicksilver"/>
 		</Unit>
@@ -101,6 +110,15 @@
 			<Option target="quicksilver"/>
 		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/SimpleGraph.h">
+			<Option target="quicksilver"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/IndexPath.cpp">
+			<Option target="quicksilver"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/IndexPathGraph.cpp">
+			<Option target="quicksilver"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/Path.cpp">
 			<Option target="quicksilver"/>
 		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/PathQuery.cpp">
