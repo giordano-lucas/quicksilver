@@ -24,6 +24,7 @@ public:
     Path(const std::vector<Label> &labels, uint32_t noOfLabels, const std::vector<Node> &nodes): Path(false, labels, noOfLabels, nodes) {}
     Path(const bool prefix,size_t id, const std::vector<Node> &nodes) : Path(prefix, std::vector<uint32_t>((nodes.size()==0)?0:nodes.size()-1,id), 0, nodes){}
     static Path PrefixPath(const std::vector<Label> &labels, uint32_t noOfLabels, const std::vector<Node> &nodes) { return Path(true, labels, noOfLabels, nodes);};
+    Path(Path const &o): Path(o.isPrefix(),o.getId(), std::vector<Node>(o.getNodes())){}
 
     /*  Specialised index function valid for K  = 1*/
     Path(const bool prefix, Node a,Label l, Node b) : Path(prefix,std::vector<Label>{l}, 0, std::vector<Node>{a,b}){}
@@ -38,5 +39,7 @@ public:
 };
 
 std::ostream& operator<<(std::ostream &strm, const Path &path);
+bool sourceFirstComp(const Path& a, const Path& b);
+bool targetFirstComp(const Path& a, const Path& b);
 #endif //QUICKSILVER_PATH_H
 

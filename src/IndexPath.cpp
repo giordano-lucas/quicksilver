@@ -113,8 +113,7 @@ void IndexPath::buildK2(uint32_t noOfLabels) {
                     std::vector<Node> nodesB = itB->first.getNodes();
                     if (nodesA.back() == nodesB.front()) { //matching path
                         std::vector<Node> nodes(nodesA);
-                        nodes.pop_back();
-                        nodes.insert(nodes.end(), nodesB.begin(), nodesB.end());
+                        nodes.push_back(nodesB.back());
                         newPaths.push_back(
                                 Path(false, (itA->first.getId() + 1) * noOfLabels + itB->first.getId(), nodes));
                     }
@@ -173,8 +172,7 @@ void IndexPath::buildK2(std::vector<Path>& edges, uint32_t noOfLabels) {
                     std::vector<Node> nodesB = edges[j].getNodes();
                     if (nodesA.back() == nodesB.front()) { //matching path
                         std::vector<Node> nodes(nodesA);
-                        nodes.pop_back();
-                        nodes.insert(nodes.end(), nodesB.begin(), nodesB.end());
+                        nodes.push_back(nodesB.back());
                         newPaths.push_back(
                                 Path(false, (edges[i].getId() + 1) * noOfLabels + edges[j].getId(), nodes));
                     }
@@ -185,7 +183,46 @@ void IndexPath::buildK2(std::vector<Path>& edges, uint32_t noOfLabels) {
     std::cout << "GENERATED K=2 => " << newPaths.size() << "\n";
     insertSortedAll(newPaths); //we know that the list is storted by construction
 }
+/*
+ * Build the K=2 path index from the K=1 index using merge join algorithm (figure 12.7 page 554 of the book)
+ * */
+void IndexPath::buildK2MergeJoin(std::vector<Path>& edges, uint32_t noOfLabels) {
+    std::vector<Path> newPaths; //stores the length 2 path to insert
+    std::vector<Path> r(edges);
+    std::vector<Path> s(edges);
 
+    std::sort(r.begin(),r.end(), sourceFirstComp);
+    std::sort(s.begin(),s.end(), targetFirstComp);
+
+    std::vector<Path>::iterator pr = r.begin();
+    std::vector<Path>::iterator ps = s.begin();
+
+    while(pr != r.end() && ps != s.end()){
+        Path ts(*ps);
+        std::vector<Path> S;
+        bool done = false;
+        while(!done && ps != s.end()){
+            if(ps->getNodes().back() == ts.getNodes().back()){
+                S.push_back(*ps);
+                ps++;
+            }
+            else done = true;
+        }
+        while (pr != r.end() && pr->getNodes().front() < ts.getNodes().back()){
+            pr++;
+        }
+        while (pr != r.end() &&  pr->getNodes().front() == ts.getNodes().back()){
+            for (auto ts: S) {
+                std::vector<Node> nodes(ts.getNodes());
+                nodes.push_back(pr->getNodes().back());
+                newPaths.push_back(Path(false, (ts.getId() + 1) * noOfLabels + pr->getId(), nodes));
+            }
+            pr++;
+        }
+    }
+    std::sort(newPaths.begin(),newPaths.end()); //sort before is faster than insterting elements one by one in the map
+    insertSortedAll(newPaths);
+}
 /*
  * Overloading of << operator (toString)
  * */

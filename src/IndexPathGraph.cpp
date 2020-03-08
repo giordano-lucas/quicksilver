@@ -3,7 +3,7 @@
 //
 
 #include "IndexPathGraph.h"
-
+#include <chrono>
 
 uint32_t IndexPathGraph::getNoVertices() const {
     return V;
@@ -65,11 +65,11 @@ void IndexPathGraph::readFromContiguousFile(const std::string &fileName) {
     graphFile.close();
 
     /*Construct index*/
-    std::cout << "BEFORE SORTING \n";
+    auto start = std::chrono::steady_clock::now();
     std::sort(edges.begin(), edges.end()); //paths
-    std::cout << "AFTER SORTING \n ";
     index.insertSortedAll(edges);
-    std::cout << "BEFORE BUILDING K=2 \n";
-    index.buildK2(edges,L);
+    index.buildK2MergeJoin(edges,L);
+    auto end = std::chrono::steady_clock::now();
+    std::cout << "Time to construct the index : " << (std::chrono::duration<double, std::milli>(end - start).count())/1000 << " ms" << std::endl;
 
 }

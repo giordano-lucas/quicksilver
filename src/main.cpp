@@ -191,7 +191,8 @@ int main(int argc, char *argv[]) {
     IndexPath  index;
     index.insertSortedAll(paths);
     std::cout << "********* BUILD K=2 ********* \n";
-    index.buildK2(2);
+    //index.buildK2(2);
+    index.buildK2MergeJoin(paths,2);
     std::cout << "****** END BUILD K=2 ****** \n";
 
     IndexResult res = index.getPaths(Path::PrefixPath(std::vector<Label>{l1,l2}, 2, std::vector<Node>{a,c}));
@@ -199,7 +200,14 @@ int main(int argc, char *argv[]) {
         std::cout << it->first;
     }
     std::cout << index;
-
+    std::cout << "********* SORT SOURCE********* \n";
+    std::sort(paths.begin(),paths.end(), sourceFirstComp);
+    for (auto p : paths) std::cout << p;
+    std::cout << "****** END SORT SOURCE ****** \n";
+    std::cout << "********* SORT TARGET********* \n";
+    std::sort(paths.begin(),paths.end(), targetFirstComp);
+    for (auto p : paths) std::cout << p;
+    std::cout << "****** END SORT TARGET ****** \n";
 
     /*Try to compute the index */
     IndexPathGraph indexGraph;

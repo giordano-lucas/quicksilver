@@ -54,5 +54,27 @@ std::ostream& operator<<(std::ostream &strm, const Path &path) {
     return strm;
 }
 
+bool sourceFirstComp(const Path &a, const Path &b) {
+    for (int i = 0; i < std::min(a.length(),b.length()); i++) {
+        if (a.getNodes()[i] != b.getNodes()[i]) {
+            return a.getNodes()[i] < b.getNodes()[i];
+        }
+    }
+    if (a.length() != b.length()) return a.length() < b.length(); //only for prefix to full path comparison
+    return false;
+}
+
+bool targetFirstComp(const Path &a, const Path &b) {
+    size_t la = a.length()-1;
+    size_t lb = b.length()-1;
+    for (int i = 0; i < std::min(a.length(),b.length()); i++) {
+        if (a.getNodes()[la-i] != b.getNodes()[lb-i]) {
+            return a.getNodes()[la-i] < b.getNodes()[lb-i];
+        }
+    }
+    if (a.length() != b.length()) return a.length() < b.length(); //only for prefix to full path comparison
+    return false;
+}
+
 
 

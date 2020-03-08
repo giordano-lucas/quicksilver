@@ -30,6 +30,7 @@ public:
     /*Scale up to a higher k*/
     void buildK2(uint32_t noOfLabels);
     void buildK2(std::vector<Path>& edges,uint32_t noOfLabels);
+    void buildK2MergeJoin(std::vector<Path>& edges, uint32_t noOfLabels);
 };
 std::ostream& operator<<(std::ostream &strm, const IndexPath &path);
 #endif //QUICKSILVER_INDEXPATH_H
