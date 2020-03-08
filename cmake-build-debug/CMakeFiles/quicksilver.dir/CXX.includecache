@@ -20,14 +20,6 @@ Path.h
 Graph.h
 ../include/Graph.h
 
-../include/IndexPathGraph.h
-IndexPath.h
-../include/IndexPath.h
-regex
--
-fstream
--
-
 ../include/Path.h
 iostream
 -
@@ -37,8 +29,4 @@ vector
 /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/IndexPath.cpp
 IndexPath.h
 /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/IndexPath.h
-
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/IndexPathGraph.cpp
-IndexPathGraph.h
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/IndexPathGraph.h
 
