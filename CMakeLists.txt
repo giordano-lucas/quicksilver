@@ -19,7 +19,7 @@ set(HEADER_FILES
         include/SimpleGraph.h
         include/SimpleEstimator.h
         include/SimpleEvaluator.h
-        include/Path.h include/IndexPath.h include/IndexPathGraph.h)
+        include/Edge.h src/Edge.cpp include/EdgeIndex.h)
 
 set(SOURCE_FILES
         src/main.cpp
@@ -28,6 +28,6 @@ set(SOURCE_FILES
         src/SimpleEstimator.cpp
         src/SimpleEvaluator.cpp
         src/PathQuery.cpp
-        include/Path.h src/Path.cpp include/IndexPath.h src/IndexPath.cpp include/IndexPathGraph.h src/IndexPathGraph.cpp)
+        include/Edge.h src/Edge.cpp include/EdgeIndex.h src/EdgeIndex.cpp)
 
 add_executable(quicksilver ${SOURCE_FILES} ${HEADER_FILES})

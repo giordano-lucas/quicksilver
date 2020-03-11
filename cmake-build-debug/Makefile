@@ -123,86 +123,59 @@ quicksilver/fast:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/build
 .PHONY : quicksilver/fast
 
-src/IndexPath.o: src/IndexPath.cpp.o
+src/Edge.o: src/Edge.cpp.o
 
-.PHONY : src/IndexPath.o
-
-# target to build an object file
-src/IndexPath.cpp.o:
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexPath.cpp.o
-.PHONY : src/IndexPath.cpp.o
-
-src/IndexPath.i: src/IndexPath.cpp.i
-
-.PHONY : src/IndexPath.i
-
-# target to preprocess a source file
-src/IndexPath.cpp.i:
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexPath.cpp.i
-.PHONY : src/IndexPath.cpp.i
-
-src/IndexPath.s: src/IndexPath.cpp.s
-
-.PHONY : src/IndexPath.s
-
-# target to generate assembly for a file
-src/IndexPath.cpp.s:
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexPath.cpp.s
-.PHONY : src/IndexPath.cpp.s
-
-src/IndexPathGraph.o: src/IndexPathGraph.cpp.o
-
-.PHONY : src/IndexPathGraph.o
+.PHONY : src/Edge.o
 
 # target to build an object file
-src/IndexPathGraph.cpp.o:
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexPathGraph.cpp.o
-.PHONY : src/IndexPathGraph.cpp.o
+src/Edge.cpp.o:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/Edge.cpp.o
+.PHONY : src/Edge.cpp.o
 
-src/IndexPathGraph.i: src/IndexPathGraph.cpp.i
+src/Edge.i: src/Edge.cpp.i
 
-.PHONY : src/IndexPathGraph.i
+.PHONY : src/Edge.i
 
 # target to preprocess a source file
-src/IndexPathGraph.cpp.i:
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexPathGraph.cpp.i
-.PHONY : src/IndexPathGraph.cpp.i
+src/Edge.cpp.i:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/Edge.cpp.i
+.PHONY : src/Edge.cpp.i
 
-src/IndexPathGraph.s: src/IndexPathGraph.cpp.s
+src/Edge.s: src/Edge.cpp.s
 
-.PHONY : src/IndexPathGraph.s
+.PHONY : src/Edge.s
 
 # target to generate assembly for a file
-src/IndexPathGraph.cpp.s:
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexPathGraph.cpp.s
-.PHONY : src/IndexPathGraph.cpp.s
+src/Edge.cpp.s:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/Edge.cpp.s
+.PHONY : src/Edge.cpp.s
 
-src/Path.o: src/Path.cpp.o
+src/EdgeIndex.o: src/EdgeIndex.cpp.o
 
-.PHONY : src/Path.o
+.PHONY : src/EdgeIndex.o
 
 # target to build an object file
-src/Path.cpp.o:
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/Path.cpp.o
-.PHONY : src/Path.cpp.o
+src/EdgeIndex.cpp.o:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.o
+.PHONY : src/EdgeIndex.cpp.o
 
-src/Path.i: src/Path.cpp.i
+src/EdgeIndex.i: src/EdgeIndex.cpp.i
 
-.PHONY : src/Path.i
+.PHONY : src/EdgeIndex.i
 
 # target to preprocess a source file
-src/Path.cpp.i:
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/Path.cpp.i
-.PHONY : src/Path.cpp.i
+src/EdgeIndex.cpp.i:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.i
+.PHONY : src/EdgeIndex.cpp.i
 
-src/Path.s: src/Path.cpp.s
+src/EdgeIndex.s: src/EdgeIndex.cpp.s
 
-.PHONY : src/Path.s
+.PHONY : src/EdgeIndex.s
 
 # target to generate assembly for a file
-src/Path.cpp.s:
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/Path.cpp.s
-.PHONY : src/Path.cpp.s
+src/EdgeIndex.cpp.s:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.s
+.PHONY : src/EdgeIndex.cpp.s
 
 src/PathQuery.o: src/PathQuery.cpp.o
 
@@ -375,15 +348,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... quicksilver"
-	@echo "... src/IndexPath.o"
-	@echo "... src/IndexPath.i"
-	@echo "... src/IndexPath.s"
-	@echo "... src/IndexPathGraph.o"
-	@echo "... src/IndexPathGraph.i"
-	@echo "... src/IndexPathGraph.s"
-	@echo "... src/Path.o"
-	@echo "... src/Path.i"
-	@echo "... src/Path.s"
+	@echo "... src/Edge.o"
+	@echo "... src/Edge.i"
+	@echo "... src/Edge.s"
+	@echo "... src/EdgeIndex.o"
+	@echo "... src/EdgeIndex.i"
+	@echo "... src/EdgeIndex.s"
 	@echo "... src/PathQuery.o"
 	@echo "... src/PathQuery.i"
 	@echo "... src/PathQuery.s"

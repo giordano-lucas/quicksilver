@@ -5,9 +5,8 @@
 #include <SimpleEstimator.h>
 #include <SimpleEvaluator.h>
 #include <PathQuery.h>
-#include "Path.h"
-#include "IndexPath.h"
-#include "IndexPathGraph.h"
+#include "Edge.h"
+#include "EdgeIndex.h"
 std::vector<PathQuery *> parseQueries(std::string &fileName) {
 
     std::vector<PathQuery *> queries {};
@@ -173,54 +172,36 @@ int main(int argc, char *argv[]) {
     Node c = 2;
     Label l1 = 0;
     Label l2 = 1;
-    std::vector<Path> paths{
-    Path(false, std::vector<Label>{l1}, 2, std::vector<Node>{a,b}),
-    Path(false, std::vector<Label>{l2}, 2, std::vector<Node>{b,c}),
-    Path(false, std::vector<Label>{l1}, 2, std::vector<Node>{a,c}),
-    Path(false, std::vector<Label>{l1}, 2, std::vector<Node>{c,b}),
-    Path(false, std::vector<Label>{l1}, 2, std::vector<Node>{b,a}),
-    /*Path(false, std::vector<Label>{l2,l1}, 2, std::vector<Node>{a,b,c}),
-    Path(false, std::vector<Label>{l1,l2}, 2, std::vector<Node>{a,b,c}),
-    Path(false, std::vector<Label>{l1,l2}, 2, std::vector<Node>{a,c,b}),
-    Path(false, std::vector<Label>{l1,l2}, 2, std::vector<Node>{a,c,c})*/
+    std::vector<Edge> edges{
+        Edge{b,l1,c},
+        Edge{a,l1,b},
+        Edge{b,l2,c},
+        Edge{a,l1,c},
+        Edge{c,l1,b},
+        Edge{b,l1,a}
     };
-    std::cout << "********* SORT ********* \n";
-    std::sort(paths.begin(),paths.end());
-    for (auto p : paths) std::cout << p;
-    std::cout << "****** END SORT ****** \n";
-    IndexPath  index;
-    index.insertSortedAll(paths);
-    std::cout << "********* BUILD K=2 ********* \n";
-    //index.buildK2(2);
-    index.buildK2MergeJoin(paths,2);
-    std::cout << "****** END BUILD K=2 ****** \n";
 
-    IndexResult res = index.getPaths(Path::PrefixPath(std::vector<Label>{l1,l2}, 2, std::vector<Node>{a,c}));
+    EdgeIndex  index;
+    index.insertAll(edges);
+    IndexResult res = index.allEdges(false);
     for (IndexIterator it = res.first; it!= res.second ; ++it){
         std::cout << it->first;
     }
     std::cout << index;
-    std::cout << "********* SORT SOURCE********* \n";
-    std::sort(paths.begin(),paths.end(), sourceFirstComp);
-    for (auto p : paths) std::cout << p;
-    std::cout << "****** END SORT SOURCE ****** \n";
-    std::cout << "********* SORT TARGET********* \n";
-    std::sort(paths.begin(),paths.end(), targetFirstComp);
-    for (auto p : paths) std::cout << p;
-    std::cout << "****** END SORT TARGET ****** \n";
+
 
     /*Try to compute the index */
-    IndexPathGraph indexGraph;
+    EdgeIndex indexGraph;
 
     auto start = std::chrono::steady_clock::now();
     try {
-        indexGraph.readFromContiguousFile(graphFile);
+        indexGraph.buildFromFile(graphFile);
     } catch (std::runtime_error &e) {
         std::cerr << e.what() << std::endl;
         return 0;
     }
-    std::cout << "EGDES = " << indexGraph.getNoEdges();
 
+    std::cout << indexGraph;
     return 0;
 }
 
