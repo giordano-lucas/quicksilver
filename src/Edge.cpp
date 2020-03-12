@@ -39,3 +39,7 @@ Edge reverse(const Edge &a) {
     return Edge{a.target,a.label,a.source};
 }
 
+bool operator==(const Edge &a, const Edge &b) {
+    return a.source == b.source && a.label == b.label && a.target == b.target;
+}
+

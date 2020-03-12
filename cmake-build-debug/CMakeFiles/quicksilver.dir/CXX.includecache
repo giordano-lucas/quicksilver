@@ -69,6 +69,8 @@ Estimator.h
 ../include/Estimator.h
 mutex
 -
+unordered_map
+../include/unordered_map
 
 /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/IndexLookUp.cpp
 IndexLookUp.h

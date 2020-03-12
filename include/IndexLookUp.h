@@ -17,9 +17,10 @@ public:
 
     ~IndexLookUp();
 
-    cardStat eval() const override;
     void evalPipeline() const override;
     uint32_t cost() const override;
+    bool isLeftBounded() const override;
+    bool isRightBounded() const override;
 };
 
 

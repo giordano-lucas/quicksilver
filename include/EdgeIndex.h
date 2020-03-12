@@ -11,6 +11,7 @@
 #include <regex>
 #include <fstream>
 
+typedef std::map<Edge,Edge> Map;
 typedef std::map<Edge,Edge>::const_iterator  IndexIterator;
 typedef std::pair<IndexIterator,IndexIterator> IndexResult;
 /*
@@ -26,16 +27,43 @@ private:
     std::map<Edge,Edge> mapSource;
     std::map<Edge,Edge> mapTarget;
     Edge nextIncrementalEdge(Edge& e,bool reversed) const;
+    IndexResult getEdges(Edge edgePrefix, const Map& map) const;
 public:
     /*Constructor*/
     EdgeIndex() : mapSource(), mapTarget() {};
     /*Access methods*/
-    IndexResult getEdges(Edge edgePrefix) const;
+    /**
+     * Returns iterator on edges {e=(s,l,t) | e=(s,l,t) in G} and SORTED :
+     *          First  => BY LABEL
+     *          Then   => BY SOURCE
+     *          FINALY => BY TARGET
+     **/
+    IndexResult getEdgesSource(Edge edgePrefix) const;
+    /**
+     * Returns iterator on  REVERSED edges {e=(t,l,s) | e=(s,l,t) in G} and SORTED :
+     *          First  => BY LABEL
+     *          Then   => BY TARGET
+     *          FINALY => BY SOURCE
+     **/
+    IndexResult getEdgesTarget(Edge edgePrefix) const;
+    /**
+     * Returns iterator on all edges in the index (or reversed edges if reversed == true)
+     **/
     IndexResult allEdges(bool reversed) const;
     /*Insertion methods*/
     void insert(Edge e);
+    /**
+     * Insert all edges in the index
+     * */
     void insertAll(std::vector<Edge> edges);
+    /**
+     * Construct the index from the file of name fileName
+     **/
     void buildFromFile(const std::string &fileName);
 };
+
+/**
+ * Redefinition of << operator to easily debug
+ **/
 std::ostream& operator<<(std::ostream &strm, const EdgeIndex &index);
 #endif //QUICKSILVER_EDGEINDEX_H

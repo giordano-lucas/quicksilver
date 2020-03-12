@@ -11,12 +11,16 @@ Edge EdgeIndex::nextIncrementalEdge(Edge &e, bool reversed) const {
     else          return Edge{e.source, e.label,e.target+1};
 }
 
-IndexResult EdgeIndex::getEdges(Edge edgePrefix) const {
-        if (edgePrefix.target == NONE)  return {mapSource.lower_bound(edgePrefix),mapSource.upper_bound(nextIncrementalEdge(edgePrefix,false))};
-        else {
-            Edge reversedEdgePrefix = reverse(edgePrefix);
-            return {mapTarget.lower_bound(reversedEdgePrefix),mapTarget.upper_bound(nextIncrementalEdge(reversedEdgePrefix,false))};
-        }
+IndexResult EdgeIndex::getEdgesSource(Edge edgePrefix) const {
+    return getEdges(edgePrefix, mapSource);
+}
+
+IndexResult EdgeIndex::getEdgesTarget(Edge edgePrefix) const {
+    return getEdges(edgePrefix, mapTarget);
+}
+
+IndexResult EdgeIndex::getEdges(Edge edgePrefix, const Map &map) const {
+    return {map.lower_bound(edgePrefix),map.upper_bound(nextIncrementalEdge(edgePrefix,false))};
 }
 
 IndexResult EdgeIndex::allEdges(bool reversed) const {
