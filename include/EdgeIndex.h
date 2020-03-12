@@ -13,7 +13,12 @@
 
 typedef std::map<Edge,Edge>::const_iterator  IndexIterator;
 typedef std::pair<IndexIterator,IndexIterator> IndexResult;
-
+/*
+ * If (*,l,*) return regular edges
+ * if (n,l,*) return regular edges
+ * if (*,l,n) return reversed edges
+ *
+ * */
 class EdgeIndex {
 private:
     uint32_t V=0;

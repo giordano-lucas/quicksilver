@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/quicksilver.dir/include/PhysicalPlan.cpp.o"
   "CMakeFiles/quicksilver.dir/src/Edge.cpp.o"
   "CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.o"
+  "CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o"
   "CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o"
   "CMakeFiles/quicksilver.dir/src/PathTree.cpp.o"
   "CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o"

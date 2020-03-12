@@ -161,18 +161,18 @@ CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/EdgeIndex.cpp -o CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.s
 
-CMakeFiles/quicksilver.dir/include/PhysicalPlan.cpp.o: CMakeFiles/quicksilver.dir/flags.make
-CMakeFiles/quicksilver.dir/include/PhysicalPlan.cpp.o: ../include/PhysicalPlan.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/quicksilver.dir/include/PhysicalPlan.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/quicksilver.dir/include/PhysicalPlan.cpp.o -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/PhysicalPlan.cpp
+CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o: CMakeFiles/quicksilver.dir/flags.make
+CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o: ../src/IndexLookUp.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/IndexLookUp.cpp
 
-CMakeFiles/quicksilver.dir/include/PhysicalPlan.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/quicksilver.dir/include/PhysicalPlan.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/PhysicalPlan.cpp > CMakeFiles/quicksilver.dir/include/PhysicalPlan.cpp.i
+CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/IndexLookUp.cpp > CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.i
 
-CMakeFiles/quicksilver.dir/include/PhysicalPlan.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/quicksilver.dir/include/PhysicalPlan.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/PhysicalPlan.cpp -o CMakeFiles/quicksilver.dir/include/PhysicalPlan.cpp.s
+CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/IndexLookUp.cpp -o CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.s
 
 # Object files for target quicksilver
 quicksilver_OBJECTS = \
@@ -184,7 +184,7 @@ quicksilver_OBJECTS = \
 "CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o" \
 "CMakeFiles/quicksilver.dir/src/Edge.cpp.o" \
 "CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.o" \
-"CMakeFiles/quicksilver.dir/include/PhysicalPlan.cpp.o"
+"CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o"
 
 # External object files for target quicksilver
 quicksilver_EXTERNAL_OBJECTS =
@@ -197,7 +197,7 @@ quicksilver: CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o
 quicksilver: CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o
 quicksilver: CMakeFiles/quicksilver.dir/src/Edge.cpp.o
 quicksilver: CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.o
-quicksilver: CMakeFiles/quicksilver.dir/include/PhysicalPlan.cpp.o
+quicksilver: CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o
 quicksilver: CMakeFiles/quicksilver.dir/build.make
 quicksilver: CMakeFiles/quicksilver.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable quicksilver"

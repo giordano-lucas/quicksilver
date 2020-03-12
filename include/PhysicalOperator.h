@@ -8,23 +8,35 @@
 #include <queue>
 #include <vector>
 #include "Edge.h"
+#include "Estimator.h"
 #include <mutex>
-typedef std::queue<std::vector<Edge>> Queue;
+typedef std::queue<Edge*> Queue;
 class PhysicalOperator {
+protected:
      Queue* out;
      Queue* inLeft;
      Queue* inRight;
      std::mutex* mutexOut;
      std::mutex* mutexInLeft;
      std::mutex* mutexInRight;
-
+     PhysicalOperator* left;
+     PhysicalOperator* right;
 public:
     PhysicalOperator(Queue *out, Queue *inLeft, Queue *inRight, std::mutex *mutexOut, std::mutex *mutexInLeft,
-                     std::mutex *mutexInRight) : out(out), inLeft(inLeft), inRight(inRight), mutexOut(mutexOut),
-                                                 mutexInLeft(mutexInLeft), mutexInRight(mutexInRight) {}
+                     std::mutex *mutexInRight, PhysicalOperator* left,PhysicalOperator* right) : out(out), inLeft(inLeft), inRight(inRight), mutexOut(mutexOut),
+                                                 mutexInLeft(mutexInLeft), mutexInRight(mutexInRight), left(left), right(right) {}
 
-    virtual void eval() const = 0;
+    virtual cardStat eval() const = 0;
+    virtual void evalPipeline() const = 0;
     virtual uint32_t cost() const = 0;
+    bool isLeaf() {
+        return left == nullptr && right == nullptr;
+    }
+
+    virtual ~PhysicalOperator() {
+        delete(left);
+        delete(right);
+    };
 };
 
 

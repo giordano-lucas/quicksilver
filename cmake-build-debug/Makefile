@@ -123,33 +123,6 @@ quicksilver/fast:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/build
 .PHONY : quicksilver/fast
 
-include/PhysicalPlan.o: include/PhysicalPlan.cpp.o
-
-.PHONY : include/PhysicalPlan.o
-
-# target to build an object file
-include/PhysicalPlan.cpp.o:
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/include/PhysicalPlan.cpp.o
-.PHONY : include/PhysicalPlan.cpp.o
-
-include/PhysicalPlan.i: include/PhysicalPlan.cpp.i
-
-.PHONY : include/PhysicalPlan.i
-
-# target to preprocess a source file
-include/PhysicalPlan.cpp.i:
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/include/PhysicalPlan.cpp.i
-.PHONY : include/PhysicalPlan.cpp.i
-
-include/PhysicalPlan.s: include/PhysicalPlan.cpp.s
-
-.PHONY : include/PhysicalPlan.s
-
-# target to generate assembly for a file
-include/PhysicalPlan.cpp.s:
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/include/PhysicalPlan.cpp.s
-.PHONY : include/PhysicalPlan.cpp.s
-
 src/Edge.o: src/Edge.cpp.o
 
 .PHONY : src/Edge.o
@@ -203,6 +176,33 @@ src/EdgeIndex.s: src/EdgeIndex.cpp.s
 src/EdgeIndex.cpp.s:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.s
 .PHONY : src/EdgeIndex.cpp.s
+
+src/IndexLookUp.o: src/IndexLookUp.cpp.o
+
+.PHONY : src/IndexLookUp.o
+
+# target to build an object file
+src/IndexLookUp.cpp.o:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o
+.PHONY : src/IndexLookUp.cpp.o
+
+src/IndexLookUp.i: src/IndexLookUp.cpp.i
+
+.PHONY : src/IndexLookUp.i
+
+# target to preprocess a source file
+src/IndexLookUp.cpp.i:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.i
+.PHONY : src/IndexLookUp.cpp.i
+
+src/IndexLookUp.s: src/IndexLookUp.cpp.s
+
+.PHONY : src/IndexLookUp.s
+
+# target to generate assembly for a file
+src/IndexLookUp.cpp.s:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.s
+.PHONY : src/IndexLookUp.cpp.s
 
 src/PathQuery.o: src/PathQuery.cpp.o
 
@@ -375,15 +375,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... quicksilver"
-	@echo "... include/PhysicalPlan.o"
-	@echo "... include/PhysicalPlan.i"
-	@echo "... include/PhysicalPlan.s"
 	@echo "... src/Edge.o"
 	@echo "... src/Edge.i"
 	@echo "... src/Edge.s"
 	@echo "... src/EdgeIndex.o"
 	@echo "... src/EdgeIndex.i"
 	@echo "... src/EdgeIndex.s"
+	@echo "... src/IndexLookUp.o"
+	@echo "... src/IndexLookUp.i"
+	@echo "... src/IndexLookUp.s"
 	@echo "... src/PathQuery.o"
 	@echo "... src/PathQuery.i"
 	@echo "... src/PathQuery.s"
