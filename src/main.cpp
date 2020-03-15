@@ -7,6 +7,10 @@
 #include <PathQuery.h>
 #include "Edge.h"
 #include "EdgeIndex.h"
+#include "IndexLookUp.h"
+#include "PhysicalOperator.h"
+#include <thread>
+#include "BlockingQueue.h"
 std::vector<PathQuery *> parseQueries(std::string &fileName) {
 
     std::vector<PathQuery *> queries {};
@@ -165,8 +169,8 @@ int main(int argc, char *argv[]) {
     std::string queriesFile {argv[2]};
 
     //estimatorBench(graphFile, queriesFile);
-    //evaluatorBench(graphFile, queriesFile);
-
+    evaluatorBench(graphFile, queriesFile);
+    /*
     Node a = 0;
     Node b = 1;
     Node c = 2;
@@ -188,12 +192,11 @@ int main(int argc, char *argv[]) {
         std::cout << it->first;
     }
     std::cout << index;
-
-
-    /*Try to compute the index */
+    */
+    //********************************************************************************
+    //Try to compute the index
     EdgeIndex indexGraph;
 
-    auto start = std::chrono::steady_clock::now();
     try {
         indexGraph.buildFromFile(graphFile);
     } catch (std::runtime_error &e) {
@@ -201,7 +204,17 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-    std::cout << indexGraph;
+    //Construct physical indexLookUp operator
+    BlockingQueue<Edge*> out;
+    Edge query = Edge{NONE,0,NONE};
+    IndexLookUp op(&indexGraph,query,false);
+
+    auto start = std::chrono::steady_clock::now();
+    cardStat r=op.eval();
+    auto end = std::chrono::steady_clock::now();
+    r.print();
+    std::cout << "TIME TO EVALUATE INDEX : " << std::chrono::duration<double, std::milli>(end - start).count() << " ms" << std::endl;
+
     return 0;
 }
 

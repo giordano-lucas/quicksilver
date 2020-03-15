@@ -4,23 +4,29 @@
 
 #include "EdgeIndex.h"
 
+Edge EdgeIndex::toPrefix(Edge e) const {
+    return Edge{(e.source==NONE)?0:e.source, e.label, (e.target==NONE)?0:e.target};
+}
 
-Edge EdgeIndex::nextIncrementalEdge(Edge &e, bool reversed) const {
-    if (e.label == NONE) return Edge{e.source, e.label+1, e.target};
-    //if (reversed) return Edge{e.source+1, e.label,e.target};
-    else          return Edge{e.source, e.label,e.target+1};
+Edge EdgeIndex::nextIncrementalEdge(Edge &e) const {
+    Edge nextEdge = toPrefix(e);
+    if (e.source ==NONE) nextEdge.label++;
+    else                 nextEdge.source++;
+    return nextEdge;
 }
 
 IndexResult EdgeIndex::getEdgesSource(Edge edgePrefix) const {
+    assert(edgePrefix.label != NONE && !(edgePrefix.source == NONE && edgePrefix.target != NONE));
     return getEdges(edgePrefix, mapSource);
 }
 
 IndexResult EdgeIndex::getEdgesTarget(Edge edgePrefix) const {
-    return getEdges(edgePrefix, mapTarget);
+    assert(edgePrefix.label != NONE && !(edgePrefix.source != NONE && edgePrefix.target == NONE));
+    return getEdges(reverse(edgePrefix), mapTarget);
 }
 
 IndexResult EdgeIndex::getEdges(Edge edgePrefix, const Map &map) const {
-    return {map.lower_bound(edgePrefix),map.upper_bound(nextIncrementalEdge(edgePrefix,false))};
+    return {map.lower_bound(toPrefix(edgePrefix)),map.upper_bound(nextIncrementalEdge(edgePrefix))};
 }
 
 IndexResult EdgeIndex::allEdges(bool reversed) const {
@@ -32,6 +38,7 @@ IndexResult EdgeIndex::allEdges(bool reversed) const {
 void EdgeIndex::insert(Edge e) {
     assert(e.target != NONE && e.label != NONE && e.target != NONE);
     mapSource.insert({e,e});
+    mapTarget.insert({reverse(e),reverse(e)});
 }
 
 

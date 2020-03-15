@@ -1,4 +1,6 @@
 //
+
+
 // Created by Lucas Giordano on 12/03/2020.
 //
 
@@ -7,20 +9,26 @@
 
 #include "PhysicalOperator.h"
 #include "EdgeIndex.h"
-class IndexLookUp : PhysicalOperator{
+class IndexLookUp : public PhysicalOperator{
 private:
     EdgeIndex* index;
     Edge prefixEdge;
     bool reversed;
+    std::vector<Edge> sortedRes;
+    IndexResult res;
+    bool ready = false;
 public:
-    IndexLookUp(Queue *out, std::mutex *mutexOut, EdgeIndex* index, Edge prefixEdge, bool reversed);
+    IndexLookUp(EdgeIndex* index, Edge prefixEdge, bool reversed);
 
     ~IndexLookUp();
 
-    void evalPipeline() const override;
+    void evalPipeline()  override;
     uint32_t cost() const override;
     bool isLeftBounded() const override;
     bool isRightBounded() const override;
+
+protected:
+    OutEdge produceNextEdge()  override;
 };
 
 

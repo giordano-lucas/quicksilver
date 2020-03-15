@@ -10,6 +10,7 @@ CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.o
  ../include/Graph.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/EdgeIndex.cpp
 CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o
+ ../include/BlockingQueue.h
  ../include/Edge.h
  ../include/EdgeIndex.h
  ../include/Estimator.h
@@ -49,13 +50,16 @@ CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o
  ../include/SimpleGraph.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleGraph.cpp
 CMakeFiles/quicksilver.dir/src/main.cpp.o
+ ../include/BlockingQueue.h
  ../include/Edge.h
  ../include/EdgeIndex.h
  ../include/Estimator.h
  ../include/Evaluator.h
  ../include/Graph.h
+ ../include/IndexLookUp.h
  ../include/PathQuery.h
  ../include/PathTree.h
+ ../include/PhysicalOperator.h
  ../include/SimpleEstimator.h
  ../include/SimpleEvaluator.h
  ../include/SimpleGraph.h

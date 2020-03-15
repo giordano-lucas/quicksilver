@@ -5,9 +5,9 @@
 #include "IndexLookUp.h"
 
 
-IndexLookUp::IndexLookUp(Queue *out,  std::mutex *mutexOut, EdgeIndex* index,Edge prefixEdge, bool reversed) :
-        PhysicalOperator(out, nullptr, nullptr, mutexOut, nullptr, nullptr, nullptr, nullptr),
-        index(index), prefixEdge(prefixEdge), reversed(reversed) {}
+IndexLookUp::IndexLookUp(EdgeIndex* index,Edge prefixEdge, bool reversed) :
+        PhysicalOperator(nullptr, nullptr, SOURCE_SORTED),
+        index(index), prefixEdge(prefixEdge), reversed(reversed), sortedRes(), res() {}
 
 IndexLookUp::~IndexLookUp() {
 }
@@ -23,24 +23,34 @@ IndexLookUp::~IndexLookUp() {
  * (*,l,n) & !reversed  => PROLBEM : need to reverse edges in (target) and resort
  * (*,l,n) & reversed   => direct index access possible       (target)
  */
-void IndexLookUp::evalPipeline() const {
-    IndexResult res;
+void IndexLookUp::evalPipeline() {
     if (prefixEdge.target == NONE && (prefixEdge.source != NONE || !reversed)) //choose the right sub EdgeIndex
          res = index->getEdgesSource(prefixEdge);                    // source sorted index access
     else res = index->getEdgesTarget(prefixEdge);                    // targed sorted index access
-
     if(( reversed && prefixEdge.source != NONE && prefixEdge.target == NONE) || // (n,l,*) & reversed
        (!reversed && prefixEdge.source == NONE && prefixEdge.target != NONE)) { // (*,l,n) & !reversed
                                                                                 //  => reverse edges and resort
-        std::vector<Edge> toSort;
-        for (IndexIterator it = res.first ; it != res.second ; ++it) toSort.push_back(reverse(it->first));
-        std::sort(toSort.begin(),toSort.end(), sourceComp);
-        for (std::vector<Edge>::iterator it = toSort.begin(); it != toSort.end() ; ++it) push(out,mutexOut,new Edge(*it));
+        for (IndexIterator it = res.first ; it != res.second ; ++it) sortedRes.push_back(reverse(it->first));
+        res.first = res.second;
+        std::sort(sortedRes.begin(),sortedRes.end(), sourceCompDesc);
     }
-    else for (IndexIterator it = res.first ; it != res.second ; ++it) push(out, mutexOut,new Edge(it->first));
+    ready = true;
+    out.push(END_EDGE, true);
+}
 
-    //add END EDGE 
-    push(out,mutexOut,new Edge(END_EDGE));
+OutEdge IndexLookUp::produceNextEdge() {
+    if (!ready) out.pop();
+    if (sortedRes.empty() && res.first != res.second){
+        Edge r = res.first->first;
+        res.first++;
+        return OutEdge{r.source,r.label};
+    }
+    else if (!sortedRes.empty()) {
+        Edge r = sortedRes.back();
+        sortedRes.pop_back();
+        return OutEdge{r.source,r.label};
+    }
+    return END_EDGE;
 }
 
 uint32_t IndexLookUp::cost() const {

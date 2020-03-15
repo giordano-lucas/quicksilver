@@ -10,51 +10,38 @@
 #include "Edge.h"
 #include "Estimator.h"
 #include <mutex>
-#include "unordered_map"
+#include <unordered_map>
+#include "BlockingQueue.h"
+#include <thread>
 
-typedef std::queue<Edge*> Queue;
-static Edge END_EDGE = Edge{NONE, NONE, NONE};
+typedef BlockingQueue<OutEdge> Queue;
+static OutEdge END_EDGE = OutEdge{NONE, NONE};
+
+enum ResultSorted {
+    SOURCE_SORTED, TARGET_SORTED, NOT_SORTED
+};
 
 class PhysicalOperator {
 protected:
-     Queue* out;
-     Queue* inLeft;
-     Queue* inRight;
-     std::mutex* mutexOut;
-     std::mutex* mutexInLeft;
-     std::mutex* mutexInRight;
+     Queue out;
      PhysicalOperator* left;
      PhysicalOperator* right;
+     ResultSorted resultSorted;
+     /**
+      *  Interface linking the parent operator and the child.
+      **/
+     virtual OutEdge produceNextEdge() = 0;
     /**
-     * Push an Edge into the queue q in a thread safe way
+     * Evaluates the physical operator in a pipelining fashion
      * */
-     void push(Queue* q, std::mutex* m, Edge* e) const {
-         m->lock();
-         q->push(e);
-         m->unlock();
-     };
-    /**
-    * Pop an Edge from the queue q in a thread safe way
-    * */
-     Edge* pop(Queue* q, std::mutex* m) const{
-        m->lock();
-        Edge* e = q->front();
-        q->pop();
-        m->unlock();
-        return e;
-     };
-
+    virtual void evalPipeline() = 0;
 public:
     /**
      * Constructor
      **/
-    PhysicalOperator(Queue *out, Queue *inLeft, Queue *inRight, std::mutex *mutexOut, std::mutex *mutexInLeft,
-                     std::mutex *mutexInRight, PhysicalOperator* left,PhysicalOperator* right) : out(out), inLeft(inLeft), inRight(inRight), mutexOut(mutexOut),
-                                                 mutexInLeft(mutexInLeft), mutexInRight(mutexInRight), left(left), right(right) {}
-    /**
-     * Evaluates the physical operator in a pipelining fashion
-     * */
-    virtual void evalPipeline() const = 0;
+    PhysicalOperator(PhysicalOperator* left,PhysicalOperator* right, ResultSorted resultSorted) :
+        out(), left(left), right(right), resultSorted(resultSorted) {}
+
     /**
      * Returns the cost of the physical operator
      * */
@@ -84,6 +71,16 @@ public:
     virtual bool isRightBounded() const{
         return (right != nullptr)?right->isLeftBounded():false;
     };
+
+    /**
+     * /!\ MACRO /!\
+     *
+     * Generic function used to update the cardSat result in eval
+     **/
+    #define update(elem, lastElem, hashTable, sorted, countVar) {                                                                   \
+            if      ( (sorted) && !((elem) == (lastElem)))                     {(countVar)++; (lastElem) = (elem);}                 \
+            else if (!(sorted) && (hashTable).find(elem) == (hashTable).end()) {(countVar)++; (hashTable).insert({(elem),(elem)});} \
+    }
     /**
      * Evaluates completely the physical operator and returns :
      *          cardStat {
@@ -98,23 +95,32 @@ public:
      *
      * /!\ To speed up the computation we can also use isLeftBounded() and isRightBounded() /!\
      * */
-    cardStat eval() const {
-        uint32_t noOut  = 0;
-        uint32_t noPath = 0;
-        uint32_t noIn   = 0;
+     cardStat eval() {
+         std::thread thd([this] {
+            evalPipeline();
+         });
 
-        uint32_t lastIn = NONE;
-        Edge lastEdge   = END_EDGE;
-        std::unordered_map<uint32_t,uint32_t> hashOut;
-        for (Edge* e = pop(out,mutexOut) ; !((*e) == END_EDGE); e = pop(out, mutexOut)){
-            if (e->target != lastIn)                      {noIn++  ; lastIn   = e->target;}
-            if (!((*e) == lastEdge))                      {noPath++; lastEdge = *e;}
-            if (hashOut.find(e->source) != hashOut.end()) {noOut++ ; hashOut.insert({e->source,e->source});}
-        }
-        if (isLeftBounded()) assert(noOut ==1);
-        if (isRightBounded()) assert(noIn ==1);
-        return cardStat{noOut,noPath,noIn};
-    };
+         uint32_t noOut  = 0;
+         uint32_t noPath = 0;
+         uint32_t noIn   = 0;
+
+         uint32_t lastIn  = NONE;     std::unordered_map<uint32_t,uint32_t> hashIn;    bool sortedIn   = resultSorted == TARGET_SORTED;
+         uint32_t lastOut = NONE;     std::unordered_map<uint32_t,uint32_t> hashOut;   bool sortedOut  = resultSorted == SOURCE_SORTED;
+         OutEdge lastEdge = END_EDGE; std::unordered_map<OutEdge,OutEdge,HashOutEdge> hashEdge; bool sortedPath = sortedIn || sortedOut;
+
+         for (OutEdge e = produceNextEdge() ; !(e == END_EDGE); e = produceNextEdge()){
+             update(e.target,lastIn,hashIn, sortedIn, noIn);
+             update(e.source,lastOut,hashOut,sortedOut, noOut);
+             update(e,lastEdge,hashEdge,sortedPath, noPath);
+
+         }
+         thd.join();  //terminate execution of evalPipeline()
+
+         if (isLeftBounded()) assert(noOut <= 1);
+         if (isRightBounded()) assert(noIn <= 1);
+         return cardStat{noOut,noPath,noIn};
+     };
+
 };
 
 

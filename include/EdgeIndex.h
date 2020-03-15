@@ -26,8 +26,9 @@ private:
     uint32_t L=0;
     std::map<Edge,Edge> mapSource;
     std::map<Edge,Edge> mapTarget;
-    Edge nextIncrementalEdge(Edge& e,bool reversed) const;
+    Edge nextIncrementalEdge(Edge& e) const;
     IndexResult getEdges(Edge edgePrefix, const Map& map) const;
+    Edge toPrefix(Edge e) const;
 public:
     /*Constructor*/
     EdgeIndex() : mapSource(), mapTarget() {};

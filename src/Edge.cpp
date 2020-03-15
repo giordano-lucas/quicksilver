@@ -26,6 +26,9 @@ bool labelTargetComp(const Edge &a, const Edge &b) {
 bool sourceComp(const Edge &a, const Edge &b) {
     return (a.source == b.source)?a.target<b.target:a.source<b.source;
 }
+bool sourceCompDesc(const Edge &a, const Edge &b) {
+    return (a.source == b.source)?a.target>b.target:a.source>b.source;
+}
 
 bool targetComp(const Edge &a, const Edge &b) {
     return (a.target == b.target)?a.source<b.source:a.target<b.target;
@@ -43,3 +46,7 @@ bool operator==(const Edge &a, const Edge &b) {
     return a.source == b.source && a.label == b.label && a.target == b.target;
 }
 
+//*****************************************************************************
+bool operator==(const OutEdge &a, const OutEdge &b) {
+    return a.source == b.source && a.target == b.target;
+}
