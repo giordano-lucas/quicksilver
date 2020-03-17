@@ -14,6 +14,7 @@
 #include "BlockingQueue.h"
 #include <thread>
 
+
 typedef BlockingQueue<OutEdge> Queue;
 static OutEdge END_EDGE = OutEdge{NONE, NONE};
 
@@ -27,14 +28,7 @@ protected:
      PhysicalOperator* left;
      PhysicalOperator* right;
      ResultSorted resultSorted;
-     /**
-      *  Interface linking the parent operator and the child.
-      **/
-     virtual OutEdge produceNextEdge() = 0;
-    /**
-     * Evaluates the physical operator in a pipelining fashion
-     * */
-    virtual void evalPipeline() = 0;
+
 public:
     /**
      * Constructor
@@ -49,7 +43,7 @@ public:
     /**
      * Tests if this operator is a leaf
      **/
-    bool isLeaf() {
+    bool isLeaf() const{
         return left == nullptr && right == nullptr;
     }
     /**
@@ -121,6 +115,24 @@ public:
          return cardStat{noOut,noPath,noIn};
      };
 
+    /**
+     * Evaluates the physical operator in a pipelining fashion
+     * */
+    virtual void evalPipeline() = 0;
+
+    /**
+     *  Interface linking the parent operator and the child.
+     **/
+    virtual OutEdge produceNextEdge() = 0;
+
+    virtual std::ostream& name(std::ostream &strm) const = 0;
+
+    std::ostream& operator<<(std::ostream &strm, const PhysicalOperator& op) {
+        if (op.isLeaf()) return op.name(strm);
+        else                    op.name(strm) << "(" << op.left << op.right << ")";
+        strm << "\n";
+        return strm;
+    };
 };
 
 

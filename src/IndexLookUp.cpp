@@ -65,4 +65,8 @@ bool IndexLookUp::isRightBounded() const {
     return ( reversed && prefixEdge.source != NONE) || (!reversed && prefixEdge.target != NONE);
 }
 
+std::ostream &IndexLookUp::name(std::ostream &strm) const {
+    return strm << "IndexLookUp(" << prefixEdge << ")";
+}
+
 

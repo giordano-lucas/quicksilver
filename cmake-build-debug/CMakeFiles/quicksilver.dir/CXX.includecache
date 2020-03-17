@@ -64,6 +64,10 @@ PhysicalOperator.h
 EdgeIndex.h
 ../include/EdgeIndex.h
 
+../include/MergeJoin.h
+PhysicalOperator.h
+../include/PhysicalOperator.h
+
 ../include/PathQuery.h
 cstdint
 -
@@ -136,6 +140,10 @@ Graph.h
 IndexLookUp.h
 /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/IndexLookUp.h
 
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/MergeJoin.cpp
+MergeJoin.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/MergeJoin.h
+
 /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/main.cpp
 iostream
 -
@@ -163,4 +171,6 @@ thread
 -
 BlockingQueue.h
 /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/BlockingQueue.h
+MergeJoin.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/MergeJoin.h
 

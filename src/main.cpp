@@ -11,6 +11,10 @@
 #include "PhysicalOperator.h"
 #include <thread>
 #include "BlockingQueue.h"
+#include "MergeJoin.h"
+
+int myEvaluatorBench(std::string &graphFile, std::string &queriesFile);
+
 std::vector<PathQuery *> parseQueries(std::string &fileName) {
 
     std::vector<PathQuery *> queries {};
@@ -170,6 +174,11 @@ int main(int argc, char *argv[]) {
 
     //estimatorBench(graphFile, queriesFile);
     evaluatorBench(graphFile, queriesFile);
+    std::cout << "============================================================================================ \n";
+    myEvaluatorBench(graphFile,queriesFile);
+
+
+
     /*
     Node a = 0;
     Node b = 1;
@@ -195,6 +204,7 @@ int main(int argc, char *argv[]) {
     */
     //********************************************************************************
     //Try to compute the index
+    /*
     EdgeIndex indexGraph;
 
     try {
@@ -205,7 +215,6 @@ int main(int argc, char *argv[]) {
     }
 
     //Construct physical indexLookUp operator
-    BlockingQueue<Edge*> out;
     Edge query = Edge{NONE,0,NONE};
     IndexLookUp op(&indexGraph,query,false);
 
@@ -215,8 +224,83 @@ int main(int argc, char *argv[]) {
     r.print();
     std::cout << "TIME TO EVALUATE INDEX : " << std::chrono::duration<double, std::milli>(end - start).count() << " ms" << std::endl;
 
+    */
+
     return 0;
 }
 
 
+static PhysicalOperator* ofPathTree(PathTree* tree, EdgeIndex* index, Node leftBounded, Node rightBounded){
+    if (tree->isLeaf()){
+        uint32_t l = (tree->data[0] - '0');
+        char operation = tree->data[1];
+        switch(operation) {
+            case '>': return new IndexLookUp(index,Edge{leftBounded,l,rightBounded},false);
+            case '<': return new IndexLookUp(index,Edge{leftBounded,l,rightBounded},true);
+            case '+': return nullptr;
+        }
+        throw "Illegal argument";
+    }
+    else if (tree->isConcat()){
+        new MergeJoin(ofPathTree(tree->left, index, leftBounded, rightBounded),ofPathTree(tree->right, index, leftBounded, rightBounded));
+    }
+    throw "Illegal argument";
+}
+static PhysicalOperator* ofPathQuery(PathQuery* pq, EdgeIndex* index) {
+    return ofPathTree(pq->path, index,
+            (pq->s.compare("*")==0)?NONE: (uint32_t) std::stoul(pq->s),
+            (pq->t.compare("*")==0)?NONE: (uint32_t) std::stoul(pq->t));
+}
 
+
+int myEvaluatorBench(std::string &graphFile, std::string &queriesFile) {
+
+    std::cout << "\n(1) Reading the graph into memory and preparing the evaluator...\n" << std::endl;
+
+    // read the graph
+    EdgeIndex index;
+    auto start = std::chrono::steady_clock::now();
+    try {
+        index.buildFromFile(graphFile);
+    } catch (std::runtime_error &e) {
+        std::cerr << e.what() << std::endl;
+        return 0;
+    }
+    auto end = std::chrono::steady_clock::now();
+    std::cout << "Time to read the graph into memory: " << std::chrono::duration<double, std::milli>(end - start).count() << " ms" << std::endl;
+
+
+
+
+    start = std::chrono::steady_clock::now();
+    end = std::chrono::steady_clock::now();
+    std::cout << "Time to prepare the evaluator: " << std::chrono::duration<double, std::milli>(end - start).count() << " ms" << std::endl;
+
+    std::cout << "\n(2) Running the query workload..." << std::endl;
+
+    auto queries = parseQueries(queriesFile);
+
+    for(auto query : queries) {
+
+        // perform evaluation
+        // parse the query into an AST
+        std::cout << "\nProcessing query: " << *query;
+        std::cout << "Parsed query tree: " << *query->path;
+        PhysicalOperator* evaluator = ofPathQuery(query, &index);
+        std::cout << evaluator;
+
+        // perform the evaluation
+        start = std::chrono::steady_clock::now();
+        cardStat actual = evaluator->eval();
+        end = std::chrono::steady_clock::now();
+
+        std::cout << "\nActual (noOut, noPaths, noIn) : ";
+        actual.print();
+        std::cout << "Time to evaluate: " << std::chrono::duration<double, std::milli>(end - start).count() << " ms" << std::endl;
+        delete evaluator;
+    }
+
+    for(auto query : queries) delete(query);
+
+    return 0;
+}

@@ -204,6 +204,33 @@ src/IndexLookUp.cpp.s:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.s
 .PHONY : src/IndexLookUp.cpp.s
 
+src/MergeJoin.o: src/MergeJoin.cpp.o
+
+.PHONY : src/MergeJoin.o
+
+# target to build an object file
+src/MergeJoin.cpp.o:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.o
+.PHONY : src/MergeJoin.cpp.o
+
+src/MergeJoin.i: src/MergeJoin.cpp.i
+
+.PHONY : src/MergeJoin.i
+
+# target to preprocess a source file
+src/MergeJoin.cpp.i:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.i
+.PHONY : src/MergeJoin.cpp.i
+
+src/MergeJoin.s: src/MergeJoin.cpp.s
+
+.PHONY : src/MergeJoin.s
+
+# target to generate assembly for a file
+src/MergeJoin.cpp.s:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.s
+.PHONY : src/MergeJoin.cpp.s
+
 src/PathQuery.o: src/PathQuery.cpp.o
 
 .PHONY : src/PathQuery.o
@@ -384,6 +411,9 @@ help:
 	@echo "... src/IndexLookUp.o"
 	@echo "... src/IndexLookUp.i"
 	@echo "... src/IndexLookUp.s"
+	@echo "... src/MergeJoin.o"
+	@echo "... src/MergeJoin.i"
+	@echo "... src/MergeJoin.s"
 	@echo "... src/PathQuery.o"
 	@echo "... src/PathQuery.i"
 	@echo "... src/PathQuery.s"

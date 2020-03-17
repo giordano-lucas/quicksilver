@@ -20,6 +20,15 @@ CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o: ../include/PhysicalOperator.h
 CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o: ../src/IndexLookUp.cpp
 
+CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.o: ../include/BlockingQueue.h
+CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.o: ../include/Edge.h
+CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.o: ../include/Estimator.h
+CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.o: ../include/MergeJoin.h
+CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.o: ../include/PathQuery.h
+CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.o: ../include/PathTree.h
+CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.o: ../include/PhysicalOperator.h
+CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.o: ../src/MergeJoin.cpp
+
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o: ../include/PathQuery.h
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o: ../src/PathQuery.cpp
@@ -56,6 +65,7 @@ CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/Estimator.h
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/Evaluator.h
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/Graph.h
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/IndexLookUp.h
+CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/MergeJoin.h
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/PathQuery.h
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/PhysicalOperator.h

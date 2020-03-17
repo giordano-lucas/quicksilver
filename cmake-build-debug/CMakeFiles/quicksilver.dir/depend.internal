@@ -20,6 +20,15 @@ CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o
  ../include/PathTree.h
  ../include/PhysicalOperator.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/IndexLookUp.cpp
+CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.o
+ ../include/BlockingQueue.h
+ ../include/Edge.h
+ ../include/Estimator.h
+ ../include/MergeJoin.h
+ ../include/PathQuery.h
+ ../include/PathTree.h
+ ../include/PhysicalOperator.h
+ /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/MergeJoin.cpp
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o
  ../include/PathQuery.h
  ../include/PathTree.h
@@ -57,6 +66,7 @@ CMakeFiles/quicksilver.dir/src/main.cpp.o
  ../include/Evaluator.h
  ../include/Graph.h
  ../include/IndexLookUp.h
+ ../include/MergeJoin.h
  ../include/PathQuery.h
  ../include/PathTree.h
  ../include/PhysicalOperator.h

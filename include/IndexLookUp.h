@@ -27,6 +27,8 @@ public:
     bool isLeftBounded() const override;
     bool isRightBounded() const override;
 
+    std::ostream &name(std::ostream &strm) const override;
+
 protected:
     OutEdge produceNextEdge()  override;
 };
