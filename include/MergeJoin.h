@@ -8,19 +8,20 @@
 
 #include "PhysicalOperator.h"
 
-class MergeJoin : PhysicalOperator{
-protected:
-    void evalPipeline() override;
+class MergeJoin : public PhysicalOperator{
+
+
 
 private:
-    std::ostream &name(std::ostream &strm) const override;
+    std::vector<OutEdge> res;
+    bool ready = false;
 
 public:
     MergeJoin(PhysicalOperator *left, PhysicalOperator *right);
-
+    void evalPipeline() override;
     OutEdge produceNextEdge() override;
     uint32_t cost() const override;
-
+    std::ostream &name(std::ostream &strm) const override;
 };
 
 

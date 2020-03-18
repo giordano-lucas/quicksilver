@@ -173,50 +173,53 @@ int main(int argc, char *argv[]) {
     std::string queriesFile {argv[2]};
 
     //estimatorBench(graphFile, queriesFile);
-    evaluatorBench(graphFile, queriesFile);
+    //evaluatorBench(graphFile, queriesFile);
     std::cout << "============================================================================================ \n";
-    myEvaluatorBench(graphFile,queriesFile);
-
-
-
+    //myEvaluatorBench(graphFile,queriesFile);
     /*
-    Node a = 0;
-    Node b = 1;
-    Node c = 2;
+
     Label l1 = 0;
     Label l2 = 1;
     std::vector<Edge> edges{
-        Edge{b,l1,c},
-        Edge{a,l1,b},
-        Edge{b,l2,c},
-        Edge{a,l1,c},
-        Edge{c,l1,b},
-        Edge{b,l1,a}
+        Edge{0,l1,0},
+        Edge{1,l1,0},
+        Edge{1,l1,1},
+        Edge{0,l1,1},
+        Edge{4,l1,4},
+
+        Edge{0,l2,4},
+        Edge{0,l2,7},
+        Edge{3,l2,0},
+        Edge{4,l2,0},
+        Edge{5,l2,5}
     };
 
     EdgeIndex  index;
     index.insertAll(edges);
-    IndexResult res = index.allEdges(false);
-    for (IndexIterator it = res.first; it!= res.second ; ++it){
-        std::cout << it->first;
-    }
-    std::cout << index;
+
+    PhysicalOperator* op = new MergeJoin(new IndexLookUp(&index,Edge{NONE,l1,NONE},false, TARGET_SORTED),new IndexLookUp(&index,Edge{NONE,l2,NONE},false,SOURCE_SORTED));
+    op->eval().print();
     */
     //********************************************************************************
     //Try to compute the index
-    /*
-    EdgeIndex indexGraph;
+
+    EdgeIndex index;
 
     try {
-        indexGraph.buildFromFile(graphFile);
+        index.buildFromFile(graphFile);
     } catch (std::runtime_error &e) {
         std::cerr << e.what() << std::endl;
         return 0;
     }
 
+    PhysicalOperator* op = new MergeJoin(new IndexLookUp(&index,Edge{NONE,0,NONE},false, TARGET_SORTED),new IndexLookUp(&index,Edge{NONE,1,NONE},false,SOURCE_SORTED));
+    op->eval().print();
+
+    /*
+
     //Construct physical indexLookUp operator
-    Edge query = Edge{NONE,0,NONE};
-    IndexLookUp op(&indexGraph,query,false);
+    Edge query = Edge{13,3,NONE};
+    IndexLookUp op(&index,query, true,SOURCE_SORTED);
 
     auto start = std::chrono::steady_clock::now();
     cardStat r=op.eval();
@@ -225,31 +228,33 @@ int main(int argc, char *argv[]) {
     std::cout << "TIME TO EVALUATE INDEX : " << std::chrono::duration<double, std::milli>(end - start).count() << " ms" << std::endl;
 
     */
-
     return 0;
 }
 
 
-static PhysicalOperator* ofPathTree(PathTree* tree, EdgeIndex* index, Node leftBounded, Node rightBounded){
+static PhysicalOperator* ofPathTree(PathTree* tree, EdgeIndex* index, Node leftBounded, Node rightBounded, bool goingLeft){
     if (tree->isLeaf()){
+        ResultSorted resultSorted = goingLeft?TARGET_SORTED:SOURCE_SORTED;
         uint32_t l = (tree->data[0] - '0');
         char operation = tree->data[1];
         switch(operation) {
-            case '>': return new IndexLookUp(index,Edge{leftBounded,l,rightBounded},false);
-            case '<': return new IndexLookUp(index,Edge{leftBounded,l,rightBounded},true);
+            case '>': return new IndexLookUp(index,Edge{leftBounded,l,rightBounded},false,resultSorted);
+            case '<': return new IndexLookUp(index,Edge{leftBounded,l,rightBounded},true,resultSorted);
             case '+': return nullptr;
         }
         throw "Illegal argument";
     }
     else if (tree->isConcat()){
-        new MergeJoin(ofPathTree(tree->left, index, leftBounded, rightBounded),ofPathTree(tree->right, index, leftBounded, rightBounded));
+        return new MergeJoin(ofPathTree(tree->left, index, leftBounded, NONE, true),
+                             ofPathTree(tree->right, index, NONE, rightBounded, false));
     }
     throw "Illegal argument";
 }
 static PhysicalOperator* ofPathQuery(PathQuery* pq, EdgeIndex* index) {
-    return ofPathTree(pq->path, index,
-            (pq->s.compare("*")==0)?NONE: (uint32_t) std::stoul(pq->s),
-            (pq->t.compare("*")==0)?NONE: (uint32_t) std::stoul(pq->t));
+    Node s = (pq->s.compare("*")==0)?NONE: (uint32_t) std::stoi(pq->s);
+    Node t = (pq->t.compare("*")==0)?NONE: (uint32_t) std::stoi(pq->t);
+    std::cout << "(" << s << "," << t<< ")\n";
+    return ofPathTree(pq->path, index,s,t, false);
 }
 
 
@@ -287,7 +292,7 @@ int myEvaluatorBench(std::string &graphFile, std::string &queriesFile) {
         std::cout << "\nProcessing query: " << *query;
         std::cout << "Parsed query tree: " << *query->path;
         PhysicalOperator* evaluator = ofPathQuery(query, &index);
-        std::cout << evaluator;
+        //std::cout << *evaluator;
 
         // perform the evaluation
         start = std::chrono::steady_clock::now();

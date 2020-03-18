@@ -5,21 +5,32 @@
 #include "MergeJoin.h"
 
 OutEdge MergeJoin::produceNextEdge() {
-    return out.pop();
+    if (!ready) out.pop();
+    if (!res.empty()) {
+        OutEdge r = res.back();
+        res.pop_back();
+        return r;
+    }
+    return END_EDGE;
 }
 
 void MergeJoin::evalPipeline() {
     std::thread thdLeft([this] {
         left->evalPipeline();
     });
+    thdLeft.join();
     std::thread thdRight([this] {
         right->evalPipeline();
     });
+    thdRight.join();
 
-    OutEdge r;
-    OutEdge l;
+
+
+    OutEdge r = right->produceNextEdge();
+    OutEdge l = left->produceNextEdge();
+    std::cout << "START LEFT => " << l << " & START RIGHT => " << r;
     std::vector<OutEdge> setL;
-    while(!((r = right->produceNextEdge())==END_EDGE) && !((l = left->produceNextEdge()) == END_EDGE)){
+    while(!(r==END_EDGE) && !(l == END_EDGE)){
         setL.clear();
         OutEdge tl = l;
         bool done = false;
@@ -27,22 +38,26 @@ void MergeJoin::evalPipeline() {
             if (tl.target == l.target){
                 setL.push_back(l);
                 l = left->produceNextEdge();
+                std::cout << "+++ Compute SET => " << l;
             }
             else done = true;
         }
-        while (!(r == END_EDGE) && r.source < l.target) //advance until we have a joining edge
+        while (!(r == END_EDGE) && r.source < tl.target) { //advance until we have a joining edge
             r = right->produceNextEdge();
-        while(!(r == END_EDGE)){
+            std::cout << "--- REMOVE R to match with tl => " << r <<  " (tl=)"<< tl;
+        }
+        while(!(r == END_EDGE) && tl.target == r.source){
             for(auto tl : setL){
-                out.push(OutEdge{l.source,r.target},false);
+                res.push_back(OutEdge{tl.source,r.target});
             }
             r = right->produceNextEdge();
+            std::cout << "******* JOIN => " << r;
         }
     }
-    out.push(END_EDGE,true);
+    std::sort(res.begin(),res.end(), targetCompDesOut);
 
-    thdRight.join();
-    thdLeft.join();
+    ready = true;
+    out.push(END_EDGE,true);
 }
 
 uint32_t MergeJoin::cost() const {
@@ -50,7 +65,7 @@ uint32_t MergeJoin::cost() const {
 }
 
 MergeJoin::MergeJoin(PhysicalOperator *left, PhysicalOperator *right) : PhysicalOperator(
-        left, right, TARGET_SORTED) {}
+        left, right, TARGET_SORTED), res() {}
 
 std::ostream &MergeJoin::name(std::ostream &strm) const {
     return strm << "MergeJoin";

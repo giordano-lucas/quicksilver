@@ -50,3 +50,15 @@ bool operator==(const Edge &a, const Edge &b) {
 bool operator==(const OutEdge &a, const OutEdge &b) {
     return a.source == b.source && a.target == b.target;
 }
+
+std::ostream &operator<<(std::ostream &strm, const OutEdge &e) {
+    strm << "(" << e.source << ")->(" << e.target <<") \n";
+    return strm;
+}
+
+bool targetCompDesc(const Edge &a, const Edge &b) {
+    return (a.target == b.target)?a.source>b.source:a.target>b.target;
+}
+bool targetCompDesOut(const OutEdge &a, const OutEdge &b) {
+    return (a.target == b.target)?a.source>b.source:a.target>b.target;
+}

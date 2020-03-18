@@ -21,6 +21,7 @@ typedef struct {
     bool labelTargetComp(const Edge& a, const Edge& b);
     bool sourceComp(const Edge& a, const Edge& b);
     bool sourceCompDesc(const Edge& a, const Edge& b);
+    bool targetCompDesc(const Edge& a, const Edge& b);
     bool targetComp(const Edge& a, const Edge& b);
     Edge reverse(const Edge& a);
     std::ostream& operator<<(std::ostream &strm, const Edge &e);
@@ -41,5 +42,6 @@ public:
         return hash(hash(e.source) + e.target);
     }
 };
-
+std::ostream &operator<<(std::ostream &strm, const OutEdge &e);
+bool targetCompDesOut(const OutEdge& a, const OutEdge& b);
 #endif //QUICKSILVER_EDGE_H

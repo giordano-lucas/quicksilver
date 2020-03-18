@@ -13,9 +13,9 @@
 #include <unordered_map>
 #include "BlockingQueue.h"
 #include <thread>
+#include <ostream>
 
 
-typedef BlockingQueue<OutEdge> Queue;
 static OutEdge END_EDGE = OutEdge{NONE, NONE};
 
 enum ResultSorted {
@@ -24,7 +24,7 @@ enum ResultSorted {
 
 class PhysicalOperator {
 protected:
-     Queue out;
+     BlockingQueue<OutEdge> out;
      PhysicalOperator* left;
      PhysicalOperator* right;
      ResultSorted resultSorted;
@@ -103,10 +103,10 @@ public:
          OutEdge lastEdge = END_EDGE; std::unordered_map<OutEdge,OutEdge,HashOutEdge> hashEdge; bool sortedPath = sortedIn || sortedOut;
 
          for (OutEdge e = produceNextEdge() ; !(e == END_EDGE); e = produceNextEdge()){
+             std::cout << e;
              update(e.target,lastIn,hashIn, sortedIn, noIn);
              update(e.source,lastOut,hashOut,sortedOut, noOut);
              update(e,lastEdge,hashEdge,sortedPath, noPath);
-
          }
          thd.join();  //terminate execution of evalPipeline()
 
@@ -127,12 +127,13 @@ public:
 
     virtual std::ostream& name(std::ostream &strm) const = 0;
 
-    std::ostream& operator<<(std::ostream &strm, const PhysicalOperator& op) {
+    friend std::ostream &operator<<(std::ostream &strm, const PhysicalOperator &op) {
         if (op.isLeaf()) return op.name(strm);
-        else                    op.name(strm) << "(" << op.left << op.right << ")";
+        else                    op.name(strm) << ":" << *op.left << "," << *op.right;
         strm << "\n";
         return strm;
-    };
+    }
+
 };
 
 

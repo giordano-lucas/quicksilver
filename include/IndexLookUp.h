@@ -14,11 +14,13 @@ private:
     EdgeIndex* index;
     Edge prefixEdge;
     bool reversed;
-    std::vector<Edge> sortedRes;
+    std::vector<Edge> sortedResSource;
+    std::vector<Edge> sortedResTarget;
     IndexResult res;
+    bool resValid = true;
     bool ready = false;
 public:
-    IndexLookUp(EdgeIndex* index, Edge prefixEdge, bool reversed);
+    IndexLookUp(EdgeIndex* index, Edge prefixEdge, bool reversed, ResultSorted resultSorted);
 
     ~IndexLookUp();
 
