@@ -64,6 +64,12 @@ PhysicalOperator.h
 EdgeIndex.h
 ../include/EdgeIndex.h
 
+../include/KleeneStar.h
+EdgeIndex.h
+-
+PhysicalOperator.h
+../include/PhysicalOperator.h
+
 ../include/MergeJoin.h
 PhysicalOperator.h
 ../include/PhysicalOperator.h
@@ -97,6 +103,8 @@ unordered_map
 -
 BlockingQueue.h
 ../include/BlockingQueue.h
+SimpleEstimator.h
+../include/SimpleEstimator.h
 thread
 -
 ostream
@@ -138,6 +146,30 @@ fstream
 Graph.h
 ../include/Graph.h
 
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/Edge.cpp
+functional
+-
+algorithm
+-
+Edge.h
+-
+
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/EdgeIndex.cpp
+EdgeIndex.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/EdgeIndex.h
+
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/IndexLookUp.cpp
+IndexLookUp.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/IndexLookUp.h
+
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/KleeneStar.cpp
+KleeneStar.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/KleeneStar.h
+
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/MergeJoin.cpp
+MergeJoin.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/MergeJoin.h
+
 /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/main.cpp
 iostream
 -
@@ -162,6 +194,8 @@ IndexLookUp.h
 PhysicalOperator.h
 /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/PhysicalOperator.h
 thread
+-
+KleeneStar.h
 -
 BlockingQueue.h
 /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/BlockingQueue.h

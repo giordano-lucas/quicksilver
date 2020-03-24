@@ -204,6 +204,33 @@ src/IndexLookUp.cpp.s:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.s
 .PHONY : src/IndexLookUp.cpp.s
 
+src/KleeneStar.o: src/KleeneStar.cpp.o
+
+.PHONY : src/KleeneStar.o
+
+# target to build an object file
+src/KleeneStar.cpp.o:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/KleeneStar.cpp.o
+.PHONY : src/KleeneStar.cpp.o
+
+src/KleeneStar.i: src/KleeneStar.cpp.i
+
+.PHONY : src/KleeneStar.i
+
+# target to preprocess a source file
+src/KleeneStar.cpp.i:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/KleeneStar.cpp.i
+.PHONY : src/KleeneStar.cpp.i
+
+src/KleeneStar.s: src/KleeneStar.cpp.s
+
+.PHONY : src/KleeneStar.s
+
+# target to generate assembly for a file
+src/KleeneStar.cpp.s:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/KleeneStar.cpp.s
+.PHONY : src/KleeneStar.cpp.s
+
 src/MergeJoin.o: src/MergeJoin.cpp.o
 
 .PHONY : src/MergeJoin.o
@@ -411,6 +438,9 @@ help:
 	@echo "... src/IndexLookUp.o"
 	@echo "... src/IndexLookUp.i"
 	@echo "... src/IndexLookUp.s"
+	@echo "... src/KleeneStar.o"
+	@echo "... src/KleeneStar.i"
+	@echo "... src/KleeneStar.s"
 	@echo "... src/MergeJoin.o"
 	@echo "... src/MergeJoin.i"
 	@echo "... src/MergeJoin.s"

@@ -5,9 +5,9 @@
 #include "IndexLookUp.h"
 
 
-IndexLookUp::IndexLookUp(EdgeIndex* index,Edge prefixEdge, bool reversed,ResultSorted resultSorted) :
+IndexLookUp::IndexLookUp(EdgeIndex* index,QueryEdge queryEdge, bool reversed,ResultSorted resultSorted) :
         PhysicalOperator(nullptr, nullptr, resultSorted),
-        index(index), prefixEdge((reversed)?reverse(prefixEdge):prefixEdge), reversed(reversed), sortedResSource(),sortedResTarget(), res() {
+        index(index), queryEdge((reversed)?reverse(queryEdge):queryEdge), reversed(reversed), sortedResSource(),sortedResTarget(), res() {
 }
 
 IndexLookUp::~IndexLookUp() {
@@ -51,19 +51,19 @@ IndexLookUp::~IndexLookUp() {
  */
 void IndexLookUp::evalPipeline() {
 
-    if (prefixEdge.target == NONE && (prefixEdge.source != NONE || !reversed)) //choose the right sub EdgeIndex
-        res = index->getEdgesSource(prefixEdge);                     // source sorted index access
-    else res = index->getEdgesTarget(prefixEdge);                    // targed sorted index access
+    if (queryEdge.target == NONE && (queryEdge.source != NONE || !reversed)) //choose the right sub EdgeIndex
+        res = index->getEdgesSource(queryEdge);                     // source sorted index access
+    else res = index->getEdgesTarget(queryEdge);                    // targed sorted index access
 
-    if(( reversed && prefixEdge.source != NONE && prefixEdge.target == NONE) || // (n,l,*) & reversed
-       (!reversed && prefixEdge.source == NONE && prefixEdge.target != NONE)) { // (*,l,n) & !reversed
+    if(( reversed && queryEdge.source != NONE && queryEdge.target == NONE) || // (n,l,*) & reversed
+       (!reversed && queryEdge.source == NONE && queryEdge.target != NONE)) { // (*,l,n) & !reversed
                                                                                 //  => reverse edges and resort
         for (IndexIterator it = res.first ; it != res.second ; ++it) sortedResSource.push_back(reverse(it->first));
         resValid = false;
         if (resultSorted == SOURCE_SORTED)  //only need to sort on source if requested
             std::sort(sortedResSource.begin(),sortedResSource.end(), sourceCompDesc);
     } else if (resultSorted == TARGET_SORTED){
-        for (IndexIterator it = res.first ; it != res.second ; ++it) sortedResTarget.push_back(reverse(it->first));
+        for (IndexIterator it = res.first ; it != res.second ; ++it) sortedResTarget.push_back(it->first);
         resValid = false;
         std::sort(sortedResTarget.begin(),sortedResTarget.end(), targetCompDesc);
     }
@@ -71,22 +71,22 @@ void IndexLookUp::evalPipeline() {
     out.push(END_EDGE, true);
 }
 
-OutEdge IndexLookUp::produceNextEdge() {
+Edge IndexLookUp::produceNextEdge() {
     if (!ready) out.pop();
     if (resValid && res.first != res.second){
         Edge r = res.first->first;
         res.first++;
-        return OutEdge{r.source,r.target};
+        return r;
     }
     else if (!sortedResSource.empty()) {
         Edge r = sortedResSource.back();
         sortedResSource.pop_back();
-        return OutEdge{r.source,r.target};
+        return r;
     }
     else if (!sortedResTarget.empty()){
         Edge r = sortedResTarget.back();
         sortedResTarget.pop_back();
-        return OutEdge{r.source,r.target};
+        return r;
     }
     return END_EDGE;
 }
@@ -96,15 +96,19 @@ uint32_t IndexLookUp::cost() const {
 }
 
 bool IndexLookUp::isLeftBounded() const {
-    return ( reversed && prefixEdge.target != NONE) || (!reversed && prefixEdge.source != NONE);
+    return ( reversed && queryEdge.target != NONE) || (!reversed && queryEdge.source != NONE);
 }
 
 bool IndexLookUp::isRightBounded() const {
-    return ( reversed && prefixEdge.source != NONE) || (!reversed && prefixEdge.target != NONE);
+    return ( reversed && queryEdge.source != NONE) || (!reversed && queryEdge.target != NONE);
 }
 
 std::ostream &IndexLookUp::name(std::ostream &strm) const {
-    return strm << "IndexLookUp : " << reversed << "|"<< prefixEdge;
+    return strm << "IndexLookUp : " << reversed << "|"<< queryEdge.label;
+}
+
+cardPathStat IndexLookUp::getCardinality() const {
+    return cardPathStat{greater, 0, cardStat{0,0,0}};
 }
 
 

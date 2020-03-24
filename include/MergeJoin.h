@@ -13,13 +13,17 @@ class MergeJoin : public PhysicalOperator{
 
 
 private:
-    std::vector<OutEdge> res;
+    std::vector<Edge> res;
+public:
+    cardPathStat getCardinality() const override;
+
+private:
     bool ready = false;
 
 public:
     MergeJoin(PhysicalOperator *left, PhysicalOperator *right);
     void evalPipeline() override;
-    OutEdge produceNextEdge() override;
+    Edge produceNextEdge() override;
     uint32_t cost() const override;
     std::ostream &name(std::ostream &strm) const override;
 };

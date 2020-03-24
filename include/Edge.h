@@ -16,9 +16,15 @@ typedef struct {
     Node source ;
     Label label ;
     Node target ;
+} QueryEdge;
+QueryEdge reverse(const QueryEdge& a);
+bool labelSourceComp(const QueryEdge& a, const QueryEdge& b);
+bool labelTargetComp(const QueryEdge& a, const QueryEdge& b);
+
+typedef struct {
+    Node source ;
+    Node target ;
 } Edge;
-    bool labelSourceComp(const Edge& a, const Edge& b);
-    bool labelTargetComp(const Edge& a, const Edge& b);
     bool sourceComp(const Edge& a, const Edge& b);
     bool sourceCompDesc(const Edge& a, const Edge& b);
     bool targetCompDesc(const Edge& a, const Edge& b);
@@ -26,22 +32,15 @@ typedef struct {
     Edge reverse(const Edge& a);
     std::ostream& operator<<(std::ostream &strm, const Edge &e);
     bool operator==(const Edge& a, const Edge& b);
+    bool operator!=(const Edge& a, const Edge& b);
     bool operator<(const Edge& a, const Edge& b);
-
 // ============================ Output Edges =============================
-typedef struct {
-    Node source ;
-    Node target ;
-} OutEdge;
-
-bool operator==(const OutEdge& a, const OutEdge& b);
-class HashOutEdge {
+class HashEdge {
 public:
-    size_t operator()(const OutEdge& e) const{
+    size_t operator()(const Edge& e) const{
         std::hash<uint32_t> hash;
         return hash(hash(e.source) + e.target);
     }
 };
-std::ostream &operator<<(std::ostream &strm, const OutEdge &e);
-bool targetCompDesOut(const OutEdge& a, const OutEdge& b);
+
 #endif //QUICKSILVER_EDGE_H

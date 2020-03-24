@@ -1,6 +1,3 @@
-//
-
-
 // Created by Lucas Giordano on 12/03/2020.
 //
 
@@ -9,18 +6,23 @@
 
 #include "PhysicalOperator.h"
 #include "EdgeIndex.h"
+
 class IndexLookUp : public PhysicalOperator{
 private:
     EdgeIndex* index;
-    Edge prefixEdge;
+    QueryEdge queryEdge;
     bool reversed;
+public:
+    cardPathStat getCardinality() const override;
+
+private:
     std::vector<Edge> sortedResSource;
     std::vector<Edge> sortedResTarget;
     IndexResult res;
     bool resValid = true;
     bool ready = false;
 public:
-    IndexLookUp(EdgeIndex* index, Edge prefixEdge, bool reversed, ResultSorted resultSorted);
+    IndexLookUp(EdgeIndex* index, QueryEdge queryEdge, bool reversed, ResultSorted resultSorted);
 
     ~IndexLookUp();
 
@@ -32,8 +34,7 @@ public:
     std::ostream &name(std::ostream &strm) const override;
 
 protected:
-    OutEdge produceNextEdge()  override;
+    Edge produceNextEdge()  override;
 };
-
 
 #endif //QUICKSILVER_INDEXLOOKUP_H

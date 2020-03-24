@@ -10,18 +10,10 @@
  * Overloading of << operator (toString)
  * */
 std::ostream &operator<<(std::ostream &strm, const Edge &e) {
-    if(e.label==NONE)  strm << "(" << e.source << ")-"            << "->(" << e.target <<") \n";
-    else               strm << "(" << e.source << ")-" << e.label << "->(" << e.target <<") \n";
+    strm << "(" << e.source << ")-" << "->(" << e.target <<") \n";
     return strm;
 }
 
-bool labelSourceComp(const Edge &a, const Edge &b) {
-    return (a.label != b.label)? a.label<b.label: sourceComp(a,b);
-}
-
-bool labelTargetComp(const Edge &a, const Edge &b) {
-    return (a.label != b.label)? a.label<b.label: targetComp(a,b);
-}
 
 bool sourceComp(const Edge &a, const Edge &b) {
     return (a.source == b.source)?a.target<b.target:a.source<b.source;
@@ -33,32 +25,29 @@ bool sourceCompDesc(const Edge &a, const Edge &b) {
 bool targetComp(const Edge &a, const Edge &b) {
     return (a.target == b.target)?a.source<b.source:a.target<b.target;
 }
-
-bool operator<(const Edge &a, const Edge &b) {
-    return labelSourceComp(a,b);
-}
-
-Edge reverse(const Edge &a) {
-    return Edge{a.target,a.label,a.source};
-}
-
-bool operator==(const Edge &a, const Edge &b) {
-    return a.source == b.source && a.label == b.label && a.target == b.target;
-}
-
-//*****************************************************************************
-bool operator==(const OutEdge &a, const OutEdge &b) {
-    return a.source == b.source && a.target == b.target;
-}
-
-std::ostream &operator<<(std::ostream &strm, const OutEdge &e) {
-    strm << "(" << e.source << ")->(" << e.target <<") \n";
-    return strm;
-}
-
 bool targetCompDesc(const Edge &a, const Edge &b) {
     return (a.target == b.target)?a.source>b.source:a.target>b.target;
 }
-bool targetCompDesOut(const OutEdge &a, const OutEdge &b) {
-    return (a.target == b.target)?a.source>b.source:a.target>b.target;
+
+bool operator<(const Edge &a, const Edge &b) {
+    return sourceComp(a,b);
 }
+
+Edge reverse(const Edge &a) {
+    return Edge{a.target,a.source};
+}
+
+bool operator==(const Edge &a, const Edge &b) {
+    return a.source == b.source && a.target == b.target;
+}
+
+bool labelSourceComp(const QueryEdge &a, const QueryEdge &b) {
+    return (a.label != b.label)? a.label < b.label: ((a.source != b.source)?a.source < b.source : a.target < b.target);
+}
+
+bool labelTargetComp(const QueryEdge &a, const QueryEdge &b) {
+    return (a.label != b.label)? a.label < b.label: ((a.target != b.target)?a.target < b.target : a.source < b.source);
+}
+
+QueryEdge reverse(const QueryEdge& a) { return QueryEdge{a.target,a.label,a.target};};
+bool operator!=(const Edge& a, const Edge& b) {return !(a==b);};

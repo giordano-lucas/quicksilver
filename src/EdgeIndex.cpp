@@ -1,56 +1,57 @@
-//
-// Created by Lucas Giordano on 11/03/2020.
-//
 
 #include "EdgeIndex.h"
 
-Edge EdgeIndex::toPrefix(Edge e) const {
-    return Edge{(e.source==NONE)?0:e.source, e.label, (e.target==NONE)?0:e.target};
+Edge toPrefix(QueryEdge e) {
+    return Edge{(e.source==NONE)?0:e.source, (e.target==NONE)?0:e.target};
 }
 
-Edge EdgeIndex::nextIncrementalEdge(Edge &e) const {
+Edge nextIncrementalEdge(QueryEdge &e) {
     Edge nextEdge = toPrefix(e);
-    if (e.source ==NONE) nextEdge.label++;
+    if (e.source ==NONE) nextEdge.source=NONE;
     else                 nextEdge.source++;
     return nextEdge;
 }
 
-IndexResult EdgeIndex::getEdgesSource(Edge edgePrefix) const {
+IndexResult EdgeIndex::getEdgesSource(QueryEdge edgePrefix) const {
     assert(edgePrefix.label != NONE && !(edgePrefix.source == NONE && edgePrefix.target != NONE));
-    return getEdges(edgePrefix, mapSource);
+    return getEdges(edgePrefix, mapSource[edgePrefix.label]);
 }
 
-IndexResult EdgeIndex::getEdgesTarget(Edge edgePrefix) const {
+IndexResult EdgeIndex::getEdgesTarget(QueryEdge edgePrefix) const {
     assert(edgePrefix.label != NONE && !(edgePrefix.source != NONE && edgePrefix.target == NONE));
-    return getEdges(reverse(edgePrefix), mapTarget);
+    return getEdges(reverse(edgePrefix), mapTarget[edgePrefix.label]);
 }
 
-IndexResult EdgeIndex::getEdges(Edge edgePrefix, const Map &map) const {
+IndexResult EdgeIndex::getEdges(QueryEdge edgePrefix, const std::map<Edge,Edge> &map) const {
     return {map.lower_bound(toPrefix(edgePrefix)),map.upper_bound(nextIncrementalEdge(edgePrefix))};
 }
 
-IndexResult EdgeIndex::allEdges(bool reversed) const {
-    IndexResult res = {mapSource.begin(), mapSource.end()};
-    if (reversed) res = {mapTarget.begin(), mapTarget.end()};
-    return res;
+void EdgeIndex::insert(Edge e, Node l) {
+    mapSource[l].insert({e,e});
+    mapTarget[l].insert({reverse(e),reverse(e)});
 }
 
-void EdgeIndex::insert(Edge e) {
-    assert(e.target != NONE && e.label != NONE && e.target != NONE);
-    mapSource.insert({e,e});
-    mapTarget.insert({reverse(e),reverse(e)});
-}
-
-
-void EdgeIndex::insertAll(std::vector<Edge> edges) {
+void EdgeIndex::insertAll(std::vector<QueryEdge> edges) {
     std::sort(edges.begin(), edges.end(),labelSourceComp);
     for (auto e : edges) {
         assert(e.target != NONE && e.label != NONE && e.target != NONE);
-        mapSource.insert(mapSource.cend(), {e,e});
+        Edge o = Edge{e.source,e.target};
+        mapSource[e.label].insert(mapSource[e.label].cend(), {o,o});
     }
     std::sort(edges.begin(), edges.end(),labelTargetComp);
     for (auto e : edges) {
-        mapTarget.insert(mapTarget.cend(), {reverse(e),reverse(e)});
+        Edge o = Edge{e.source,e.target};
+        mapTarget[e.label].insert(mapTarget[e.label].cend(), {reverse(o),reverse(o)});
+    }
+}
+void EdgeIndex::insertAll(std::vector<Edge> edges, Label l) {
+    std::sort(edges.begin(),edges.end(),sourceComp);
+    for (auto e : edges) {
+        mapSource[l].insert(mapSource[l].cend(), {e,e});
+    }
+    std::sort(edges.begin(), edges.end(),targetComp);
+    for (auto e : edges) {
+        mapTarget[l].insert(mapTarget[l].cend(), {reverse(e),reverse(e)});
     }
 }
 
@@ -70,11 +71,14 @@ void EdgeIndex::buildFromFile(const std::string &fileName) {
 
         V = noNodes;
         L = noLabels;
+        mapSource.resize(L);
+        mapTarget.resize(L);
     } else {
         throw std::runtime_error(std::string("Invalid graph header!"));
     }
+    std::vector<std::vector<Edge>> edges(L, std::vector<Edge>());
 
-    std::vector<Edge> edges;  //holds the edges
+    //std::vector<Edge> edges;  //holds the edges
     // parse edge data
     while(std::getline(graphFile, line)) {
 
@@ -83,29 +87,17 @@ void EdgeIndex::buildFromFile(const std::string &fileName) {
             uint32_t predicate = (uint32_t) std::stoul(matches[2]);
             uint32_t object = (uint32_t) std::stoul(matches[3]);
 
-            edges.push_back(Edge{subject,predicate,object});
+            edges[predicate].push_back(Edge{subject,object});
         }
     }
     graphFile.close();
 
     /*Construct index*/
     auto start = std::chrono::steady_clock::now();
-    std::sort(edges.begin(), edges.end()); //paths
-    insertAll(edges);
+    for (int l = 0 ; l <L ; ++l){
+        insertAll(edges[l],l);
+    }
+
     auto end = std::chrono::steady_clock::now();
     std::cout << "Time to construct the index : " << (std::chrono::duration<double, std::milli>(end - start).count())/1000 << " ms" << std::endl;
-}
-
-std::ostream& operator<<(std::ostream &strm, const EdgeIndex &index){
-    strm << "---------- IndexEdge ---------- \n";
-    strm << "--- Source --- \n";
-    for (IndexIterator it = index.allEdges(false).first ; it != index.allEdges(false).second ; ++it){
-        strm << it->first ;
-    }
-    strm << "--- Target --- \n";
-    for (IndexIterator it = index.allEdges(true).first ; it != index.allEdges(true).second ; ++it){
-        strm << it->first ;
-    }
-    strm << "\n";
-    return strm;
 }

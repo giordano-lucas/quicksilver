@@ -10,6 +10,7 @@
 #include "IndexLookUp.h"
 #include "PhysicalOperator.h"
 #include <thread>
+#include <KleeneStar.h>
 #include "BlockingQueue.h"
 #include "MergeJoin.h"
 
@@ -173,9 +174,9 @@ int main(int argc, char *argv[]) {
     std::string queriesFile {argv[2]};
 
     //estimatorBench(graphFile, queriesFile);
-    //evaluatorBench(graphFile, queriesFile);
+    evaluatorBench(graphFile, queriesFile);
     std::cout << "============================================================================================ \n";
-    //myEvaluatorBench(graphFile,queriesFile);
+    myEvaluatorBench(graphFile,queriesFile);
     /*
 
     Label l1 = 0;
@@ -197,12 +198,13 @@ int main(int argc, char *argv[]) {
     EdgeIndex  index;
     index.insertAll(edges);
 
-    PhysicalOperator* op = new MergeJoin(new IndexLookUp(&index,Edge{NONE,l1,NONE},false, TARGET_SORTED),new IndexLookUp(&index,Edge{NONE,l2,NONE},false,SOURCE_SORTED));
+    //PhysicalOperator* op = new MergeJoin(new IndexLookUp(&index,Edge{NONE,l1,NONE},false, TARGET_SORTED),new IndexLookUp(&index,Edge{NONE,l2,NONE},false,SOURCE_SORTED));
+    PhysicalOperator* op = new KleeneStar(&index, Edge{NONE,l1,NONE},NOT_SORTED);
     op->eval().print();
     */
     //********************************************************************************
     //Try to compute the index
-
+/*
     EdgeIndex index;
 
     try {
@@ -213,8 +215,9 @@ int main(int argc, char *argv[]) {
     }
 
     PhysicalOperator* op = new MergeJoin(new IndexLookUp(&index,Edge{NONE,0,NONE},false, TARGET_SORTED),new IndexLookUp(&index,Edge{NONE,1,NONE},false,SOURCE_SORTED));
+    //PhysicalOperator* op = new IndexLookUp(&index, Edge{NONE,0,NONE},false, TARGET_SORTED);
     op->eval().print();
-
+*/
     /*
 
     //Construct physical indexLookUp operator
@@ -238,9 +241,9 @@ static PhysicalOperator* ofPathTree(PathTree* tree, EdgeIndex* index, Node leftB
         uint32_t l = (tree->data[0] - '0');
         char operation = tree->data[1];
         switch(operation) {
-            case '>': return new IndexLookUp(index,Edge{leftBounded,l,rightBounded},false,resultSorted);
-            case '<': return new IndexLookUp(index,Edge{leftBounded,l,rightBounded},true,resultSorted);
-            case '+': return nullptr;
+            case '>': return new IndexLookUp(index,QueryEdge{leftBounded,l,rightBounded},false,resultSorted);
+            case '<': return new IndexLookUp(index,QueryEdge{leftBounded,l,rightBounded},true,resultSorted);
+            case '+': return new KleeneStar(index,QueryEdge{leftBounded,l,rightBounded}, NOT_SORTED);
         }
         throw "Illegal argument";
     }
@@ -253,10 +256,9 @@ static PhysicalOperator* ofPathTree(PathTree* tree, EdgeIndex* index, Node leftB
 static PhysicalOperator* ofPathQuery(PathQuery* pq, EdgeIndex* index) {
     Node s = (pq->s.compare("*")==0)?NONE: (uint32_t) std::stoi(pq->s);
     Node t = (pq->t.compare("*")==0)?NONE: (uint32_t) std::stoi(pq->t);
-    std::cout << "(" << s << "," << t<< ")\n";
+    //std::cout << "(" << s << "," << t<< ")\n";
     return ofPathTree(pq->path, index,s,t, false);
 }
-
 
 int myEvaluatorBench(std::string &graphFile, std::string &queriesFile) {
 

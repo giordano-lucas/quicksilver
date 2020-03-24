@@ -28,6 +28,6 @@ set(SOURCE_FILES
         src/SimpleEstimator.cpp
         src/SimpleEvaluator.cpp
         src/PathQuery.cpp
-        include/Edge.h src/Edge.cpp include/EdgeIndex.h src/EdgeIndex.cpp include/PhysicalOperator.h src/IndexLookUp.cpp include/IndexLookUp.h include/BlockingQueue.h src/MergeJoin.cpp include/MergeJoin.h)
+        include/Edge.h src/Edge.cpp include/EdgeIndex.h src/EdgeIndex.cpp include/PhysicalOperator.h src/IndexLookUp.cpp include/IndexLookUp.h include/BlockingQueue.h src/MergeJoin.cpp include/MergeJoin.h src/KleeneStar.cpp include/KleeneStar.h)
 
 add_executable(quicksilver ${SOURCE_FILES} ${HEADER_FILES})

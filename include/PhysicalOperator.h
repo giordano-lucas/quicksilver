@@ -12,11 +12,12 @@
 #include <mutex>
 #include <unordered_map>
 #include "BlockingQueue.h"
+#include "SimpleEstimator.h"
 #include <thread>
 #include <ostream>
 
 
-static OutEdge END_EDGE = OutEdge{NONE, NONE};
+static Edge END_EDGE = Edge{NONE, NONE};
 
 enum ResultSorted {
     SOURCE_SORTED, TARGET_SORTED, NOT_SORTED
@@ -24,7 +25,7 @@ enum ResultSorted {
 
 class PhysicalOperator {
 protected:
-     BlockingQueue<OutEdge> out;
+     BlockingQueue<Edge> out;
      PhysicalOperator* left;
      PhysicalOperator* right;
      ResultSorted resultSorted;
@@ -65,6 +66,10 @@ public:
     virtual bool isRightBounded() const{
         return (right != nullptr)?right->isLeftBounded():false;
     };
+    /**
+     * Returns the cardinality estimation of the result of this physical operator
+     **/
+    virtual cardPathStat getCardinality() const = 0;
 
     /**
      * /!\ MACRO /!\
@@ -100,10 +105,10 @@ public:
 
          uint32_t lastIn  = NONE;     std::unordered_map<uint32_t,uint32_t> hashIn;    bool sortedIn   = resultSorted == TARGET_SORTED;
          uint32_t lastOut = NONE;     std::unordered_map<uint32_t,uint32_t> hashOut;   bool sortedOut  = resultSorted == SOURCE_SORTED;
-         OutEdge lastEdge = END_EDGE; std::unordered_map<OutEdge,OutEdge,HashOutEdge> hashEdge; bool sortedPath = sortedIn || sortedOut;
+         Edge lastEdge = END_EDGE; std::unordered_map<Edge,Edge,HashEdge> hashEdge; bool sortedPath = sortedIn || sortedOut;
 
-         for (OutEdge e = produceNextEdge() ; !(e == END_EDGE); e = produceNextEdge()){
-             std::cout << e;
+         for (Edge e = produceNextEdge() ; !(e == END_EDGE); e = produceNextEdge()){
+            // std::cout << e;
              update(e.target,lastIn,hashIn, sortedIn, noIn);
              update(e.source,lastOut,hashOut,sortedOut, noOut);
              update(e,lastEdge,hashEdge,sortedPath, noPath);
@@ -123,7 +128,7 @@ public:
     /**
      *  Interface linking the parent operator and the child.
      **/
-    virtual OutEdge produceNextEdge() = 0;
+    virtual Edge produceNextEdge() = 0;
 
     virtual std::ostream& name(std::ostream &strm) const = 0;
 
