@@ -13,7 +13,7 @@ private:
     EdgeIndex* index;
     QueryEdge queryEdge;
     bool done = false;
-    void dfs(std::unordered_multimap<Node,Node>& base, std::unordered_map<Node,bool>& discovered,Node n, Node source, bool reversed,std::vector<Edge>& output);
+    void dfs(std::unordered_map<Node,bool>& discovered,Node n, Node source, bool reversed,std::vector<Edge>& output);
 public:
     KleeneStar(EdgeIndex* index, QueryEdge queryEdge);
     uint32_t cost() const override;

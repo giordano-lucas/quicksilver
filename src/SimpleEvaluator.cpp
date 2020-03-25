@@ -35,6 +35,12 @@ cardStat SimpleEvaluator::computeStats(std::shared_ptr<SimpleGraph> &g) {
         if(!g->reverse_adj[target].empty()) stats.noIn++;
     }
 
+    //std::cout << "*********************************************************************** \n";
+    for (uint32_t s = 0 ; s < g->getNoVertices() ; ++s){
+        for (auto e : g->adj[s]){
+           // std::cout << "(" << s << ")" << "-" << e.first << "->" << "(" <<e.second << ")\n";
+        }
+    }
     return stats;
 }
 

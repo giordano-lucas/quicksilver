@@ -62,7 +62,13 @@ class BlockingQueue {
             std::queue<Data> empty;
             std::swap( queue, empty );
             pushCond.notify_one();
-         }
+         };
+         /**
+          * @return size of the queue
+          */
+         size_t size(){
+             return queue.size();
+         };
 };
 
 #endif //QUICKSILVER_BLOCKINGQUEUE_H

@@ -13,7 +13,9 @@ std::ostream &operator<<(std::ostream &strm, const Edge &e) {
     strm << "(" << e.source << ")-" << "->(" << e.target <<") \n";
     return strm;
 }
-
+QueryEdge reverse(const QueryEdge &a) {
+    return QueryEdge{a.target,a.label,a.source};
+}
 
 bool sourceComp(const Edge &a, const Edge &b) {
     return (a.source == b.source)?a.target<b.target:a.source<b.source;
@@ -48,6 +50,4 @@ bool labelSourceComp(const QueryEdge &a, const QueryEdge &b) {
 bool labelTargetComp(const QueryEdge &a, const QueryEdge &b) {
     return (a.label != b.label)? a.label < b.label: ((a.target != b.target)?a.target < b.target : a.source < b.source);
 }
-
-QueryEdge reverse(const QueryEdge& a) { return QueryEdge{a.target,a.label,a.target};};
 bool operator!=(const Edge& a, const Edge& b) {return !(a==b);};

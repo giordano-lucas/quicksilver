@@ -114,7 +114,7 @@ public:
          Edge lastEdge = END_EDGE; std::unordered_map<Edge,Edge,HashEdge> hashEdge; bool sortedPath = sortedIn || sortedOut;
 
          for (Edge e = produceNextEdge() ; !(e == END_EDGE); e = produceNextEdge()){
-            // std::cout << "PHY : " << e;
+             // std::cout << "PHY : " << e;
              update(e.target,lastIn,hashIn, sortedIn, noIn);
              update(e.source,lastOut,hashOut,sortedOut, noOut);
              update(e,lastEdge,hashEdge,sortedPath, noPath);

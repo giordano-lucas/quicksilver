@@ -21,17 +21,14 @@ cardPathStat KleeneStar::getCardinality() const {
  * @param source      : vertex from which we want to compute the set of reachable nodes
  * @param reversed    : need to reverse the edges push into the out queue
  */
-void KleeneStar::dfs(std::unordered_multimap<Node,Node>& base, std::unordered_map<Node,bool>& discovered,Node n, Node source, bool reversed,std::vector<Edge>& output){
-    discovered.insert({n,true});//set vertex n to discovered
-    //auto t = base.equal_range(n);
-    auto t = index->getEdgesSource(QueryEdge{n,queryEdge.label,NONE});
+void KleeneStar::dfs(std::unordered_map<Node,bool>& discovered,Node n, Node source, bool reversed,std::vector<Edge>& output){
+    if (output.size() > 0) discovered.insert({n,true});//set vertex n to discovered  /!\ in the first iteration output.size == 0 => we do not set (source) to be discovered yet (otherwise we won't allow (source,source) to be a part of the result)
+    auto t = (!reversed)?index->getEdgesSource(QueryEdge{n,queryEdge.label,NONE}):index->getEdgesTarget(QueryEdge{NONE,queryEdge.label,n});
     for (auto it = t.first ; it!=t.second; ++it){     //explore all nodes in base.adj[n]
-       // Node target = it->second;
        Node target = it->first.target;
         if (discovered.find(target) == discovered.end()){    //if target has not been explored yet => explore
-            //out.push((reversed)?Edge{target,source}:Edge{source,target},false); //(source,target) is part of the results of the physical operator
-            output.push_back((reversed)?Edge{target,source}:Edge{source,target});
-            dfs(base,discovered,target,source,reversed,output);                                      //explore
+            output.push_back((reversed)?Edge{target,source}:Edge{source,target});//(source,target) is part of the results of the physical operator
+            dfs(discovered,target,source,reversed,output);       //explore
         }
     }
 }
@@ -43,44 +40,45 @@ void KleeneStar::dfs(std::unordered_multimap<Node,Node>& base, std::unordered_ma
  */
 void KleeneStar::evalPipeline(ResultSorted resultSorted) {
     IndexResult res = index->getEdgesSource(QueryEdge{NONE,queryEdge.label,NONE}); //get data from the database
-    std::unordered_multimap<Node,Node> base;  //graph adj list representation
-    std::map<Node,bool> setNodes;             //set of nodes sorted
+
     std::unordered_map<Node,bool> discovered;
     std::vector<Edge> output;
-    if      (queryEdge.source != NONE) dfs(base,discovered,queryEdge.source,queryEdge.source, false,output);
-    else if (queryEdge.target != NONE) dfs(base,discovered,queryEdge.target,queryEdge.target, true,output); //in reverse adj list => need to re-reverse the edges at the end
+    if      (queryEdge.source != NONE) dfs(discovered,queryEdge.source,queryEdge.source, false,output);
+    else if (queryEdge.target != NONE) dfs(discovered,queryEdge.target,queryEdge.target, true,output); //in reverse adj list => need to re-reverse the edges at the end
     else {  //if the query is not bounded (*,l,*) => perform dfs for all sources nodes
         Node lastSource = NONE;
         for (auto it = res.first ; it != res.second && !terminated; ++it){
             if (it->first.source != lastSource){
                 lastSource = it->first.source;
                 discovered.clear();
-                if (resultSorted != TARGET_SORTED) output.clear();
-                dfs(base,discovered,it->first.source,it->first.source,false,output);
+                dfs(discovered,it->first.source,it->first.source,false,output);
                 if (resultSorted == SOURCE_SORTED){
                    std::sort(output.begin(),output.end(),sourceComp);
                 }
                 if (resultSorted != TARGET_SORTED){
                    for (auto e : output) {
                        out.push(e,false);
-                       if (terminated) return;
+                       if (terminated) return;       //stop computation if parent operator has what it wants
                    }
+                   output.clear();
                 }
             }
         }
     }
-    if (resultSorted == TARGET_SORTED){
-        std::sort(output.begin(),output.end(),targetComp);
-        for (auto e : output) {
-            out.push(e,false);
+    if (output.size() > 0){
+        switch(resultSorted){
+            case NOT_SORTED   : break;
+            case SOURCE_SORTED: std::sort(output.begin(),output.end(),sourceComp);break;
+            case TARGET_SORTED: std::sort(output.begin(),output.end(),targetComp); break;
         }
     }
+    for (auto e : output) out.push(e,false);
     out.push(END_EDGE,true);
     done = true;
 }
 
 Edge KleeneStar::produceNextEdge() {
-    if (!done)  return out.pop();
+    if (!done || out.size() > 0)  return out.pop();
     else        return END_EDGE;
 }
 
