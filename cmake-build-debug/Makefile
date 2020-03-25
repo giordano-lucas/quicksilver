@@ -123,6 +123,141 @@ quicksilver/fast:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/build
 .PHONY : quicksilver/fast
 
+src/Edge.o: src/Edge.cpp.o
+
+.PHONY : src/Edge.o
+
+# target to build an object file
+src/Edge.cpp.o:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/Edge.cpp.o
+.PHONY : src/Edge.cpp.o
+
+src/Edge.i: src/Edge.cpp.i
+
+.PHONY : src/Edge.i
+
+# target to preprocess a source file
+src/Edge.cpp.i:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/Edge.cpp.i
+.PHONY : src/Edge.cpp.i
+
+src/Edge.s: src/Edge.cpp.s
+
+.PHONY : src/Edge.s
+
+# target to generate assembly for a file
+src/Edge.cpp.s:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/Edge.cpp.s
+.PHONY : src/Edge.cpp.s
+
+src/EdgeIndex.o: src/EdgeIndex.cpp.o
+
+.PHONY : src/EdgeIndex.o
+
+# target to build an object file
+src/EdgeIndex.cpp.o:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.o
+.PHONY : src/EdgeIndex.cpp.o
+
+src/EdgeIndex.i: src/EdgeIndex.cpp.i
+
+.PHONY : src/EdgeIndex.i
+
+# target to preprocess a source file
+src/EdgeIndex.cpp.i:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.i
+.PHONY : src/EdgeIndex.cpp.i
+
+src/EdgeIndex.s: src/EdgeIndex.cpp.s
+
+.PHONY : src/EdgeIndex.s
+
+# target to generate assembly for a file
+src/EdgeIndex.cpp.s:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.s
+.PHONY : src/EdgeIndex.cpp.s
+
+src/IndexLookUp.o: src/IndexLookUp.cpp.o
+
+.PHONY : src/IndexLookUp.o
+
+# target to build an object file
+src/IndexLookUp.cpp.o:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o
+.PHONY : src/IndexLookUp.cpp.o
+
+src/IndexLookUp.i: src/IndexLookUp.cpp.i
+
+.PHONY : src/IndexLookUp.i
+
+# target to preprocess a source file
+src/IndexLookUp.cpp.i:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.i
+.PHONY : src/IndexLookUp.cpp.i
+
+src/IndexLookUp.s: src/IndexLookUp.cpp.s
+
+.PHONY : src/IndexLookUp.s
+
+# target to generate assembly for a file
+src/IndexLookUp.cpp.s:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.s
+.PHONY : src/IndexLookUp.cpp.s
+
+src/KleeneStar.o: src/KleeneStar.cpp.o
+
+.PHONY : src/KleeneStar.o
+
+# target to build an object file
+src/KleeneStar.cpp.o:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/KleeneStar.cpp.o
+.PHONY : src/KleeneStar.cpp.o
+
+src/KleeneStar.i: src/KleeneStar.cpp.i
+
+.PHONY : src/KleeneStar.i
+
+# target to preprocess a source file
+src/KleeneStar.cpp.i:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/KleeneStar.cpp.i
+.PHONY : src/KleeneStar.cpp.i
+
+src/KleeneStar.s: src/KleeneStar.cpp.s
+
+.PHONY : src/KleeneStar.s
+
+# target to generate assembly for a file
+src/KleeneStar.cpp.s:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/KleeneStar.cpp.s
+.PHONY : src/KleeneStar.cpp.s
+
+src/MergeJoin.o: src/MergeJoin.cpp.o
+
+.PHONY : src/MergeJoin.o
+
+# target to build an object file
+src/MergeJoin.cpp.o:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.o
+.PHONY : src/MergeJoin.cpp.o
+
+src/MergeJoin.i: src/MergeJoin.cpp.i
+
+.PHONY : src/MergeJoin.i
+
+# target to preprocess a source file
+src/MergeJoin.cpp.i:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.i
+.PHONY : src/MergeJoin.cpp.i
+
+src/MergeJoin.s: src/MergeJoin.cpp.s
+
+.PHONY : src/MergeJoin.s
+
+# target to generate assembly for a file
+src/MergeJoin.cpp.s:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.s
+.PHONY : src/MergeJoin.cpp.s
+
 src/PathQuery.o: src/PathQuery.cpp.o
 
 .PHONY : src/PathQuery.o
@@ -294,6 +429,21 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... quicksilver"
+	@echo "... src/Edge.o"
+	@echo "... src/Edge.i"
+	@echo "... src/Edge.s"
+	@echo "... src/EdgeIndex.o"
+	@echo "... src/EdgeIndex.i"
+	@echo "... src/EdgeIndex.s"
+	@echo "... src/IndexLookUp.o"
+	@echo "... src/IndexLookUp.i"
+	@echo "... src/IndexLookUp.s"
+	@echo "... src/KleeneStar.o"
+	@echo "... src/KleeneStar.i"
+	@echo "... src/KleeneStar.s"
+	@echo "... src/MergeJoin.o"
+	@echo "... src/MergeJoin.i"
+	@echo "... src/MergeJoin.s"
 	@echo "... src/PathQuery.o"
 	@echo "... src/PathQuery.i"
 	@echo "... src/PathQuery.s"
