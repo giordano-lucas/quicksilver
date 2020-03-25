@@ -46,13 +46,31 @@ PathQuery.h
 iostream
 -
 
+../include/Evaluator.h
+memory
+-
+Graph.h
+../include/Graph.h
+Estimator.h
+../include/Estimator.h
+
 ../include/Graph.h
 unordered_map
 -
 
+../include/IndexLookUp.h
+PhysicalOperator.h
+../include/PhysicalOperator.h
+EdgeIndex.h
+../include/EdgeIndex.h
+
 ../include/KleeneStar.h
 EdgeIndex.h
 -
+PhysicalOperator.h
+../include/PhysicalOperator.h
+
+../include/MergeJoin.h
 PhysicalOperator.h
 ../include/PhysicalOperator.h
 
@@ -98,6 +116,20 @@ Estimator.h
 SimpleGraph.h
 ../include/SimpleGraph.h
 
+../include/SimpleEvaluator.h
+memory
+-
+cmath
+-
+SimpleGraph.h
+../include/SimpleGraph.h
+PathTree.h
+../include/PathTree.h
+Evaluator.h
+../include/Evaluator.h
+Graph.h
+../include/Graph.h
+
 ../include/SimpleGraph.h
 unordered_map
 -
@@ -114,7 +146,35 @@ fstream
 Graph.h
 ../include/Graph.h
 
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/KleeneStar.cpp
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/main.cpp
+iostream
+-
+chrono
+-
+SimpleGraph.h
+-
+Estimator.h
+-
+SimpleEstimator.h
+-
+SimpleEvaluator.h
+-
+PathQuery.h
+-
+Edge.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/Edge.h
+EdgeIndex.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/EdgeIndex.h
+IndexLookUp.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/IndexLookUp.h
+PhysicalOperator.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/PhysicalOperator.h
+thread
+-
 KleeneStar.h
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/KleeneStar.h
+-
+BlockingQueue.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/BlockingQueue.h
+MergeJoin.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/MergeJoin.h
 

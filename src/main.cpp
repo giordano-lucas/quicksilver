@@ -178,8 +178,8 @@ int main(int argc, char *argv[]) {
     std::string queriesFile {argv[2]};
 
     //estimatorBench(graphFile, queriesFile);
-    evaluatorBench(graphFile, queriesFile);
-    std::cout << "============================================================================================ \n";
+    //evaluatorBench(graphFile, queriesFile);
+    //std::cout << "============================================================================================ \n";
     myEvaluatorBench(graphFile,queriesFile);
     /*
 
@@ -275,7 +275,7 @@ static PhysicalOperator* ofPathQuery(PathQuery* pq, EdgeIndex* index) {
     return ofPathTree(pq->path, index,s,t);
 }
 
-int myEvaluatorBench(std::string &graphFile, std::string &queriesFile) {
+int compareEvaluatorBench(std::string &graphFile, std::string &queriesFile) {
 
     std::cout << "\n(1) Reading the graph into memory and preparing the evaluator...\n" << std::endl;
 
@@ -289,6 +289,10 @@ int myEvaluatorBench(std::string &graphFile, std::string &queriesFile) {
         return 0;
     }
     auto end = std::chrono::steady_clock::now();
+
+
+
+
     std::cout << "Time to read the graph into memory: " << std::chrono::duration<double, std::milli>(end - start).count() << " ms" << std::endl;
 
 
@@ -319,6 +323,89 @@ int myEvaluatorBench(std::string &graphFile, std::string &queriesFile) {
         std::cout << "\nActual (noOut, noPaths, noIn) : ";
         actual.print();
         std::cout << "Time to evaluate: " << std::chrono::duration<double, std::milli>(end - start).count() << " ms" << std::endl;
+        delete evaluator;
+    }
+
+    for(auto query : queries) delete(query);
+
+    return 0;
+}
+
+int myEvaluatorBench(std::string &graphFile, std::string &queriesFile) {
+
+    std::cout << "\n(1) Reading the graph into memory and preparing the evaluator...\n" << std::endl;
+
+    // read the graph
+    EdgeIndex index;
+    auto start = std::chrono::steady_clock::now();
+    try {
+        index.buildFromFile(graphFile);
+    } catch (std::runtime_error &e) {
+        std::cerr << e.what() << std::endl;
+        return 0;
+    }
+    auto end = std::chrono::steady_clock::now();
+    // read adj list
+    auto g = std::make_shared<SimpleGraph>();
+
+    auto start2 = std::chrono::steady_clock::now();
+    try {
+        g->readFromContiguousFile(graphFile);
+    } catch (std::runtime_error &e) {
+        std::cerr << e.what() << std::endl;
+        return 0;
+    }
+    auto end2 = std::chrono::steady_clock::now();
+
+    std::cout << "Time dif to read the graph into memory: " << std::chrono::duration<double, std::milli>(end2 - start2 - (end - start)).count() << " ms" << std::endl;
+
+    /****************** ESTIMATION CONSTRUCTION *******************/
+
+    start = std::chrono::steady_clock::now();
+    end = std::chrono::steady_clock::now();
+
+
+
+    // prepare the evaluator ADJ
+    auto est = std::make_shared<SimpleEstimator>(g);
+    auto ev = std::make_unique<SimpleEvaluator>(g);
+
+    start2 = std::chrono::steady_clock::now();
+    ev->attachEstimator(est);
+    ev->prepare();
+    end2 = std::chrono::steady_clock::now();
+    std::cout << "Time dif to prepare the evaluator: " << std::chrono::duration<double, std::milli>(end2 - start2 - (end - start)).count() << " ms" << std::endl;
+
+    /******************************  RUN WORK LOAD **************************************/
+
+    std::cout << "\n(2) Running the query workload..." << std::endl;
+
+    auto queries = parseQueries(queriesFile);
+
+    for(auto query : queries) {
+
+        // perform evaluation
+        // parse the query into an AST
+        std::cout << "\nProcessing query: " << *query;
+        std::cout << "Parsed query tree: " << *query->path;
+        PhysicalOperator* evaluator = ofPathQuery(query, &index);
+        //std::cout << *evaluator;
+
+        // perform the evaluation
+        start = std::chrono::steady_clock::now();
+        cardStat actual = evaluator->eval();
+        end = std::chrono::steady_clock::now();
+
+        // perform the evaluation ADJ
+        start2 = std::chrono::steady_clock::now();
+        auto actual2 = ev->evaluate(query);
+        end2 = std::chrono::steady_clock::now();
+
+        std::cout << "\nActual (noOut, noPaths, noIn) : ";
+        cardStat dif = cardStat{actual.noOut - actual2.noOut, actual.noPaths - actual2.noPaths, actual.noIn - actual2.noIn};
+        dif.print();
+        std::cout << "Time dif to evaluate: " << std::chrono::duration<double, std::milli>(end2 - start2 - (end - start)).count() << " ms" << std::endl;
+
         delete evaluator;
     }
 
