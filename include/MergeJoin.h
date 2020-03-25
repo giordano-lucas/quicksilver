@@ -22,7 +22,7 @@ private:
 
 public:
     MergeJoin(PhysicalOperator *left, PhysicalOperator *right);
-    void evalPipeline() override;
+    void evalPipeline(ResultSorted resultSorted) override;
     Edge produceNextEdge() override;
     uint32_t cost() const override;
     std::ostream &name(std::ostream &strm) const override;

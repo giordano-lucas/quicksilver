@@ -12,12 +12,13 @@ class KleeneStar : public PhysicalOperator{
 private:
     EdgeIndex* index;
     QueryEdge queryEdge;
-    void dfs(std::unordered_multimap<Node,Node>& base, std::unordered_map<Node,bool>& discovered,Node n, Node source, bool reversed);
+    bool done = false;
+    void dfs(std::unordered_multimap<Node,Node>& base, std::unordered_map<Node,bool>& discovered,Node n, Node source, bool reversed,std::vector<Edge>& output);
 public:
-    KleeneStar(EdgeIndex* index, QueryEdge queryEdge, ResultSorted resultSorted);
+    KleeneStar(EdgeIndex* index, QueryEdge queryEdge);
     uint32_t cost() const override;
     cardPathStat getCardinality() const override;
-    void evalPipeline() override;
+    void evalPipeline(ResultSorted resultSorted) override;
     Edge produceNextEdge() override;
     std::ostream &name(std::ostream &strm) const override;
 };

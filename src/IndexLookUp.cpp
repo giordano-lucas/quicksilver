@@ -5,8 +5,8 @@
 #include "IndexLookUp.h"
 
 
-IndexLookUp::IndexLookUp(EdgeIndex* index,QueryEdge queryEdge, bool reversed,ResultSorted resultSorted) :
-        PhysicalOperator(nullptr, nullptr, resultSorted),
+IndexLookUp::IndexLookUp(EdgeIndex* index,QueryEdge queryEdge, bool reversed) :
+        PhysicalOperator(nullptr, nullptr,SOURCE_SORTED),
         index(index), queryEdge((reversed)?reverse(queryEdge):queryEdge), reversed(reversed), sortedResSource(),sortedResTarget(), res() {
 }
 
@@ -49,7 +49,7 @@ IndexLookUp::~IndexLookUp() {
  * (*,l,n) & reversed   => direct index access possible       (target)
  *
  */
-void IndexLookUp::evalPipeline() {
+void IndexLookUp::evalPipeline(ResultSorted resultSorted) {
 
     if (queryEdge.target == NONE && (queryEdge.source != NONE || !reversed)) //choose the right sub EdgeIndex
         res = index->getEdgesSource(queryEdge);                     // source sorted index access

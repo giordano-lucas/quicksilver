@@ -22,11 +22,11 @@ private:
     bool resValid = true;
     bool ready = false;
 public:
-    IndexLookUp(EdgeIndex* index, QueryEdge queryEdge, bool reversed, ResultSorted resultSorted);
+    IndexLookUp(EdgeIndex* index, QueryEdge queryEdge, bool reversed);
 
     ~IndexLookUp();
 
-    void evalPipeline()  override;
+    void evalPipeline(ResultSorted resultSorted)  override;
     uint32_t cost() const override;
     bool isLeftBounded() const override;
     bool isRightBounded() const override;

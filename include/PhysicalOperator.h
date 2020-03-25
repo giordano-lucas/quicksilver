@@ -28,15 +28,22 @@ protected:
      BlockingQueue<Edge> out;
      PhysicalOperator* left;
      PhysicalOperator* right;
-     ResultSorted resultSorted;
+     ResultSorted defaultResultSorted;
+     bool terminated = false;
 
 public:
     /**
      * Constructor
      **/
-    PhysicalOperator(PhysicalOperator* left,PhysicalOperator* right, ResultSorted resultSorted) :
-        out(), left(left), right(right), resultSorted(resultSorted) {}
-
+    PhysicalOperator(PhysicalOperator* left,PhysicalOperator* right,ResultSorted defaultResultSorted) :
+        out(), left(left), right(right),defaultResultSorted(defaultResultSorted) {}
+    /**
+     * Terminate the computation of this physical operator
+     */
+     void terminate() {
+         out.clear();
+         terminated = true;
+     };
     /**
      * Returns the cost of the physical operator
      * */
@@ -46,7 +53,7 @@ public:
      **/
     bool isLeaf() const{
         return left == nullptr && right == nullptr;
-    }
+    };
     /**
      * Destructor
      **/
@@ -96,19 +103,18 @@ public:
      * */
      cardStat eval() {
          std::thread thd([this] {
-            evalPipeline();
+            evalPipeline(defaultResultSorted);
          });
-
          uint32_t noOut  = 0;
          uint32_t noPath = 0;
          uint32_t noIn   = 0;
 
-         uint32_t lastIn  = NONE;     std::unordered_map<uint32_t,uint32_t> hashIn;    bool sortedIn   = resultSorted == TARGET_SORTED;
-         uint32_t lastOut = NONE;     std::unordered_map<uint32_t,uint32_t> hashOut;   bool sortedOut  = resultSorted == SOURCE_SORTED;
+         uint32_t lastIn  = NONE;     std::unordered_map<uint32_t,uint32_t> hashIn;    bool sortedIn   = defaultResultSorted == TARGET_SORTED;
+         uint32_t lastOut = NONE;     std::unordered_map<uint32_t,uint32_t> hashOut;   bool sortedOut  = defaultResultSorted == SOURCE_SORTED;
          Edge lastEdge = END_EDGE; std::unordered_map<Edge,Edge,HashEdge> hashEdge; bool sortedPath = sortedIn || sortedOut;
 
          for (Edge e = produceNextEdge() ; !(e == END_EDGE); e = produceNextEdge()){
-            // std::cout << e;
+            // std::cout << "PHY : " << e;
              update(e.target,lastIn,hashIn, sortedIn, noIn);
              update(e.source,lastOut,hashOut,sortedOut, noOut);
              update(e,lastEdge,hashEdge,sortedPath, noPath);
@@ -123,7 +129,7 @@ public:
     /**
      * Evaluates the physical operator in a pipelining fashion
      * */
-    virtual void evalPipeline() = 0;
+    virtual void evalPipeline(ResultSorted resultSorted) = 0;
 
     /**
      *  Interface linking the parent operator and the child.
@@ -137,7 +143,7 @@ public:
         else                    op.name(strm) << ":" << *op.left << "," << *op.right;
         strm << "\n";
         return strm;
-    }
+    };
 
 };
 

@@ -14,23 +14,21 @@ Edge MergeJoin::produceNextEdge() {
     return END_EDGE;
 }
 
-void MergeJoin::evalPipeline() {
+void MergeJoin::evalPipeline(ResultSorted resultSorted) {
     std::thread thdLeft([this] {
-        left->evalPipeline();
+        left->evalPipeline(TARGET_SORTED);
     });
-    thdLeft.join();
     std::thread thdRight([this] {
-        right->evalPipeline();
+        right->evalPipeline(SOURCE_SORTED);
     });
-    thdRight.join();
-
-
-
     Edge r = right->produceNextEdge();
     Edge l = left->produceNextEdge();
-   // std::cout << "START LEFT => " << l << " & START RIGHT => " << r;
+    // std::cout << "START LEFT => " << l << " & START RIGHT => " << r;
     std::vector<Edge> setL;
     while(!(r==END_EDGE) && !(l == END_EDGE)){
+        while (l != END_EDGE && l.target < r.source) { //advance until we have a joining edge
+            l = left->produceNextEdge();
+        }
         setL.clear();
         Edge tl = l;
         bool done = false;
@@ -54,6 +52,10 @@ void MergeJoin::evalPipeline() {
           //  std::cout << "******* JOIN => " << r;
         }
     }
+    left->terminate();
+    right->terminate();
+    thdLeft.join();
+    thdRight.join();
     std::sort(res.begin(),res.end(), targetCompDesc);
 
     ready = true;
@@ -65,7 +67,7 @@ uint32_t MergeJoin::cost() const {
 }
 
 MergeJoin::MergeJoin(PhysicalOperator *left, PhysicalOperator *right) : PhysicalOperator(
-        left, right, TARGET_SORTED), res() {}
+        left, right,TARGET_SORTED), res() {}
 
 std::ostream &MergeJoin::name(std::ostream &strm) const {
     return strm << "MergeJoin";

@@ -166,8 +166,12 @@ int main(int argc, char *argv[]) {
 
     if(argc < 3) {
         std::cout << "Usage: quicksilver <graphFile> <queriesFile>" << std::endl;
-        return 0;
+        argv[1] = "../testfiles/workload/real/1/graph.nt";
+        argv[2] = "../testfiles/workload/real/1/queries.csv";
+        //return 0;
     }
+
+
 
     //args
     std::string graphFile {argv[1]};
@@ -235,21 +239,32 @@ int main(int argc, char *argv[]) {
 }
 
 
-static PhysicalOperator* ofPathTree(PathTree* tree, EdgeIndex* index, Node leftBounded, Node rightBounded, bool goingLeft){
+static PhysicalOperator* ofPathTree(PathTree* tree, EdgeIndex* index, Node leftBounded, Node rightBounded){
     if (tree->isLeaf()){
-        ResultSorted resultSorted = goingLeft?TARGET_SORTED:SOURCE_SORTED;
-        uint32_t l = (tree->data[0] - '0');
-        char operation = tree->data[1];
-        switch(operation) {
-            case '>': return new IndexLookUp(index,QueryEdge{leftBounded,l,rightBounded},false,resultSorted);
-            case '<': return new IndexLookUp(index,QueryEdge{leftBounded,l,rightBounded},true,resultSorted);
-            case '+': return new KleeneStar(index,QueryEdge{leftBounded,l,rightBounded}, NOT_SORTED);
+        std::regex directLabel(R"((\d+)\>)");
+        std::regex inverseLabel(R"((\d+)\<)");
+        std::regex kleeneStar(R"((\d+)\+)");
+
+        std::smatch matches;
+        uint32_t label;
+        bool inverse;
+        if (std::regex_search(tree->data, matches, directLabel)) {
+            label = (uint32_t) std::stoul(matches[1]);
+            return new IndexLookUp(index,QueryEdge{leftBounded,label,rightBounded},false);
+        } else if (std::regex_search(tree->data, matches, inverseLabel)) {
+            label = (uint32_t) std::stoul(matches[1]);
+            return  new IndexLookUp(index,QueryEdge{leftBounded,label,rightBounded},true);
         }
-        throw "Illegal argument";
+        else if(std::regex_search(tree->data, matches, kleeneStar)) {
+            label = (uint32_t) std::stoul(matches[1]);
+            return new KleeneStar(index,QueryEdge{leftBounded,label,rightBounded});
+        } else {
+            std::cerr << "Label parsing failed!" << std::endl;
+        }
     }
     else if (tree->isConcat()){
-        return new MergeJoin(ofPathTree(tree->left, index, leftBounded, NONE, true),
-                             ofPathTree(tree->right, index, NONE, rightBounded, false));
+        return new MergeJoin(ofPathTree(tree->left, index, leftBounded, NONE),
+                             ofPathTree(tree->right, index, NONE, rightBounded));
     }
     throw "Illegal argument";
 }
@@ -257,7 +272,7 @@ static PhysicalOperator* ofPathQuery(PathQuery* pq, EdgeIndex* index) {
     Node s = (pq->s.compare("*")==0)?NONE: (uint32_t) std::stoi(pq->s);
     Node t = (pq->t.compare("*")==0)?NONE: (uint32_t) std::stoi(pq->t);
     //std::cout << "(" << s << "," << t<< ")\n";
-    return ofPathTree(pq->path, index,s,t, false);
+    return ofPathTree(pq->path, index,s,t);
 }
 
 int myEvaluatorBench(std::string &graphFile, std::string &queriesFile) {

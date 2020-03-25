@@ -23,7 +23,7 @@ class BlockingQueue {
         /**
          * Constructor
          */
-        BlockingQueue(bool fastProducer = true,size_t limit = 50) : limit(limit),queue(), mtx(), pushCond(),popCond() {
+        BlockingQueue(bool fastProducer = true,size_t limit = 200) : limit(limit),queue(), mtx(), pushCond(),popCond() {
             assert(limit > 0);
             signalingPushSize = (fastProducer)? std::max(limit/2, (size_t)1): 1;
         }
@@ -54,6 +54,15 @@ class BlockingQueue {
             if (queue.size() >= signalingPushSize) pushCond.notify_one();
             return elem;
         };
+        /**
+         * clear the queue
+         **/
+         void clear(){
+            std::unique_lock<std::mutex> lock(mtx);
+            std::queue<Data> empty;
+            std::swap( queue, empty );
+            pushCond.notify_one();
+         }
 };
 
 #endif //QUICKSILVER_BLOCKINGQUEUE_H
