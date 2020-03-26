@@ -7,14 +7,8 @@ CMakeFiles/quicksilver.dir/src/rss.c.o: ../src/rss.c
 CMakeFiles/quicksilver.dir/src/Edge.cpp.o: ../include/Edge.h
 CMakeFiles/quicksilver.dir/src/Edge.cpp.o: ../src/Edge.cpp
 
-CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.o: ../include/Edge.h
-CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.o: ../include/EdgeIndex.h
-CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.o: ../include/Graph.h
-CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.o: ../src/EdgeIndex.cpp
-
 CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o: ../include/BlockingQueue.h
 CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o: ../include/Edge.h
-CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o: ../include/EdgeIndex.h
 CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o: ../include/Estimator.h
 CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o: ../include/Graph.h
 CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o: ../include/IndexLookUp.h
@@ -27,7 +21,6 @@ CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o: ../src/IndexLookUp.cpp
 
 CMakeFiles/quicksilver.dir/src/KleeneStar.cpp.o: ../include/BlockingQueue.h
 CMakeFiles/quicksilver.dir/src/KleeneStar.cpp.o: ../include/Edge.h
-CMakeFiles/quicksilver.dir/src/KleeneStar.cpp.o: ../include/EdgeIndex.h
 CMakeFiles/quicksilver.dir/src/KleeneStar.cpp.o: ../include/Estimator.h
 CMakeFiles/quicksilver.dir/src/KleeneStar.cpp.o: ../include/Graph.h
 CMakeFiles/quicksilver.dir/src/KleeneStar.cpp.o: ../include/KleeneStar.h
@@ -57,6 +50,7 @@ CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o: ../src/PathQuery.cpp
 CMakeFiles/quicksilver.dir/src/PathTree.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/src/PathTree.cpp.o: ../src/PathTree.cpp
 
+CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/Edge.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/Estimator.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/Graph.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/PathQuery.h
@@ -65,20 +59,28 @@ CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/SimpleEstimator
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/SimpleGraph.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../src/SimpleEstimator.cpp
 
+CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/BlockingQueue.h
+CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/Edge.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/Estimator.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/Evaluator.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/Graph.h
+CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/IndexLookUp.h
+CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/KleeneStar.h
+CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/MergeJoin.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/PathQuery.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/PathTree.h
+CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/PhysicalOperator.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/SimpleEstimator.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/SimpleEvaluator.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/SimpleGraph.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../src/SimpleEvaluator.cpp
 
+CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o: ../include/Edge.h
 CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o: ../include/Graph.h
 CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o: ../include/SimpleGraph.h
 CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o: ../src/SimpleGraph.cpp
 
+CMakeFiles/quicksilver.dir/src/benches.cpp.o: ../include/Edge.h
 CMakeFiles/quicksilver.dir/src/benches.cpp.o: ../include/Estimator.h
 CMakeFiles/quicksilver.dir/src/benches.cpp.o: ../include/Evaluator.h
 CMakeFiles/quicksilver.dir/src/benches.cpp.o: ../include/Graph.h

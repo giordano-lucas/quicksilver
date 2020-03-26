@@ -5,17 +5,17 @@
 #ifndef QUICKSILVER_KLEENESTAR_H
 #define QUICKSILVER_KLEENESTAR_H
 
-#include <EdgeIndex.h>
+#include <SimpleGraph.h>
 #include "PhysicalOperator.h"
 
 class KleeneStar : public PhysicalOperator{
 private:
-    EdgeIndex* index;
+    std::shared_ptr<SimpleGraph>& index;
     QueryEdge queryEdge;
     bool done = false;
     void dfs(std::unordered_map<Node,bool>& discovered,Node n, Node source, bool reversed,std::vector<Edge>& output);
 public:
-    KleeneStar(EdgeIndex* index, QueryEdge queryEdge);
+    KleeneStar(std::shared_ptr<SimpleGraph>& index, QueryEdge queryEdge);
     uint32_t cost() const override;
     cardPathStat getCardinality() const override;
     void evalPipeline(ResultSorted resultSorted) override;

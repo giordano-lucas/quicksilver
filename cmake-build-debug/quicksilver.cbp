@@ -138,10 +138,6 @@
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/EdgeIndex.h">
-			<Option target="benchmarker"/>
-			<Option target="quicksilver"/>
-		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/Estimator.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
@@ -199,10 +195,6 @@
 			<Option target="quicksilver"/>
 		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/Edge.cpp">
-			<Option target="benchmarker"/>
-			<Option target="quicksilver"/>
-		</Unit>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/EdgeIndex.cpp">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>

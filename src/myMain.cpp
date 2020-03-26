@@ -10,7 +10,6 @@
 #include <SimpleEvaluator.h>
 #include <PathQuery.h>
 #include "Edge.h"
-#include "EdgeIndex.h"
 #include "IndexLookUp.h"
 #include "PhysicalOperator.h"
 #include <thread>

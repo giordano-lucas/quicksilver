@@ -167,36 +167,6 @@ src/Edge.cpp.s:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/Edge.cpp.s
 .PHONY : src/Edge.cpp.s
 
-src/EdgeIndex.o: src/EdgeIndex.cpp.o
-
-.PHONY : src/EdgeIndex.o
-
-# target to build an object file
-src/EdgeIndex.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/EdgeIndex.cpp.o
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.o
-.PHONY : src/EdgeIndex.cpp.o
-
-src/EdgeIndex.i: src/EdgeIndex.cpp.i
-
-.PHONY : src/EdgeIndex.i
-
-# target to preprocess a source file
-src/EdgeIndex.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/EdgeIndex.cpp.i
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.i
-.PHONY : src/EdgeIndex.cpp.i
-
-src/EdgeIndex.s: src/EdgeIndex.cpp.s
-
-.PHONY : src/EdgeIndex.s
-
-# target to generate assembly for a file
-src/EdgeIndex.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/EdgeIndex.cpp.s
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.s
-.PHONY : src/EdgeIndex.cpp.s
-
 src/IndexLookUp.o: src/IndexLookUp.cpp.o
 
 .PHONY : src/IndexLookUp.o
@@ -591,9 +561,6 @@ help:
 	@echo "... src/Edge.o"
 	@echo "... src/Edge.i"
 	@echo "... src/Edge.s"
-	@echo "... src/EdgeIndex.o"
-	@echo "... src/EdgeIndex.i"
-	@echo "... src/EdgeIndex.s"
 	@echo "... src/IndexLookUp.o"
 	@echo "... src/IndexLookUp.i"
 	@echo "... src/IndexLookUp.s"

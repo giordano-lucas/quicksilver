@@ -7,15 +7,9 @@ CMakeFiles/quicksilver.dir/src/rss.c.o
 CMakeFiles/quicksilver.dir/src/Edge.cpp.o
  ../include/Edge.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/Edge.cpp
-CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.o
- ../include/Edge.h
- ../include/EdgeIndex.h
- ../include/Graph.h
- /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/EdgeIndex.cpp
 CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o
  ../include/BlockingQueue.h
  ../include/Edge.h
- ../include/EdgeIndex.h
  ../include/Estimator.h
  ../include/Graph.h
  ../include/IndexLookUp.h
@@ -28,7 +22,6 @@ CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o
 CMakeFiles/quicksilver.dir/src/KleeneStar.cpp.o
  ../include/BlockingQueue.h
  ../include/Edge.h
- ../include/EdgeIndex.h
  ../include/Estimator.h
  ../include/Graph.h
  ../include/KleeneStar.h
@@ -58,6 +51,7 @@ CMakeFiles/quicksilver.dir/src/PathTree.cpp.o
  ../include/PathTree.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/PathTree.cpp
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o
+ ../include/Edge.h
  ../include/Estimator.h
  ../include/Graph.h
  ../include/PathQuery.h
@@ -66,20 +60,28 @@ CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o
  ../include/SimpleGraph.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEstimator.cpp
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o
+ ../include/BlockingQueue.h
+ ../include/Edge.h
  ../include/Estimator.h
  ../include/Evaluator.h
  ../include/Graph.h
+ ../include/IndexLookUp.h
+ ../include/KleeneStar.h
+ ../include/MergeJoin.h
  ../include/PathQuery.h
  ../include/PathTree.h
+ ../include/PhysicalOperator.h
  ../include/SimpleEstimator.h
  ../include/SimpleEvaluator.h
  ../include/SimpleGraph.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEvaluator.cpp
 CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o
+ ../include/Edge.h
  ../include/Graph.h
  ../include/SimpleGraph.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleGraph.cpp
 CMakeFiles/quicksilver.dir/src/benches.cpp.o
+ ../include/Edge.h
  ../include/Estimator.h
  ../include/Evaluator.h
  ../include/Graph.h

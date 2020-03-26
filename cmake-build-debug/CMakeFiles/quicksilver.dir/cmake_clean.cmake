@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/quicksilver.dir/src/Edge.cpp.o"
-  "CMakeFiles/quicksilver.dir/src/EdgeIndex.cpp.o"
   "CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o"
   "CMakeFiles/quicksilver.dir/src/KleeneStar.cpp.o"
   "CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.o"

@@ -11,7 +11,7 @@ SimpleEstimator::SimpleEstimator(std::shared_ptr<SimpleGraph> &g){
 // sort on the second item in the pair, then on the first (ascending order)
 
 void SimpleEstimator::prepare() {
-
+    /*
     // *** INITIALIZE SYN ***
     syn1.resize(graph->getNoLabels());
     //resize syn2 to a L x L matrix
@@ -153,6 +153,7 @@ void SimpleEstimator::prepare() {
         }
 
     }
+     */
 }
 
 cardStat SimpleEstimator::estimate(PathQuery *q) {

@@ -148,22 +148,9 @@ CMakeFiles/benchmarker.dir/src/Edge.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/benchmarker.dir/src/Edge.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/Edge.cpp -o CMakeFiles/benchmarker.dir/src/Edge.cpp.s
 
-CMakeFiles/benchmarker.dir/src/EdgeIndex.cpp.o: CMakeFiles/benchmarker.dir/flags.make
-CMakeFiles/benchmarker.dir/src/EdgeIndex.cpp.o: ../src/EdgeIndex.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/benchmarker.dir/src/EdgeIndex.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/benchmarker.dir/src/EdgeIndex.cpp.o -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/EdgeIndex.cpp
-
-CMakeFiles/benchmarker.dir/src/EdgeIndex.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/benchmarker.dir/src/EdgeIndex.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/EdgeIndex.cpp > CMakeFiles/benchmarker.dir/src/EdgeIndex.cpp.i
-
-CMakeFiles/benchmarker.dir/src/EdgeIndex.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/benchmarker.dir/src/EdgeIndex.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/EdgeIndex.cpp -o CMakeFiles/benchmarker.dir/src/EdgeIndex.cpp.s
-
 CMakeFiles/benchmarker.dir/src/IndexLookUp.cpp.o: CMakeFiles/benchmarker.dir/flags.make
 CMakeFiles/benchmarker.dir/src/IndexLookUp.cpp.o: ../src/IndexLookUp.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/benchmarker.dir/src/IndexLookUp.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/benchmarker.dir/src/IndexLookUp.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/benchmarker.dir/src/IndexLookUp.cpp.o -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/IndexLookUp.cpp
 
 CMakeFiles/benchmarker.dir/src/IndexLookUp.cpp.i: cmake_force
@@ -176,7 +163,7 @@ CMakeFiles/benchmarker.dir/src/IndexLookUp.cpp.s: cmake_force
 
 CMakeFiles/benchmarker.dir/src/MergeJoin.cpp.o: CMakeFiles/benchmarker.dir/flags.make
 CMakeFiles/benchmarker.dir/src/MergeJoin.cpp.o: ../src/MergeJoin.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/benchmarker.dir/src/MergeJoin.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/benchmarker.dir/src/MergeJoin.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/benchmarker.dir/src/MergeJoin.cpp.o -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/MergeJoin.cpp
 
 CMakeFiles/benchmarker.dir/src/MergeJoin.cpp.i: cmake_force
@@ -189,7 +176,7 @@ CMakeFiles/benchmarker.dir/src/MergeJoin.cpp.s: cmake_force
 
 CMakeFiles/benchmarker.dir/src/KleeneStar.cpp.o: CMakeFiles/benchmarker.dir/flags.make
 CMakeFiles/benchmarker.dir/src/KleeneStar.cpp.o: ../src/KleeneStar.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/benchmarker.dir/src/KleeneStar.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/benchmarker.dir/src/KleeneStar.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/benchmarker.dir/src/KleeneStar.cpp.o -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/KleeneStar.cpp
 
 CMakeFiles/benchmarker.dir/src/KleeneStar.cpp.i: cmake_force
@@ -202,7 +189,7 @@ CMakeFiles/benchmarker.dir/src/KleeneStar.cpp.s: cmake_force
 
 CMakeFiles/benchmarker.dir/src/benches.cpp.o: CMakeFiles/benchmarker.dir/flags.make
 CMakeFiles/benchmarker.dir/src/benches.cpp.o: ../src/benches.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/benchmarker.dir/src/benches.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/benchmarker.dir/src/benches.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/benchmarker.dir/src/benches.cpp.o -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/benches.cpp
 
 CMakeFiles/benchmarker.dir/src/benches.cpp.i: cmake_force
@@ -215,7 +202,7 @@ CMakeFiles/benchmarker.dir/src/benches.cpp.s: cmake_force
 
 CMakeFiles/benchmarker.dir/src/rss.c.o: CMakeFiles/benchmarker.dir/flags.make
 CMakeFiles/benchmarker.dir/src/rss.c.o: ../src/rss.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/benchmarker.dir/src/rss.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/benchmarker.dir/src/rss.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/benchmarker.dir/src/rss.c.o   -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/rss.c
 
 CMakeFiles/benchmarker.dir/src/rss.c.i: cmake_force
@@ -228,7 +215,7 @@ CMakeFiles/benchmarker.dir/src/rss.c.s: cmake_force
 
 CMakeFiles/benchmarker.dir/src/myMain.cpp.o: CMakeFiles/benchmarker.dir/flags.make
 CMakeFiles/benchmarker.dir/src/myMain.cpp.o: ../src/myMain.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/benchmarker.dir/src/myMain.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/benchmarker.dir/src/myMain.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/benchmarker.dir/src/myMain.cpp.o -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/myMain.cpp
 
 CMakeFiles/benchmarker.dir/src/myMain.cpp.i: cmake_force
@@ -248,7 +235,6 @@ benchmarker_OBJECTS = \
 "CMakeFiles/benchmarker.dir/src/SimpleEvaluator.cpp.o" \
 "CMakeFiles/benchmarker.dir/src/PathQuery.cpp.o" \
 "CMakeFiles/benchmarker.dir/src/Edge.cpp.o" \
-"CMakeFiles/benchmarker.dir/src/EdgeIndex.cpp.o" \
 "CMakeFiles/benchmarker.dir/src/IndexLookUp.cpp.o" \
 "CMakeFiles/benchmarker.dir/src/MergeJoin.cpp.o" \
 "CMakeFiles/benchmarker.dir/src/KleeneStar.cpp.o" \
@@ -266,7 +252,6 @@ benchmarker: CMakeFiles/benchmarker.dir/src/SimpleEstimator.cpp.o
 benchmarker: CMakeFiles/benchmarker.dir/src/SimpleEvaluator.cpp.o
 benchmarker: CMakeFiles/benchmarker.dir/src/PathQuery.cpp.o
 benchmarker: CMakeFiles/benchmarker.dir/src/Edge.cpp.o
-benchmarker: CMakeFiles/benchmarker.dir/src/EdgeIndex.cpp.o
 benchmarker: CMakeFiles/benchmarker.dir/src/IndexLookUp.cpp.o
 benchmarker: CMakeFiles/benchmarker.dir/src/MergeJoin.cpp.o
 benchmarker: CMakeFiles/benchmarker.dir/src/KleeneStar.cpp.o
@@ -275,7 +260,7 @@ benchmarker: CMakeFiles/benchmarker.dir/src/rss.c.o
 benchmarker: CMakeFiles/benchmarker.dir/src/myMain.cpp.o
 benchmarker: CMakeFiles/benchmarker.dir/build.make
 benchmarker: CMakeFiles/benchmarker.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable benchmarker"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable benchmarker"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/benchmarker.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

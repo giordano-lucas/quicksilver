@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/benchmarker.dir/src/Edge.cpp.o"
-  "CMakeFiles/benchmarker.dir/src/EdgeIndex.cpp.o"
   "CMakeFiles/benchmarker.dir/src/IndexLookUp.cpp.o"
   "CMakeFiles/benchmarker.dir/src/KleeneStar.cpp.o"
   "CMakeFiles/benchmarker.dir/src/MergeJoin.cpp.o"

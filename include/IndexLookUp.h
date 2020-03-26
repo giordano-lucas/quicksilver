@@ -5,11 +5,11 @@
 #define QUICKSILVER_INDEXLOOKUP_H
 
 #include "PhysicalOperator.h"
-#include "EdgeIndex.h"
+#include "SimpleGraph.h"
 
 class IndexLookUp : public PhysicalOperator{
 private:
-    EdgeIndex* index;
+    std::shared_ptr<SimpleGraph>& index;
     QueryEdge queryEdge;
     bool reversed;
 public:
@@ -22,7 +22,7 @@ private:
     bool resValid = true;
     bool ready = false;
 public:
-    IndexLookUp(EdgeIndex* index, QueryEdge queryEdge, bool reversed);
+    IndexLookUp(std::shared_ptr<SimpleGraph>& index, QueryEdge queryEdge, bool reversed);
 
     ~IndexLookUp();
 

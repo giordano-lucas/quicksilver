@@ -26,7 +26,6 @@ set(HEADER_FILES
         include/SimpleEstimator.h
         include/SimpleEvaluator.h
         include/Edge.h src/Edge.cpp
-        include/EdgeIndex.h
         include/PhysicalOperator.h
         src/IndexLookUp.cpp include/IndexLookUp.h
         src/MergeJoin.cpp include/MergeJoin.h
@@ -42,7 +41,6 @@ set(SOURCE_FILES
         src/SimpleEvaluator.cpp
         src/PathQuery.cpp
         include/Edge.h src/Edge.cpp
-        include/EdgeIndex.h src/EdgeIndex.cpp
         include/PhysicalOperator.h
         src/IndexLookUp.cpp include/IndexLookUp.h
         include/BlockingQueue.h

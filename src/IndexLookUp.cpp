@@ -5,7 +5,7 @@
 #include "IndexLookUp.h"
 
 
-IndexLookUp::IndexLookUp(EdgeIndex* index,QueryEdge queryEdge, bool reversed) :
+IndexLookUp::IndexLookUp(std::shared_ptr<SimpleGraph>& index,QueryEdge queryEdge, bool reversed) :
         PhysicalOperator(nullptr, nullptr,SOURCE_SORTED),
         index(index), queryEdge((reversed)?reverse(queryEdge):queryEdge), reversed(reversed), sortedResSource(),sortedResTarget(), res() {
 }

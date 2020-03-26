@@ -86,7 +86,7 @@ std::ostream &KleeneStar::name(std::ostream &strm) const {
     return strm << "KleeneStar";
 }
 
-KleeneStar::KleeneStar(EdgeIndex* index, QueryEdge queryEdge) :
+KleeneStar::KleeneStar(std::shared_ptr<SimpleGraph>& index, QueryEdge queryEdge) :
     PhysicalOperator(nullptr, nullptr, NOT_SORTED), queryEdge(queryEdge), index(index) {}
 
 /*void evalPipeline2() {
