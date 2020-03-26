@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/rss.h
+
+/Users/valeriyaprokopova/dev/databases/quicksilver/src/rss.c
+windows.h
+-
+psapi.h
+-
+unistd.h
+-
+sys/resource.h
+-
+mach/mach.h
+-
+fcntl.h
+-
+procfs.h
+-
+stdio.h
+-
+rss.h
+-
+

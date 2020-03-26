@@ -1,4 +1,4 @@
-# Install script for directory: /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver
+# Install script for directory: /Users/valeriyaprokopova/dev/databases/quicksilver
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
