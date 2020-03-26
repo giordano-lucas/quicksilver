@@ -86,12 +86,12 @@ Edge nextIncrementalEdge(QueryEdge &e) {
 }
 
 IndexResult SimpleGraph::getEdgesSource(QueryEdge edgePrefix) const {
-    assert(edgePrefix.label != NONE && !(edgePrefix.source == NONE && edgePrefix.target != NONE));
+    //assert(edgePrefix.label != NONE && !(edgePrefix.source == NONE && edgePrefix.target != NONE));
     return getEdges(edgePrefix, mapSource[edgePrefix.label]);
 }
 
 IndexResult SimpleGraph::getEdgesTarget(QueryEdge edgePrefix) const {
-    assert(edgePrefix.label != NONE && !(edgePrefix.source != NONE && edgePrefix.target == NONE));
+    //assert(edgePrefix.label != NONE && !(edgePrefix.source != NONE && edgePrefix.target == NONE));
     return getEdges(reverse(edgePrefix), mapTarget[edgePrefix.label]);
 }
 
@@ -107,7 +107,7 @@ void SimpleGraph::insert(Edge e, Node l) {
 void SimpleGraph::insertAll(std::vector<QueryEdge> edges) {
     std::sort(edges.begin(), edges.end(),labelSourceComp);
     for (auto e : edges) {
-        assert(e.target != NONE && e.label != NONE && e.target != NONE);
+       // assert(e.target != NONE && e.label != NONE && e.target != NONE);
         Edge o = Edge{e.source,e.target};
         mapSource[e.label].insert(mapSource[e.label].cend(), {o,o});
     }
