@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/valeriyaprokopova/dev/databases/quicksilver
+CMAKE_SOURCE_DIR = /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/CMakeFiles /Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -107,7 +107,7 @@ preinstall/fast:
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -P /Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
@@ -521,6 +521,33 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/myMain.o: src/myMain.cpp.o
+
+.PHONY : src/myMain.o
+
+# target to build an object file
+src/myMain.cpp.o:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/myMain.cpp.o
+.PHONY : src/myMain.cpp.o
+
+src/myMain.i: src/myMain.cpp.i
+
+.PHONY : src/myMain.i
+
+# target to preprocess a source file
+src/myMain.cpp.i:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/myMain.cpp.i
+.PHONY : src/myMain.cpp.i
+
+src/myMain.s: src/myMain.cpp.s
+
+.PHONY : src/myMain.s
+
+# target to generate assembly for a file
+src/myMain.cpp.s:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/myMain.cpp.s
+.PHONY : src/myMain.cpp.s
+
 src/rss.o: src/rss.c.o
 
 .PHONY : src/rss.o
@@ -600,6 +627,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/myMain.o"
+	@echo "... src/myMain.i"
+	@echo "... src/myMain.s"
 	@echo "... src/rss.o"
 	@echo "... src/rss.i"
 	@echo "... src/rss.s"
@@ -614,7 +644,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -P /Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -11,6 +11,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/benchmarker.dir/src/SimpleGraph.cpp.o"
   "CMakeFiles/benchmarker.dir/src/benches.cpp.o"
   "CMakeFiles/benchmarker.dir/src/benchmarker.cpp.o"
+  "CMakeFiles/benchmarker.dir/src/myMain.cpp.o"
   "CMakeFiles/benchmarker.dir/src/rss.c.o"
   "benchmarker"
   "benchmarker.pdb"

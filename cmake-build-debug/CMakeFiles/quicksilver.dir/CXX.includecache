@@ -6,24 +6,16 @@
 
 #IncludeRegexTransform: 
 
+../include/benches.h
+string
+-
+
 ../include/rss.h
 
-/Users/valeriyaprokopova/dev/databases/quicksilver/src/rss.c
-windows.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/main.cpp
+benches.h
 -
-psapi.h
--
-unistd.h
--
-sys/resource.h
--
-mach/mach.h
--
-fcntl.h
--
-procfs.h
--
-stdio.h
+iostream
 -
 rss.h
 -

@@ -8,44 +8,44 @@
 		<Option virtualFolders="CMake Files\;CMake Files\cmake\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug"/>
+				<Option working_dir="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug"/>
+				<Option working_dir="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug"/>
+				<Option working_dir="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="benchmarker">
-				<Option output="/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/benchmarker" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug"/>
+				<Option output="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/benchmarker" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/valeriyaprokopova/dev/databases/quicksilver/include"/>
-					<Add directory="/Users/valeriyaprokopova/dev/databases/quicksilver/include/student"/>
+					<Add directory="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include"/>
+					<Add directory="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include"/>
@@ -54,21 +54,21 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 benchmarker"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 benchmarker"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="benchmarker/fast">
-				<Option output="/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/benchmarker" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug"/>
+				<Option output="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/benchmarker" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/valeriyaprokopova/dev/databases/quicksilver/include"/>
-					<Add directory="/Users/valeriyaprokopova/dev/databases/quicksilver/include/student"/>
+					<Add directory="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include"/>
+					<Add directory="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include"/>
@@ -77,21 +77,21 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 benchmarker/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 benchmarker/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="quicksilver">
-				<Option output="/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/quicksilver" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug"/>
+				<Option output="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/quicksilver" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/valeriyaprokopova/dev/databases/quicksilver/include"/>
-					<Add directory="/Users/valeriyaprokopova/dev/databases/quicksilver/include/student"/>
+					<Add directory="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include"/>
+					<Add directory="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include"/>
@@ -100,21 +100,21 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 quicksilver"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 quicksilver"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="quicksilver/fast">
-				<Option output="/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/quicksilver" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug"/>
+				<Option output="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/quicksilver" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/valeriyaprokopova/dev/databases/quicksilver/include"/>
-					<Add directory="/Users/valeriyaprokopova/dev/databases/quicksilver/include/student"/>
+					<Add directory="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include"/>
+					<Add directory="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include"/>
@@ -123,139 +123,142 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 quicksilver/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 quicksilver/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/include/BlockingQueue.h">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/BlockingQueue.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/include/Edge.h">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/Edge.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/include/EdgeIndex.h">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/EdgeIndex.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/include/Estimator.h">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/Estimator.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/include/Evaluator.h">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/Evaluator.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/include/Graph.h">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/Graph.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/include/IndexLookUp.h">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/IndexLookUp.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/include/KleeneStar.h">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/KleeneStar.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/include/MergeJoin.h">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/MergeJoin.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/include/PathQuery.h">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/PathQuery.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/include/PathTree.h">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/PathTree.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/include/PhysicalOperator.h">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/PhysicalOperator.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/include/SimpleEstimator.h">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/SimpleEstimator.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/include/SimpleEvaluator.h">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/SimpleEvaluator.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/include/SimpleGraph.h">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/SimpleGraph.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/include/benches.h">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/benches.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/include/rss.h">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/rss.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/src/Edge.cpp">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/Edge.cpp">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/src/EdgeIndex.cpp">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/EdgeIndex.cpp">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/src/IndexLookUp.cpp">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/IndexLookUp.cpp">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/src/KleeneStar.cpp">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/KleeneStar.cpp">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/src/MergeJoin.cpp">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/MergeJoin.cpp">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/src/PathQuery.cpp">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/PathQuery.cpp">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/src/PathTree.cpp">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/PathTree.cpp">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/src/SimpleEstimator.cpp">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEstimator.cpp">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/src/SimpleEvaluator.cpp">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEvaluator.cpp">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/src/SimpleGraph.cpp">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleGraph.cpp">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/src/benches.cpp">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/benches.cpp">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/src/benchmarker.cpp">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/benchmarker.cpp">
 			<Option target="benchmarker"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/src/main.cpp">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/main.cpp">
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/src/rss.c">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/myMain.cpp">
+			<Option target="benchmarker"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/rss.c">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/CMakeLists.txt">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/Users/valeriyaprokopova/dev/databases/quicksilver/cmake/FindFilesystem.cmake">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake/FindFilesystem.cmake">
 			<Option virtualFolder="CMake Files\cmake\"/>
 		</Unit>
 	</Project>
