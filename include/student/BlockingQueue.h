@@ -23,8 +23,8 @@ class BlockingQueue {
         /**
          * Constructor
          */
-        BlockingQueue(bool fastProducer = true,size_t limit = 200) : limit(limit),queue(), mtx(), pushCond(),popCond() {
-            assert(limit > 0);
+        BlockingQueue(bool fastProducer = true,size_t limit = 100) : limit(limit),queue(), mtx(), pushCond(),popCond() {
+            //assert(limit > 0);
             signalingPushSize = (fastProducer)? std::max(limit/2, (size_t)1): 1;
         }
 
@@ -36,7 +36,7 @@ class BlockingQueue {
             while (queue.size() >= limit) {
                 pushCond.wait(lock);
             }
-            assert(queue.size() < limit);
+            //assert(queue.size() < limit);
             queue.push(elem);
             if (queue.size() >= std::max(limit/5,(size_t)1) || lastPush) popCond.notify_one();
         };
@@ -48,7 +48,7 @@ class BlockingQueue {
             while (queue.empty()){
                 popCond.wait(lock);
             }
-            assert(queue.size() > 0);
+            //assert(queue.size() > 0);
             Data elem = queue.front();
             queue.pop();
             if (queue.size() >= signalingPushSize) pushCond.notify_one();
