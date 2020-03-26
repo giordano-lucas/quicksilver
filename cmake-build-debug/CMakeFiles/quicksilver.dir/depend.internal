@@ -13,12 +13,16 @@ CMakeFiles/quicksilver.dir/src/PathTree.cpp.o
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/PathTree.cpp
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o
  ../include/Estimator.h
+ ../include/Evaluator.h
  ../include/Graph.h
  ../include/PathQuery.h
  ../include/PathTree.h
  ../include/SimpleEstimator.h
+ ../include/SimpleEvaluator.h
  ../include/SimpleGraph.h
+ ../include/student/BlockingQueue.h
  ../include/student/Edge.h
+ ../include/student/PhysicalOperator.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEstimator.cpp
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o
  ../include/Estimator.h
@@ -62,10 +66,12 @@ CMakeFiles/quicksilver.dir/src/student/Edge.cpp.o
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/Edge.cpp
 CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o
  ../include/Estimator.h
+ ../include/Evaluator.h
  ../include/Graph.h
  ../include/PathQuery.h
  ../include/PathTree.h
  ../include/SimpleEstimator.h
+ ../include/SimpleEvaluator.h
  ../include/SimpleGraph.h
  ../include/student/BlockingQueue.h
  ../include/student/Edge.h
@@ -74,10 +80,12 @@ CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/IndexLookUp.cpp
 CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o
  ../include/Estimator.h
+ ../include/Evaluator.h
  ../include/Graph.h
  ../include/PathQuery.h
  ../include/PathTree.h
  ../include/SimpleEstimator.h
+ ../include/SimpleEvaluator.h
  ../include/SimpleGraph.h
  ../include/student/BlockingQueue.h
  ../include/student/Edge.h
@@ -86,10 +94,12 @@ CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/KleeneStar.cpp
 CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o
  ../include/Estimator.h
+ ../include/Evaluator.h
  ../include/Graph.h
  ../include/PathQuery.h
  ../include/PathTree.h
  ../include/SimpleEstimator.h
+ ../include/SimpleEvaluator.h
  ../include/SimpleGraph.h
  ../include/student/BlockingQueue.h
  ../include/student/Edge.h

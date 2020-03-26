@@ -14,10 +14,6 @@ class MergeJoin : public PhysicalOperator{
 
 private:
     std::vector<Edge> res;
-public:
-    cardPathStat getCardinality() const override;
-
-private:
     bool ready = false;
 
 public:

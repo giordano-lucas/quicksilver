@@ -12,10 +12,6 @@ private:
     std::shared_ptr<SimpleGraph>& index;
     QueryEdge queryEdge;
     bool reversed;
-public:
-    cardPathStat getCardinality() const override;
-
-private:
     std::vector<Edge> sortedResSource;
     std::vector<Edge> sortedResTarget;
     IndexResult res;
@@ -25,7 +21,6 @@ public:
     IndexLookUp(std::shared_ptr<SimpleGraph>& index, QueryEdge queryEdge, bool reversed);
 
     ~IndexLookUp();
-
     void evalPipeline(ResultSorted resultSorted)  override;
     uint32_t cost() const override;
     bool isLeftBounded() const override;

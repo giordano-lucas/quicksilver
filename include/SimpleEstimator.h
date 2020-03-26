@@ -4,7 +4,13 @@
 #include "Estimator.h"
 #include "SimpleGraph.h"
 
-enum op_t {greater,lower,kleene};
+
+enum op_t {greater,lower,kleene, select};
+typedef struct {
+    op_t op;
+    uint32_t  value;
+} basic_query_t;
+typedef std::vector<basic_query_t> query_t;
 
 /**
  * Adapter structure of cardStar used to store extra information used in the concat method :
@@ -53,14 +59,15 @@ struct Syn3{
 
 class SimpleEstimator : public Estimator {
 
-    std::shared_ptr<SimpleGraph> graph;
+    std::shared_ptr<SimpleGraph> index;
 
 public:
     explicit SimpleEstimator(std::shared_ptr<SimpleGraph> &g);
     ~SimpleEstimator() = default;
 
     void prepare() override ;
-    cardStat estimate(PathQuery *q) override ;
+    cardStat estimate(PathQuery *q) override;
+    cardStat estimatePhy(void* op);
 
 private:
     void printGraphInfo();

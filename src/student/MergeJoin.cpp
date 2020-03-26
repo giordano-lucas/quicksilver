@@ -63,7 +63,7 @@ void MergeJoin::evalPipeline(ResultSorted resultSorted) {
 }
 
 uint32_t MergeJoin::cost() const {
-    return left->getCardinality().stat.noPaths + right->getCardinality().stat.noPaths + left->cost() + right->cost();
+    return left->getCardinality().noPaths + right->getCardinality().noPaths + left->cost() + right->cost();
 }
 
 MergeJoin::MergeJoin(PhysicalOperator *left, PhysicalOperator *right) : PhysicalOperator(
@@ -71,10 +71,6 @@ MergeJoin::MergeJoin(PhysicalOperator *left, PhysicalOperator *right) : Physical
 
 std::ostream &MergeJoin::name(std::ostream &strm) const {
     return strm << "MergeJoin";
-}
-
-cardPathStat MergeJoin::getCardinality() const {
-    return cardPathStat{greater, 0,cardStat{0,0,0}};
 }
 
 

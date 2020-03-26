@@ -8,6 +8,10 @@
 IndexLookUp::IndexLookUp(std::shared_ptr<SimpleGraph>& index,QueryEdge queryEdge, bool reversed) :
         PhysicalOperator(nullptr, nullptr,SOURCE_SORTED),
         index(index), queryEdge((reversed)?reverse(queryEdge):queryEdge), reversed(reversed), sortedResSource(),sortedResTarget(), res() {
+    if (queryEdge.source != NONE) query.push_back(basic_query_t{select, queryEdge.source});
+    query.push_back(basic_query_t{(reversed)?lower:greater, queryEdge.label});
+    if (queryEdge.target != NONE) query.push_back(basic_query_t{select, queryEdge.target});
+
 }
 
 IndexLookUp::~IndexLookUp() {
@@ -105,10 +109,6 @@ bool IndexLookUp::isRightBounded() const {
 
 std::ostream &IndexLookUp::name(std::ostream &strm) const {
     return strm << "IndexLookUp : " << reversed << "|"<< queryEdge.label;
-}
-
-cardPathStat IndexLookUp::getCardinality() const {
-    return cardPathStat{greater, 0, cardStat{0,0,0}};
 }
 
 

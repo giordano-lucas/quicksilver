@@ -14,10 +14,11 @@ private:
     QueryEdge queryEdge;
     bool done = false;
     void dfs(std::unordered_map<Node,bool>& discovered,Node n, Node source, bool reversed,std::vector<Edge>& output);
+    std::unordered_map<Node,std::vector<Node>> cache;
+    std::unordered_map<Node,bool> finishedCache;
 public:
     KleeneStar(std::shared_ptr<SimpleGraph>& index, QueryEdge queryEdge);
     uint32_t cost() const override;
-    cardPathStat getCardinality() const override;
     void evalPipeline(ResultSorted resultSorted) override;
     Edge produceNextEdge() override;
     std::ostream &name(std::ostream &strm) const override;

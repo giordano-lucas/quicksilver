@@ -1,12 +1,13 @@
 #include <cmath>
+#include <student/PhysicalOperator.h>
 #include "SimpleGraph.h"
 #include "SimpleEstimator.h"
 
 
 
-SimpleEstimator::SimpleEstimator(std::shared_ptr<SimpleGraph> &g){
+SimpleEstimator::SimpleEstimator(std::shared_ptr<SimpleGraph> &ind){
     // works only with SimpleGraph
-    graph = g;
+    index = ind;
 }
 // sort on the second item in the pair, then on the first (ascending order)
 
@@ -156,6 +157,30 @@ void SimpleEstimator::prepare() {
      */
 }
 
+cardStat SimpleEstimator::estimatePhy(void *op) {
+    PhysicalOperator* o = static_cast<PhysicalOperator *>(op);
+    query_t q = o->flatten();
+    bool boundedRight = false;
+    bool boundedLeft = false;
+    if (q.back().op == select){
+        boundedRight = true;
+        q.pop_back();
+    }
+    auto it = q.begin();
+    if (q.front().op == select){
+        boundedLeft = true;
+        it++;
+    }
+    for (;it != q.end(); it++){
+
+    }
+
+
+    return cardStat();
+}
+
+
+
 cardStat SimpleEstimator::estimate(PathQuery *q) {
 
     // perform your estimation here
@@ -217,10 +242,10 @@ cardPathStat SimpleEstimator::estimateLeaf(std::string regExp) {
 void SimpleEstimator::printGraphInfo() {
     // print all the available information about the graph:
     std::cout << "GRAPH INFO" << std::endl;
-    std::cout << "Number of vertices: " << graph->getNoVertices() << std::endl;
-    std::cout << "Number of edges: " <<  graph->getNoEdges() << std::endl;
-    std::cout << "Number of distinct edges: " << graph->getNoDistinctEdges() << std::endl;
-    std::cout << "Number of labels: " << graph->getNoLabels() << std::endl;
+    std::cout << "Number of vertices: " << index->getNoVertices() << std::endl;
+    std::cout << "Number of edges: " <<  index->getNoEdges() << std::endl;
+    std::cout << "Number of distinct edges: " << index->getNoDistinctEdges() << std::endl;
+    std::cout << "Number of labels: " << index->getNoLabels() << std::endl;
 }
 //*********************************************************************************************
 /**

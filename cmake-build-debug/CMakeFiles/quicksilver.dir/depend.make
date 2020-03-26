@@ -12,12 +12,16 @@ CMakeFiles/quicksilver.dir/src/PathTree.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/src/PathTree.cpp.o: ../src/PathTree.cpp
 
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/Estimator.h
+CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/Evaluator.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/Graph.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/PathQuery.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/SimpleEstimator.h
+CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/SimpleEvaluator.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/SimpleGraph.h
+CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/student/BlockingQueue.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/student/Edge.h
+CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/student/PhysicalOperator.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../src/SimpleEstimator.cpp
 
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/Estimator.h
@@ -61,10 +65,12 @@ CMakeFiles/quicksilver.dir/src/student/Edge.cpp.o: ../include/student/Edge.h
 CMakeFiles/quicksilver.dir/src/student/Edge.cpp.o: ../src/student/Edge.cpp
 
 CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o: ../include/Estimator.h
+CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o: ../include/Evaluator.h
 CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o: ../include/Graph.h
 CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o: ../include/PathQuery.h
 CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o: ../include/SimpleEstimator.h
+CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o: ../include/SimpleEvaluator.h
 CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o: ../include/SimpleGraph.h
 CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o: ../include/student/BlockingQueue.h
 CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o: ../include/student/Edge.h
@@ -73,10 +79,12 @@ CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o: ../include/student/Phy
 CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o: ../src/student/IndexLookUp.cpp
 
 CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o: ../include/Estimator.h
+CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o: ../include/Evaluator.h
 CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o: ../include/Graph.h
 CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o: ../include/PathQuery.h
 CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o: ../include/SimpleEstimator.h
+CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o: ../include/SimpleEvaluator.h
 CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o: ../include/SimpleGraph.h
 CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o: ../include/student/BlockingQueue.h
 CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o: ../include/student/Edge.h
@@ -85,10 +93,12 @@ CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o: ../include/student/Phys
 CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o: ../src/student/KleeneStar.cpp
 
 CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o: ../include/Estimator.h
+CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o: ../include/Evaluator.h
 CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o: ../include/Graph.h
 CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o: ../include/PathQuery.h
 CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o: ../include/SimpleEstimator.h
+CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o: ../include/SimpleEvaluator.h
 CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o: ../include/SimpleGraph.h
 CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o: ../include/student/BlockingQueue.h
 CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o: ../include/student/Edge.h

@@ -8,14 +8,14 @@
 #include <queue>
 #include <vector>
 #include "Edge.h"
-#include "Estimator.h"
 #include <mutex>
 #include <unordered_map>
 #include "BlockingQueue.h"
-#include "SimpleEstimator.h"
 #include <thread>
 #include <ostream>
-
+#include <iostream>
+#include <SimpleEstimator.h>
+#include "SimpleEvaluator.h"
 
 static Edge END_EDGE = Edge{NONE, NONE};
 
@@ -30,13 +30,21 @@ protected:
      PhysicalOperator* right;
      ResultSorted defaultResultSorted;
      bool terminated = false;
-
+     std::shared_ptr<SimpleEstimator> est;
+     query_t query;
 public:
     /**
      * Constructor
      **/
     PhysicalOperator(PhysicalOperator* left,PhysicalOperator* right,ResultSorted defaultResultSorted) :
-        out(), left(left), right(right),defaultResultSorted(defaultResultSorted) {}
+        out(), left(left), right(right),defaultResultSorted(defaultResultSorted) {
+
+        if (left != nullptr && right != nullptr){
+            for (auto q : left->flatten()) query.push_back(q);
+            for (auto q : right->flatten()) query.push_back(q);
+        }
+
+    }
     /**
      * Terminate the computation of this physical operator
      */
@@ -74,9 +82,22 @@ public:
         return (right != nullptr)?right->isLeftBounded():false;
     };
     /**
+     *
+     **/
+    void attachEstimator(std::shared_ptr<SimpleEstimator> &est) {
+        PhysicalOperator::est = est;
+        if (left != nullptr) left->attachEstimator(est);
+        if (right != nullptr) right->attachEstimator(est);
+    };
+    /**
      * Returns the cardinality estimation of the result of this physical operator
      **/
-    virtual cardPathStat getCardinality() const = 0;
+    cardStat getCardinality() const {
+        return est->estimatePhy((void *) this);
+    };
+    query_t  flatten() const {
+        return query;
+    }
 
     /**
      * /!\ MACRO /!\

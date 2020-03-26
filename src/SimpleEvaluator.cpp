@@ -63,6 +63,7 @@ PhysicalOperator* ofPathQuery(PathQuery* pq, std::shared_ptr<SimpleGraph>& index
 }
 cardStat SimpleEvaluator::evaluate(PathQuery *query) {
     PhysicalOperator* op = ofPathQuery(query, graph);
+//    op->attachEstimator(est);
     auto res = op->eval();
     delete op;
     return res;
