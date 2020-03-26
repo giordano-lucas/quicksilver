@@ -23,9 +23,9 @@ class BlockingQueue {
         /**
          * Constructor
          */
-        BlockingQueue(bool fastProducer = true,size_t limit = 500) : limit(limit),queue(), mtx(), pushCond(),popCond() {
+        BlockingQueue(bool fastProducer = true,size_t limit = 20000) : limit(limit),queue(), mtx(), pushCond(),popCond() {
             //assert(limit > 0);
-            signalingPushSize = (fastProducer)? std::max(limit/2, (size_t)1): 1;
+            signalingPushSize = (fastProducer)? std::max((size_t)100, (size_t)1): 1;
         }
 
         /**
@@ -38,7 +38,7 @@ class BlockingQueue {
             }
             //assert(queue.size() < limit);
             queue.push(elem);
-            if (queue.size() >= std::max(limit/5,(size_t)1) || lastPush) popCond.notify_one();
+            if (queue.size() >= std::max((size_t)100,(size_t)1) || lastPush) popCond.notify_one();
         };
         /**
         * Pop an Edge from the queue q in a thread safe way
