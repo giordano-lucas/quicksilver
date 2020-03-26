@@ -121,8 +121,8 @@ public:
          }
          thd.join();  //terminate execution of evalPipeline()
 
-         if (isLeftBounded()) assert(noOut <= 1);
-         if (isRightBounded()) assert(noIn <= 1);
+        // if (isLeftBounded()) assert(noOut <= 1);
+         //if (isRightBounded()) assert(noIn <= 1);
          return cardStat{noOut,noPath,noIn};
      };
 
