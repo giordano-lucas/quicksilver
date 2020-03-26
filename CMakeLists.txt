@@ -25,10 +25,10 @@ set(HEADER_FILES
         include/SimpleGraph.h
         include/SimpleEstimator.h
         include/SimpleEvaluator.h
-        include/Edge.h src/Edge.cpp
-        include/PhysicalOperator.h
-        src/IndexLookUp.cpp include/IndexLookUp.h
-        src/MergeJoin.cpp include/MergeJoin.h
+        include/student/Edge.h src/student/Edge.cpp
+        include/student/PhysicalOperator.h
+        src/student/IndexLookUp.cpp include/student/IndexLookUp.h
+        src/student/MergeJoin.cpp include/student/MergeJoin.h
         include/PathQuery.h
         include/benches.h
         include/rss.h)
@@ -40,12 +40,12 @@ set(SOURCE_FILES
         src/SimpleEstimator.cpp
         src/SimpleEvaluator.cpp
         src/PathQuery.cpp
-        include/Edge.h src/Edge.cpp
-        include/PhysicalOperator.h
-        src/IndexLookUp.cpp include/IndexLookUp.h
-        include/BlockingQueue.h
-        src/MergeJoin.cpp include/MergeJoin.h
-        src/KleeneStar.cpp include/KleeneStar.h
+        include/student/Edge.h src/student/Edge.cpp
+        include/student/PhysicalOperator.h
+        src/student/IndexLookUp.cpp include/student/IndexLookUp.h
+        include/student/BlockingQueue.h
+        src/student/MergeJoin.cpp include/student/MergeJoin.h
+        src/student/KleeneStar.cpp include/student/KleeneStar.h
         src/benches.cpp
         src/rss.c)
 
@@ -58,7 +58,7 @@ add_executable(quicksilver src/main.cpp ${SOURCE_FILES} ${HEADER_FILES} ${STUDEN
 target_link_libraries(quicksilver Threads::Threads)
 
 if (Filesystem_FOUND)
-    add_executable(benchmarker src/benchmarker.cpp ${SOURCE_FILES} ${HEADER_FILES} ${STUDENT_SOURCE_FILES} ${STUDENT_HEADER_FILES} src/myMain.cpp)
+    add_executable(benchmarker src/benchmarker.cpp ${SOURCE_FILES} ${HEADER_FILES} ${STUDENT_SOURCE_FILES} ${STUDENT_HEADER_FILES} src/student/myMain.cpp)
     target_link_libraries(benchmarker Threads::Threads std::filesystem)
 endif()
 

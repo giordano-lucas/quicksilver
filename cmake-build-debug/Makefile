@@ -137,126 +137,6 @@ quicksilver/fast:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/build
 .PHONY : quicksilver/fast
 
-src/Edge.o: src/Edge.cpp.o
-
-.PHONY : src/Edge.o
-
-# target to build an object file
-src/Edge.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/Edge.cpp.o
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/Edge.cpp.o
-.PHONY : src/Edge.cpp.o
-
-src/Edge.i: src/Edge.cpp.i
-
-.PHONY : src/Edge.i
-
-# target to preprocess a source file
-src/Edge.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/Edge.cpp.i
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/Edge.cpp.i
-.PHONY : src/Edge.cpp.i
-
-src/Edge.s: src/Edge.cpp.s
-
-.PHONY : src/Edge.s
-
-# target to generate assembly for a file
-src/Edge.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/Edge.cpp.s
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/Edge.cpp.s
-.PHONY : src/Edge.cpp.s
-
-src/IndexLookUp.o: src/IndexLookUp.cpp.o
-
-.PHONY : src/IndexLookUp.o
-
-# target to build an object file
-src/IndexLookUp.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/IndexLookUp.cpp.o
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.o
-.PHONY : src/IndexLookUp.cpp.o
-
-src/IndexLookUp.i: src/IndexLookUp.cpp.i
-
-.PHONY : src/IndexLookUp.i
-
-# target to preprocess a source file
-src/IndexLookUp.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/IndexLookUp.cpp.i
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.i
-.PHONY : src/IndexLookUp.cpp.i
-
-src/IndexLookUp.s: src/IndexLookUp.cpp.s
-
-.PHONY : src/IndexLookUp.s
-
-# target to generate assembly for a file
-src/IndexLookUp.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/IndexLookUp.cpp.s
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/IndexLookUp.cpp.s
-.PHONY : src/IndexLookUp.cpp.s
-
-src/KleeneStar.o: src/KleeneStar.cpp.o
-
-.PHONY : src/KleeneStar.o
-
-# target to build an object file
-src/KleeneStar.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/KleeneStar.cpp.o
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/KleeneStar.cpp.o
-.PHONY : src/KleeneStar.cpp.o
-
-src/KleeneStar.i: src/KleeneStar.cpp.i
-
-.PHONY : src/KleeneStar.i
-
-# target to preprocess a source file
-src/KleeneStar.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/KleeneStar.cpp.i
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/KleeneStar.cpp.i
-.PHONY : src/KleeneStar.cpp.i
-
-src/KleeneStar.s: src/KleeneStar.cpp.s
-
-.PHONY : src/KleeneStar.s
-
-# target to generate assembly for a file
-src/KleeneStar.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/KleeneStar.cpp.s
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/KleeneStar.cpp.s
-.PHONY : src/KleeneStar.cpp.s
-
-src/MergeJoin.o: src/MergeJoin.cpp.o
-
-.PHONY : src/MergeJoin.o
-
-# target to build an object file
-src/MergeJoin.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/MergeJoin.cpp.o
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.o
-.PHONY : src/MergeJoin.cpp.o
-
-src/MergeJoin.i: src/MergeJoin.cpp.i
-
-.PHONY : src/MergeJoin.i
-
-# target to preprocess a source file
-src/MergeJoin.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/MergeJoin.cpp.i
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.i
-.PHONY : src/MergeJoin.cpp.i
-
-src/MergeJoin.s: src/MergeJoin.cpp.s
-
-.PHONY : src/MergeJoin.s
-
-# target to generate assembly for a file
-src/MergeJoin.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/MergeJoin.cpp.s
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/MergeJoin.cpp.s
-.PHONY : src/MergeJoin.cpp.s
-
 src/PathQuery.o: src/PathQuery.cpp.o
 
 .PHONY : src/PathQuery.o
@@ -491,33 +371,6 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/myMain.o: src/myMain.cpp.o
-
-.PHONY : src/myMain.o
-
-# target to build an object file
-src/myMain.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/myMain.cpp.o
-.PHONY : src/myMain.cpp.o
-
-src/myMain.i: src/myMain.cpp.i
-
-.PHONY : src/myMain.i
-
-# target to preprocess a source file
-src/myMain.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/myMain.cpp.i
-.PHONY : src/myMain.cpp.i
-
-src/myMain.s: src/myMain.cpp.s
-
-.PHONY : src/myMain.s
-
-# target to generate assembly for a file
-src/myMain.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/myMain.cpp.s
-.PHONY : src/myMain.cpp.s
-
 src/rss.o: src/rss.c.o
 
 .PHONY : src/rss.o
@@ -548,6 +401,156 @@ src/rss.c.s:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/rss.c.s
 .PHONY : src/rss.c.s
 
+src/student/Edge.o: src/student/Edge.cpp.o
+
+.PHONY : src/student/Edge.o
+
+# target to build an object file
+src/student/Edge.cpp.o:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/Edge.cpp.o
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/Edge.cpp.o
+.PHONY : src/student/Edge.cpp.o
+
+src/student/Edge.i: src/student/Edge.cpp.i
+
+.PHONY : src/student/Edge.i
+
+# target to preprocess a source file
+src/student/Edge.cpp.i:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/Edge.cpp.i
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/Edge.cpp.i
+.PHONY : src/student/Edge.cpp.i
+
+src/student/Edge.s: src/student/Edge.cpp.s
+
+.PHONY : src/student/Edge.s
+
+# target to generate assembly for a file
+src/student/Edge.cpp.s:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/Edge.cpp.s
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/Edge.cpp.s
+.PHONY : src/student/Edge.cpp.s
+
+src/student/IndexLookUp.o: src/student/IndexLookUp.cpp.o
+
+.PHONY : src/student/IndexLookUp.o
+
+# target to build an object file
+src/student/IndexLookUp.cpp.o:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/IndexLookUp.cpp.o
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o
+.PHONY : src/student/IndexLookUp.cpp.o
+
+src/student/IndexLookUp.i: src/student/IndexLookUp.cpp.i
+
+.PHONY : src/student/IndexLookUp.i
+
+# target to preprocess a source file
+src/student/IndexLookUp.cpp.i:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/IndexLookUp.cpp.i
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.i
+.PHONY : src/student/IndexLookUp.cpp.i
+
+src/student/IndexLookUp.s: src/student/IndexLookUp.cpp.s
+
+.PHONY : src/student/IndexLookUp.s
+
+# target to generate assembly for a file
+src/student/IndexLookUp.cpp.s:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/IndexLookUp.cpp.s
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.s
+.PHONY : src/student/IndexLookUp.cpp.s
+
+src/student/KleeneStar.o: src/student/KleeneStar.cpp.o
+
+.PHONY : src/student/KleeneStar.o
+
+# target to build an object file
+src/student/KleeneStar.cpp.o:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/KleeneStar.cpp.o
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o
+.PHONY : src/student/KleeneStar.cpp.o
+
+src/student/KleeneStar.i: src/student/KleeneStar.cpp.i
+
+.PHONY : src/student/KleeneStar.i
+
+# target to preprocess a source file
+src/student/KleeneStar.cpp.i:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/KleeneStar.cpp.i
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.i
+.PHONY : src/student/KleeneStar.cpp.i
+
+src/student/KleeneStar.s: src/student/KleeneStar.cpp.s
+
+.PHONY : src/student/KleeneStar.s
+
+# target to generate assembly for a file
+src/student/KleeneStar.cpp.s:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/KleeneStar.cpp.s
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.s
+.PHONY : src/student/KleeneStar.cpp.s
+
+src/student/MergeJoin.o: src/student/MergeJoin.cpp.o
+
+.PHONY : src/student/MergeJoin.o
+
+# target to build an object file
+src/student/MergeJoin.cpp.o:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/MergeJoin.cpp.o
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o
+.PHONY : src/student/MergeJoin.cpp.o
+
+src/student/MergeJoin.i: src/student/MergeJoin.cpp.i
+
+.PHONY : src/student/MergeJoin.i
+
+# target to preprocess a source file
+src/student/MergeJoin.cpp.i:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/MergeJoin.cpp.i
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.i
+.PHONY : src/student/MergeJoin.cpp.i
+
+src/student/MergeJoin.s: src/student/MergeJoin.cpp.s
+
+.PHONY : src/student/MergeJoin.s
+
+# target to generate assembly for a file
+src/student/MergeJoin.cpp.s:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/MergeJoin.cpp.s
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.s
+.PHONY : src/student/MergeJoin.cpp.s
+
+src/student/myMain.o: src/student/myMain.cpp.o
+
+.PHONY : src/student/myMain.o
+
+# target to build an object file
+src/student/myMain.cpp.o:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/myMain.cpp.o
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/myMain.cpp.o
+.PHONY : src/student/myMain.cpp.o
+
+src/student/myMain.i: src/student/myMain.cpp.i
+
+.PHONY : src/student/myMain.i
+
+# target to preprocess a source file
+src/student/myMain.cpp.i:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/myMain.cpp.i
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/myMain.cpp.i
+.PHONY : src/student/myMain.cpp.i
+
+src/student/myMain.s: src/student/myMain.cpp.s
+
+.PHONY : src/student/myMain.s
+
+# target to generate assembly for a file
+src/student/myMain.cpp.s:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/myMain.cpp.s
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/myMain.cpp.s
+.PHONY : src/student/myMain.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -558,18 +561,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... benchmarker"
 	@echo "... quicksilver"
-	@echo "... src/Edge.o"
-	@echo "... src/Edge.i"
-	@echo "... src/Edge.s"
-	@echo "... src/IndexLookUp.o"
-	@echo "... src/IndexLookUp.i"
-	@echo "... src/IndexLookUp.s"
-	@echo "... src/KleeneStar.o"
-	@echo "... src/KleeneStar.i"
-	@echo "... src/KleeneStar.s"
-	@echo "... src/MergeJoin.o"
-	@echo "... src/MergeJoin.i"
-	@echo "... src/MergeJoin.s"
 	@echo "... src/PathQuery.o"
 	@echo "... src/PathQuery.i"
 	@echo "... src/PathQuery.s"
@@ -594,12 +585,24 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/myMain.o"
-	@echo "... src/myMain.i"
-	@echo "... src/myMain.s"
 	@echo "... src/rss.o"
 	@echo "... src/rss.i"
 	@echo "... src/rss.s"
+	@echo "... src/student/Edge.o"
+	@echo "... src/student/Edge.i"
+	@echo "... src/student/Edge.s"
+	@echo "... src/student/IndexLookUp.o"
+	@echo "... src/student/IndexLookUp.i"
+	@echo "... src/student/IndexLookUp.s"
+	@echo "... src/student/KleeneStar.o"
+	@echo "... src/student/KleeneStar.i"
+	@echo "... src/student/KleeneStar.s"
+	@echo "... src/student/MergeJoin.o"
+	@echo "... src/student/MergeJoin.i"
+	@echo "... src/student/MergeJoin.s"
+	@echo "... src/student/myMain.o"
+	@echo "... src/student/myMain.i"
+	@echo "... src/student/myMain.s"
 .PHONY : help
 
 

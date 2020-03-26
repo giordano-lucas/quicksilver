@@ -17,7 +17,7 @@
 #include "BlockingQueue.h"
 #include "MergeJoin.h"
 #include <rss.h>
-
+/*
 int myEvaluatorBench(std::string &graphFile, std::string &queriesFile);
 
 std::vector<PathQuery *> parseQueries(std::string &fileName) {
@@ -133,7 +133,6 @@ int main(int argc, char *argv[]) {
     //evaluatorBench(graphFile, queriesFile);
     //std::cout << "============================================================================================ \n";
     myEvaluatorBench(graphFile,queriesFile);
-    /*
 
     Label l1 = 0;
     Label l2 = 1;
@@ -157,10 +156,10 @@ int main(int argc, char *argv[]) {
     //PhysicalOperator* op = new MergeJoin(new IndexLookUp(&index,Edge{NONE,l1,NONE},false, TARGET_SORTED),new IndexLookUp(&index,Edge{NONE,l2,NONE},false,SOURCE_SORTED));
     PhysicalOperator* op = new KleeneStar(&index, Edge{NONE,l1,NONE},NOT_SORTED);
     op->eval().print();
-    */
+
     //********************************************************************************
     //Try to compute the index
-/*
+
     EdgeIndex index;
 
     try {
@@ -173,8 +172,6 @@ int main(int argc, char *argv[]) {
     PhysicalOperator* op = new MergeJoin(new IndexLookUp(&index,Edge{NONE,0,NONE},false, TARGET_SORTED),new IndexLookUp(&index,Edge{NONE,1,NONE},false,SOURCE_SORTED));
     //PhysicalOperator* op = new IndexLookUp(&index, Edge{NONE,0,NONE},false, TARGET_SORTED);
     op->eval().print();
-*/
-    /*
 
     //Construct physical indexLookUp operator
     Edge query = Edge{13,3,NONE};
@@ -186,7 +183,7 @@ int main(int argc, char *argv[]) {
     r.print();
     std::cout << "TIME TO EVALUATE INDEX : " << std::chrono::duration<double, std::milli>(end - start).count() << " ms" << std::endl;
 
-    */
+
 
     //From upstream repository
 //    auto result = evaluatorBench(graphFile, queriesFile);
@@ -203,7 +200,7 @@ int main(int argc, char *argv[]) {
 }
 
 
-static PhysicalOperator* ofPathTree(PathTree* tree, EdgeIndex* index, Node leftBounded, Node rightBounded){
+static PhysicalOperator* ofPathTree(PathTree* tree, std::shared_ptr<SimpleGraph> & index, Node leftBounded, Node rightBounded){
     if (tree->isLeaf()){
         std::regex directLabel(R"((\d+)\>)");
         std::regex inverseLabel(R"((\d+)\<)");
@@ -232,7 +229,7 @@ static PhysicalOperator* ofPathTree(PathTree* tree, EdgeIndex* index, Node leftB
     }
     throw "Illegal argument";
 }
-static PhysicalOperator* ofPathQuery(PathQuery* pq, EdgeIndex* index) {
+static PhysicalOperator* ofPathQuery(PathQuery* pq, std::shared_ptr<SimpleGraph> & index) {
     Node s = (pq->s.compare("*")==0)?NONE: (uint32_t) std::stoi(pq->s);
     Node t = (pq->t.compare("*")==0)?NONE: (uint32_t) std::stoi(pq->t);
     //std::cout << "(" << s << "," << t<< ")\n";
@@ -247,7 +244,7 @@ int compareEvaluatorBench(std::string &graphFile, std::string &queriesFile) {
     EdgeIndex index;
     auto start = std::chrono::steady_clock::now();
     try {
-        index.buildFromFile(graphFile);
+        index.readFromContiguousFile(graphFile);
     } catch (std::runtime_error &e) {
         std::cerr << e.what() << std::endl;
         return 0;
@@ -303,7 +300,7 @@ int myEvaluatorBench(std::string &graphFile, std::string &queriesFile) {
     EdgeIndex index;
     auto start = std::chrono::steady_clock::now();
     try {
-        index.buildFromFile(graphFile);
+        index.readFromContiguousFile(graphFile);
     } catch (std::runtime_error &e) {
         std::cerr << e.what() << std::endl;
         return 0;
@@ -323,7 +320,7 @@ int myEvaluatorBench(std::string &graphFile, std::string &queriesFile) {
 
     std::cout << "Time dif to read the graph into memory: " << std::chrono::duration<double, std::milli>(end2 - start2 - (end - start)).count() << " ms" << std::endl;
 
-    /****************** ESTIMATION CONSTRUCTION *******************/
+    //***************** ESTIMATION CONSTRUCTION ******************
 
     start = std::chrono::steady_clock::now();
     end = std::chrono::steady_clock::now();
@@ -340,7 +337,7 @@ int myEvaluatorBench(std::string &graphFile, std::string &queriesFile) {
     end2 = std::chrono::steady_clock::now();
     std::cout << "Time dif to prepare the evaluator: " << std::chrono::duration<double, std::milli>(end2 - start2 - (end - start)).count() << " ms" << std::endl;
 
-    /******************************  RUN WORK LOAD **************************************/
+    //******************************  RUN WORK LOAD *************************************
 
     std::cout << "\n(2) Running the query workload..." << std::endl;
 
@@ -352,7 +349,7 @@ int myEvaluatorBench(std::string &graphFile, std::string &queriesFile) {
         // parse the query into an AST
         std::cout << "\nProcessing query: " << *query;
         std::cout << "Parsed query tree: " << *query->path;
-        PhysicalOperator* evaluator = ofPathQuery(query, &index);
+        PhysicalOperator* evaluator = ofPathQuery(query, g);
         //std::cout << *evaluator;
 
         // perform the evaluation
@@ -376,4 +373,4 @@ int myEvaluatorBench(std::string &graphFile, std::string &queriesFile) {
     for(auto query : queries) delete(query);
 
     return 0;
-}
+}*/

@@ -130,14 +130,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/BlockingQueue.h">
-			<Option target="benchmarker"/>
-			<Option target="quicksilver"/>
-		</Unit>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/Edge.h">
-			<Option target="benchmarker"/>
-			<Option target="quicksilver"/>
-		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/Estimator.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
@@ -150,27 +142,11 @@
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/IndexLookUp.h">
-			<Option target="benchmarker"/>
-			<Option target="quicksilver"/>
-		</Unit>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/KleeneStar.h">
-			<Option target="benchmarker"/>
-			<Option target="quicksilver"/>
-		</Unit>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/MergeJoin.h">
-			<Option target="benchmarker"/>
-			<Option target="quicksilver"/>
-		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/PathQuery.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/PathTree.h">
-			<Option target="benchmarker"/>
-			<Option target="quicksilver"/>
-		</Unit>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/PhysicalOperator.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
@@ -194,19 +170,27 @@
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/Edge.cpp">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/BlockingQueue.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/IndexLookUp.cpp">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/Edge.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/KleeneStar.cpp">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/IndexLookUp.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/MergeJoin.cpp">
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/KleeneStar.h">
+			<Option target="benchmarker"/>
+			<Option target="quicksilver"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/MergeJoin.h">
+			<Option target="benchmarker"/>
+			<Option target="quicksilver"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/PhysicalOperator.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
@@ -240,10 +224,27 @@
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/main.cpp">
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/myMain.cpp">
-			<Option target="benchmarker"/>
-		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/rss.c">
+			<Option target="benchmarker"/>
+			<Option target="quicksilver"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/Edge.cpp">
+			<Option target="benchmarker"/>
+			<Option target="quicksilver"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/IndexLookUp.cpp">
+			<Option target="benchmarker"/>
+			<Option target="quicksilver"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/KleeneStar.cpp">
+			<Option target="benchmarker"/>
+			<Option target="quicksilver"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/MergeJoin.cpp">
+			<Option target="benchmarker"/>
+			<Option target="quicksilver"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/myMain.cpp">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
