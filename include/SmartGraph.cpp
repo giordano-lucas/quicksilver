@@ -9,7 +9,7 @@
 //******************* Destructor *********************
 //****************************************************
 
-SmartGraph::~SmartGraph() {
+SmartGraph::~SmartGraph()  {
     for (Label l= 0 ; l < L ; ++l){
         free(sourceIndex[l].edges);
         free(sourceIndex[l].headers);
@@ -83,10 +83,12 @@ void SmartGraph::readFromContiguousFile(const std::string &fileName) {
         sourceIndex[l].nbHeaders = syn1[l].out;
         sourceIndex[l].headers   = static_cast<Header*>(calloc(sourceIndex[l].nbHeaders, sizeof(Header)));
         sourceIndex[l].edges     = static_cast<Node*>(calloc(syn1[l].path, sizeof(Node)));
+        sourceIndex[l].nbEdges   = syn1[l].path;
 
         targetIndex[l].nbHeaders = syn1[l].in;
         targetIndex[l].headers   = static_cast<Header*>(calloc(targetIndex[l].nbHeaders, sizeof(Header)));
         targetIndex[l].edges     = static_cast<Node*>(calloc(syn1[l].path, sizeof(Node)));
+        targetIndex[l].nbEdges   = syn1[l].path;
         /////*********************** Construction ********************************
         insertAll(edges[l],l);
         /////*********************** END ********************************
@@ -182,9 +184,9 @@ SmartGraph::Iterator SmartGraph::getEdgesTarget(QueryEdge queryEdge) const {
     return getEdgesTarget(queryEdge,false);
 }
 
-//****************************************************
-//******************** Iterator **********************
-//****************************************************
+//*************************************************************
+//************************** Iterator *************************
+//*************************************************************
 
 
 SmartGraph::Iterator::Iterator(LabelIndex *index, Header *start, Header* end, bool needReverse) {
@@ -199,16 +201,28 @@ SmartGraph::Iterator::Iterator(LabelIndex *index, Header *start, bool needRevers
         Iterator(index,start, index->headers + index->nbHeaders, needReverse) {}
 SmartGraph::Iterator SmartGraph::Iterator::operator++() {
     if (done) return *this;
-    remainingTargets--;
-    target++;
-    if (remainingTargets > 0) {
+    if (!needSorted){          //regular iterator
+        remainingTargets--;
+        target++;
+        if (remainingTargets > 0) {
+            return *this;
+        }
+        else return skip();
+    }
+    else {//sorted iterator
+        ++itSorted;
+        if (itSorted >= (sortedArray + index->nbEdges)) {
+            done = true;
+            free(allocatedArray);
+        }
         return *this;
     }
-    else return skip();
+
 }
 Edge SmartGraph::Iterator::operator*() {
     if (done) return Edge{NONE,NONE};
-    else      return (!needReverse)?Edge{source->source, *target}: Edge{*target,source->source};
+    if (!needSorted) return (!needReverse)?Edge{source->source, *target}: Edge{*target,source->source};
+    else             return *itSorted;
 }
 
 SmartGraph::Iterator SmartGraph::Iterator::skip() {
@@ -224,6 +238,49 @@ bool SmartGraph::Iterator::hasNext() const {
     return !done;
 }
 
+SmartGraph::Iterator SmartGraph::Iterator::sort(Comparator cmp) {
+    if (needSorted) return *this; //already sorted
+    allocatedArray = static_cast<Edge*>(calloc(index->nbEdges, sizeof(Edge)));
+    sortedArray = allocatedArray;
+    itSorted = sortedArray;
+    while (hasNext()){
+        (*itSorted) = operator*();
+        itSorted++;
+        operator++();
+    }
+    itSorted = sortedArray;
+    std::sort(sortedArray,sortedArray + index->nbEdges, cmp);
+    done = false;
+    needSorted = true;
+    source = nullptr;
+    end = nullptr;
+    target = nullptr;
+    return *this;
+}
 
+
+//*************************************************************
+//********************** Graph Functions **********************
+//*************************************************************
+
+uint32_t SmartGraph::getNoVertices() const {
+    return V;
+}
+
+uint32_t SmartGraph::getNoEdges() const {
+    return 0;
+}
+
+uint32_t SmartGraph::getNoDistinctEdges() const {
+    return 0;
+}
+
+uint32_t SmartGraph::getNoLabels() const {
+    return L;
+}
+
+void SmartGraph::addEdge(uint32_t from, uint32_t to, uint32_t edgeLabel) {
+
+}
 
 

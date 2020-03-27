@@ -65,7 +65,9 @@ int main(int argc, char *argv[]) {
 
     SmartGraph g;
     g.readFromContiguousFile(graphFile);
-    cardStat actual = eval(g.getEdgesTarget(QueryEdge{NONE,0,NONE}));
+    auto it = g.getEdgesSource(QueryEdge{NONE,0,NONE});
+    it = it.sort(targetComp);
+    cardStat actual = eval(it);
     std::cout << "Actual (noOut, noPaths, noIn) : ";
     actual.print();
     return 0;

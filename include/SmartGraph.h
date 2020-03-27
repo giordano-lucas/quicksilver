@@ -8,6 +8,7 @@
 #include "Edge.h"
 #include "Synopse.h"
 #include "Estimator.h"
+#include "Graph.h"
 #include <regex>
 #include <fstream>
 #include <unordered_map>
@@ -22,24 +23,34 @@ typedef struct{
     Header* headers;
     uint32_t nbHeaders;
     Node* edges;
+    uint32_t nbEdges;
 } LabelIndex;
+
+
 typedef LabelIndex* Index;
 //********************** CLASS **********************
-class SmartGraph {
+class SmartGraph : public Graph {
     ///// =============== Nested sub class => iterator ================
 public:
-    class Iterator{
+    class Iterator {
     private:
         LabelIndex* index;
         Header* source;
         Header* end;
         Node*   target;
         uint16_t remainingTargets;
-        bool done = false;
-        bool needReverse;
+        bool done        = false;
+        bool needReverse = false;
+        // Sorted iterator variables
+        bool needSorted  = false;
+        Edge* sortedArray     = nullptr;
+        Edge* allocatedArray     = nullptr;
+        Edge* itSorted   = nullptr;
     public:
         Iterator(LabelIndex* index, Header* start, bool needReverse);
         Iterator(LabelIndex* index, Header* start, Header* end, bool needReverse);
+
+        Iterator sort(Comparator cmp);
         Iterator operator++();
         Edge operator*();
         Iterator skip();
@@ -63,6 +74,17 @@ public:
     /*Insertion methods*/
     void insertAll(std::vector<Edge> &edges, Label l);
     void readFromContiguousFile(const std::string &fileName);
+
+    uint32_t getNoVertices() const override;
+
+    uint32_t getNoEdges() const override;
+
+    uint32_t getNoDistinctEdges() const override;
+
+    uint32_t getNoLabels() const override;
+
+    void addEdge(uint32_t from, uint32_t to, uint32_t edgeLabel) override;
+
     //// *** Synposes ***
     std::vector<Syn1> syn1;
     std::vector<std::vector<Syn2>> syn2;

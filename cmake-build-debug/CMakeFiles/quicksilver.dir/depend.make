@@ -7,6 +7,7 @@ CMakeFiles/quicksilver.dir/src/rss.c.o: ../src/rss.c
 CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o: ../include/student/Edge.h
 CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o: ../include/student/Synopse.h
 CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o: ../include/Estimator.h
+CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o: ../include/Graph.h
 CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o: ../include/PathQuery.h
 CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o: ../include/SmartGraph.cpp
@@ -75,6 +76,7 @@ CMakeFiles/quicksilver.dir/src/benches.cpp.o: ../include/student/Synopse.h
 CMakeFiles/quicksilver.dir/src/benches.cpp.o: ../src/benches.cpp
 
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/Estimator.h
+CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/Graph.h
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/PathQuery.h
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/SmartGraph.h
