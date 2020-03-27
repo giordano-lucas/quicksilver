@@ -162,14 +162,6 @@
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/SmartGraph.cpp">
-			<Option target="benchmarker"/>
-			<Option target="quicksilver"/>
-		</Unit>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/SmartGraph.h">
-			<Option target="benchmarker"/>
-			<Option target="quicksilver"/>
-		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/benches.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>

@@ -137,36 +137,6 @@ quicksilver/fast:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/build
 .PHONY : quicksilver/fast
 
-include/SmartGraph.o: include/SmartGraph.cpp.o
-
-.PHONY : include/SmartGraph.o
-
-# target to build an object file
-include/SmartGraph.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/include/SmartGraph.cpp.o
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o
-.PHONY : include/SmartGraph.cpp.o
-
-include/SmartGraph.i: include/SmartGraph.cpp.i
-
-.PHONY : include/SmartGraph.i
-
-# target to preprocess a source file
-include/SmartGraph.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/include/SmartGraph.cpp.i
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.i
-.PHONY : include/SmartGraph.cpp.i
-
-include/SmartGraph.s: include/SmartGraph.cpp.s
-
-.PHONY : include/SmartGraph.s
-
-# target to generate assembly for a file
-include/SmartGraph.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/include/SmartGraph.cpp.s
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.s
-.PHONY : include/SmartGraph.cpp.s
-
 src/PathQuery.o: src/PathQuery.cpp.o
 
 .PHONY : src/PathQuery.o
@@ -621,9 +591,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... benchmarker"
 	@echo "... quicksilver"
-	@echo "... include/SmartGraph.o"
-	@echo "... include/SmartGraph.i"
-	@echo "... include/SmartGraph.s"
 	@echo "... src/PathQuery.o"
 	@echo "... src/PathQuery.i"
 	@echo "... src/PathQuery.s"

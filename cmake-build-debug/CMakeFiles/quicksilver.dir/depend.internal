@@ -4,8 +4,6 @@
 CMakeFiles/quicksilver.dir/src/rss.c.o
  ../include/rss.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/rss.c
-CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o
- /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/SmartGraph.cpp
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o
  ../include/PathQuery.h
  ../include/PathTree.h

@@ -4,8 +4,6 @@
 CMakeFiles/quicksilver.dir/src/rss.c.o: ../include/rss.h
 CMakeFiles/quicksilver.dir/src/rss.c.o: ../src/rss.c
 
-CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o: ../include/SmartGraph.cpp
-
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o: ../include/PathQuery.h
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o: ../src/PathQuery.cpp

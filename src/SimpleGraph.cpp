@@ -122,13 +122,13 @@ void SimpleGraph::insertAll(std::vector<Edge> &edges, Label l, bool reversed, Co
             index[l].edges[nextSpace] = getTarget(it);            //allocate target
             nextSpace++;                                                //next memory spot
             it++;                                                       //next edge
-            assert(nextSpace <=  (syn1[l].path));                        //check buffer overflow
+            //assert(nextSpace <=  (syn1[l].path));                        //check buffer overflow
         }
         headerIndex++;
-        assert(headerIndex <= index[l].nbHeaders);
+        //assert(headerIndex <= index[l].nbHeaders);
     }
-    assert(nextSpace  == syn1[l].path); //all memory has been used
-    assert(headerIndex == index[l].nbHeaders);           //all memory has been used
+    //assert(nextSpace  == syn1[l].path); //all memory has been used
+    //assert(headerIndex == index[l].nbHeaders);           //all memory has been used
 }
 void SimpleGraph::insertAll(std::vector<Edge> &edges, Label l) {
     insertAll(edges,l,false,sourceComp,sourceIndex);

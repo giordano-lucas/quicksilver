@@ -1,5 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o"
   "CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o"
   "CMakeFiles/quicksilver.dir/src/PathTree.cpp.o"
   "CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o"
