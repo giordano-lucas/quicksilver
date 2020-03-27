@@ -13,6 +13,43 @@ SimpleEstimator::SimpleEstimator(std::shared_ptr<SimpleGraph> &ind){
     // works only with SimpleGraph
     index = ind;
 }
+
+
+#define count(elem, hashTable, countVar) { \
+        if ((hashTable).find(elem) == (hashTable).end()) {(countVar)++; (hashTable).insert({(elem),(elem)});} \
+        }
+/**
+ * Evaluates completely the physical operator and returns :
+ *          cardStat {
+ *              noOut,
+ *              noPaths,
+ *              noIn
+ *          }
+ * Since we require the out queue to have items sorted by target value, we can easily compute both
+ *          * noIn
+ *          * noPaths
+ * To compute noOut, we will construct a hash table
+ *
+ * /!\ To speed up the computation we can also use isLeftBounded() and isRightBounded() /!\
+ * */
+cardStat eval(std::vector<Edge> edges) {
+    uint32_t noOut  = 0;
+    uint32_t noPath = 0;
+    uint32_t noIn   = 0;
+    std::unordered_map<uint32_t,uint32_t> hashIn;
+    std::unordered_map<uint32_t,uint32_t> hashOut;
+    std::unordered_map<Edge,Edge,HashEdge> hashEdge;
+    for (Edge e : edges){
+        // std::cout << "PHY : " << e;
+        count(e.target,hashIn, noIn);
+        count(e.source,hashOut, noOut);
+        count(e,hashEdge, noPath);
+    }
+    return cardStat{noOut,noPath,noIn};
+};
+
+
+
 // sort on the second item in the pair, then on the first (ascending order)
 
 #define targetL(t) ((revL)?((t)->first).source:((t)->first).target)
@@ -20,14 +57,14 @@ SimpleEstimator::SimpleEstimator(std::shared_ptr<SimpleGraph> &ind){
 #define sourceR(t) ((revR)?((t)->first).target:((t)->first).source)
 #define getEdgeL(t) ((revL)?(reverse((t)->first)):((t)->first))
 #define getEdgeR(t) ((revR)?(reverse((t)->first)):((t)->first))
-void join(IndexResult left, IndexResult right, bool revL, bool revR,
+cardStat join(IndexResult left, IndexResult right, bool revL, bool revR,
         std::unordered_map<Node,bool> &inMap,
         std::unordered_map<Node,bool> &middleMap,
         std::unordered_map<Edge,Node,HashEdge> &twoMap){
-
+    std::vector<Edge> res;
     auto r = right.first;
     auto l = left.first;
-    while( r!=right.second && l != left.second){
+    while(r!=right.second && l != left.second){
         while (l!=left.second && targetL(l) < sourceR(r)) { l++; } //advance until we have a joining edge
         Edge tl = getEdgeL(l);
         bool done = false;
@@ -35,6 +72,7 @@ void join(IndexResult left, IndexResult right, bool revL, bool revR,
             if (tl.target == targetL(l)){l++;}
             else done = true;
         }
+        Edge valR =  getEdgeR(r);
         while (r!=right.second && sourceR(r) < tl.target) { r++;} //advance until we have a joining edge
         if    (r!=right.second && tl.target == sourceR(r))  middleMap.insert({tl.target,true}); //have a middle
         while (r!=right.second && tl.target == sourceR(r)){
@@ -43,7 +81,7 @@ void join(IndexResult left, IndexResult right, bool revL, bool revR,
             r++;
         }
     }
-
+    return eval(res);
 }
 
 
@@ -59,28 +97,29 @@ void SimpleEstimator::prepare() {
             twoMap.clear();
             IndexResult left  = index->getEdgesTarget(QueryEdge{NONE,l1,NONE});
             IndexResult right = index->getEdgesSource(QueryEdge{NONE,l2,NONE});
-            join(left,right,true,false,inMap,middleMap,twoMap);
+            cardStat res = join(left,right,true,false,inMap,middleMap,twoMap);
             index->syn2[l1][l2].in     = inMap.size();
             index->syn2[l1][l2].middle = middleMap.size();
             index->syn2[l1][l2].two    = twoMap.size();
-            //============= index->syn3 =================
-            //--- Part >< ---
+            //============= index->syn3 and 4 =================
+            //--- Part <> ---
             inMap.clear();
             middleMap.clear();
             twoMap.clear();
             left  = index->getEdgesSource(QueryEdge{NONE,l1,NONE});
             right = index->getEdgesSource(QueryEdge{NONE,l2,NONE});
-            join(left,right,false,false,inMap,middleMap,twoMap);
+            res =  join(left,right,true,false,inMap,middleMap,twoMap);
             index->syn4[l1][l2].out       = inMap.size();
             index->syn4[l1][l2].middleOut = middleMap.size();
             index->syn4[l1][l2].twoOut    = twoMap.size();
-            //--- Part <> ---
+            //--- Part >< ---
             inMap.clear();
             middleMap.clear();
             twoMap.clear();
             left  = index->getEdgesTarget(QueryEdge{NONE,l1,NONE});
             right = index->getEdgesTarget(QueryEdge{NONE,l2,NONE});
-            join(left,right,true,true,inMap,middleMap,twoMap);
+             res =  join(left,right,true,false,inMap,middleMap,twoMap);
+             //if (l1 == 0 && l2 == 1) assert(res.noOut == 2886 && res.noPaths == 183286 && res.noIn == 2547);
             index->syn3[l1][l2].in       = inMap.size();
             index->syn3[l1][l2].middleIn = middleMap.size();
             index->syn3[l1][l2].twoIn    = twoMap.size();
@@ -96,7 +135,12 @@ void SimpleEstimator::prepare() {
     }
     for (Label l1 = 0 ; l1 < index->getNoLabels() ; ++l1){
         for (Label l2 = 0 ; l2 < index->getNoLabels() ; ++l2) {
-            std::cout << "index->syn3[" << l1 << "][" << l2 << "] = { in = "<< index->syn3[l1][l2].in << ", twoI = " << index->syn3[l1][l2].twoIn<< "| out = " << index->syn3[l1][l2].out << ", twoO = " << index->syn3[l1][l2].twoOut<<std::endl;
+            std::cout << "index->syn3[" << l1 << "][" << l2 << "] = { mid = "<<index->syn3[l1][l2].middleIn  << ", in = "<< index->syn3[l1][l2].in << ", two = " << index->syn3[l1][l2].twoIn << std::endl;
+        }
+    }
+    for (Label l1 = 0 ; l1 < index->getNoLabels() ; ++l1){
+        for (Label l2 = 0 ; l2 < index->getNoLabels() ; ++l2) {
+            std::cout << "index->syn4[" << l1 << "][" << l2 << "] = { mid = "<<index->syn4[l1][l2].middleOut  << ", out = "<< index->syn4[l1][l2].out << ", two = " << index->syn4[l1][l2].twoOut << std::endl;
         }
     }*/
 }

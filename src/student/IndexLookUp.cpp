@@ -54,6 +54,15 @@ IndexLookUp::~IndexLookUp() {
  *
  */
 void IndexLookUp::evalPipeline(ResultSorted resultSorted) {
+    if (resultSorted == TARGET_SORTED && queryEdge.source == NONE && queryEdge.target == NONE){
+        resValid = false;
+        if (!reversed) res = index->getEdgesTarget(queryEdge);
+        else           res = index->getEdgesSource(queryEdge);
+        for (IndexIterator it = res.first ; it != res.second ; ++it)  sortedResTarget.push_back(reverse(it->first));
+        ready = true;
+        out.push(END_EDGE, true);
+        return;
+    }
 
     if (queryEdge.target == NONE && (queryEdge.source != NONE || !reversed)) //choose the right sub EdgeIndex
         res = index->getEdgesSource(queryEdge);                     // source sorted index access
@@ -77,6 +86,13 @@ void IndexLookUp::evalPipeline(ResultSorted resultSorted) {
 
 Edge IndexLookUp::produceNextEdge() {
     if (!ready) out.pop();
+
+    if (!sortedResTarget.empty() && i < sortedResTarget.size() && queryEdge.target == NONE && queryEdge.source == NONE){
+        Edge r = sortedResTarget[i];
+        i++;
+        return r;
+    }
+
     if (resValid && res.first != res.second){
         Edge r = res.first->first;
         res.first++;
@@ -87,7 +103,7 @@ Edge IndexLookUp::produceNextEdge() {
         sortedResSource.pop_back();
         return r;
     }
-    else if (!sortedResTarget.empty()){
+    else if (i!= sortedResTarget.size() && !sortedResTarget.empty()){
         Edge r = sortedResTarget.back();
         sortedResTarget.pop_back();
         return r;

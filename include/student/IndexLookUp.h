@@ -15,6 +15,7 @@ private:
     std::vector<Edge> sortedResSource;
     std::vector<Edge> sortedResTarget;
     IndexResult res;
+    uint32_t  i = 0;
     bool resValid = true;
     bool ready = false;
 public:
