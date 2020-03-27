@@ -92,9 +92,9 @@ std::ostream &KleeneStar::name(std::ostream &strm) const {
 
 KleeneStar::KleeneStar(std::shared_ptr<SimpleGraph>& index, QueryEdge queryEdge) :
     PhysicalOperator(nullptr, nullptr, NOT_SORTED), queryEdge(queryEdge), index(index) {
-    if (queryEdge.source != NONE) query.push_back(basic_query_t{select, queryEdge.source});
+    if (queryEdge.source != NONE) query.push_back(basic_query_t{selection, queryEdge.source});
     query.push_back(basic_query_t{kleene, queryEdge.label});
-    if (queryEdge.target != NONE) query.push_back(basic_query_t{select, queryEdge.target});
+    if (queryEdge.target != NONE) query.push_back(basic_query_t{selection, queryEdge.target});
 }
 
 /*void evalPipeline2() {

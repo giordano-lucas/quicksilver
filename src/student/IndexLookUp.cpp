@@ -8,9 +8,9 @@
 IndexLookUp::IndexLookUp(std::shared_ptr<SimpleGraph>& index,QueryEdge queryEdge, bool reversed) :
         PhysicalOperator(nullptr, nullptr,SOURCE_SORTED),
         index(index), queryEdge((reversed)?reverse(queryEdge):queryEdge), reversed(reversed), sortedResSource(),sortedResTarget(), res() {
-    if (queryEdge.source != NONE) query.push_back(basic_query_t{select, queryEdge.source});
+    if (queryEdge.source != NONE) query.push_back(basic_query_t{selection, queryEdge.source});
     query.push_back(basic_query_t{(reversed)?lower:greater, queryEdge.label});
-    if (queryEdge.target != NONE) query.push_back(basic_query_t{select, queryEdge.target});
+    if (queryEdge.target != NONE) query.push_back(basic_query_t{selection, queryEdge.target});
 
 }
 

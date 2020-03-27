@@ -133,7 +133,7 @@ std::string printQuery(basic_query_t q){
         case kleene : return "+";
         case greater: return ">";
         case lower  : return "<";
-        case select : return "sel";
+        case selection : return "sel";
     }
 }
 
@@ -143,12 +143,12 @@ cardStat SimpleEstimator::estimatePhy(void *op) {
     query_t q = o->flatten();
     bool boundedRight = false;
     bool boundedLeft = false;
-    if (q.back().op == select){
+    if (q.back().op == selection){
         boundedRight = true;
         q.pop_back();
     }
     auto it = q.begin();
-    if (q.front().op == select){
+    if (q.front().op == selection){
         boundedLeft = true;
         it++;
     }

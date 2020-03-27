@@ -5,7 +5,7 @@
 #include "SimpleGraph.h"
 
 
-enum op_t {greater,lower,kleene, select};
+enum op_t {greater,lower,kleene, selection};
 typedef struct {
     op_t op;
     uint32_t  value;
