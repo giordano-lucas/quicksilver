@@ -7,7 +7,7 @@
 
 IndexLookUp::IndexLookUp(std::shared_ptr<SimpleGraph>& index,QueryEdge queryEdge, bool reversed) :
         PhysicalOperator(nullptr, nullptr,SOURCE_SORTED),
-        index(index), queryEdge((reversed)?reverse(queryEdge):queryEdge), reversed(reversed), sortedResSource(),sortedResTarget(), res() {
+        index(index), queryEdge(queryEdge), reversed(reversed),res() {
     if (queryEdge.source != NONE) query.push_back(basic_query_t{selection, queryEdge.source});
     query.push_back(basic_query_t{(reversed)?lower:greater, queryEdge.label});
     if (queryEdge.target != NONE) query.push_back(basic_query_t{selection, queryEdge.target});
@@ -32,8 +32,8 @@ IndexLookUp::~IndexLookUp() {
  *
  * ======================== RESULT SORTED = TARGET ==============================
  *
- * (*,l,*) & !reversed  => direct index access possible       (source)  /!\ RESORT ON TARGET
- * (*,l,*) & reversed   => direct index access possible       (target)  /!\ RESORT ON TARGET
+ * (*,l,*) & !reversed  => direct index access possible       (target)  (=>reverse)
+ * (*,l,*) & reversed   => direct index access possible       (soure)   (=>reverse)
  *
  * (n,l,*) & !reversed  => direct index access possible       (source)  /!\ RESORT ON TARGET
  * (n,l,*) & reversed   => PROBLEM : need to reverse edges in (source)
@@ -54,16 +54,25 @@ IndexLookUp::~IndexLookUp() {
  *
  */
 void IndexLookUp::evalPipeline(ResultSorted resultSorted) {
-    if (resultSorted == TARGET_SORTED && queryEdge.source == NONE && queryEdge.target == NONE){
-        resValid = false;
-        if (!reversed) res = index->getEdgesTarget(queryEdge);
-        else           res = index->getEdgesSource(queryEdge);
-        for (IndexIterator it = res.first ; it != res.second ; ++it)  sortedResTarget.push_back(reverse(it->first));
-        ready = true;
-        out.push(END_EDGE, true);
-        return;
+    if (queryEdge.source == NONE && queryEdge.target == NONE){
+        switch(resultSorted){
+            case TARGET_SORTED: res = (reversed)?index->getEdgesSource(queryEdge,true):index->getEdgesTarget(queryEdge,true);break;
+            case NOT_SORTED   : //go in SourceSorted
+            case SOURCE_SORTED: res = (reversed)?index->getEdgesTarget(queryEdge):index->getEdgesSource(queryEdge);break;
+        }
     }
+    else if (queryEdge.source != NONE){
+        res = (reversed)?index->getEdgesSource(queryEdge,true):index->getEdgesSource(queryEdge);
+    }
+    else {
+        res = (reversed)?index->getEdgesTarget(queryEdge):index->getEdgesTarget(queryEdge,true);
+    }
+    ready = true;
+    out.push(END_EDGE, true);
 
+
+
+    /*
     if (queryEdge.target == NONE && (queryEdge.source != NONE || !reversed)) //choose the right sub EdgeIndex
         res = index->getEdgesSource(queryEdge);                     // source sorted index access
     else res = index->getEdgesTarget(queryEdge);                    // targed sorted index access
@@ -81,31 +90,14 @@ void IndexLookUp::evalPipeline(ResultSorted resultSorted) {
         std::sort(sortedResTarget.begin(),sortedResTarget.end(), targetCompDesc);
     }
     ready = true;
-    out.push(END_EDGE, true);
+    out.push(END_EDGE, true);*/
 }
 
 Edge IndexLookUp::produceNextEdge() {
     if (!ready) out.pop();
-
-    if (!sortedResTarget.empty() && i < sortedResTarget.size() && queryEdge.target == NONE && queryEdge.source == NONE){
-        Edge r = sortedResTarget[i];
-        i++;
-        return r;
-    }
-
-    if (resValid && res.first != res.second){
-        Edge r = res.first->first;
-        res.first++;
-        return r;
-    }
-    else if (!sortedResSource.empty()) {
-        Edge r = sortedResSource.back();
-        sortedResSource.pop_back();
-        return r;
-    }
-    else if (i!= sortedResTarget.size() && !sortedResTarget.empty()){
-        Edge r = sortedResTarget.back();
-        sortedResTarget.pop_back();
+    if (res.hasNext()) {
+        Edge r = *res;
+        ++res;
         return r;
     }
     return END_EDGE;

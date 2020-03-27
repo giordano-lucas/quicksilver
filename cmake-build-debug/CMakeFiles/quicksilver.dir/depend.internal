@@ -5,14 +5,7 @@ CMakeFiles/quicksilver.dir/src/rss.c.o
  ../include/rss.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/rss.c
 CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o
- ../include/student/Edge.h
- ../include/student/Synopse.h
- /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/Estimator.h
- /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/Graph.h
- /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/PathQuery.h
- /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/PathTree.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/SmartGraph.cpp
- /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/SmartGraph.h
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o
  ../include/PathQuery.h
  ../include/PathTree.h
@@ -57,7 +50,10 @@ CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o
  ../include/student/Synopse.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEvaluator.cpp
 CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o
+ ../include/Estimator.h
  ../include/Graph.h
+ ../include/PathQuery.h
+ ../include/PathTree.h
  ../include/SimpleGraph.h
  ../include/student/Edge.h
  ../include/student/Synopse.h
@@ -76,15 +72,8 @@ CMakeFiles/quicksilver.dir/src/benches.cpp.o
  ../include/student/Synopse.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/benches.cpp
 CMakeFiles/quicksilver.dir/src/main.cpp.o
- ../include/Estimator.h
- ../include/Graph.h
- ../include/PathQuery.h
- ../include/PathTree.h
- ../include/SmartGraph.h
  ../include/benches.h
  ../include/rss.h
- ../include/student/Edge.h
- ../include/student/Synopse.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/main.cpp
 CMakeFiles/quicksilver.dir/src/student/Edge.cpp.o
  ../include/student/Edge.h

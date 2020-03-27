@@ -14,65 +14,91 @@
 #include "Synopse.h"
 
 //**************************************
-typedef std::map<Edge,Edge> Map;
-typedef std::map<Edge,Edge>::const_iterator  IndexIterator;
-typedef std::pair<IndexIterator,IndexIterator> IndexResult;
+#include "Edge.h"
+#include "Synopse.h"
+#include "Estimator.h"
+#include "Graph.h"
+#include <regex>
+#include <fstream>
+#include <unordered_map>
 
+//***************** DATA STRUCTURES *****************
+typedef struct{
+    Node source;
+    uint16_t nbTargets;
+    uint32_t indexEdges;
+} Header;
+typedef struct{
+    Header* headers;
+    uint32_t nbHeaders;
+    Node* edges;
+    uint32_t nbEdges;
+} LabelIndex;
+
+
+typedef LabelIndex* Index;
+//********************** CLASS **********************
 class SimpleGraph : public Graph {
-    
-protected:
+    ///// =============== Nested sub class => iterator ================
+public:
+    class Iterator {
+    private:
+        LabelIndex* index;
+        Header* source;
+        Header* end;
+        Node*   target;
+        uint16_t remainingTargets;
+        bool done        = false;
+        bool needReverse = false;
+        // Sorted iterator variables
+        bool needSorted  = false;
+        Edge* sortedArray     = nullptr;
+        Edge* allocatedArray     = nullptr;
+        Edge* itSorted   = nullptr;
+    public:
+        Iterator(LabelIndex* index, Header* start, bool needReverse);
+        Iterator(LabelIndex* index, Header* start, Header* end, bool needReverse);
+        Iterator();
+        Iterator sort(Comparator cmp);
+        Iterator operator++();
+        Edge operator*();
+        Iterator skip();
+        bool hasNext() const;
+    };
+    //// ========================= Real class =========================
+private:
     uint32_t V=0;
     uint32_t L=0;
-    std::vector<std::map<Edge,Edge>> mapSource;
-    std::vector<std::map<Edge,Edge>> mapTarget;
-    IndexResult getEdges(QueryEdge edgePrefix, const Map& map) const;
+    Index sourceIndex; //array of L subIndex
+    Index targetIndex; // array of L subIndex
+    Header* find(Index index, QueryEdge queryEdge) const;
+    void insertAll(std::vector<Edge> &edges, Label l, bool reversed, Comparator cmp, Index index);
+    Iterator getEdges(Index index, QueryEdge queryEdge, bool needReverse) const;
 public:
+    ~SimpleGraph(); //destructor
+    Iterator getEdgesSource(QueryEdge queryEdge, bool needReverse) const;
+    Iterator getEdgesTarget(QueryEdge queryEdge, bool needReverse) const;
+    Iterator getEdgesSource(QueryEdge queryEdge) const;
+    Iterator getEdgesTarget(QueryEdge queryEdge) const;
+    /*Insertion methods*/
+    void insertAll(std::vector<Edge> &edges, Label l);
+    void readFromContiguousFile(const std::string &fileName);
+
+    uint32_t getNoVertices() const override;
+
+    uint32_t getNoEdges() const override;
+
+    uint32_t getNoDistinctEdges() const override;
+
+    uint32_t getNoLabels() const override;
+
+    void addEdge(uint32_t from, uint32_t to, uint32_t edgeLabel) override;
+
+    //// *** Synposes ***
     std::vector<Syn1> syn1;
     std::vector<std::vector<Syn2>> syn2;
     std::vector<std::vector<Syn3>> syn3;
     std::vector<std::vector<Syn4>> syn4;
-    SimpleGraph() : mapSource(), mapTarget() {};
-    ~SimpleGraph() = default;
-    explicit SimpleGraph(uint32_t n);
-
-    uint32_t getNoVertices() const override ;
-    uint32_t getNoEdges() const override ;
-    uint32_t getNoDistinctEdges() const override ;
-    uint32_t getNoLabels() const override ;
-
-    void addEdge(uint32_t from, uint32_t to, uint32_t edgeLabel) override ;
-    void readFromContiguousFile(const std::string &fileName) override ;
-    bool edgeExists(uint32_t from, uint32_t to, uint32_t edgeLabel);
-
-    void setNoVertices(uint32_t n);
-    void setNoLabels(uint32_t noLabels);
-
-    /*Access methods*/
-    /**
-     * Returns iterator on edges {e=(s,l,t) | e=(s,l,t) in G} and SORTED :
-     *          First  => BY LABEL
-     *          Then   => BY SOURCE
-     *          FINALY => BY TARGET
-     **/
-    IndexResult getEdgesSource(QueryEdge edgePrefix) const;
-    /**
-     * Returns iterator on  REVERSED edges {e=(t,l,s) | e=(s,l,t) in G} and SORTED :
-     *          First  => BY LABEL
-     *          Then   => BY TARGET
-     *          FINALY => BY SOURCE
-     **/
-    IndexResult getEdgesTarget(QueryEdge edgePrefix) const;
-    /*Insertion methods*/
-    void insert(Edge e,Node l);
-    /**
-     * Insert all edges in the index
-     * */
-    void insertAll(std::vector<Edge> edges, Label l);
-    /**
-     * Insert all edges in the index
-     * */
-    void insertAll(std::vector<QueryEdge> edges);
 };
-
-typedef SimpleGraph EdgeIndex;
+typedef SimpleGraph::Iterator IndexIterator;
 #endif //QS_SIMPLEGRAPH_H

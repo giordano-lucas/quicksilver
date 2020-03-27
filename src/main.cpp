@@ -1,7 +1,6 @@
 #include <benches.h>
 #include <iostream>
 #include <rss.h>
-#include "SmartGraph.h"
 #include <chrono>
 
 /**
@@ -17,7 +16,9 @@
  * To compute noOut, we will construct a hash table
  *
  * /!\ To speed up the computation we can also use isLeftBounded() and isRightBounded() /!\
- * */
+ * *
+ */
+ /*
 #define count(elem, hashTable, countVar) { \
         if ((hashTable).find(elem) == (hashTable).end()) {(countVar)++; (hashTable).insert({(elem),(elem)});} \
         }
@@ -36,21 +37,21 @@ static cardStat eval(IndexIterator it) {
     }
     return cardStat{noOut,noPath,noIn};
 };
-
+*/
 int main(int argc, char *argv[]) {
 
     if(argc < 3) {
         std::cout << "Usage: quicksilver <graphFile> <queriesFile>" << std::endl;
-        argv[1] = "../workload/syn/1/graph.nt";
-        argv[2] = "../workload/syn/1/queries.csv";
+        argv[1] = "../workload/real/2/graph.nt";
+        argv[2] = "../workload/real/2/queries.csv";
         //return 0;
     }
 
     // args
     std::string graphFile {argv[1]};
     std::string queriesFile {argv[2]};
-    /*
-    //estimatorBench(graphFile, queriesFile);
+
+   // estimatorBench(graphFile, queriesFile);
     auto result = evaluatorBench(graphFile, queriesFile);
 
     std::cout << std::endl << std::endl << std::endl;
@@ -59,16 +60,6 @@ int main(int argc, char *argv[]) {
     std::cout << "Total eval time: " << result.evalTime << " ms" << std::endl;
     double memoryUsage = double(getPeakRSS()) / 1024.0 / 1024.0;
     std::cout << "Peak memory usage (for all workloads): " << memoryUsage << " MiB" << std::endl;
-    */
 
-
-
-    SmartGraph g;
-    g.readFromContiguousFile(graphFile);
-    auto it = g.getEdgesSource(QueryEdge{NONE,0,NONE});
-    it = it.sort(targetComp);
-    cardStat actual = eval(it);
-    std::cout << "Actual (noOut, noPaths, noIn) : ";
-    actual.print();
     return 0;
 }

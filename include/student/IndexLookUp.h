@@ -12,10 +12,7 @@ private:
     std::shared_ptr<SimpleGraph>& index;
     QueryEdge queryEdge;
     bool reversed;
-    std::vector<Edge> sortedResSource;
-    std::vector<Edge> sortedResTarget;
-    IndexResult res;
-    uint32_t  i = 0;
+    IndexIterator res;
     bool resValid = true;
     bool ready = false;
 public:

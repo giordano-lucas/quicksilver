@@ -5,6 +5,14 @@
 
 #include "KleeneStar.h"
 
+
+KleeneStar::KleeneStar(std::shared_ptr<SimpleGraph>& index, QueryEdge queryEdge) :
+        PhysicalOperator(nullptr, nullptr, TARGET_SORTED), queryEdge(queryEdge), index(index) {
+    if (queryEdge.source != NONE) query.push_back(basic_query_t{selection, queryEdge.source});
+    query.push_back(basic_query_t{kleene, queryEdge.label});
+    if (queryEdge.target != NONE) query.push_back(basic_query_t{selection, queryEdge.target});
+}
+
 uint32_t KleeneStar::cost() const {
     return getCardinality().noPaths;
 }
@@ -18,6 +26,7 @@ uint32_t KleeneStar::cost() const {
  * @param source      : vertex from which we want to compute the set of reachable nodes
  * @param reversed    : need to reverse the edges push into the out queue
  */
+#define getTarget(it) ((!reversed)?(*it).target:(*it).source)
 void KleeneStar::dfs(std::unordered_map<Node,bool>& discovered,Node n, Node source, bool reversed,std::vector<Edge>& output){
     //use cache if possible
     /*if (finishedCache.find(n) != finishedCache.end()){
@@ -26,9 +35,9 @@ void KleeneStar::dfs(std::unordered_map<Node,bool>& discovered,Node n, Node sour
     }*/
     //else explore the graph
     if (output.size() > 0) discovered.insert({n,true});//set vertex n to discovered  /!\ in the first iteration output.size == 0 => we do not set (source) to be discovered yet (otherwise we won't allow (source,source) to be a part of the result)
-    auto t = (!reversed)?index->getEdgesSource(QueryEdge{n,queryEdge.label,NONE}):index->getEdgesTarget(QueryEdge{NONE,queryEdge.label,n});
-    for (auto it = t.first ; it!=t.second; ++it){     //explore all nodes in base.adj[n]
-       Node target = it->first.target;
+    auto it = (!reversed)?index->getEdgesSource(QueryEdge{n,queryEdge.label,NONE}):index->getEdgesTarget(QueryEdge{NONE,queryEdge.label,n});
+    for (; it.hasNext(); ++it){     //explore all nodes in base.adj[n]
+       Node target =(*it).target;
         if (discovered.find(target) == discovered.end()){    //if target has not been explored yet => explore
             output.push_back((reversed)?Edge{target,source}:Edge{source,target});//(source,target) is part of the results of the physical operator
             dfs(discovered,target,source,reversed,output);       //explore
@@ -43,59 +52,42 @@ void KleeneStar::dfs(std::unordered_map<Node,bool>& discovered,Node n, Node sour
  *          - O(E + V)     if queryEdge  = (n,l,*) or (*,l,n)
  */
 void KleeneStar::evalPipeline(ResultSorted resultSorted) {
-
-    IndexResult res = index->getEdgesSource(QueryEdge{NONE,queryEdge.label,NONE}); //get data from the database
+     //get data from the database
     std::unordered_map<Node,bool> discovered;
     std::vector<Edge> output;
     if      (queryEdge.source != NONE) dfs(discovered,queryEdge.source,queryEdge.source, false,output);
     else if (queryEdge.target != NONE) dfs(discovered,queryEdge.target,queryEdge.target, true,output); //in reverse adj list => need to re-reverse the edges at the end
     else {  //if the query is not bounded (*,l,*) => perform dfs for all sources nodes
-        Node lastSource = NONE;
-        for (auto it = res.first ; it != res.second && !terminated; ++it){
-            if (it->first.source != lastSource){
-                lastSource = it->first.source;
-                discovered.clear();
-                dfs(discovered,it->first.source,it->first.source,false,output);
-                if (resultSorted == SOURCE_SORTED){
-                   std::sort(output.begin(),output.end(),sourceComp);
-                }
-                if (resultSorted != TARGET_SORTED){
-                   for (auto e : output) {
-                       out.push(e,false);
-                       if (terminated) return;       //stop computation if parent operator has what it wants
-                   }
-                   output.clear();
-                }
-            }
-        }
-    }
-    if (output.size() > 0){
+        IndexIterator it;
         switch(resultSorted){
-            case NOT_SORTED   : break;
-            case SOURCE_SORTED: std::sort(output.begin(),output.end(),sourceComp);break;
-            case TARGET_SORTED: std::sort(output.begin(),output.end(),targetComp); break;
+            case NOT_SORTED:   //use source sorted by default
+            case SOURCE_SORTED:  it = index->getEdgesSource(QueryEdge{NONE,queryEdge.label,NONE}); break;
+            case TARGET_SORTED:  it = index->getEdgesTarget(QueryEdge{NONE,queryEdge.label,NONE},false);break;
+        }
+        for (;it.hasNext() && !terminated; it.skip()){
+            dfs(discovered,(*it).source,(*it).source,(resultSorted == TARGET_SORTED)?true:false,output);
+            std::sort(output.begin(),output.end(),(resultSorted == TARGET_SORTED)?targetComp:sourceComp);
+            for (auto e : output) {
+               out.push(e,false);
+               if (terminated) return;       //stop computation if parent operator has what it wants
+            }
+            discovered.clear(); //reset for next computation
+            output.clear();
         }
     }
-    for (auto e : output) out.push(e,false);
     out.push(END_EDGE,true);
     done = true;
 }
 
 Edge KleeneStar::produceNextEdge() {
     if (!done || out.size() > 0)  return out.pop();
-    else        return END_EDGE;
+    else                          return END_EDGE;
 }
 
 std::ostream &KleeneStar::name(std::ostream &strm) const {
     return strm << "KleeneStar";
 }
 
-KleeneStar::KleeneStar(std::shared_ptr<SimpleGraph>& index, QueryEdge queryEdge) :
-    PhysicalOperator(nullptr, nullptr, NOT_SORTED), queryEdge(queryEdge), index(index) {
-    if (queryEdge.source != NONE) query.push_back(basic_query_t{selection, queryEdge.source});
-    query.push_back(basic_query_t{kleene, queryEdge.label});
-    if (queryEdge.target != NONE) query.push_back(basic_query_t{selection, queryEdge.target});
-}
 
 /*void evalPipeline2() {
     IndexResult res = index->getEdgesSource(QueryEdge{NONE,queryEdge.label,NONE}); //get data from the database

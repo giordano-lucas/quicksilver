@@ -18,11 +18,27 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/src/benches.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/src/benches.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/src/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/src/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/quicksilver" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/quicksilver" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/SimpleGraph.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/SimpleGraph.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/SmartGraph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/SmartGraph.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/SmartGraph.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/SmartGraph.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/student/IndexLookUp.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/student/IndexLookUp.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SimpleEstimator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/SimpleEstimator.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SimpleGraph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/SimpleGraph.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/student/IndexLookUp.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/student/IndexLookUp.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/student/KleeneStar.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/student/KleeneStar.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toy/graph.nt" beforeDir="false" afterPath="$PROJECT_DIR$/toy/graph.nt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toy/queries.csv" beforeDir="false" afterPath="$PROJECT_DIR$/toy/queries.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +67,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="OCResolveContextSettings">
-    <option name="configuration" value="0-Debug-benchmarker" />
+    <option name="configuration" value="0-Debug-quicksilver" />
   </component>
   <component name="ProjectId" id="1Y2KdrCaQeYBq0O630ixfSjLrWX" />
   <component name="ProjectViewState">
@@ -94,6 +110,9 @@
       <item itemvalue="CMake Application.quicksilver" />
     </list>
   </component>
+  <component name="ServiceViewManager">
+    <option name="showServicesTree" value="false" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -135,11 +154,11 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="451" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1582463290398" />
-    <state x="653" y="248" key="#com.intellij.ide.util.MemberChooser" timestamp="1585327502467">
+    <state x="653" y="248" key="#com.intellij.ide.util.MemberChooser" timestamp="1585340028740">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-1174" y="126" key="#com.intellij.ide.util.MemberChooser/-1920.-129.1920.1080/0.0.1680.1050@-1920.-129.1920.1080" timestamp="1583972441915" />
-    <state x="653" y="248" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1585327502467" />
+    <state x="653" y="248" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1585340028740" />
     <state x="611" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585327832550">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -149,78 +168,78 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1582464049392" />
-    <state width="1638" height="304" key="GridCell.Tab.0.bottom" timestamp="1585330818176">
+    <state width="1638" height="304" key="GridCell.Tab.0.bottom" timestamp="1585348475084">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1878" height="304" key="GridCell.Tab.0.bottom/-1920.-129.1920.1080/0.0.1680.1050@-1920.-129.1920.1080" timestamp="1583971995258" />
     <state width="1638" height="304" key="GridCell.Tab.0.bottom/-1920.-129.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1584042418277" />
     <state width="1878" height="304" key="GridCell.Tab.0.bottom/-1920.-129.1920.1080/0.23.1680.1027@-1920.-129.1920.1080" timestamp="1583970779724" />
-    <state width="1638" height="304" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1585330818176" />
-    <state width="1638" height="304" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1585307030517" />
+    <state width="1638" height="304" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1585348475084" />
+    <state width="1638" height="304" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1585348102887" />
     <state width="1638" height="295" key="GridCell.Tab.0.bottom/0.23.1680.948@0.23.1680.948" timestamp="1583590045949" />
     <state width="1638" height="304" key="GridCell.Tab.0.bottom/0.23.1680.951@0.23.1680.951" timestamp="1584260536897" />
     <state width="1638" height="304" key="GridCell.Tab.0.bottom/0.23.1680.953@0.23.1680.953" timestamp="1584279669060" />
     <state width="1638" height="295" key="GridCell.Tab.0.bottom/0.23.1680.957@0.23.1680.957" timestamp="1582793911574" />
     <state width="1807" height="235" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1582464060054" />
-    <state width="1638" height="304" key="GridCell.Tab.0.center" timestamp="1585330818175">
+    <state width="1638" height="304" key="GridCell.Tab.0.center" timestamp="1585348475082">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1878" height="304" key="GridCell.Tab.0.center/-1920.-129.1920.1080/0.0.1680.1050@-1920.-129.1920.1080" timestamp="1583971995255" />
     <state width="1638" height="304" key="GridCell.Tab.0.center/-1920.-129.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1584042418275" />
     <state width="1878" height="304" key="GridCell.Tab.0.center/-1920.-129.1920.1080/0.23.1680.1027@-1920.-129.1920.1080" timestamp="1583970779723" />
-    <state width="1638" height="304" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1585330818175" />
-    <state width="1638" height="304" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1585307030514" />
+    <state width="1638" height="304" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1585348475082" />
+    <state width="1638" height="304" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1585348102885" />
     <state width="1638" height="295" key="GridCell.Tab.0.center/0.23.1680.948@0.23.1680.948" timestamp="1583590045947" />
     <state width="1638" height="304" key="GridCell.Tab.0.center/0.23.1680.951@0.23.1680.951" timestamp="1584260536895" />
     <state width="1638" height="304" key="GridCell.Tab.0.center/0.23.1680.953@0.23.1680.953" timestamp="1584279669059" />
     <state width="1638" height="295" key="GridCell.Tab.0.center/0.23.1680.957@0.23.1680.957" timestamp="1582793911572" />
     <state width="1807" height="235" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1582464060054" />
-    <state width="1638" height="304" key="GridCell.Tab.0.left" timestamp="1585330818174">
+    <state width="1638" height="304" key="GridCell.Tab.0.left" timestamp="1585348475081">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1878" height="304" key="GridCell.Tab.0.left/-1920.-129.1920.1080/0.0.1680.1050@-1920.-129.1920.1080" timestamp="1583971995254" />
     <state width="1638" height="304" key="GridCell.Tab.0.left/-1920.-129.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1584042418275" />
     <state width="1878" height="304" key="GridCell.Tab.0.left/-1920.-129.1920.1080/0.23.1680.1027@-1920.-129.1920.1080" timestamp="1583970779722" />
-    <state width="1638" height="304" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1585330818174" />
+    <state width="1638" height="304" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1585348475081" />
     <state width="1638" height="304" key="GridCell.Tab.0.left/0.0.1680.1050@0.23.1680.1027" timestamp="1585225252782" />
-    <state width="1638" height="304" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1585307030510" />
+    <state width="1638" height="304" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1585348102884" />
     <state width="1638" height="295" key="GridCell.Tab.0.left/0.23.1680.948@0.23.1680.948" timestamp="1583590045946" />
     <state width="1638" height="304" key="GridCell.Tab.0.left/0.23.1680.951@0.23.1680.951" timestamp="1584260536895" />
     <state width="1638" height="304" key="GridCell.Tab.0.left/0.23.1680.953@0.23.1680.953" timestamp="1584279669058" />
     <state width="1638" height="295" key="GridCell.Tab.0.left/0.23.1680.957@0.23.1680.957" timestamp="1582793911571" />
     <state width="1807" height="235" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1582464060053" />
-    <state width="1638" height="304" key="GridCell.Tab.0.right" timestamp="1585330818176">
+    <state width="1638" height="304" key="GridCell.Tab.0.right" timestamp="1585348475083">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1878" height="304" key="GridCell.Tab.0.right/-1920.-129.1920.1080/0.0.1680.1050@-1920.-129.1920.1080" timestamp="1583971995257" />
     <state width="1638" height="304" key="GridCell.Tab.0.right/-1920.-129.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1584042418276" />
     <state width="1878" height="304" key="GridCell.Tab.0.right/-1920.-129.1920.1080/0.23.1680.1027@-1920.-129.1920.1080" timestamp="1583970779723" />
-    <state width="1638" height="304" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1585330818176" />
-    <state width="1638" height="304" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1585307030515" />
+    <state width="1638" height="304" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1585348475083" />
+    <state width="1638" height="304" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1585348102886" />
     <state width="1638" height="295" key="GridCell.Tab.0.right/0.23.1680.948@0.23.1680.948" timestamp="1583590045948" />
     <state width="1638" height="304" key="GridCell.Tab.0.right/0.23.1680.951@0.23.1680.951" timestamp="1584260536896" />
     <state width="1638" height="304" key="GridCell.Tab.0.right/0.23.1680.953@0.23.1680.953" timestamp="1584279669060" />
     <state width="1638" height="295" key="GridCell.Tab.0.right/0.23.1680.957@0.23.1680.957" timestamp="1582793911573" />
     <state width="1807" height="235" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1582464060054" />
-    <state width="1638" height="363" key="GridCell.Tab.1.bottom" timestamp="1585330481611">
+    <state width="1638" height="238" key="GridCell.Tab.1.bottom" timestamp="1585348313712">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="363" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1585330481611" />
+    <state width="1638" height="238" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1585348313712" />
     <state width="1638" height="363" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1585240392735" />
-    <state width="1638" height="363" key="GridCell.Tab.1.center" timestamp="1585330481607">
+    <state width="1638" height="238" key="GridCell.Tab.1.center" timestamp="1585348313710">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="363" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1585330481607" />
+    <state width="1638" height="238" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1585348313710" />
     <state width="1638" height="363" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1585240392734" />
-    <state width="1638" height="363" key="GridCell.Tab.1.left" timestamp="1585330481605">
+    <state width="1638" height="238" key="GridCell.Tab.1.left" timestamp="1585348313710">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="363" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1585330481605" />
+    <state width="1638" height="238" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1585348313710" />
     <state width="1638" height="363" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1585240392733" />
-    <state width="1638" height="363" key="GridCell.Tab.1.right" timestamp="1585330481610">
+    <state width="1638" height="238" key="GridCell.Tab.1.right" timestamp="1585348313711">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="363" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1585330481610" />
+    <state width="1638" height="238" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1585348313711" />
     <state width="1638" height="363" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1585240392734" />
     <state x="341" y="164" key="SettingsEditor" timestamp="1585131889187">
       <screen x="0" y="0" width="1680" height="1050" />
@@ -258,169 +277,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
-          <line>64</line>
-          <option name="timeStamp" value="85" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
-          <line>65</line>
-          <option name="timeStamp" value="86" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
-          <line>66</line>
-          <option name="timeStamp" value="90" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
-          <line>67</line>
-          <option name="timeStamp" value="91" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
-          <line>68</line>
-          <option name="timeStamp" value="92" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/student/PhysicalOperator.h</url>
-          <line>137</line>
-          <option name="timeStamp" value="93" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/student/PhysicalOperator.h</url>
-          <line>136</line>
-          <option name="timeStamp" value="94" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/student/PhysicalOperator.h</url>
-          <line>138</line>
-          <option name="timeStamp" value="95" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
-          <line>24</line>
-          <option name="timeStamp" value="99" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
-          <line>25</line>
-          <option name="timeStamp" value="100" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
-          <line>23</line>
-          <option name="timeStamp" value="102" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
-          <line>26</line>
-          <option name="timeStamp" value="108" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>142</line>
-          <option name="timeStamp" value="210" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>143</line>
-          <option name="timeStamp" value="211" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>243</line>
+          <line>252</line>
           <option name="timeStamp" value="215" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>60</line>
-          <option name="timeStamp" value="216" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>59</line>
-          <option name="timeStamp" value="217" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>64</line>
-          <option name="timeStamp" value="222" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>63</line>
-          <option name="timeStamp" value="223" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>65</line>
-          <option name="timeStamp" value="224" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>66</line>
-          <option name="timeStamp" value="226" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>67</line>
-          <option name="timeStamp" value="227" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>69</line>
-          <option name="timeStamp" value="229" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>70</line>
-          <option name="timeStamp" value="230" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>68</line>
-          <option name="timeStamp" value="231" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>72</line>
-          <option name="timeStamp" value="232" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>73</line>
-          <option name="timeStamp" value="233" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>75</line>
-          <option name="timeStamp" value="234" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>76</line>
-          <option name="timeStamp" value="235" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>77</line>
-          <option name="timeStamp" value="236" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>78</line>
-          <option name="timeStamp" value="237" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>79</line>
-          <option name="timeStamp" value="239" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
-          <line>71</line>
-          <option name="timeStamp" value="240" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/include/SimpleGraph.h</url>
@@ -428,96 +287,91 @@
           <option name="timeStamp" value="241" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/main.cpp</url>
-          <line>66</line>
-          <option name="timeStamp" value="242" />
+          <url>file://$PROJECT_DIR$/src/student/IndexLookUp.cpp</url>
+          <line>96</line>
+          <option name="timeStamp" value="320" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/main.cpp</url>
-          <line>31</line>
-          <option name="timeStamp" value="252" />
+          <url>file://$PROJECT_DIR$/src/student/IndexLookUp.cpp</url>
+          <line>56</line>
+          <option name="timeStamp" value="321" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/main.cpp</url>
-          <line>68</line>
-          <option name="timeStamp" value="278" />
+          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
+          <line>52</line>
+          <option name="timeStamp" value="322" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/main.cpp</url>
-          <line>69</line>
-          <option name="timeStamp" value="279" />
+          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
+          <line>38</line>
+          <option name="timeStamp" value="335" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/SmartGraph.cpp</url>
-          <line>202</line>
-          <option name="timeStamp" value="305" />
+          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
+          <line>37</line>
+          <option name="timeStamp" value="336" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/SmartGraph.cpp</url>
-          <line>203</line>
-          <option name="timeStamp" value="306" />
+          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
+          <line>40</line>
+          <option name="timeStamp" value="338" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/SmartGraph.cpp</url>
-          <line>204</line>
-          <option name="timeStamp" value="307" />
+          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
+          <line>39</line>
+          <option name="timeStamp" value="339" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/SmartGraph.cpp</url>
-          <line>205</line>
-          <option name="timeStamp" value="308" />
+          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
+          <line>41</line>
+          <option name="timeStamp" value="340" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/SmartGraph.cpp</url>
-          <line>206</line>
-          <option name="timeStamp" value="309" />
+          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
+          <line>36</line>
+          <option name="timeStamp" value="341" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/SmartGraph.cpp</url>
-          <line>207</line>
-          <option name="timeStamp" value="310" />
+          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
+          <line>55</line>
+          <option name="timeStamp" value="344" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/SmartGraph.cpp</url>
-          <line>208</line>
-          <option name="timeStamp" value="311" />
+          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
+          <line>56</line>
+          <option name="timeStamp" value="345" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/SmartGraph.cpp</url>
-          <line>209</line>
-          <option name="timeStamp" value="312" />
+          <url>file://$PROJECT_DIR$/src/student/KleeneStar.cpp</url>
+          <line>54</line>
+          <option name="timeStamp" value="346" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/SmartGraph.cpp</url>
-          <line>210</line>
-          <option name="timeStamp" value="313" />
+          <url>file://$PROJECT_DIR$/src/SimpleEstimator.cpp</url>
+          <line>77</line>
+          <option name="timeStamp" value="414" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/SmartGraph.cpp</url>
-          <line>211</line>
-          <option name="timeStamp" value="314" />
+          <url>file://$PROJECT_DIR$/src/student/IndexLookUp.cpp</url>
+          <line>57</line>
+          <option name="timeStamp" value="425" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/SmartGraph.cpp</url>
-          <line>212</line>
-          <option name="timeStamp" value="315" />
+          <url>file://$PROJECT_DIR$/src/student/IndexLookUp.cpp</url>
+          <line>58</line>
+          <option name="timeStamp" value="426" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/SmartGraph.cpp</url>
-          <line>213</line>
-          <option name="timeStamp" value="316" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/SmartGraph.cpp</url>
-          <line>217</line>
-          <option name="timeStamp" value="317" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/include/SmartGraph.cpp</url>
-          <line>218</line>
-          <option name="timeStamp" value="318" />
+          <url>file://$PROJECT_DIR$/src/student/IndexLookUp.cpp</url>
+          <line>59</line>
+          <option name="timeStamp" value="427" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="setL[0]" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

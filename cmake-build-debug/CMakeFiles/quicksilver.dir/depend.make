@@ -4,14 +4,7 @@
 CMakeFiles/quicksilver.dir/src/rss.c.o: ../include/rss.h
 CMakeFiles/quicksilver.dir/src/rss.c.o: ../src/rss.c
 
-CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o: ../include/student/Edge.h
-CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o: ../include/student/Synopse.h
-CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o: ../include/Estimator.h
-CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o: ../include/Graph.h
-CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o: ../include/PathQuery.h
-CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o: ../include/SmartGraph.cpp
-CMakeFiles/quicksilver.dir/include/SmartGraph.cpp.o: ../include/SmartGraph.h
 
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o: ../include/PathQuery.h
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o: ../include/PathTree.h
@@ -56,7 +49,10 @@ CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/student/Physica
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/student/Synopse.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../src/SimpleEvaluator.cpp
 
+CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o: ../include/Estimator.h
 CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o: ../include/Graph.h
+CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o: ../include/PathQuery.h
+CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o: ../include/SimpleGraph.h
 CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o: ../include/student/Edge.h
 CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o: ../include/student/Synopse.h
@@ -75,15 +71,8 @@ CMakeFiles/quicksilver.dir/src/benches.cpp.o: ../include/student/Edge.h
 CMakeFiles/quicksilver.dir/src/benches.cpp.o: ../include/student/Synopse.h
 CMakeFiles/quicksilver.dir/src/benches.cpp.o: ../src/benches.cpp
 
-CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/Estimator.h
-CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/Graph.h
-CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/PathQuery.h
-CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/PathTree.h
-CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/SmartGraph.h
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/benches.h
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/rss.h
-CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/student/Edge.h
-CMakeFiles/quicksilver.dir/src/main.cpp.o: ../include/student/Synopse.h
 CMakeFiles/quicksilver.dir/src/main.cpp.o: ../src/main.cpp
 
 CMakeFiles/quicksilver.dir/src/student/Edge.cpp.o: ../include/student/Edge.h
