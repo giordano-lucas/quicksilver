@@ -9,7 +9,13 @@ Edge MergeJoin::produceNextEdge() {
     if (!res.empty()) {
         Edge r = res.back();
         res.pop_back();
-        return r;
+        while (lastEdgeProduced == r && !res.empty()){
+            r = res.back();
+            res.pop_back();
+        }
+        bool isEnd = res.empty() && lastEdgeProduced == r;
+        lastEdgeProduced = r;
+        return (isEnd)?END_EDGE:r;
     }
     return END_EDGE;
 }
@@ -23,7 +29,6 @@ void MergeJoin::evalPipeline(ResultSorted resultSorted) {
     });
     Edge r = right->produceNextEdge();
     Edge l = left->produceNextEdge();
-    // std::cout << "START LEFT => " << l << " & START RIGHT => " << r;
     std::vector<Edge> setL;
     while(!(r==END_EDGE) && !(l == END_EDGE)){
         while (l != END_EDGE && l.target < r.source) { //advance until we have a joining edge
@@ -36,20 +41,17 @@ void MergeJoin::evalPipeline(ResultSorted resultSorted) {
             if (tl.target == l.target){
                 setL.push_back(l);
                 l = left->produceNextEdge();
-               // std::cout << "+++ Compute SET => " << l;
             }
             else done = true;
         }
         while (!(r == END_EDGE) && r.source < tl.target) { //advance until we have a joining edge
             r = right->produceNextEdge();
-           // std::cout << "--- REMOVE R to match with tl => " << r <<  " (tl=)"<< tl;
         }
         while (!(r == END_EDGE) && tl.target == r.source){
             for(auto tl : setL){
                 res.push_back(Edge{tl.source,r.target});
             }
             r = right->produceNextEdge();
-          //  std::cout << "******* JOIN => " << r;
         }
     }
     left->terminate();
@@ -57,7 +59,6 @@ void MergeJoin::evalPipeline(ResultSorted resultSorted) {
     thdLeft.join();
     thdRight.join();
     std::sort(res.begin(),res.end(), targetCompDesc);
-
     ready = true;
     out.push(END_EDGE,true);
 }

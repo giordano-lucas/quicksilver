@@ -14,6 +14,7 @@ class MergeJoin : public PhysicalOperator{
 
 private:
     std::vector<Edge> res;
+    Edge lastEdgeProduced = END_EDGE;
     bool ready = false;
 
 public:

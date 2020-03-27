@@ -86,6 +86,7 @@ cardStat join(IndexResult left, IndexResult right, bool revL, bool revR,
 
 
 void SimpleEstimator::prepare() {
+    /*
     std::unordered_map<Node,bool> inMap;
     std::unordered_map<Node,bool> middleMap;
     std::unordered_map<Edge,Node,HashEdge> twoMap;
@@ -123,24 +124,6 @@ void SimpleEstimator::prepare() {
             index->syn3[l1][l2].in       = inMap.size();
             index->syn3[l1][l2].middleIn = middleMap.size();
             index->syn3[l1][l2].twoIn    = twoMap.size();
-        }
-    }/*
-    for (Label l1 = 0 ; l1 < index->getNoLabels() ; ++l1){
-        std::cout << "index->syn1[" << l1 << "] = { out = "<<index->syn1[l1].out  << ", in = "<< index->syn1[l1].in << ", path = " << index->syn1[l1].path<< std::endl;
-    }
-    for (Label l1 = 0 ; l1 < index->getNoLabels() ; ++l1){
-        for (Label l2 = 0 ; l2 < index->getNoLabels() ; ++l2) {
-            std::cout << "index->syn2[" << l1 << "][" << l2 << "] = { mid = "<<index->syn2[l1][l2].middle  << ", in = "<< index->syn2[l1][l2].in << ", two = " << index->syn2[l1][l2].two<< std::endl;
-        }
-    }
-    for (Label l1 = 0 ; l1 < index->getNoLabels() ; ++l1){
-        for (Label l2 = 0 ; l2 < index->getNoLabels() ; ++l2) {
-            std::cout << "index->syn3[" << l1 << "][" << l2 << "] = { mid = "<<index->syn3[l1][l2].middleIn  << ", in = "<< index->syn3[l1][l2].in << ", two = " << index->syn3[l1][l2].twoIn << std::endl;
-        }
-    }
-    for (Label l1 = 0 ; l1 < index->getNoLabels() ; ++l1){
-        for (Label l2 = 0 ; l2 < index->getNoLabels() ; ++l2) {
-            std::cout << "index->syn4[" << l1 << "][" << l2 << "] = { mid = "<<index->syn4[l1][l2].middleOut  << ", out = "<< index->syn4[l1][l2].out << ", two = " << index->syn4[l1][l2].twoOut << std::endl;
         }
     }*/
 }
