@@ -7,24 +7,28 @@
 #include <iostream>
 #include <vector>
 #include <functional>
+
 typedef uint32_t Node;
 typedef uint32_t Label;
-#define NONE UINT32_MAX  //*********************************** TO BE CHANGED ********************************
-
-// ============================ Prefix Edges =============================
 typedef struct {
     Node source ;
     Label label ;
     Node target ;
 } QueryEdge;
-QueryEdge reverse(const QueryEdge& a);
-bool labelSourceComp(const QueryEdge& a, const QueryEdge& b);
-bool labelTargetComp(const QueryEdge& a, const QueryEdge& b);
 
 typedef struct {
     Node source ;
     Node target ;
 } Edge;
+typedef bool (*Comparator)(const Edge& a, const Edge& b);
+#define NONE UINT32_MAX  //*********************************** TO BE CHANGED ********************************
+
+// ============================ Prefix Edges =============================
+
+QueryEdge reverse(const QueryEdge& a);
+bool labelSourceComp(const QueryEdge& a, const QueryEdge& b);
+bool labelTargetComp(const QueryEdge& a, const QueryEdge& b);
+
     bool sourceComp(const Edge& a, const Edge& b);
     bool sourceCompDesc(const Edge& a, const Edge& b);
     bool targetCompDesc(const Edge& a, const Edge& b);

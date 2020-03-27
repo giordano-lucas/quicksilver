@@ -135,6 +135,7 @@ std::string printQuery(basic_query_t q){
         case lower  : return "<";
         case selection : return "sel";
     }
+    return "";
 }
 
 

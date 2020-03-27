@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/benchmarker.dir/include/SmartGraph.cpp.o"
   "CMakeFiles/benchmarker.dir/src/PathQuery.cpp.o"
   "CMakeFiles/benchmarker.dir/src/PathTree.cpp.o"
   "CMakeFiles/benchmarker.dir/src/SimpleEstimator.cpp.o"

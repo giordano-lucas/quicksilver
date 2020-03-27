@@ -31,7 +31,7 @@ set(HEADER_FILES
         src/student/MergeJoin.cpp include/student/MergeJoin.h
         include/PathQuery.h
         include/benches.h
-        include/rss.h)
+        include/rss.h include/SmartGraph.cpp include/SmartGraph.h include/student/Synopse.h)
 
 
 set(SOURCE_FILES
@@ -47,18 +47,18 @@ set(SOURCE_FILES
         src/student/MergeJoin.cpp include/student/MergeJoin.h
         src/student/KleeneStar.cpp include/student/KleeneStar.h
         src/benches.cpp
-        src/rss.c)
+        src/rss.c include/SmartGraph.cpp include/SmartGraph.h include/student/Synopse.h)
 
 
 
 file(GLOB_RECURSE STUDENT_HEADER_FILES CONFIGURE_DEPENDS include/student/*.h)
 file(GLOB_RECURSE STUDENT_SOURCE_FILES CONFIGURE_DEPENDS src/student/*.cpp)
 
-add_executable(quicksilver src/main.cpp ${SOURCE_FILES} ${HEADER_FILES} ${STUDENT_SOURCE_FILES} ${STUDENT_HEADER_FILES})
+add_executable(quicksilver src/main.cpp ${SOURCE_FILES} ${HEADER_FILES} ${STUDENT_SOURCE_FILES} ${STUDENT_HEADER_FILES} include/SmartGraph.cpp include/SmartGraph.h include/student/Synopse.h)
 target_link_libraries(quicksilver Threads::Threads)
 
 if (Filesystem_FOUND)
-    add_executable(benchmarker src/benchmarker.cpp ${SOURCE_FILES} ${HEADER_FILES} ${STUDENT_SOURCE_FILES} ${STUDENT_HEADER_FILES} src/student/myMain.cpp include/student/HelperPhysicalOperator.h src/student/HelperPhysicalOperator.cpp include/student/HelperPhysicalOperator.h)
+    add_executable(benchmarker src/benchmarker.cpp ${SOURCE_FILES} ${HEADER_FILES} ${STUDENT_SOURCE_FILES} ${STUDENT_HEADER_FILES} src/student/myMain.cpp include/student/HelperPhysicalOperator.h src/student/HelperPhysicalOperator.cpp include/student/HelperPhysicalOperator.h include/SmartGraph.cpp include/SmartGraph.h include/student/Synopse.h)
     target_link_libraries(benchmarker Threads::Threads std::filesystem)
 endif()
 
