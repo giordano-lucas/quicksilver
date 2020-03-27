@@ -178,6 +178,10 @@
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/HelperPhysicalOperator.h">
+			<Option target="benchmarker"/>
+			<Option target="quicksilver"/>
+		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/IndexLookUp.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
@@ -229,6 +233,10 @@
 			<Option target="quicksilver"/>
 		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/Edge.cpp">
+			<Option target="benchmarker"/>
+			<Option target="quicksilver"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/HelperPhysicalOperator.cpp">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>

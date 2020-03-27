@@ -22,6 +22,10 @@ CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o
  ../include/SimpleGraph.h
  ../include/student/BlockingQueue.h
  ../include/student/Edge.h
+ ../include/student/HelperPhysicalOperator.h
+ ../include/student/IndexLookUp.h
+ ../include/student/KleeneStar.h
+ ../include/student/MergeJoin.h
  ../include/student/PhysicalOperator.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEstimator.cpp
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o
@@ -35,6 +39,7 @@ CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o
  ../include/SimpleGraph.h
  ../include/student/BlockingQueue.h
  ../include/student/Edge.h
+ ../include/student/HelperPhysicalOperator.h
  ../include/student/IndexLookUp.h
  ../include/student/KleeneStar.h
  ../include/student/MergeJoin.h
@@ -64,6 +69,23 @@ CMakeFiles/quicksilver.dir/src/main.cpp.o
 CMakeFiles/quicksilver.dir/src/student/Edge.cpp.o
  ../include/student/Edge.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/Edge.cpp
+CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o
+ ../include/Estimator.h
+ ../include/Evaluator.h
+ ../include/Graph.h
+ ../include/PathQuery.h
+ ../include/PathTree.h
+ ../include/SimpleEstimator.h
+ ../include/SimpleEvaluator.h
+ ../include/SimpleGraph.h
+ ../include/student/BlockingQueue.h
+ ../include/student/Edge.h
+ ../include/student/HelperPhysicalOperator.h
+ ../include/student/IndexLookUp.h
+ ../include/student/KleeneStar.h
+ ../include/student/MergeJoin.h
+ ../include/student/PhysicalOperator.h
+ /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/HelperPhysicalOperator.cpp
 CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o
  ../include/Estimator.h
  ../include/Evaluator.h

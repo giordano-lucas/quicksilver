@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/benchmarker.dir/src/benchmarker.cpp.o"
   "CMakeFiles/benchmarker.dir/src/rss.c.o"
   "CMakeFiles/benchmarker.dir/src/student/Edge.cpp.o"
+  "CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o"
   "CMakeFiles/benchmarker.dir/src/student/IndexLookUp.cpp.o"
   "CMakeFiles/benchmarker.dir/src/student/KleeneStar.cpp.o"
   "CMakeFiles/benchmarker.dir/src/student/MergeJoin.cpp.o"

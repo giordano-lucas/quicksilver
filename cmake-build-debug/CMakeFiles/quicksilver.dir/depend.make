@@ -21,6 +21,10 @@ CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/SimpleEvaluator
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/SimpleGraph.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/student/BlockingQueue.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/student/Edge.h
+CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/student/HelperPhysicalOperator.h
+CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/student/IndexLookUp.h
+CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/student/KleeneStar.h
+CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/student/MergeJoin.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../include/student/PhysicalOperator.h
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o: ../src/SimpleEstimator.cpp
 
@@ -34,6 +38,7 @@ CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/SimpleEvaluator
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/SimpleGraph.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/student/BlockingQueue.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/student/Edge.h
+CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/student/HelperPhysicalOperator.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/student/IndexLookUp.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/student/KleeneStar.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/student/MergeJoin.h
@@ -63,6 +68,23 @@ CMakeFiles/quicksilver.dir/src/main.cpp.o: ../src/main.cpp
 
 CMakeFiles/quicksilver.dir/src/student/Edge.cpp.o: ../include/student/Edge.h
 CMakeFiles/quicksilver.dir/src/student/Edge.cpp.o: ../src/student/Edge.cpp
+
+CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/Estimator.h
+CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/Evaluator.h
+CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/Graph.h
+CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/PathQuery.h
+CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/PathTree.h
+CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/SimpleEstimator.h
+CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/SimpleEvaluator.h
+CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/SimpleGraph.h
+CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/student/BlockingQueue.h
+CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/student/Edge.h
+CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/student/HelperPhysicalOperator.h
+CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/student/IndexLookUp.h
+CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/student/KleeneStar.h
+CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/student/MergeJoin.h
+CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/student/PhysicalOperator.h
+CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../src/student/HelperPhysicalOperator.cpp
 
 CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o: ../include/Estimator.h
 CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o: ../include/Evaluator.h

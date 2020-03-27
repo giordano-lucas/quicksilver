@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/quicksilver.dir/src/main.cpp.o"
   "CMakeFiles/quicksilver.dir/src/rss.c.o"
   "CMakeFiles/quicksilver.dir/src/student/Edge.cpp.o"
+  "CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o"
   "CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o"
   "CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o"
   "CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o"

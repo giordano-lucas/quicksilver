@@ -431,6 +431,36 @@ src/student/Edge.cpp.s:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/Edge.cpp.s
 .PHONY : src/student/Edge.cpp.s
 
+src/student/HelperPhysicalOperator.o: src/student/HelperPhysicalOperator.cpp.o
+
+.PHONY : src/student/HelperPhysicalOperator.o
+
+# target to build an object file
+src/student/HelperPhysicalOperator.cpp.o:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o
+.PHONY : src/student/HelperPhysicalOperator.cpp.o
+
+src/student/HelperPhysicalOperator.i: src/student/HelperPhysicalOperator.cpp.i
+
+.PHONY : src/student/HelperPhysicalOperator.i
+
+# target to preprocess a source file
+src/student/HelperPhysicalOperator.cpp.i:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.i
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.i
+.PHONY : src/student/HelperPhysicalOperator.cpp.i
+
+src/student/HelperPhysicalOperator.s: src/student/HelperPhysicalOperator.cpp.s
+
+.PHONY : src/student/HelperPhysicalOperator.s
+
+# target to generate assembly for a file
+src/student/HelperPhysicalOperator.cpp.s:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.s
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.s
+.PHONY : src/student/HelperPhysicalOperator.cpp.s
+
 src/student/IndexLookUp.o: src/student/IndexLookUp.cpp.o
 
 .PHONY : src/student/IndexLookUp.o
@@ -591,6 +621,9 @@ help:
 	@echo "... src/student/Edge.o"
 	@echo "... src/student/Edge.i"
 	@echo "... src/student/Edge.s"
+	@echo "... src/student/HelperPhysicalOperator.o"
+	@echo "... src/student/HelperPhysicalOperator.i"
+	@echo "... src/student/HelperPhysicalOperator.s"
 	@echo "... src/student/IndexLookUp.o"
 	@echo "... src/student/IndexLookUp.i"
 	@echo "... src/student/IndexLookUp.s"

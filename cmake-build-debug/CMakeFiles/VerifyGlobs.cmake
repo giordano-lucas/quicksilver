@@ -6,6 +6,7 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/lucas/Desktop/EPFL/ECH
 set(OLD_GLOB
   "/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/BlockingQueue.h"
   "/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/Edge.h"
+  "/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/HelperPhysicalOperator.h"
   "/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/IndexLookUp.h"
   "/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/KleeneStar.h"
   "/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/MergeJoin.h"
@@ -20,6 +21,7 @@ endif()
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/*.cpp")
 set(OLD_GLOB
   "/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/Edge.cpp"
+  "/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/HelperPhysicalOperator.cpp"
   "/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/IndexLookUp.cpp"
   "/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/KleeneStar.cpp"
   "/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/MergeJoin.cpp"

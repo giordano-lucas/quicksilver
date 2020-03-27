@@ -52,9 +52,13 @@ void SimpleGraph::readFromContiguousFile(const std::string &fileName) {
         throw std::runtime_error(std::string("Invalid graph header!"));
     }
     std::vector<std::vector<Edge>> edges(L, std::vector<Edge>());
+    //set syn1
+    syn1.resize(L);
+    std::vector<std::unordered_map<Node,bool>> inMap(L, std::unordered_map<Node,bool>());
+    std::vector<std::unordered_map<Node,bool>> outMap(L, std::unordered_map<Node,bool>());
+    //val pathsMap = hashMapOf<Edge, Int>()
 
-    //std::vector<Edge> edges;  //holds the edges
-    // parse edge data
+
     while(std::getline(graphFile, line)) {
 
         if(std::regex_search(line, matches, edgePat)) {
@@ -63,8 +67,28 @@ void SimpleGraph::readFromContiguousFile(const std::string &fileName) {
             uint32_t object = (uint32_t) std::stoul(matches[3]);
 
             edges[predicate].push_back(Edge{subject,object});
+            //compute syn 1
+            inMap[predicate].insert({object,true});
+            outMap[predicate].insert({subject,true});
+            syn1[predicate].path++;
         }
     }
+
+    // some synapse computation
+    syn2.resize(L);
+    syn3.resize(L);
+    syn4.resize(L);
+    for (Label l = 0 ; l < L ; ++l){
+        syn1[l].out = outMap[l].size();
+        syn1[l].in  = inMap[l].size();
+        //set size of syn2 and syn3 for later
+        syn2[l].resize(L);
+        syn3[l].resize(L);
+        syn4[l].resize(L);
+    }
+
+
+
     graphFile.close();
 
     /*Construct index*/
