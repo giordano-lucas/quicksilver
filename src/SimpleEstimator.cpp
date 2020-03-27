@@ -78,11 +78,11 @@ cardStat join(IndexIterator l, IndexIterator r,
     return eval(res);
 }
 
-void SimpleEstimator::prepare() {
+void SimpleEstimator::prepare() {/*
     std::unordered_map<Node,bool> inMap;
     std::unordered_map<Node,bool> middleMap;
     std::unordered_map<Edge,Node,HashEdge> twoMap;
-    for (Label l1 = 0 ; l1 < index->getNoLabels() ; ++l1){/*
+    for (Label l1 = 0 ; l1 < index->getNoLabels() ; ++l1){
         for (Label l2 = 0 ; l2 < index->getNoLabels() ; ++l2){
             //============= index->syn2 =================
             inMap.clear();
@@ -116,7 +116,7 @@ void SimpleEstimator::prepare() {
             index->syn3[l1][l2].middleIn = middleMap.size();
             index->syn3[l1][l2].twoIn    = twoMap.size();
             //res.print();
-        }*/
+        }
     }/*
     for (Label l1 = 0 ; l1 < index->getNoLabels() ; ++l1){
         std::cout << "index->syn1[" << l1 << "] = { out = "<<index->syn1[l1].out  << ", in = "<< index->syn1[l1].in << ", path = " << index->syn1[l1].path<< std::endl;

@@ -57,7 +57,12 @@ void KleeneStar::evalPipeline(ResultSorted resultSorted) {
     std::vector<Edge> output;
     if      (queryEdge.source != NONE) dfs(discovered,queryEdge.source,queryEdge.source, false,output);
     else if (queryEdge.target != NONE) dfs(discovered,queryEdge.target,queryEdge.target, true,output); //in reverse adj list => need to re-reverse the edges at the end
-    else {  //if the query is not bounded (*,l,*) => perform dfs for all sources nodes
+    for (auto e : output) {
+        out.push(e,false);
+        if (terminated) return;       //stop computation if parent operator has what it wants
+    }
+    if (queryEdge.source == NONE && queryEdge.target == NONE){
+        //if the query is not bounded (*,l,*) => perform dfs for all sources nodes
         IndexIterator it;
         switch(resultSorted){
             case NOT_SORTED:   //use source sorted by default
@@ -68,8 +73,8 @@ void KleeneStar::evalPipeline(ResultSorted resultSorted) {
             dfs(discovered,(*it).source,(*it).source,(resultSorted == TARGET_SORTED)?true:false,output);
             std::sort(output.begin(),output.end(),(resultSorted == TARGET_SORTED)?targetComp:sourceComp);
             for (auto e : output) {
-               out.push(e,false);
-               if (terminated) return;       //stop computation if parent operator has what it wants
+                out.push(e,false);
+                if (terminated) return;       //stop computation if parent operator has what it wants
             }
             discovered.clear(); //reset for next computation
             output.clear();

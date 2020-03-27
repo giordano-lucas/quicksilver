@@ -50,16 +50,10 @@ public:
         uint16_t remainingTargets;
         bool done        = false;
         bool needReverse = false;
-        // Sorted iterator variables
-        bool needSorted  = false;
-        Edge* sortedArray     = nullptr;
-        Edge* allocatedArray     = nullptr;
-        Edge* itSorted   = nullptr;
     public:
         Iterator(LabelIndex* index, Header* start, bool needReverse);
         Iterator(LabelIndex* index, Header* start, Header* end, bool needReverse);
         Iterator();
-        Iterator sort(Comparator cmp);
         Iterator operator++();
         Edge operator*();
         Iterator skip();

@@ -108,11 +108,11 @@ void SimpleGraph::insertAll(std::vector<Edge> &edges, Label l, bool reversed, Co
     Edge lastEdge = Edge{NONE,NONE};
     while (it != edges.end()){
         //********* NO DUPLICATES ***********
-        /* if ((*it) == lastEdge){
+         if ((*it) == lastEdge){
              ++it;
-             syn1[l].path--;
+             index[l].nbEdges--;
          }
-         lastEdge = *it;*/
+         lastEdge = *it;
         //********* REAL WORK ***********
         Node source = getSource(it);
         index[l].headers[headerIndex].source      = source;
@@ -122,11 +122,13 @@ void SimpleGraph::insertAll(std::vector<Edge> &edges, Label l, bool reversed, Co
             index[l].edges[nextSpace] = getTarget(it);            //allocate target
             nextSpace++;                                                //next memory spot
             it++;                                                       //next edge
-            //assert(nextSpace <=  (syn1[l].path));                        //check buffer overflow
+            //assert(nextSpace <=  (syn1[l].path));                     //check buffer overflow
         }
         headerIndex++;
         //assert(headerIndex <= index[l].nbHeaders);
     }
+    if (syn1[l].path != index[l].nbEdges) syn1[l].path = index[l].nbEdges;
+    realloc(index[l].edges, index[l].nbEdges *sizeof(Node));
     //assert(nextSpace  == syn1[l].path); //all memory has been used
     //assert(headerIndex == index[l].nbHeaders);           //all memory has been used
 }
@@ -203,32 +205,19 @@ SimpleGraph::Iterator::Iterator(LabelIndex *index, Header *start, bool needRever
         Iterator(index,start, index->headers + index->nbHeaders, needReverse) {}
 SimpleGraph::Iterator SimpleGraph::Iterator::operator++() {
     if (done) return *this;
-    if (!needSorted){          //regular iterator
         remainingTargets--;
         target++;
         if (remainingTargets > 0) {
             return *this;
         }
         else return skip();
-    }
-    else {//sorted iterator
-        ++itSorted;
-        if (itSorted >= (sortedArray + index->nbEdges)) {
-            done = true;
-            free(allocatedArray);
-        }
-        return *this;
-    }
-
 }
 Edge SimpleGraph::Iterator::operator*() {
     if (done) return Edge{NONE,NONE};
-    if (!needSorted) return (!needReverse)?Edge{source->source, *target}: Edge{*target,source->source};
-    else             return *itSorted;
+    return (!needReverse)?Edge{source->source, *target}: Edge{*target,source->source};
 }
 
 SimpleGraph::Iterator SimpleGraph::Iterator::skip() {
-    uint32_t nbHeaders = index->nbHeaders;
     ++source;
     if (source == end) {done = true; return *this;}
     target += remainingTargets;
@@ -238,26 +227,6 @@ SimpleGraph::Iterator SimpleGraph::Iterator::skip() {
 
 bool SimpleGraph::Iterator::hasNext() const {
     return !done;
-}
-
-SimpleGraph::Iterator SimpleGraph::Iterator::sort(Comparator cmp) {
-    if (needSorted) return *this; //already sorted
-    allocatedArray = static_cast<Edge*>(calloc(index->nbEdges, sizeof(Edge)));
-    sortedArray = allocatedArray;
-    itSorted = sortedArray;
-    while (hasNext()){
-        (*itSorted) = operator*();
-        itSorted++;
-        operator++();
-    }
-    itSorted = sortedArray;
-    std::sort(sortedArray,sortedArray + index->nbEdges, cmp);
-    done = false;
-    needSorted = true;
-    source = nullptr;
-    end = nullptr;
-    target = nullptr;
-    return *this;
 }
 
 SimpleGraph::Iterator::Iterator(): Iterator(nullptr, nullptr, nullptr,false) {

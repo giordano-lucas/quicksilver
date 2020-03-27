@@ -42,8 +42,8 @@ int main(int argc, char *argv[]) {
 
     if(argc < 3) {
         std::cout << "Usage: quicksilver <graphFile> <queriesFile>" << std::endl;
-        argv[1] = "../workload/real/2/graph.nt";
-        argv[2] = "../workload/real/2/queries.csv";
+        argv[1] = "../workload/syn/1/graph.nt";
+        argv[2] = "../workload/syn/1/queries.csv";
         //return 0;
     }
 
@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
     std::string graphFile {argv[1]};
     std::string queriesFile {argv[2]};
 
-   // estimatorBench(graphFile, queriesFile);
+   estimatorBench(graphFile, queriesFile);/*
     auto result = evaluatorBench(graphFile, queriesFile);
 
     std::cout << std::endl << std::endl << std::endl;
@@ -60,6 +60,6 @@ int main(int argc, char *argv[]) {
     std::cout << "Total eval time: " << result.evalTime << " ms" << std::endl;
     double memoryUsage = double(getPeakRSS()) / 1024.0 / 1024.0;
     std::cout << "Peak memory usage (for all workloads): " << memoryUsage << " MiB" << std::endl;
-
+*/
     return 0;
 }
