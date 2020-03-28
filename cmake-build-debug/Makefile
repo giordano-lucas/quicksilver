@@ -431,6 +431,36 @@ src/student/Edge.cpp.s:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/Edge.cpp.s
 .PHONY : src/student/Edge.cpp.s
 
+src/student/HashJoin.o: src/student/HashJoin.cpp.o
+
+.PHONY : src/student/HashJoin.o
+
+# target to build an object file
+src/student/HashJoin.cpp.o:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/HashJoin.cpp.o
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o
+.PHONY : src/student/HashJoin.cpp.o
+
+src/student/HashJoin.i: src/student/HashJoin.cpp.i
+
+.PHONY : src/student/HashJoin.i
+
+# target to preprocess a source file
+src/student/HashJoin.cpp.i:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/HashJoin.cpp.i
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.i
+.PHONY : src/student/HashJoin.cpp.i
+
+src/student/HashJoin.s: src/student/HashJoin.cpp.s
+
+.PHONY : src/student/HashJoin.s
+
+# target to generate assembly for a file
+src/student/HashJoin.cpp.s:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/HashJoin.cpp.s
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.s
+.PHONY : src/student/HashJoin.cpp.s
+
 src/student/HelperPhysicalOperator.o: src/student/HelperPhysicalOperator.cpp.o
 
 .PHONY : src/student/HelperPhysicalOperator.o
@@ -621,6 +651,9 @@ help:
 	@echo "... src/student/Edge.o"
 	@echo "... src/student/Edge.i"
 	@echo "... src/student/Edge.s"
+	@echo "... src/student/HashJoin.o"
+	@echo "... src/student/HashJoin.i"
+	@echo "... src/student/HashJoin.s"
 	@echo "... src/student/HelperPhysicalOperator.o"
 	@echo "... src/student/HelperPhysicalOperator.i"
 	@echo "... src/student/HelperPhysicalOperator.s"

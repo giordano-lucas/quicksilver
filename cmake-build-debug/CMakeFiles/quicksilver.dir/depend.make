@@ -76,6 +76,21 @@ CMakeFiles/quicksilver.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/quicksilver.dir/src/student/Edge.cpp.o: ../include/student/Edge.h
 CMakeFiles/quicksilver.dir/src/student/Edge.cpp.o: ../src/student/Edge.cpp
 
+CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o: ../include/Estimator.h
+CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o: ../include/Evaluator.h
+CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o: ../include/Graph.h
+CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o: ../include/PathQuery.h
+CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o: ../include/PathTree.h
+CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o: ../include/SimpleEstimator.h
+CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o: ../include/SimpleEvaluator.h
+CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o: ../include/SimpleGraph.h
+CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o: ../include/student/BlockingQueue.h
+CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o: ../include/student/Edge.h
+CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o: ../include/student/HashJoin.h
+CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o: ../include/student/PhysicalOperator.h
+CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o: ../include/student/Synopse.h
+CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o: ../src/student/HashJoin.cpp
+
 CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/Estimator.h
 CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/Evaluator.h
 CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/Graph.h

@@ -116,25 +116,7 @@ vector
 functional
 -
 
-../include/student/HelperPhysicalOperator.h
-PhysicalOperator.h
-../include/student/PhysicalOperator.h
-SimpleGraph.h
-../include/student/SimpleGraph.h
-
-../include/student/IndexLookUp.h
-PhysicalOperator.h
-../include/student/PhysicalOperator.h
-SimpleGraph.h
-../include/student/SimpleGraph.h
-
-../include/student/KleeneStar.h
-SimpleGraph.h
--
-PhysicalOperator.h
-../include/student/PhysicalOperator.h
-
-../include/student/MergeJoin.h
+../include/student/HashJoin.h
 PhysicalOperator.h
 ../include/student/PhysicalOperator.h
 
@@ -166,37 +148,7 @@ SimpleEvaluator.h
 iostream
 -
 
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEstimator.cpp
-cmath
--
-student/PhysicalOperator.h
--
-student/MergeJoin.h
--
-student/KleeneStar.h
--
-student/IndexLookUp.h
--
-student/HelperPhysicalOperator.h
--
-SimpleGraph.h
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleGraph.h
-SimpleEstimator.h
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEstimator.h
-
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEvaluator.cpp
-PhysicalOperator.h
--
-IndexLookUp.h
--
-KleeneStar.h
--
-MergeJoin.h
--
-student/HelperPhysicalOperator.h
--
-SimpleEstimator.h
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEstimator.h
-SimpleEvaluator.h
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEvaluator.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/HashJoin.cpp
+HashJoin.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/HashJoin.h
 
