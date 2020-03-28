@@ -184,3 +184,19 @@ SimpleGraph.h
 SimpleEstimator.h
 /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEstimator.h
 
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEvaluator.cpp
+PhysicalOperator.h
+-
+IndexLookUp.h
+-
+KleeneStar.h
+-
+MergeJoin.h
+-
+student/HelperPhysicalOperator.h
+-
+SimpleEstimator.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEstimator.h
+SimpleEvaluator.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEvaluator.h
+

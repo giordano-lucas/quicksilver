@@ -93,7 +93,7 @@ public:
      * Returns the cardinality estimation of the result of this physical operator
      **/
     cardStat getCardinality() const {
-        return est->estimatePhy((void *) this);
+        return est->estimate(flatten());
     };
     query_t  flatten() const {
         return query;

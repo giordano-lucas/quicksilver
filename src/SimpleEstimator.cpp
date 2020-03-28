@@ -49,19 +49,17 @@ cardStat eval(std::vector<Edge> edges) {
 };
 
 
-cardStat join(IndexIterator l, IndexIterator r,
+void join(IndexIterator l, IndexIterator r,
         std::unordered_map<Node,bool> &inMap,
         std::unordered_map<Node,bool> &middleMap,
         std::unordered_map<Edge,Node,HashEdge> &twoMap){
-    std::vector<Edge> res;
-    std::vector<Edge> setL;
+
     while(r.hasNext() && l.hasNext()){
         while (l.hasNext() && ((*l).target < (*r).source)) {++l;} //advance until we have a joining edge
         Edge tl = *l;
-        setL.clear();
         bool done = false;
         while  (!done && l.hasNext()){ //setL contains all edges in Left that have the same target value
-            if (tl.target == (*l).target){setL.push_back(*l);++l;}
+            if (tl.target == (*l).target){++l;}
             else done = true;
         }
         while (r.hasNext() && (*r).source < tl.target) {++r;} //advance until we have a joining edge
@@ -69,16 +67,13 @@ cardStat join(IndexIterator l, IndexIterator r,
         while (r.hasNext() && tl.target == (*r).source){
             twoMap.insert({*r,true}); //have a two
             inMap.insert({(*r).target,true});  //have an in
-            for(auto tl : setL){
-               // res.push_back(Edge{tl.source,(*r).target});
-            }
             ++r;
         }
     }
-    return eval(res);
+    //return eval(res);
 }
 
-void SimpleEstimator::prepare() {/*
+void SimpleEstimator::prepare() {
     std::unordered_map<Node,bool> inMap;
     std::unordered_map<Node,bool> middleMap;
     std::unordered_map<Edge,Node,HashEdge> twoMap;
@@ -90,7 +85,7 @@ void SimpleEstimator::prepare() {/*
             twoMap.clear();
             IndexIterator left  = index->getEdgesTarget(QueryEdge{NONE,l1,NONE},true);
             IndexIterator right = index->getEdgesSource(QueryEdge{NONE,l2,NONE});
-            cardStat res = join(left,right, inMap,middleMap,twoMap);
+            join(left,right, inMap,middleMap,twoMap);
             index->syn2[l1][l2].in     = inMap.size();
             index->syn2[l1][l2].middle = middleMap.size();
             index->syn2[l1][l2].two    = twoMap.size();
@@ -101,7 +96,7 @@ void SimpleEstimator::prepare() {/*
             twoMap.clear();
             left  = index->getEdgesSource(QueryEdge{NONE,l1,NONE},true);
             right = index->getEdgesSource(QueryEdge{NONE,l2,NONE});
-            res =  join(left,right, inMap,middleMap,twoMap);
+            join(left,right, inMap,middleMap,twoMap);
             index->syn4[l1][l2].out       = inMap.size();
             index->syn4[l1][l2].middleOut = middleMap.size();
             index->syn4[l1][l2].twoOut    = twoMap.size();
@@ -111,7 +106,7 @@ void SimpleEstimator::prepare() {/*
             twoMap.clear();
             left  = index->getEdgesTarget(QueryEdge{NONE,l1,NONE},true);
             right = index->getEdgesTarget(QueryEdge{NONE,l2,NONE});
-            res =  join(left,right,inMap,middleMap,twoMap);
+            join(left,right,inMap,middleMap,twoMap);
             index->syn3[l1][l2].in       = inMap.size();
             index->syn3[l1][l2].middleIn = middleMap.size();
             index->syn3[l1][l2].twoIn    = twoMap.size();
@@ -148,9 +143,7 @@ std::string printQuery(basic_query_t q){
     return "";
 }
 
-cardStat SimpleEstimator::estimatePhy(void *op) {
-    PhysicalOperator* o = static_cast<PhysicalOperator *>(op);
-    query_t q = o->flatten();
+cardStat SimpleEstimator::estimate(query_t q) {
     bool boundedRight = false;
     bool boundedLeft = false;
     if (q.back().op == selection){
@@ -251,5 +244,5 @@ cardStat SimpleEstimator::estimateKleene(uint32_t l){
 
 cardStat SimpleEstimator::estimate(PathQuery *q) {
     PhysicalOperator* op = ofPathQuery(q,index);
-    return estimatePhy(op);
+    return estimate(op->flatten());
 }

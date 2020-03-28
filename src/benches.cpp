@@ -56,7 +56,7 @@ int estimatorBench(std::string &graphFile, std::string &queriesFile) {
 	std::cout << "Time to read the graph into memory: " << std::chrono::duration<double, std::milli>(end - start).count() << " ms" << std::endl;
 	
 	// prepare the estimator
-	auto est = std::make_unique<SimpleEstimator>(g);
+	std::shared_ptr<SimpleEstimator> est = std::make_unique<SimpleEstimator>(g);
 	start = std::chrono::steady_clock::now();
 	est->prepare();
 	end = std::chrono::steady_clock::now();
@@ -84,6 +84,7 @@ int estimatorBench(std::string &graphFile, std::string &queriesFile) {
 		// perform evaluation
 		auto ev = std::make_unique<SimpleEvaluator>(g);
 		ev->prepare();
+		ev->attachEstimator(est);
 		start = std::chrono::steady_clock::now();
 		auto actual = ev->evaluate(query);
 		end = std::chrono::steady_clock::now();

@@ -7,7 +7,6 @@
 #include "SimpleEvaluator.h"
 
 SimpleEvaluator::SimpleEvaluator(std::shared_ptr<SimpleGraph> &g) {
-
     // works only with SimpleGraph
     graph = g;
     est = nullptr; // estimator not attached by default
@@ -28,7 +27,7 @@ void SimpleEvaluator::prepare() {
 
 cardStat SimpleEvaluator::evaluate(PathQuery *query) {
     PhysicalOperator* op = ofPathQuery(query, graph);
-//    op->attachEstimator(est);
+    op->attachEstimator(est);
     auto res = op->eval();
     delete op;
     return res;

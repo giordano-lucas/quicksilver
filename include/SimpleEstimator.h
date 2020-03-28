@@ -35,7 +35,7 @@ public:
 
     void prepare() override ;
     cardStat estimate(PathQuery *q) override;
-    cardStat estimatePhy(void* op);
+    cardStat estimate(query_t q);
 
 private:
     cardStat estimateSimple(basic_query_t q);
