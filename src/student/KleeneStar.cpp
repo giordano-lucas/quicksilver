@@ -22,26 +22,26 @@ uint32_t KleeneStar::cost() const {
  * ====================> NOT WORKING YET <============================
  */
 
-#define getTarget(it) ((!reversed)?(*it).target:(*it).source)
 void KleeneStar::cacheDfs(std::unordered_map<Node,bool>& discovered,Node n ,bool reversed, bool firstIt){
+    if (!firstIt) discovered.insert({n,true});//set vertex n to discovered
     //use cache if possible
     if (finishedCache.find(n) != finishedCache.end()) return; //nothing to explore if this the last node is in cache
     //else explore the graph
-    if (!firstIt) discovered.insert({n,true});//set vertex n to discovered
     auto it = (!reversed)?index->getEdgesSource(QueryEdge{n,queryEdge.label,NONE}):index->getEdgesTarget(QueryEdge{NONE,queryEdge.label,n});
     std::vector<Node> targets;
     for (; it.hasNext(); ++it){     //explore all nodes in base.adj[n]
         Node target =(*it).target;
         targets.push_back(target);
-        if (finishedCache.find(target) == finishedCache.end()){    //if target has not been explored yet => explore
-          //  prev.push_back(target);
-         //   cacheDfs(prev,reversed);       //explore
+        if (discovered.find(target) == discovered.end()){    //if target has not been explored yet => explore
+            cacheDfs(discovered,target,reversed,false);       //explore
         }
     }
     std::vector<Node> reachable;
     for (Node t : targets){
         auto cacheRes = cache.find(t);
+        if (cacheRes == cache.end()) continue;
         assert(cacheRes != cache.end());
+        reachable.push_back(t);
         reachable.insert( reachable.end(), cacheRes->second.begin(), cacheRes->second.end());
     }
     cache.insert({n,reachable});
@@ -75,10 +75,10 @@ void KleeneStar::dfs(std::unordered_map<Node,bool>& discovered,Node n, Node sour
     }
 }
 
-void KleeneStar::pushEdges(std::vector<Edge> edges){
+void KleeneStar::pushEdges(std::vector<Edge> &edges, bool reversed){
     Edge last = END_EDGE;
-    for (auto e : edges){ //do not send duplicate edges
-        if (e != last) out.push(e,false);
+    for (Edge e : edges){ //do not send duplicate edges
+        if (e != last) out.push((reversed)?reverse(e):e,false);
         last = e;
         if (terminated) return; //stop computation if parent operator has what it wants
     }
@@ -95,7 +95,7 @@ void KleeneStar::evalPipeline(ResultSorted resultSorted) {
     std::vector<Edge> output;
     if      (queryEdge.source != NONE) dfs(discovered,queryEdge.source,queryEdge.source, false,output);
     else if (queryEdge.target != NONE) dfs(discovered,queryEdge.target,queryEdge.target, true,output); //in reverse adj list => need to re-reverse the edges at the end
-    pushEdges(output); //push edges in out
+    pushEdges(output,false); //push edges in out
     if (queryEdge.source == NONE && queryEdge.target == NONE){
         //if the query is not bounded (*,l,*) => perform dfs for all sources nodes
         IndexIterator it;
@@ -105,11 +105,25 @@ void KleeneStar::evalPipeline(ResultSorted resultSorted) {
             case TARGET_SORTED:  it = index->getEdgesTarget(QueryEdge{NONE,queryEdge.label,NONE});break;
         }
         for (;it.hasNext() && !terminated; it.skip()){
-            dfs(discovered,(*it).source,(*it).source,(resultSorted == TARGET_SORTED)?true:false,output);
-            std::sort(output.begin(),output.end(),(resultSorted == TARGET_SORTED)?targetComp:sourceComp);
-            pushEdges(output);
+            Node s = (*it).source;
             discovered.clear(); //reset for next computation
             output.clear();
+           /* ///// TEST CACHE DFS
+            bool reversed = (resultSorted == TARGET_SORTED)?true:false;
+            cacheDfs(discovered,s,reversed, true);
+            auto cacheRes = cache[s];
+            std::sort(cacheRes.begin(),cacheRes.end());
+            Edge last = END_EDGE;
+            for (Node t : cacheRes){ //do not send duplicate edges
+                Edge e = (reversed)?Edge{t,s}:Edge{s,t};
+                if (e != last) out.push(e,false);
+                last = e;
+                if (terminated) return; //stop computation if parent operator has what it wants
+            }*/
+            dfs(discovered,(*it).source,(*it).source,(resultSorted == TARGET_SORTED)?true:false,output);
+            std::sort(output.begin(),output.end(),(resultSorted == TARGET_SORTED)?targetComp:sourceComp);
+            pushEdges(output,false);
+
         }
     }
     out.push(END_EDGE,true);

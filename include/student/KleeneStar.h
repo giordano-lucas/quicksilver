@@ -17,7 +17,7 @@ private:
     void cacheDfs(std::unordered_map<Node,bool>& discovered,Node n ,bool reversed,bool firstIt);
     std::unordered_map<Node,std::vector<Node>> cache;
     std::unordered_map<Node,bool> finishedCache;
-    void pushEdges(std::vector<Edge> edges);
+    void pushEdges(std::vector<Edge> &edges, bool reversed);
 public:
     KleeneStar(std::shared_ptr<SimpleGraph>& index, QueryEdge queryEdge);
     uint32_t cost() const override;
