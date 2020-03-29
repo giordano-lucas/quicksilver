@@ -3,14 +3,14 @@
 
 CMakeFiles/quicksilver.dir/src/rss.c.o
  ../include/rss.h
- /home/anirak/Desktop/Database Technology/Project code/quicksilver/src/rss.c
+ /Users/valeriyaprokopova/dev/databases/quicksilver/src/rss.c
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o
  ../include/PathQuery.h
  ../include/PathTree.h
- /home/anirak/Desktop/Database Technology/Project code/quicksilver/src/PathQuery.cpp
+ /Users/valeriyaprokopova/dev/databases/quicksilver/src/PathQuery.cpp
 CMakeFiles/quicksilver.dir/src/PathTree.cpp.o
  ../include/PathTree.h
- /home/anirak/Desktop/Database Technology/Project code/quicksilver/src/PathTree.cpp
+ /Users/valeriyaprokopova/dev/databases/quicksilver/src/PathTree.cpp
 CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o
  ../include/Estimator.h
  ../include/Evaluator.h
@@ -28,7 +28,7 @@ CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o
  ../include/student/MergeJoin.h
  ../include/student/PhysicalOperator.h
  ../include/student/Synopse.h
- /home/anirak/Desktop/Database Technology/Project code/quicksilver/src/SimpleEstimator.cpp
+ /Users/valeriyaprokopova/dev/databases/quicksilver/src/SimpleEstimator.cpp
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o
  ../include/Estimator.h
  ../include/Evaluator.h
@@ -48,7 +48,7 @@ CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o
  ../include/student/Planner.h
  ../include/student/Subtree.h
  ../include/student/Synopse.h
- /home/anirak/Desktop/Database Technology/Project code/quicksilver/src/SimpleEvaluator.cpp
+ /Users/valeriyaprokopova/dev/databases/quicksilver/src/SimpleEvaluator.cpp
 CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o
  ../include/Estimator.h
  ../include/Graph.h
@@ -57,7 +57,7 @@ CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o
  ../include/SimpleGraph.h
  ../include/student/Edge.h
  ../include/student/Synopse.h
- /home/anirak/Desktop/Database Technology/Project code/quicksilver/src/SimpleGraph.cpp
+ /Users/valeriyaprokopova/dev/databases/quicksilver/src/SimpleGraph.cpp
 CMakeFiles/quicksilver.dir/src/benches.cpp.o
  ../include/Estimator.h
  ../include/Evaluator.h
@@ -70,14 +70,14 @@ CMakeFiles/quicksilver.dir/src/benches.cpp.o
  ../include/benches.h
  ../include/student/Edge.h
  ../include/student/Synopse.h
- /home/anirak/Desktop/Database Technology/Project code/quicksilver/src/benches.cpp
+ /Users/valeriyaprokopova/dev/databases/quicksilver/src/benches.cpp
 CMakeFiles/quicksilver.dir/src/main.cpp.o
  ../include/benches.h
  ../include/rss.h
- /home/anirak/Desktop/Database Technology/Project code/quicksilver/src/main.cpp
+ /Users/valeriyaprokopova/dev/databases/quicksilver/src/main.cpp
 CMakeFiles/quicksilver.dir/src/student/Edge.cpp.o
  ../include/student/Edge.h
- /home/anirak/Desktop/Database Technology/Project code/quicksilver/src/student/Edge.cpp
+ /Users/valeriyaprokopova/dev/databases/quicksilver/src/student/Edge.cpp
 CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o
  ../include/Estimator.h
  ../include/Evaluator.h
@@ -92,7 +92,7 @@ CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o
  ../include/student/HashJoin.h
  ../include/student/PhysicalOperator.h
  ../include/student/Synopse.h
- /home/anirak/Desktop/Database Technology/Project code/quicksilver/src/student/HashJoin.cpp
+ /Users/valeriyaprokopova/dev/databases/quicksilver/src/student/HashJoin.cpp
 CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o
  ../include/Estimator.h
  ../include/Evaluator.h
@@ -110,7 +110,7 @@ CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o
  ../include/student/MergeJoin.h
  ../include/student/PhysicalOperator.h
  ../include/student/Synopse.h
- /home/anirak/Desktop/Database Technology/Project code/quicksilver/src/student/HelperPhysicalOperator.cpp
+ /Users/valeriyaprokopova/dev/databases/quicksilver/src/student/HelperPhysicalOperator.cpp
 CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o
  ../include/Estimator.h
  ../include/Evaluator.h
@@ -125,7 +125,7 @@ CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o
  ../include/student/IndexLookUp.h
  ../include/student/PhysicalOperator.h
  ../include/student/Synopse.h
- /home/anirak/Desktop/Database Technology/Project code/quicksilver/src/student/IndexLookUp.cpp
+ /Users/valeriyaprokopova/dev/databases/quicksilver/src/student/IndexLookUp.cpp
 CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o
  ../include/Estimator.h
  ../include/Evaluator.h
@@ -140,7 +140,7 @@ CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o
  ../include/student/KleeneStar.h
  ../include/student/PhysicalOperator.h
  ../include/student/Synopse.h
- /home/anirak/Desktop/Database Technology/Project code/quicksilver/src/student/KleeneStar.cpp
+ /Users/valeriyaprokopova/dev/databases/quicksilver/src/student/KleeneStar.cpp
 CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o
  ../include/Estimator.h
  ../include/Evaluator.h
@@ -155,7 +155,7 @@ CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o
  ../include/student/MergeJoin.h
  ../include/student/PhysicalOperator.h
  ../include/student/Synopse.h
- /home/anirak/Desktop/Database Technology/Project code/quicksilver/src/student/MergeJoin.cpp
+ /Users/valeriyaprokopova/dev/databases/quicksilver/src/student/MergeJoin.cpp
 CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o
  ../include/Estimator.h
  ../include/Evaluator.h
@@ -175,7 +175,7 @@ CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o
  ../include/student/Planner.h
  ../include/student/Subtree.h
  ../include/student/Synopse.h
- /home/anirak/Desktop/Database Technology/Project code/quicksilver/src/student/Planner.cpp
+ /Users/valeriyaprokopova/dev/databases/quicksilver/src/student/Planner.cpp
 CMakeFiles/quicksilver.dir/src/student/myMain.cpp.o
  ../include/Estimator.h
  ../include/Evaluator.h
@@ -194,4 +194,4 @@ CMakeFiles/quicksilver.dir/src/student/myMain.cpp.o
  ../include/student/MergeJoin.h
  ../include/student/PhysicalOperator.h
  ../include/student/Synopse.h
- /home/anirak/Desktop/Database Technology/Project code/quicksilver/src/student/myMain.cpp
+ /Users/valeriyaprokopova/dev/databases/quicksilver/src/student/myMain.cpp

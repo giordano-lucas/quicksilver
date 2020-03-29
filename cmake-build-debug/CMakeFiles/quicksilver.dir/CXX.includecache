@@ -174,23 +174,23 @@ PhysicalOperator.h
 iostream
 -
 
-/home/anirak/Desktop/Database Technology/Project code/quicksilver/src/student/Planner.cpp
+/Users/valeriyaprokopova/dev/databases/quicksilver/src/student/Planner.cpp
 IndexLookUp.h
 -
 MergeJoin.h
-/home/anirak/Desktop/Database Technology/Project code/quicksilver/src/student/MergeJoin.h
+/Users/valeriyaprokopova/dev/databases/quicksilver/src/student/MergeJoin.h
 Planner.h
-/home/anirak/Desktop/Database Technology/Project code/quicksilver/src/student/Planner.h
+/Users/valeriyaprokopova/dev/databases/quicksilver/src/student/Planner.h
 unordered_map
 -
 KleeneStar.h
 -
 Edge.h
-/home/anirak/Desktop/Database Technology/Project code/quicksilver/src/student/Edge.h
+/Users/valeriyaprokopova/dev/databases/quicksilver/src/student/Edge.h
 Subtree.h
-/home/anirak/Desktop/Database Technology/Project code/quicksilver/src/student/Subtree.h
+/Users/valeriyaprokopova/dev/databases/quicksilver/src/student/Subtree.h
 HelperPhysicalOperator.h
-/home/anirak/Desktop/Database Technology/Project code/quicksilver/src/student/HelperPhysicalOperator.h
+/Users/valeriyaprokopova/dev/databases/quicksilver/src/student/HelperPhysicalOperator.h
 PathTree.h
-/home/anirak/Desktop/Database Technology/Project code/quicksilver/src/student/PathTree.h
+/Users/valeriyaprokopova/dev/databases/quicksilver/src/student/PathTree.h
 

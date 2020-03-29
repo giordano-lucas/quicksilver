@@ -78,7 +78,6 @@ PhysicalOperator *Planner::generatePlanForUnboundedQuery(PathQuery *query, std::
 
     //Map vector of children (aka logical plan) to its best physical plan
     std::unordered_map<Subtree, PhysicalOperator *, SubtreeHash> planMap;
-    std::vector<int> costOfMerged;
 
     //Get all subtrees of size 1
     std::vector<Subtree> subtreesOfSizeOne = subtreesOfSize(children, 1);
@@ -172,25 +171,16 @@ PhysicalOperator *Planner::generatePlanForUnboundedQuery(PathQuery *query, std::
                             //std::cout << "Plan for merged subtree not found" << std::endl;
                             // Add subtree --> physical plan to hashmap:
                             planMap.insert({mergedSubtree, physicalOperatorMergeJoin});
-                            if (mergedSubtree.subtree.size() == 3) {
-                                costOfMerged.push_back(costNewPlan);
-                            }
-
                         } else {
                             // Physical plan for the merged tree exists.
                             // Check if the cost of the existing plan is greater than the cost of the new plan.
-                            std::cout << "Physical plan for the merged tree exists." << std::endl;
+                            //std::cout << "Physical plan for the merged tree exists." << std::endl;
                             //retrieve the old PhysicalOperator
-
                             uint32_t costOldPlan = mergedPlanIter->second->cost();
                             if (costNewPlan < costOldPlan) {
-                                std::cout << "Old plan is worse" << std::endl;
+                                //std::cout << "Old plan is worse" << std::endl;
                                 // update to a new Physical Plan (because it has smaller cost)
                                 planMap[mergedSubtree] = physicalOperatorMergeJoin;
-                                if (mergedSubtree.subtree.size() == 3) {
-                                    costOfMerged.push_back(costNewPlan);
-                                }
-
                             }
                         }
                     }
@@ -205,13 +195,7 @@ PhysicalOperator *Planner::generatePlanForUnboundedQuery(PathQuery *query, std::
         std::cout << "Final query result is not stored in a hash map. SOMETHING WENT WRONG!!!" << std::endl;
     }
     PhysicalOperator *result = fullMapIter->second;
-//    PhysicalOperator resultingPlan = *result;
-    std::cout << "Final hash map" << std::endl;
-    printContentsOfHash(planMap);
-    std::cout << "\n Starting to delete contents of hash map\n";
-//    deleteContentsOfHash(&planMap, fullSubtree);
-    std::cout << "\ncontents of hash map deleted\n";
-    printContentsOfHash(planMap);
+    deleteContentsOfHash(&planMap, fullSubtree);
     return result;
 }
 
@@ -226,6 +210,7 @@ void printChildren(std::vector<std::string> children) {
     std::cout << "\n";
 }
 
+// Generates right deep tree for the list of children of flattened tree
 PathTree *generateRightDeepTree(std::vector<std::string> children) {
     printChildren(children);
     std::string concat = "/";
@@ -264,16 +249,6 @@ Planner::generatePlan(PathQuery *query, std::shared_ptr<SimpleGraph> &index, std
             std::vector<std::string> children = flattenedTree(tree);
             std::vector<std::string> children_right_deep = flattenedTree(tree);
             PathTree *rightDeepTree = generateRightDeepTree(children_right_deep);
-
-//            if(rightDeepTree->left == nullptr && rightDeepTree->right == nullptr) {
-//                std::cout << ' ' << rightDeepTree->data << ' ';
-//            } else {
-//                std::cout << '(' << rightDeepTree->data << ' ';
-//                if(rightDeepTree->left != nullptr) std::cout << *rightDeepTree->left;
-//                if(rightDeepTree->right!= nullptr) std::cout << *rightDeepTree->right;
-//                std::cout << ')';
-//            }
-
             op = ofPathTree(rightDeepTree, index, NONE, std::stoi(t));
             op->attachEstimator(e);
             printChildren(children_right_deep);
@@ -329,7 +304,6 @@ void Planner::testPlanHash(std::shared_ptr<SimpleGraph> &index) {
 }
 
 
-
 //    std::vector<int> costOfMerged;
 void Planner::printCosts(std::vector<int> costs) {
     std::cout << "" << std::endl;
@@ -355,14 +329,18 @@ void Planner::printContentsOfHash(std::unordered_map<Subtree, PhysicalOperator *
     }
 }
 
-void Planner::deleteContentsOfHash(std::unordered_map<Subtree, PhysicalOperator *, SubtreeHash> *planMap, Subtree fullSubtree) {
-    for (auto const &pair: *planMap) {
-        uint32_t keyStartIndex = pair.first.s_index;
-        uint32_t keyEndIndex = pair.first.e_index;
+void Planner::deleteContentsOfHash(std::unordered_map<Subtree, PhysicalOperator *, SubtreeHash> *planMap,
+                                   Subtree fullSubtree) {
+    auto it = planMap->begin();
+    while (it != planMap->end()) {
+        uint32_t keyStartIndex = it->first.s_index;
+        uint32_t keyEndIndex = it->first.e_index;
         uint32_t fullSubtreeStartIndex = fullSubtree.s_index;
         uint32_t fullSubtreeEndIndex = fullSubtree.e_index;
         if (!(keyStartIndex == fullSubtreeStartIndex && keyEndIndex == fullSubtreeEndIndex)) {
-            planMap->erase(pair.first);
+            it = planMap->erase(it);
+        } else {
+            ++it;
         }
     }
 }
