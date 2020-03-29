@@ -28,6 +28,7 @@ void SimpleEvaluator::prepare() {
 cardStat SimpleEvaluator::evaluate(PathQuery *query) {
     PhysicalOperator* op = ofPathQuery(query, graph);
     op->attachEstimator(est);
+    std::cout << "COST = " << op->cost() << "\n";
     auto res = op->eval();
     delete op;
     return res;

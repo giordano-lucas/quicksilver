@@ -116,9 +116,7 @@ vector
 functional
 -
 
-../include/student/KleeneStar.h
-SimpleGraph.h
--
+../include/student/MergeJoin.h
 PhysicalOperator.h
 ../include/student/PhysicalOperator.h
 
@@ -150,7 +148,7 @@ SimpleEvaluator.h
 iostream
 -
 
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/KleeneStar.cpp
-KleeneStar.h
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/KleeneStar.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/MergeJoin.cpp
+MergeJoin.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/MergeJoin.h
 

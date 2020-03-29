@@ -39,7 +39,7 @@ public:
 
 private:
     cardStat estimateSimple(basic_query_t q);
-    cardStat estimateConcat(cardStat left, basic_query_t qL, cardStat right, basic_query_t qR);
+    cardStat estimateConcat(cardStat left, basic_query_t qL, cardStat right, basic_query_t qR, bool firstConcat);
     cardStat estimateUnion(cardStat c1, cardStat c2);
     cardStat estimateGreater(uint32_t l);
     cardStat estimateLower(uint32_t l);

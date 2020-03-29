@@ -20,7 +20,7 @@
 static Edge END_EDGE = Edge{NONE, NONE};
 
 enum ResultSorted {
-    SOURCE_SORTED, TARGET_SORTED, NOT_SORTED
+    SOURCE_SORTED, TARGET_SORTED, NOT_SORTED, ANY
 };
 
 class PhysicalOperator {
@@ -28,11 +28,11 @@ protected:
      BlockingQueue<Edge> out;
      PhysicalOperator* left;
      PhysicalOperator* right;
-     ResultSorted defaultResultSorted;
      bool terminated = false;
      std::shared_ptr<SimpleEstimator> est;
      query_t query;
 public:
+    ResultSorted defaultResultSorted;
     /**
      * Constructor
      **/
