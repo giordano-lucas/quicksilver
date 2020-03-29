@@ -16,6 +16,9 @@ public:
     static void testPlanHash(std::shared_ptr<SimpleGraph>& index);
     static void printChildren(std::vector<std::string> children);
     static void printContentsOfHash(std::unordered_map<Subtree, PhysicalOperator*, SubtreeHash> planMap);
+    static void printCosts(std::vector<int> costs);
+    static PhysicalOperator* generatePlanForUnboundedQuery(PathQuery* query, std::shared_ptr<SimpleGraph>& index,
+            std::shared_ptr<SimpleEstimator> &e);
 };
 
 #endif //QUICKSILVER_PLANNER_H

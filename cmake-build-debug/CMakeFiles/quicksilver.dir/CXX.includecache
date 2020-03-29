@@ -174,21 +174,23 @@ PhysicalOperator.h
 iostream
 -
 
-/home/anirak/Desktop/Database Technology/Project code/quicksilver/src/SimpleEvaluator.cpp
-PhysicalOperator.h
--
+/Users/valeriyaprokopova/dev/databases/quicksilver/src/student/Planner.cpp
 IndexLookUp.h
+-
+MergeJoin.h
+/Users/valeriyaprokopova/dev/databases/quicksilver/src/student/MergeJoin.h
+Planner.h
+/Users/valeriyaprokopova/dev/databases/quicksilver/src/student/Planner.h
+unordered_map
 -
 KleeneStar.h
 -
-MergeJoin.h
--
-student/HelperPhysicalOperator.h
--
-student/Planner.h
--
-SimpleEstimator.h
-/home/anirak/Desktop/Database Technology/Project code/quicksilver/src/SimpleEstimator.h
-SimpleEvaluator.h
-/home/anirak/Desktop/Database Technology/Project code/quicksilver/src/SimpleEvaluator.h
+Edge.h
+/Users/valeriyaprokopova/dev/databases/quicksilver/src/student/Edge.h
+Subtree.h
+/Users/valeriyaprokopova/dev/databases/quicksilver/src/student/Subtree.h
+HelperPhysicalOperator.h
+/Users/valeriyaprokopova/dev/databases/quicksilver/src/student/HelperPhysicalOperator.h
+PathTree.h
+/Users/valeriyaprokopova/dev/databases/quicksilver/src/student/PathTree.h
 

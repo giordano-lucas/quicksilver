@@ -8,8 +8,8 @@ int main(int argc, char *argv[]) {
 
     if (argc < 3) {
         std::cout << "Usage: quicksilver <graphFile> <queriesFile>" << std::endl;
-        argv[1] = "../workload/real/2/graph.nt";
-        argv[2] = "../workload/real/2/queries.csv";
+        argv[1] = "../testfiles/workload/syn/1/graph.nt";
+        argv[2] = "../testfiles/workload/syn/1/queries.csv";
         //return 0;
     }
 
