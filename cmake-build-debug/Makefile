@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /home/anirak/Documents/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /home/anirak/Documents/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver
+CMAKE_SOURCE_DIR = "/home/anirak/Desktop/Database Technology/Project code/quicksilver"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug
+CMAKE_BINARY_DIR = "/home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilve
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/anirak/Documents/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/anirak/Documents/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles" "/home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -107,22 +107,9 @@ preinstall/fast:
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -P /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P "/home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake"
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
-
-#=============================================================================
-# Target rules for targets named benchmarker
-
-# Build rule for target.
-benchmarker: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 benchmarker
-.PHONY : benchmarker
-
-# fast build rule for target.
-benchmarker/fast:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/build
-.PHONY : benchmarker/fast
 
 #=============================================================================
 # Target rules for targets named quicksilver
@@ -143,7 +130,6 @@ src/PathQuery.o: src/PathQuery.cpp.o
 
 # target to build an object file
 src/PathQuery.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/PathQuery.cpp.o
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o
 .PHONY : src/PathQuery.cpp.o
 
@@ -153,7 +139,6 @@ src/PathQuery.i: src/PathQuery.cpp.i
 
 # target to preprocess a source file
 src/PathQuery.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/PathQuery.cpp.i
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/PathQuery.cpp.i
 .PHONY : src/PathQuery.cpp.i
 
@@ -163,7 +148,6 @@ src/PathQuery.s: src/PathQuery.cpp.s
 
 # target to generate assembly for a file
 src/PathQuery.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/PathQuery.cpp.s
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/PathQuery.cpp.s
 .PHONY : src/PathQuery.cpp.s
 
@@ -173,7 +157,6 @@ src/PathTree.o: src/PathTree.cpp.o
 
 # target to build an object file
 src/PathTree.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/PathTree.cpp.o
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/PathTree.cpp.o
 .PHONY : src/PathTree.cpp.o
 
@@ -183,7 +166,6 @@ src/PathTree.i: src/PathTree.cpp.i
 
 # target to preprocess a source file
 src/PathTree.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/PathTree.cpp.i
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/PathTree.cpp.i
 .PHONY : src/PathTree.cpp.i
 
@@ -193,7 +175,6 @@ src/PathTree.s: src/PathTree.cpp.s
 
 # target to generate assembly for a file
 src/PathTree.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/PathTree.cpp.s
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/PathTree.cpp.s
 .PHONY : src/PathTree.cpp.s
 
@@ -203,7 +184,6 @@ src/SimpleEstimator.o: src/SimpleEstimator.cpp.o
 
 # target to build an object file
 src/SimpleEstimator.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/SimpleEstimator.cpp.o
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o
 .PHONY : src/SimpleEstimator.cpp.o
 
@@ -213,7 +193,6 @@ src/SimpleEstimator.i: src/SimpleEstimator.cpp.i
 
 # target to preprocess a source file
 src/SimpleEstimator.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/SimpleEstimator.cpp.i
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.i
 .PHONY : src/SimpleEstimator.cpp.i
 
@@ -223,7 +202,6 @@ src/SimpleEstimator.s: src/SimpleEstimator.cpp.s
 
 # target to generate assembly for a file
 src/SimpleEstimator.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/SimpleEstimator.cpp.s
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.s
 .PHONY : src/SimpleEstimator.cpp.s
 
@@ -233,7 +211,6 @@ src/SimpleEvaluator.o: src/SimpleEvaluator.cpp.o
 
 # target to build an object file
 src/SimpleEvaluator.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/SimpleEvaluator.cpp.o
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o
 .PHONY : src/SimpleEvaluator.cpp.o
 
@@ -243,7 +220,6 @@ src/SimpleEvaluator.i: src/SimpleEvaluator.cpp.i
 
 # target to preprocess a source file
 src/SimpleEvaluator.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/SimpleEvaluator.cpp.i
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.i
 .PHONY : src/SimpleEvaluator.cpp.i
 
@@ -253,7 +229,6 @@ src/SimpleEvaluator.s: src/SimpleEvaluator.cpp.s
 
 # target to generate assembly for a file
 src/SimpleEvaluator.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/SimpleEvaluator.cpp.s
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.s
 .PHONY : src/SimpleEvaluator.cpp.s
 
@@ -263,7 +238,6 @@ src/SimpleGraph.o: src/SimpleGraph.cpp.o
 
 # target to build an object file
 src/SimpleGraph.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/SimpleGraph.cpp.o
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o
 .PHONY : src/SimpleGraph.cpp.o
 
@@ -273,7 +247,6 @@ src/SimpleGraph.i: src/SimpleGraph.cpp.i
 
 # target to preprocess a source file
 src/SimpleGraph.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/SimpleGraph.cpp.i
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.i
 .PHONY : src/SimpleGraph.cpp.i
 
@@ -283,7 +256,6 @@ src/SimpleGraph.s: src/SimpleGraph.cpp.s
 
 # target to generate assembly for a file
 src/SimpleGraph.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/SimpleGraph.cpp.s
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.s
 .PHONY : src/SimpleGraph.cpp.s
 
@@ -293,7 +265,6 @@ src/benches.o: src/benches.cpp.o
 
 # target to build an object file
 src/benches.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/benches.cpp.o
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/benches.cpp.o
 .PHONY : src/benches.cpp.o
 
@@ -303,7 +274,6 @@ src/benches.i: src/benches.cpp.i
 
 # target to preprocess a source file
 src/benches.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/benches.cpp.i
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/benches.cpp.i
 .PHONY : src/benches.cpp.i
 
@@ -313,36 +283,8 @@ src/benches.s: src/benches.cpp.s
 
 # target to generate assembly for a file
 src/benches.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/benches.cpp.s
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/benches.cpp.s
 .PHONY : src/benches.cpp.s
-
-src/benchmarker.o: src/benchmarker.cpp.o
-
-.PHONY : src/benchmarker.o
-
-# target to build an object file
-src/benchmarker.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/benchmarker.cpp.o
-.PHONY : src/benchmarker.cpp.o
-
-src/benchmarker.i: src/benchmarker.cpp.i
-
-.PHONY : src/benchmarker.i
-
-# target to preprocess a source file
-src/benchmarker.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/benchmarker.cpp.i
-.PHONY : src/benchmarker.cpp.i
-
-src/benchmarker.s: src/benchmarker.cpp.s
-
-.PHONY : src/benchmarker.s
-
-# target to generate assembly for a file
-src/benchmarker.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/benchmarker.cpp.s
-.PHONY : src/benchmarker.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -377,7 +319,6 @@ src/rss.o: src/rss.c.o
 
 # target to build an object file
 src/rss.c.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/rss.c.o
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/rss.c.o
 .PHONY : src/rss.c.o
 
@@ -387,7 +328,6 @@ src/rss.i: src/rss.c.i
 
 # target to preprocess a source file
 src/rss.c.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/rss.c.i
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/rss.c.i
 .PHONY : src/rss.c.i
 
@@ -397,7 +337,6 @@ src/rss.s: src/rss.c.s
 
 # target to generate assembly for a file
 src/rss.c.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/rss.c.s
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/rss.c.s
 .PHONY : src/rss.c.s
 
@@ -407,7 +346,6 @@ src/student/Edge.o: src/student/Edge.cpp.o
 
 # target to build an object file
 src/student/Edge.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/Edge.cpp.o
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/Edge.cpp.o
 .PHONY : src/student/Edge.cpp.o
 
@@ -417,7 +355,6 @@ src/student/Edge.i: src/student/Edge.cpp.i
 
 # target to preprocess a source file
 src/student/Edge.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/Edge.cpp.i
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/Edge.cpp.i
 .PHONY : src/student/Edge.cpp.i
 
@@ -427,7 +364,6 @@ src/student/Edge.s: src/student/Edge.cpp.s
 
 # target to generate assembly for a file
 src/student/Edge.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/Edge.cpp.s
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/Edge.cpp.s
 .PHONY : src/student/Edge.cpp.s
 
@@ -437,7 +373,6 @@ src/student/HashJoin.o: src/student/HashJoin.cpp.o
 
 # target to build an object file
 src/student/HashJoin.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/HashJoin.cpp.o
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o
 .PHONY : src/student/HashJoin.cpp.o
 
@@ -447,7 +382,6 @@ src/student/HashJoin.i: src/student/HashJoin.cpp.i
 
 # target to preprocess a source file
 src/student/HashJoin.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/HashJoin.cpp.i
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.i
 .PHONY : src/student/HashJoin.cpp.i
 
@@ -457,7 +391,6 @@ src/student/HashJoin.s: src/student/HashJoin.cpp.s
 
 # target to generate assembly for a file
 src/student/HashJoin.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/HashJoin.cpp.s
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.s
 .PHONY : src/student/HashJoin.cpp.s
 
@@ -467,7 +400,6 @@ src/student/HelperPhysicalOperator.o: src/student/HelperPhysicalOperator.cpp.o
 
 # target to build an object file
 src/student/HelperPhysicalOperator.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o
 .PHONY : src/student/HelperPhysicalOperator.cpp.o
 
@@ -477,7 +409,6 @@ src/student/HelperPhysicalOperator.i: src/student/HelperPhysicalOperator.cpp.i
 
 # target to preprocess a source file
 src/student/HelperPhysicalOperator.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.i
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.i
 .PHONY : src/student/HelperPhysicalOperator.cpp.i
 
@@ -487,7 +418,6 @@ src/student/HelperPhysicalOperator.s: src/student/HelperPhysicalOperator.cpp.s
 
 # target to generate assembly for a file
 src/student/HelperPhysicalOperator.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.s
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.s
 .PHONY : src/student/HelperPhysicalOperator.cpp.s
 
@@ -497,7 +427,6 @@ src/student/IndexLookUp.o: src/student/IndexLookUp.cpp.o
 
 # target to build an object file
 src/student/IndexLookUp.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/IndexLookUp.cpp.o
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o
 .PHONY : src/student/IndexLookUp.cpp.o
 
@@ -507,7 +436,6 @@ src/student/IndexLookUp.i: src/student/IndexLookUp.cpp.i
 
 # target to preprocess a source file
 src/student/IndexLookUp.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/IndexLookUp.cpp.i
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.i
 .PHONY : src/student/IndexLookUp.cpp.i
 
@@ -517,7 +445,6 @@ src/student/IndexLookUp.s: src/student/IndexLookUp.cpp.s
 
 # target to generate assembly for a file
 src/student/IndexLookUp.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/IndexLookUp.cpp.s
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.s
 .PHONY : src/student/IndexLookUp.cpp.s
 
@@ -527,7 +454,6 @@ src/student/KleeneStar.o: src/student/KleeneStar.cpp.o
 
 # target to build an object file
 src/student/KleeneStar.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/KleeneStar.cpp.o
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o
 .PHONY : src/student/KleeneStar.cpp.o
 
@@ -537,7 +463,6 @@ src/student/KleeneStar.i: src/student/KleeneStar.cpp.i
 
 # target to preprocess a source file
 src/student/KleeneStar.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/KleeneStar.cpp.i
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.i
 .PHONY : src/student/KleeneStar.cpp.i
 
@@ -547,7 +472,6 @@ src/student/KleeneStar.s: src/student/KleeneStar.cpp.s
 
 # target to generate assembly for a file
 src/student/KleeneStar.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/KleeneStar.cpp.s
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.s
 .PHONY : src/student/KleeneStar.cpp.s
 
@@ -557,7 +481,6 @@ src/student/MergeJoin.o: src/student/MergeJoin.cpp.o
 
 # target to build an object file
 src/student/MergeJoin.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/MergeJoin.cpp.o
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o
 .PHONY : src/student/MergeJoin.cpp.o
 
@@ -567,7 +490,6 @@ src/student/MergeJoin.i: src/student/MergeJoin.cpp.i
 
 # target to preprocess a source file
 src/student/MergeJoin.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/MergeJoin.cpp.i
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.i
 .PHONY : src/student/MergeJoin.cpp.i
 
@@ -577,9 +499,35 @@ src/student/MergeJoin.s: src/student/MergeJoin.cpp.s
 
 # target to generate assembly for a file
 src/student/MergeJoin.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/MergeJoin.cpp.s
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.s
 .PHONY : src/student/MergeJoin.cpp.s
+
+src/student/Planner.o: src/student/Planner.cpp.o
+
+.PHONY : src/student/Planner.o
+
+# target to build an object file
+src/student/Planner.cpp.o:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o
+.PHONY : src/student/Planner.cpp.o
+
+src/student/Planner.i: src/student/Planner.cpp.i
+
+.PHONY : src/student/Planner.i
+
+# target to preprocess a source file
+src/student/Planner.cpp.i:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/Planner.cpp.i
+.PHONY : src/student/Planner.cpp.i
+
+src/student/Planner.s: src/student/Planner.cpp.s
+
+.PHONY : src/student/Planner.s
+
+# target to generate assembly for a file
+src/student/Planner.cpp.s:
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/Planner.cpp.s
+.PHONY : src/student/Planner.cpp.s
 
 src/student/myMain.o: src/student/myMain.cpp.o
 
@@ -587,7 +535,6 @@ src/student/myMain.o: src/student/myMain.cpp.o
 
 # target to build an object file
 src/student/myMain.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/myMain.cpp.o
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/myMain.cpp.o
 .PHONY : src/student/myMain.cpp.o
 
@@ -597,7 +544,6 @@ src/student/myMain.i: src/student/myMain.cpp.i
 
 # target to preprocess a source file
 src/student/myMain.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/myMain.cpp.i
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/myMain.cpp.i
 .PHONY : src/student/myMain.cpp.i
 
@@ -607,7 +553,6 @@ src/student/myMain.s: src/student/myMain.cpp.s
 
 # target to generate assembly for a file
 src/student/myMain.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/myMain.cpp.s
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/myMain.cpp.s
 .PHONY : src/student/myMain.cpp.s
 
@@ -618,9 +563,8 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... edit_cache"
-	@echo "... benchmarker"
 	@echo "... quicksilver"
+	@echo "... edit_cache"
 	@echo "... src/PathQuery.o"
 	@echo "... src/PathQuery.i"
 	@echo "... src/PathQuery.s"
@@ -639,9 +583,6 @@ help:
 	@echo "... src/benches.o"
 	@echo "... src/benches.i"
 	@echo "... src/benches.s"
-	@echo "... src/benchmarker.o"
-	@echo "... src/benchmarker.i"
-	@echo "... src/benchmarker.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
@@ -666,6 +607,9 @@ help:
 	@echo "... src/student/MergeJoin.o"
 	@echo "... src/student/MergeJoin.i"
 	@echo "... src/student/MergeJoin.s"
+	@echo "... src/student/Planner.o"
+	@echo "... src/student/Planner.i"
+	@echo "... src/student/Planner.s"
 	@echo "... src/student/myMain.o"
 	@echo "... src/student/myMain.i"
 	@echo "... src/student/myMain.s"
@@ -680,7 +624,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -P /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P "/home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake"
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

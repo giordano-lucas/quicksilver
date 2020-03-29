@@ -116,6 +116,24 @@ vector
 functional
 -
 
+../include/student/HelperPhysicalOperator.h
+PhysicalOperator.h
+../include/student/PhysicalOperator.h
+SimpleGraph.h
+../include/student/SimpleGraph.h
+
+../include/student/IndexLookUp.h
+PhysicalOperator.h
+../include/student/PhysicalOperator.h
+SimpleGraph.h
+../include/student/SimpleGraph.h
+
+../include/student/KleeneStar.h
+SimpleGraph.h
+-
+PhysicalOperator.h
+../include/student/PhysicalOperator.h
+
 ../include/student/MergeJoin.h
 PhysicalOperator.h
 ../include/student/PhysicalOperator.h
@@ -144,11 +162,33 @@ SimpleEstimator.h
 SimpleEvaluator.h
 ../include/student/SimpleEvaluator.h
 
+../include/student/Planner.h
+Subtree.h
+-
+PhysicalOperator.h
+../include/student/PhysicalOperator.h
+
+../include/student/Subtree.h
+
 ../include/student/Synopse.h
 iostream
 -
 
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/MergeJoin.cpp
+/home/anirak/Desktop/Database Technology/Project code/quicksilver/src/SimpleEvaluator.cpp
+PhysicalOperator.h
+-
+IndexLookUp.h
+-
+KleeneStar.h
+-
 MergeJoin.h
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/MergeJoin.h
+-
+student/HelperPhysicalOperator.h
+-
+student/Planner.h
+-
+SimpleEstimator.h
+/home/anirak/Desktop/Database Technology/Project code/quicksilver/src/SimpleEstimator.h
+SimpleEvaluator.h
+/home/anirak/Desktop/Database Technology/Project code/quicksilver/src/SimpleEvaluator.h
 

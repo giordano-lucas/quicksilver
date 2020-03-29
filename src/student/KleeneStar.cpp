@@ -40,7 +40,7 @@ void KleeneStar::cacheDfs(std::unordered_map<Node,bool>& discovered,Node n ,bool
     for (Node t : targets){
         auto cacheRes = cache.find(t);
         if (cacheRes == cache.end()) continue;
-        assert(cacheRes != cache.end());
+        //assert(cacheRes != cache.end());
         reachable.push_back(t);
         reachable.insert( reachable.end(), cacheRes->second.begin(), cacheRes->second.end());
     }
