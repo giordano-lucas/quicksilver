@@ -1,3 +1,4 @@
-/home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/quicksilver.dir
-/home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/CMakeFiles/benchmarker.dir
+/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/CMakeFiles/quicksilver.dir

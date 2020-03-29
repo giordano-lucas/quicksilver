@@ -8,6 +8,8 @@
 #include <KleeneStar.h>
 #include "Edge.h"
 #include "Subtree.h"
+#include "HelperPhysicalOperator.h"
+#include "PathTree.h"
 
 
 //std::vector<std::string>
@@ -62,13 +64,12 @@ Subtree mergeSubtrees(Subtree leftSubtree, Subtree rightSubtree) {
     return subtree;
 }
 
-
-PhysicalOperator *Planner::generatePlan(PathQuery *query, std::shared_ptr<SimpleGraph>& index, std::shared_ptr<SimpleEstimator> &e) {
+PhysicalOperator *Planner::generatePlanForUnboundedQuery(PathQuery *query, std::shared_ptr<SimpleGraph> &index,
+                                                         std::shared_ptr<SimpleEstimator> &e) {
     //Create PathTree from query
     PathTree *tree = query->path;
     std::string s = query->s;
     std::string t = query->t;
-    std::string regExp = tree->data;
 
     //Children contains all children of the root of the flattened pathTree
     std::vector<std::string> children = flattenedTree(tree);
@@ -111,14 +112,13 @@ PhysicalOperator *Planner::generatePlan(PathQuery *query, std::shared_ptr<Simple
         bool inverse;
         if (std::regex_search(str_subtree, matches, directLabel)) {
             label = (uint32_t) std::stoul(matches[1]);
-            physicalPlan = new IndexLookUp(index,QueryEdge{leftBounded,label,rightBounded},false);
+            physicalPlan = new IndexLookUp(index, QueryEdge{leftBounded, label, rightBounded}, false);
         } else if (std::regex_search(str_subtree, matches, inverseLabel)) {
             label = (uint32_t) std::stoul(matches[1]);
-            physicalPlan = new IndexLookUp(index,QueryEdge{leftBounded,label,rightBounded},true);
-        }
-        else if(std::regex_search(str_subtree, matches, kleeneStar)) {
+            physicalPlan = new IndexLookUp(index, QueryEdge{leftBounded, label, rightBounded}, true);
+        } else if (std::regex_search(str_subtree, matches, kleeneStar)) {
             label = (uint32_t) std::stoul(matches[1]);
-            physicalPlan = new KleeneStar(index,QueryEdge{leftBounded,label,rightBounded});
+            physicalPlan = new KleeneStar(index, QueryEdge{leftBounded, label, rightBounded});
         } else {
             std::cerr << "Label parsing failed!" << std::endl;
         }
@@ -127,11 +127,7 @@ PhysicalOperator *Planner::generatePlan(PathQuery *query, std::shared_ptr<Simple
         planMap.insert({subtree, physicalPlan});
     };
 
-//    //testing:
-//    printChildren(children);
-//    printContentsOfHash(planMap);
-//    testPlanHash(index);
-
+    std::cout << children.size() << std::endl;
     // Increasingly calculate the best physical plan (PhysicalOperator) for each subtree of a given size
     for (uint32_t size = 2; size <= children.size(); size++) {
         // Divide the subtree size into left and right subtrees
@@ -174,12 +170,11 @@ PhysicalOperator *Planner::generatePlan(PathQuery *query, std::shared_ptr<Simple
                         } else {
                             // Physical plan for the merged tree exists.
                             // Check if the cost of the existing plan is greater than the cost of the new plan.
-                            std::cout << "Physical plan for the merged tree exists." << std::endl;
+                            //std::cout << "Physical plan for the merged tree exists." << std::endl;
                             //retrieve the old PhysicalOperator
-
                             uint32_t costOldPlan = mergedPlanIter->second->cost();
                             if (costNewPlan < costOldPlan) {
-                                std::cout << "Old plan is worse" << std::endl;
+                                //std::cout << "Old plan is worse" << std::endl;
                                 // update to a new Physical Plan (because it has smaller cost)
                                 planMap[mergedSubtree] = physicalOperatorMergeJoin;
                             }
@@ -190,18 +185,78 @@ PhysicalOperator *Planner::generatePlan(PathQuery *query, std::shared_ptr<Simple
         }
     }
     // The final result (best Physical Plan for a given query) should now be stored in planMap.
-    std::unordered_map<Subtree, PhysicalOperator *, SubtreeHash>::const_iterator fullMapIter = planMap.find(fullSubtree);
+    std::unordered_map<Subtree, PhysicalOperator *, SubtreeHash>::const_iterator fullMapIter = planMap.find(
+            fullSubtree);
     if (fullMapIter == planMap.end()) {
         std::cout << "Final query result is not stored in a hash map. SOMETHING WENT WRONG!!!" << std::endl;
     }
     PhysicalOperator *result = fullMapIter->second;
-    std::cout << "Final hash map" << std::endl;
-    //printContentsOfHash(planMap);
-    // TODO iterate over hash map and delete everything except the one we return
+    deleteContentsOfHash(&planMap, fullSubtree);
     return result;
 }
 
-void Planner::testPlanHash(std::shared_ptr<SimpleGraph>& index) {
+
+void printChildren(std::vector<std::string> children) {
+    std::cout << "" << std::endl;
+    std::cout << "Children: ";
+    for (std::vector<std::string>::const_iterator i = children.begin(); i != children.end(); ++i) {
+        std::cout << *i << ' ';
+        std::cout << " ";
+    }
+    std::cout << "\n";
+}
+
+// Generates right deep tree for the list of children of flattened tree
+PathTree *generateRightDeepTree(std::vector<std::string> children) {
+    std::string concat = "/";
+    if (children.size() == 2) {
+        PathTree *leftLeaf = new PathTree(children[0], nullptr, nullptr);
+        PathTree *rightLeaf = new PathTree(children[1], nullptr, nullptr);
+        PathTree *finalTree = new PathTree(concat, leftLeaf, rightLeaf);
+        return finalTree;
+    }
+    std::string str = children[0];
+    PathTree *leftLeaf = new PathTree(str, nullptr, nullptr);
+    children.erase(children.begin(), children.begin() + 1);
+    PathTree *resultTree = new PathTree(concat, leftLeaf, generateRightDeepTree(children));
+    return resultTree;
+}
+
+
+PhysicalOperator *
+Planner::generatePlan(PathQuery *query, std::shared_ptr<SimpleGraph> &index, std::shared_ptr<SimpleEstimator> &e) {
+    //Create PathTree from query
+    PathTree *tree = query->path;
+    std::string s = query->s;
+    std::string t = query->t;
+    std::string regExp = tree->data;
+
+    bool optimizationEnabled = true;
+
+    if (optimizationEnabled) {
+
+        PhysicalOperator *op;
+        if (s != "*") {
+            op = ofPathQuery(query, index);
+            op->attachEstimator(e);
+        } else if (t != "*") {
+            //Children contains all children of the root of the flattened pathTree
+            std::vector<std::string> children = flattenedTree(tree);
+            std::vector<std::string> children_right_deep = flattenedTree(tree);
+            PathTree *rightDeepTree = generateRightDeepTree(children_right_deep);
+            op = ofPathTree(rightDeepTree, index, NONE, std::stoi(t));
+            op->attachEstimator(e);
+        } else {
+            op = generatePlanForUnboundedQuery(query, index, e);
+        }
+        return op;
+    } else {
+        return generatePlanForUnboundedQuery(query, index, e);
+    }
+}
+
+
+void Planner::testPlanHash(std::shared_ptr<SimpleGraph> &index) {
 
     std::vector<std::vector<std::string>> children_vector;
     children_vector = {{"1<", "2+"},
@@ -242,10 +297,11 @@ void Planner::testPlanHash(std::shared_ptr<SimpleGraph>& index) {
 }
 
 
-void Planner::printChildren(std::vector<std::string> children) {
+//    std::vector<int> costOfMerged;
+void Planner::printCosts(std::vector<int> costs) {
     std::cout << "" << std::endl;
-    std::cout << "Children: ";
-    for (std::vector<std::string>::const_iterator i = children.begin(); i != children.end(); ++i) {
+    std::cout << "Costs of Final Result: ";
+    for (std::vector<int>::const_iterator i = costs.begin(); i != costs.end(); ++i) {
         std::cout << *i << ' ';
         std::cout << " ";
     }
@@ -263,6 +319,22 @@ void Planner::printContentsOfHash(std::unordered_map<Subtree, PhysicalOperator *
             std::cout << children[i] << " ";
         }
         std::cout << "}, start/end indices: (" << s_i << "," << e_i << ") --> " << pair.second << std::endl;
+    }
+}
+
+void Planner::deleteContentsOfHash(std::unordered_map<Subtree, PhysicalOperator *, SubtreeHash> *planMap,
+                                   Subtree fullSubtree) {
+    auto it = planMap->begin();
+    while (it != planMap->end()) {
+        uint32_t keyStartIndex = it->first.s_index;
+        uint32_t keyEndIndex = it->first.e_index;
+        uint32_t fullSubtreeStartIndex = fullSubtree.s_index;
+        uint32_t fullSubtreeEndIndex = fullSubtree.e_index;
+        if (!(keyStartIndex == fullSubtreeStartIndex && keyEndIndex == fullSubtreeEndIndex)) {
+            it = planMap->erase(it);
+        } else {
+            ++it;
+        }
     }
 }
 
