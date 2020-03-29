@@ -11,6 +11,8 @@
 class MergeJoin : public PhysicalOperator{
 
 
+public:
+   // cardStat eval() override;
 
 private:
     std::vector<Edge> res;

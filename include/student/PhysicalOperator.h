@@ -106,7 +106,7 @@ public:
      **/
     #define update(elem, lastElem, hashTable, sorted, countVar) {                                                                   \
             if      ( (sorted) && !((elem) == (lastElem)))                     {(countVar)++; (lastElem) = (elem);}                 \
-            else if (!(sorted) && (hashTable).find(elem) == (hashTable).end()) {(countVar)++; (hashTable).insert({(elem),(elem)});} \
+            else if (!(sorted) && (hashTable).find(elem) == (hashTable).end()) {(countVar)++; (hashTable).insert({(elem),true});}   \
     }
     /**
      * Evaluates completely the physical operator and returns :
@@ -122,7 +122,7 @@ public:
      *
      * /!\ To speed up the computation we can also use isLeftBounded() and isRightBounded() /!\
      * */
-     cardStat eval() {
+     virtual cardStat eval() {
          std::thread thd([this] {
             evalPipeline(defaultResultSorted);
          });
@@ -130,9 +130,9 @@ public:
          uint32_t noPath = 0;
          uint32_t noIn   = 0;
 
-         uint32_t lastIn  = NONE;     std::unordered_map<uint32_t,uint32_t> hashIn;    bool sortedIn   = defaultResultSorted == TARGET_SORTED;
-         uint32_t lastOut = NONE;     std::unordered_map<uint32_t,uint32_t> hashOut;   bool sortedOut  = defaultResultSorted == SOURCE_SORTED;
-         Edge lastEdge = END_EDGE; std::unordered_map<Edge,Edge,HashEdge> hashEdge; bool sortedPath = sortedIn || sortedOut;
+         uint32_t lastIn  = NONE;     std::unordered_map<uint32_t,bool> hashIn;    bool sortedIn   = defaultResultSorted == TARGET_SORTED;
+         uint32_t lastOut = NONE;     std::unordered_map<uint32_t,bool> hashOut;   bool sortedOut  = defaultResultSorted == SOURCE_SORTED;
+         Edge lastEdge = END_EDGE; std::unordered_map<Edge,bool,HashEdge> hashEdge; bool sortedPath = sortedIn || sortedOut;
 
          for (Edge e = produceNextEdge() ; !(e == END_EDGE); e = produceNextEdge()){
              // std::cout << "PHY : " << e;

@@ -107,21 +107,24 @@ void SimpleGraph::insertAll(std::vector<Edge> &edges, Label l, bool reversed, Co
     size_t nextSpace = 0;
     Edge lastEdge = Edge{NONE,NONE};
     while (it != edges.end()){
-        //********* NO DUPLICATES ***********
-         if ((*it) == lastEdge){
-             ++it;
-             index[l].nbEdges--;
-         }
-         lastEdge = *it;
-        //********* REAL WORK ***********
+
         Node source = getSource(it);
         index[l].headers[headerIndex].source      = source;
         index[l].headers[headerIndex].indexEdges  = nextSpace;
         while(getSource(it) == source){ //for all edges that have source = (*it)
+            //********* NO DUPLICATES ***********
+            if((*it) == lastEdge){
+                ++it;
+                index[l].nbEdges--;
+                continue;
+            }
+            lastEdge = *it;
+            //********* REAL WORK ***********
             index[l].headers[headerIndex].nbTargets++;            //update size for each new target added
             index[l].edges[nextSpace] = getTarget(it);            //allocate target
             nextSpace++;                                                //next memory spot
-            it++;                                                       //next edge
+            it++;//next edge
+
             //assert(nextSpace <=  (syn1[l].path));                     //check buffer overflow
         }
         headerIndex++;

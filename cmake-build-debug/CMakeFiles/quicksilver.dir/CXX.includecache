@@ -14,14 +14,6 @@ PathQuery.h
 iostream
 -
 
-../include/Evaluator.h
-memory
--
-Graph.h
-../include/Graph.h
-Estimator.h
-../include/Estimator.h
-
 ../include/Graph.h
 unordered_map
 -
@@ -39,26 +31,6 @@ string
 -
 algorithm
 -
-
-../include/SimpleEstimator.h
-Estimator.h
-../include/Estimator.h
-SimpleGraph.h
-../include/SimpleGraph.h
-
-../include/SimpleEvaluator.h
-memory
--
-cmath
--
-SimpleGraph.h
-../include/SimpleGraph.h
-PathTree.h
-../include/PathTree.h
-Evaluator.h
-../include/Evaluator.h
-Graph.h
-../include/Graph.h
 
 ../include/SimpleGraph.h
 unordered_map
@@ -98,16 +70,6 @@ fstream
 unordered_map
 -
 
-../include/student/BlockingQueue.h
-queue
--
-mutex
--
-condition_variable
--
-algorithm
--
-
 ../include/student/Edge.h
 iostream
 -
@@ -116,39 +78,11 @@ vector
 functional
 -
 
-../include/student/MergeJoin.h
-PhysicalOperator.h
-../include/student/PhysicalOperator.h
-
-../include/student/PhysicalOperator.h
-queue
--
-vector
--
-Edge.h
-../include/student/Edge.h
-mutex
--
-unordered_map
--
-BlockingQueue.h
-../include/student/BlockingQueue.h
-thread
--
-ostream
--
-iostream
--
-SimpleEstimator.h
--
-SimpleEvaluator.h
-../include/student/SimpleEvaluator.h
-
 ../include/student/Synopse.h
 iostream
 -
 
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/MergeJoin.cpp
-MergeJoin.h
-/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/MergeJoin.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleGraph.cpp
+SimpleGraph.h
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleGraph.h
 

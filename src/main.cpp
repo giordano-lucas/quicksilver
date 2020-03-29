@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     std::string queriesFile {argv[2]};
 
     estimatorBench(graphFile, queriesFile);
-   /* auto result = evaluatorBench(graphFile, queriesFile);
+  /*  auto result = evaluatorBench(graphFile, queriesFile);
 
     std::cout << std::endl << std::endl << std::endl;
     std::cout << "Total load time: " << result.loadTime << " ms" << std::endl;
