@@ -127,10 +127,6 @@ PhysicalOperator *Planner::generatePlanForUnboundedQuery(PathQuery *query, std::
         planMap.insert({subtree, physicalPlan});
     };
 
-//    //testing:
-//    printChildren(children);
-//    printContentsOfHash(planMap);
-//    testPlanHash(index);
     std::cout << children.size() << std::endl;
     // Increasingly calculate the best physical plan (PhysicalOperator) for each subtree of a given size
     for (uint32_t size = 2; size <= children.size(); size++) {
@@ -212,7 +208,6 @@ void printChildren(std::vector<std::string> children) {
 
 // Generates right deep tree for the list of children of flattened tree
 PathTree *generateRightDeepTree(std::vector<std::string> children) {
-    printChildren(children);
     std::string concat = "/";
     if (children.size() == 2) {
         PathTree *leftLeaf = new PathTree(children[0], nullptr, nullptr);
@@ -251,8 +246,6 @@ Planner::generatePlan(PathQuery *query, std::shared_ptr<SimpleGraph> &index, std
             PathTree *rightDeepTree = generateRightDeepTree(children_right_deep);
             op = ofPathTree(rightDeepTree, index, NONE, std::stoi(t));
             op->attachEstimator(e);
-            printChildren(children_right_deep);
-            printChildren(children);
         } else {
             op = generatePlanForUnboundedQuery(query, index, e);
         }
