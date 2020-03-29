@@ -205,75 +205,87 @@ PhysicalOperator *Planner::generatePlanForUnboundedQuery(PathQuery *query, std::
         std::cout << "Final query result is not stored in a hash map. SOMETHING WENT WRONG!!!" << std::endl;
     }
     PhysicalOperator *result = fullMapIter->second;
+//    PhysicalOperator resultingPlan = *result;
     std::cout << "Final hash map" << std::endl;
-    //printContentsOfHash(planMap);
-    // TODO iterate over hash map and delete everything except the one we return
-    printCosts(costOfMerged);
+    printContentsOfHash(planMap);
+    std::cout << "\n Starting to delete contents of hash map\n";
+//    deleteContentsOfHash(&planMap, fullSubtree);
+    std::cout << "\ncontents of hash map deleted\n";
+    printContentsOfHash(planMap);
     return result;
 }
 
-PathTree* generateRightDeepTree(std::vector<std::string> children){
+
+void printChildren(std::vector<std::string> children) {
+    std::cout << "" << std::endl;
+    std::cout << "Children: ";
+    for (std::vector<std::string>::const_iterator i = children.begin(); i != children.end(); ++i) {
+        std::cout << *i << ' ';
+        std::cout << " ";
+    }
+    std::cout << "\n";
+}
+
+PathTree *generateRightDeepTree(std::vector<std::string> children) {
+    printChildren(children);
     std::string concat = "/";
-    if (children.size() == 2){
-        PathTree* leftLeaf = new PathTree (children[0], nullptr, nullptr);
-        PathTree* rightLeaf = new PathTree (children[1], nullptr, nullptr);
-        PathTree* finalTree = new PathTree(concat, leftLeaf, rightLeaf);
+    if (children.size() == 2) {
+        PathTree *leftLeaf = new PathTree(children[0], nullptr, nullptr);
+        PathTree *rightLeaf = new PathTree(children[1], nullptr, nullptr);
+        PathTree *finalTree = new PathTree(concat, leftLeaf, rightLeaf);
         return finalTree;
     }
     std::string str = children[0];
-    PathTree* leftLeaf = new PathTree(str, nullptr, nullptr);
-    children.erase(children.begin(), children.begin()+1);
-    PathTree* resultTree = new PathTree(concat, leftLeaf, generateRightDeepTree(children));
+    PathTree *leftLeaf = new PathTree(str, nullptr, nullptr);
+    children.erase(children.begin(), children.begin() + 1);
+    PathTree *resultTree = new PathTree(concat, leftLeaf, generateRightDeepTree(children));
     return resultTree;
 }
 
 
-PhysicalOperator *Planner::generatePlan(PathQuery *query, std::shared_ptr<SimpleGraph> &index, std::shared_ptr<SimpleEstimator> &e) {
+PhysicalOperator *
+Planner::generatePlan(PathQuery *query, std::shared_ptr<SimpleGraph> &index, std::shared_ptr<SimpleEstimator> &e) {
     //Create PathTree from query
     PathTree *tree = query->path;
     std::string s = query->s;
     std::string t = query->t;
     std::string regExp = tree->data;
 
+    bool optimizationEnabled = true;
 
-//    std::vector<std::string> testChildren = {"3>", "2>", "1+"};
-//    PathTree* testTree = generateRightDeepTree(testChildren);
+    if (optimizationEnabled) {
 
+        PhysicalOperator *op;
+        if (s != "*") {
+            op = ofPathQuery(query, index);
+            op->attachEstimator(e);
+        } else if (t != "*") {
+            //Children contains all children of the root of the flattened pathTree
+            std::vector<std::string> children = flattenedTree(tree);
+            std::vector<std::string> children_right_deep = flattenedTree(tree);
+            PathTree *rightDeepTree = generateRightDeepTree(children_right_deep);
 
-//    if(testTree->left == nullptr && testTree->right == nullptr) {
-//        std::cout << ' ' << testTree->data << ' ';
-//    } else {
-//        std::cout << '(' << testTree->data << ' ';
-//        if(testTree->left != nullptr) std::cout << *testTree->left;
-//        if(testTree->right!= nullptr) std::cout << *testTree->right;
-//        std::cout << ')';
-//    }
+//            if(rightDeepTree->left == nullptr && rightDeepTree->right == nullptr) {
+//                std::cout << ' ' << rightDeepTree->data << ' ';
+//            } else {
+//                std::cout << '(' << rightDeepTree->data << ' ';
+//                if(rightDeepTree->left != nullptr) std::cout << *rightDeepTree->left;
+//                if(rightDeepTree->right!= nullptr) std::cout << *rightDeepTree->right;
+//                std::cout << ')';
+//            }
 
-    PhysicalOperator *op;
-    //op = ofPathQuery(query, index);
-    op = generatePlanForUnboundedQuery(query, index, e);
-//if (s != "*") {
-//      op = ofPathQuery(query, index);
-//} else {
-//    op = generatePlanForUnboundedQuery(query, index, e);
-//}
-//} else if (t != "*") {
-//        //Children contains all children of the root of the flattened pathTree
-//        std::vector<std::string> children = flattenedTree(tree);
-//        std::vector<std::string> children_test = flattenedTree(tree);
-//        PathTree* testTree = generateRightDeepTree(children_test);
-//        op = ofPathQuery(test, index);
-//        printChildren(children_test);
-//        printChildren(children);
-//   op = ofPathQuery(query, index);
-//    } else {
-//        op = generatePlanForUnboundedQuery(query, index, e);
-//    }
-    return op;
+            op = ofPathTree(rightDeepTree, index, NONE, std::stoi(t));
+            op->attachEstimator(e);
+            printChildren(children_right_deep);
+            printChildren(children);
+        } else {
+            op = generatePlanForUnboundedQuery(query, index, e);
+        }
+        return op;
+    } else {
+        return generatePlanForUnboundedQuery(query, index, e);
+    }
 }
-
-
-
 
 
 void Planner::testPlanHash(std::shared_ptr<SimpleGraph> &index) {
@@ -317,15 +329,6 @@ void Planner::testPlanHash(std::shared_ptr<SimpleGraph> &index) {
 }
 
 
-void Planner::printChildren(std::vector<std::string> children) {
-    std::cout << "" << std::endl;
-    std::cout << "Children: ";
-    for (std::vector<std::string>::const_iterator i = children.begin(); i != children.end(); ++i) {
-        std::cout << *i << ' ';
-        std::cout << " ";
-    }
-    std::cout << "\n";
-}
 
 //    std::vector<int> costOfMerged;
 void Planner::printCosts(std::vector<int> costs) {
@@ -349,6 +352,18 @@ void Planner::printContentsOfHash(std::unordered_map<Subtree, PhysicalOperator *
             std::cout << children[i] << " ";
         }
         std::cout << "}, start/end indices: (" << s_i << "," << e_i << ") --> " << pair.second << std::endl;
+    }
+}
+
+void Planner::deleteContentsOfHash(std::unordered_map<Subtree, PhysicalOperator *, SubtreeHash> *planMap, Subtree fullSubtree) {
+    for (auto const &pair: *planMap) {
+        uint32_t keyStartIndex = pair.first.s_index;
+        uint32_t keyEndIndex = pair.first.e_index;
+        uint32_t fullSubtreeStartIndex = fullSubtree.s_index;
+        uint32_t fullSubtreeEndIndex = fullSubtree.e_index;
+        if (!(keyStartIndex == fullSubtreeStartIndex && keyEndIndex == fullSubtreeEndIndex)) {
+            planMap->erase(pair.first);
+        }
     }
 }
 

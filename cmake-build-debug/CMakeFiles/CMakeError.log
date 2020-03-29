@@ -1,0 +1,82 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_03d8e/fast && /usr/bin/make -f CMakeFiles/cmTC_03d8e.dir/build.make CMakeFiles/cmTC_03d8e.dir/build
+make[1]: Entering directory '/home/anirak/Documents/TUe/COURSES/Master's/Year_I/Q_3 Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_03d8e.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_03d8e.dir/src.c.o   -c "/home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/CMakeTmp/src.c"
+Linking C executable cmTC_03d8e
+/home/anirak/Documents/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_03d8e.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_03d8e.dir/src.c.o  -o cmTC_03d8e 
+CMakeFiles/cmTC_03d8e.dir/src.c.o: In function `main':
+src.c:(.text+0x3e): undefined reference to `pthread_create'
+src.c:(.text+0x4a): undefined reference to `pthread_detach'
+src.c:(.text+0x5b): undefined reference to `pthread_join'
+src.c:(.text+0x6f): undefined reference to `pthread_atfork'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_03d8e.dir/build.make:86: recipe for target 'cmTC_03d8e' failed
+make[1]: *** [cmTC_03d8e] Error 1
+make[1]: Leaving directory '/home/anirak/Documents/TUe/COURSES/Master's/Year_I/Q_3 Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_03d8e/fast' failed
+make: *** [cmTC_03d8e/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_2e323/fast && /usr/bin/make -f CMakeFiles/cmTC_2e323.dir/build.make CMakeFiles/cmTC_2e323.dir/build
+make[1]: Entering directory '/home/anirak/Documents/TUe/COURSES/Master's/Year_I/Q_3 Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2e323.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_2e323.dir/CheckFunctionExists.c.o   -c /home/anirak/Documents/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/share/cmake-3.15/Modules/CheckFunctionExists.c
+Linking C executable cmTC_2e323
+/home/anirak/Documents/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2e323.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_2e323.dir/CheckFunctionExists.c.o  -o cmTC_2e323 -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_2e323.dir/build.make:86: recipe for target 'cmTC_2e323' failed
+make[1]: *** [cmTC_2e323] Error 1
+make[1]: Leaving directory '/home/anirak/Documents/TUe/COURSES/Master's/Year_I/Q_3 Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_2e323/fast' failed
+make: *** [cmTC_2e323/fast] Error 2
+
+
+
+Determining if the include file filesystem exists failed with the following output:
+Change Dir: /home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_7aab7/fast && /usr/bin/make -f CMakeFiles/cmTC_7aab7.dir/build.make CMakeFiles/cmTC_7aab7.dir/build
+make[1]: Entering directory '/home/anirak/Documents/TUe/COURSES/Master's/Year_I/Q_3 Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_7aab7.dir/CheckIncludeFile.cxx.o
+/usr/bin/c++    -std=c++17   -o CMakeFiles/cmTC_7aab7.dir/CheckIncludeFile.cxx.o -c "/home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx"
+/home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx:1:10: fatal error: filesystem: No such file or directory
+ #include <filesystem>
+          ^~~~~~~~~~~~
+compilation terminated.
+CMakeFiles/cmTC_7aab7.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_7aab7.dir/CheckIncludeFile.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_7aab7.dir/CheckIncludeFile.cxx.o] Error 1
+make[1]: Leaving directory '/home/anirak/Documents/TUe/COURSES/Master's/Year_I/Q_3 Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_7aab7/fast' failed
+make: *** [cmTC_7aab7/fast] Error 2
+
+
+

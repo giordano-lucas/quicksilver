@@ -35,31 +35,29 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /home/anirak/Documents/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /home/anirak/Documents/CLion-2019.3.4/clion-2019.3.4/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/valeriyaprokopova/dev/databases/quicksilver
+CMAKE_SOURCE_DIR = "/home/anirak/Desktop/Database Technology/Project code/quicksilver"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug
+CMAKE_BINARY_DIR = "/home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug"
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/benchmarker.dir/all
 all: CMakeFiles/quicksilver.dir/all
 
 .PHONY : all
 
 # The main recursive "clean" target.
-clean: CMakeFiles/benchmarker.dir/clean
 clean: CMakeFiles/quicksilver.dir/clean
 
 .PHONY : clean
@@ -70,47 +68,20 @@ preinstall:
 .PHONY : preinstall
 
 #=============================================================================
-# Target rules for target CMakeFiles/benchmarker.dir
-
-# All Build rule for target.
-CMakeFiles/benchmarker.dir/all:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/depend
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17 "Built target benchmarker"
-.PHONY : CMakeFiles/benchmarker.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/benchmarker.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/CMakeFiles 17
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/benchmarker.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/benchmarker.dir/rule
-
-# Convenience name for target.
-benchmarker: CMakeFiles/benchmarker.dir/rule
-
-.PHONY : benchmarker
-
-# clean rule for target.
-CMakeFiles/benchmarker.dir/clean:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/clean
-.PHONY : CMakeFiles/benchmarker.dir/clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/quicksilver.dir
 
 # All Build rule for target.
 CMakeFiles/quicksilver.dir/all:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/depend
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/CMakeFiles --progress-num=18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34 "Built target quicksilver"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles" --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17 "Built target quicksilver"
 .PHONY : CMakeFiles/quicksilver.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/quicksilver.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles" 17
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/quicksilver.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles" 0
 .PHONY : CMakeFiles/quicksilver.dir/rule
 
 # Convenience name for target.
@@ -130,7 +101,7 @@ CMakeFiles/quicksilver.dir/clean:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -P /Users/valeriyaprokopova/dev/databases/quicksilver/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P "/home/anirak/Desktop/Database Technology/Project code/quicksilver/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake"
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
