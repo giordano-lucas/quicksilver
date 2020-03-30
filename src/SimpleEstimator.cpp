@@ -48,12 +48,11 @@ cardStat eval(std::vector<Edge> edges) {
     return cardStat{noOut,noPath,noIn};
 };
 
-
-void join(IndexIterator l, IndexIterator r,
-        std::unordered_map<Node,bool> &inMap,
-        std::unordered_map<Node,bool> &middleMap,
-        std::unordered_map<Edge,bool,HashEdge> &twoMap,
-        std::unordered_map<Edge,bool,HashEdge> &pathMap){
+void fullJoin(IndexIterator l, IndexIterator r,
+          std::unordered_map<Node,bool> &inMap,
+          std::unordered_map<Node,bool> &middleMap,
+          std::unordered_map<Edge,bool,HashEdge> &twoMap,
+          std::unordered_map<Edge,bool,HashEdge> &pathMap){
     std::vector<Edge> setL;
     while(r.hasNext() && l.hasNext()){
         while (l.hasNext() && ((*l).target < (*r).source)) {++l;} //advance until we have a joining edge
@@ -78,6 +77,33 @@ void join(IndexIterator l, IndexIterator r,
     //return eval(res);
 }
 
+
+uint32_t join(IndexIterator l, IndexIterator r,
+        std::unordered_map<Node,bool> &inMap,
+        std::unordered_map<Node,bool> &middleMap,
+        std::unordered_map<Edge,bool,HashEdge> &twoMap){
+    uint32_t noPaths = 0;
+    while(r.hasNext() && l.hasNext()){
+        while (l.hasNext() && ((*l).target < (*r).source)) {++l;} //advance until we have a joining edge
+        Edge tl = *l;
+        uint32_t nbLeft = 0;
+        bool done = false;
+        while  (!done && l.hasNext()){ //setL contains all edges in Left that have the same target value
+            if (tl.target == (*l).target){nbLeft++;++l;}
+            else done = true;
+        }
+        while (r.hasNext() && (*r).source < tl.target) {++r;} //advance until we have a joining edge
+        if    (r.hasNext() && tl.target == (*r).source)  middleMap.insert({tl.target,true}); //have a middle
+        while (r.hasNext() && tl.target == (*r).source){
+            twoMap.insert({*r,true}); //have a two
+            inMap.insert({(*r).target,true});  //have an in
+            noPaths += nbLeft;
+            ++r;
+        }
+    }
+    return (noPaths/10)*9; //reduction factor for duplicates elemination
+}
+
 void computeSyn(    std::unordered_map<Node,bool> &inMap,
                     std::unordered_map<Node,bool> &middleMap,
                     std::unordered_map<Edge,bool,HashEdge> &twoMap,
@@ -89,11 +115,11 @@ void computeSyn(    std::unordered_map<Node,bool> &inMap,
     middleMap.clear();
     twoMap.clear();
     pathMap.clear();
-    join(left,right, inMap,middleMap,twoMap,pathMap);
+    syn.path = join(left,right, inMap,middleMap,twoMap);
     syn.in     = inMap.size();
     syn.middle = middleMap.size();
     syn.two    = twoMap.size();
-    syn.path   = pathMap.size();
+    //syn.path   = pathMap.size();
 }
 
 void SimpleEstimator::prepare() {
@@ -117,7 +143,8 @@ void SimpleEstimator::prepare() {
             right = index->getEdgesTarget(QueryEdge{NONE,l2,NONE});
             computeSyn(inMap,middleMap,twoMap,pathMap, left,right, index->syn3[l1][l2]);
         }
-    }/*
+    }
+    /*
     for (Label l1 = 0 ; l1 < index->getNoLabels() ; ++l1){
         std::cout << "index->syn1[" << l1 << "] = { out = "<<index->syn1[l1].out  << ", in = "<< index->syn1[l1].in << ", path = " << index->syn1[l1].path<< std::endl;
     }

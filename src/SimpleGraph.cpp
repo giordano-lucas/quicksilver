@@ -107,28 +107,33 @@ void SimpleGraph::insertAll(std::vector<Edge> &edges, Label l, bool reversed, Co
     size_t nextSpace = 0;
     Edge lastEdge = Edge{NONE,NONE};
     while (it != edges.end()){
-        //********* NO DUPLICATES ***********
-         if ((*it) == lastEdge){
-             ++it;
-             index[l].nbEdges--;
-         }
-         lastEdge = *it;
-        //********* REAL WORK ***********
+
         Node source = getSource(it);
         index[l].headers[headerIndex].source      = source;
         index[l].headers[headerIndex].indexEdges  = nextSpace;
         while(getSource(it) == source){ //for all edges that have source = (*it)
+            //********* NO DUPLICATES ***********
+            if((*it) == lastEdge){
+                ++it;
+                index[l].nbEdges--;
+                continue;
+            }
+            lastEdge = *it;
+            //********* REAL WORK ***********
             index[l].headers[headerIndex].nbTargets++;            //update size for each new target added
             index[l].edges[nextSpace] = getTarget(it);            //allocate target
             nextSpace++;                                                //next memory spot
-            it++;                                                       //next edge
+            it++;//next edge
+
             //assert(nextSpace <=  (syn1[l].path));                     //check buffer overflow
         }
         headerIndex++;
         //assert(headerIndex <= index[l].nbHeaders);
     }
     if (syn1[l].path != index[l].nbEdges) syn1[l].path = index[l].nbEdges;
-    realloc(index[l].edges, index[l].nbEdges *sizeof(Node));
+    void* ptr = realloc(index[l].edges, index[l].nbEdges *sizeof(Node));
+    if (ptr == nullptr) throw "Memory error";
+    index[l].edges = static_cast<Node *>(ptr);
     //assert(nextSpace  == syn1[l].path); //all memory has been used
     //assert(headerIndex == index[l].nbHeaders);           //all memory has been used
 }
@@ -257,5 +262,3 @@ uint32_t SimpleGraph::getNoLabels() const {
 void SimpleGraph::addEdge(uint32_t from, uint32_t to, uint32_t edgeLabel) {
 
 }
-
-
