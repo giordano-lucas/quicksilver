@@ -13,6 +13,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o"
   "CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o"
   "CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o"
+  "CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o"
   "CMakeFiles/quicksilver.dir/src/student/myMain.cpp.o"
   "quicksilver"
   "quicksilver.pdb"

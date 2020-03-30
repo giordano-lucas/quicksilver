@@ -45,6 +45,8 @@ CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o
  ../include/student/KleeneStar.h
  ../include/student/MergeJoin.h
  ../include/student/PhysicalOperator.h
+ ../include/student/Planner.h
+ ../include/student/Subtree.h
  ../include/student/Synopse.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEvaluator.cpp
 CMakeFiles/quicksilver.dir/src/SimpleGraph.cpp.o
@@ -154,6 +156,26 @@ CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o
  ../include/student/PhysicalOperator.h
  ../include/student/Synopse.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/MergeJoin.cpp
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o
+ ../include/Estimator.h
+ ../include/Evaluator.h
+ ../include/Graph.h
+ ../include/PathQuery.h
+ ../include/PathTree.h
+ ../include/SimpleEstimator.h
+ ../include/SimpleEvaluator.h
+ ../include/SimpleGraph.h
+ ../include/student/BlockingQueue.h
+ ../include/student/Edge.h
+ ../include/student/HelperPhysicalOperator.h
+ ../include/student/IndexLookUp.h
+ ../include/student/KleeneStar.h
+ ../include/student/MergeJoin.h
+ ../include/student/PhysicalOperator.h
+ ../include/student/Planner.h
+ ../include/student/Subtree.h
+ ../include/student/Synopse.h
+ /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/Planner.cpp
 CMakeFiles/quicksilver.dir/src/student/myMain.cpp.o
  ../include/Estimator.h
  ../include/Evaluator.h

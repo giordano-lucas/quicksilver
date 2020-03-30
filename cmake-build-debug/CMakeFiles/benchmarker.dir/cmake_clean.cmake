@@ -13,6 +13,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/benchmarker.dir/src/student/IndexLookUp.cpp.o"
   "CMakeFiles/benchmarker.dir/src/student/KleeneStar.cpp.o"
   "CMakeFiles/benchmarker.dir/src/student/MergeJoin.cpp.o"
+  "CMakeFiles/benchmarker.dir/src/student/Planner.cpp.o"
   "CMakeFiles/benchmarker.dir/src/student/myMain.cpp.o"
   "benchmarker"
   "benchmarker.pdb"

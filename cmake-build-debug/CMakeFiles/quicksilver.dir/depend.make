@@ -44,6 +44,8 @@ CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/student/IndexLo
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/student/KleeneStar.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/student/MergeJoin.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/student/PhysicalOperator.h
+CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/student/Planner.h
+CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/student/Subtree.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../include/student/Synopse.h
 CMakeFiles/quicksilver.dir/src/SimpleEvaluator.cpp.o: ../src/SimpleEvaluator.cpp
 
@@ -153,6 +155,26 @@ CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o: ../include/student/Merge
 CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o: ../include/student/PhysicalOperator.h
 CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o: ../include/student/Synopse.h
 CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o: ../src/student/MergeJoin.cpp
+
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/Estimator.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/Evaluator.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/Graph.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/PathQuery.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/PathTree.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/SimpleEstimator.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/SimpleEvaluator.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/SimpleGraph.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/student/BlockingQueue.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/student/Edge.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/student/HelperPhysicalOperator.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/student/IndexLookUp.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/student/KleeneStar.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/student/MergeJoin.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/student/PhysicalOperator.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/student/Planner.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/student/Subtree.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/student/Synopse.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../src/student/Planner.cpp
 
 CMakeFiles/quicksilver.dir/src/student/myMain.cpp.o: ../include/Estimator.h
 CMakeFiles/quicksilver.dir/src/student/myMain.cpp.o: ../include/Evaluator.h

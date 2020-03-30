@@ -202,6 +202,14 @@
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/Planner.h">
+			<Option target="benchmarker"/>
+			<Option target="quicksilver"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/Subtree.h">
+			<Option target="benchmarker"/>
+			<Option target="quicksilver"/>
+		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/Synopse.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
@@ -261,6 +269,10 @@
 			<Option target="quicksilver"/>
 		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/MergeJoin.cpp">
+			<Option target="benchmarker"/>
+			<Option target="quicksilver"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/Planner.cpp">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>

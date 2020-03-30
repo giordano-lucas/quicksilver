@@ -581,6 +581,36 @@ src/student/MergeJoin.cpp.s:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.s
 .PHONY : src/student/MergeJoin.cpp.s
 
+src/student/Planner.o: src/student/Planner.cpp.o
+
+.PHONY : src/student/Planner.o
+
+# target to build an object file
+src/student/Planner.cpp.o:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/Planner.cpp.o
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o
+.PHONY : src/student/Planner.cpp.o
+
+src/student/Planner.i: src/student/Planner.cpp.i
+
+.PHONY : src/student/Planner.i
+
+# target to preprocess a source file
+src/student/Planner.cpp.i:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/Planner.cpp.i
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/Planner.cpp.i
+.PHONY : src/student/Planner.cpp.i
+
+src/student/Planner.s: src/student/Planner.cpp.s
+
+.PHONY : src/student/Planner.s
+
+# target to generate assembly for a file
+src/student/Planner.cpp.s:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/src/student/Planner.cpp.s
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/src/student/Planner.cpp.s
+.PHONY : src/student/Planner.cpp.s
+
 src/student/myMain.o: src/student/myMain.cpp.o
 
 .PHONY : src/student/myMain.o
@@ -666,6 +696,9 @@ help:
 	@echo "... src/student/MergeJoin.o"
 	@echo "... src/student/MergeJoin.i"
 	@echo "... src/student/MergeJoin.s"
+	@echo "... src/student/Planner.o"
+	@echo "... src/student/Planner.i"
+	@echo "... src/student/Planner.s"
 	@echo "... src/student/myMain.o"
 	@echo "... src/student/myMain.i"
 	@echo "... src/student/myMain.s"

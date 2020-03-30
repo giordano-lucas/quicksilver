@@ -131,7 +131,9 @@ void SimpleGraph::insertAll(std::vector<Edge> &edges, Label l, bool reversed, Co
         //assert(headerIndex <= index[l].nbHeaders);
     }
     if (syn1[l].path != index[l].nbEdges) syn1[l].path = index[l].nbEdges;
-    realloc(index[l].edges, index[l].nbEdges *sizeof(Node));
+    void* ptr = realloc(index[l].edges, index[l].nbEdges *sizeof(Node));
+    if (ptr == nullptr) throw "Memory error";
+    index[l].edges = static_cast<Node *>(ptr);
     //assert(nextSpace  == syn1[l].path); //all memory has been used
     //assert(headerIndex == index[l].nbHeaders);           //all memory has been used
 }
