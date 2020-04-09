@@ -247,7 +247,13 @@ Planner::generatePlan(PathQuery *query, std::shared_ptr<SimpleGraph> &index, std
             op = ofPathTree(rightDeepTree, index, NONE, std::stoi(t));
             op->attachEstimator(e);
         } else {
-            op = generatePlanForUnboundedQuery(query, index, e);
+             op = ofPathQueryLargeCard(query, index);
+             op->attachEstimator(e);
+             Node card = op->getCardinality().noPaths;
+           //  std::cout << "CARD ======================== " << card<< " \n";
+             if (card < 100000)  {
+                 op = generatePlanForUnboundedQuery(query, index, e);
+             }
         }
         return op;
     } else {

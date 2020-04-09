@@ -137,6 +137,36 @@ quicksilver/fast:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/build
 .PHONY : quicksilver/fast
 
+include/student/IndexJoin.o: include/student/IndexJoin.cpp.o
+
+.PHONY : include/student/IndexJoin.o
+
+# target to build an object file
+include/student/IndexJoin.cpp.o:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/include/student/IndexJoin.cpp.o
+.PHONY : include/student/IndexJoin.cpp.o
+
+include/student/IndexJoin.i: include/student/IndexJoin.cpp.i
+
+.PHONY : include/student/IndexJoin.i
+
+# target to preprocess a source file
+include/student/IndexJoin.cpp.i:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.i
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/include/student/IndexJoin.cpp.i
+.PHONY : include/student/IndexJoin.cpp.i
+
+include/student/IndexJoin.s: include/student/IndexJoin.cpp.s
+
+.PHONY : include/student/IndexJoin.s
+
+# target to generate assembly for a file
+include/student/IndexJoin.cpp.s:
+	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.s
+	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/include/student/IndexJoin.cpp.s
+.PHONY : include/student/IndexJoin.cpp.s
+
 src/PathQuery.o: src/PathQuery.cpp.o
 
 .PHONY : src/PathQuery.o
@@ -651,6 +681,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... benchmarker"
 	@echo "... quicksilver"
+	@echo "... include/student/IndexJoin.o"
+	@echo "... include/student/IndexJoin.i"
+	@echo "... include/student/IndexJoin.s"
 	@echo "... src/PathQuery.o"
 	@echo "... src/PathQuery.i"
 	@echo "... src/PathQuery.s"

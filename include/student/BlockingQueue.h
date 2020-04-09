@@ -23,7 +23,7 @@ public:
     /**
      * Constructor
      */
-    BlockingQueue(bool fastProducer = true,size_t limit = 100000) : limit(limit),queue(), mtx(), pushCond(),popCond() {
+    BlockingQueue(bool fastProducer = true,size_t limit = 1000000) : limit(limit),queue(), mtx(), pushCond(),popCond() {
         //assert(limit > 0);
         signalingPushSize = (fastProducer)? std::max((size_t)100, (size_t)1): 1;
     }

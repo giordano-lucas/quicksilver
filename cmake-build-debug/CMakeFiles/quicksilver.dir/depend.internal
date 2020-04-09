@@ -4,6 +4,21 @@
 CMakeFiles/quicksilver.dir/src/rss.c.o
  ../include/rss.h
  /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/rss.c
+CMakeFiles/quicksilver.dir/include/student/IndexJoin.cpp.o
+ ../include/Estimator.h
+ ../include/Evaluator.h
+ ../include/Graph.h
+ ../include/PathQuery.h
+ ../include/PathTree.h
+ ../include/SimpleEstimator.h
+ ../include/SimpleEvaluator.h
+ ../include/SimpleGraph.h
+ ../include/student/Synopse.h
+ /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/BlockingQueue.h
+ /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/Edge.h
+ /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/IndexJoin.cpp
+ /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/IndexJoin.h
+ /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/PhysicalOperator.h
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o
  ../include/PathQuery.h
  ../include/PathTree.h
@@ -105,6 +120,7 @@ CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o
  ../include/student/BlockingQueue.h
  ../include/student/Edge.h
  ../include/student/HelperPhysicalOperator.h
+ ../include/student/IndexJoin.h
  ../include/student/IndexLookUp.h
  ../include/student/KleeneStar.h
  ../include/student/MergeJoin.h

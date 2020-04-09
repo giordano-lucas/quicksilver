@@ -43,7 +43,7 @@ class HashEdge {
 public:
     size_t operator()(const Edge& e) const{
         std::hash<uint32_t> hash;
-        return hash(hash(e.source) + e.target);
+        return hash(hash(e.source) + hash(e.target));
     }
 };
 
