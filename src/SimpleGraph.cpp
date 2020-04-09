@@ -262,5 +262,3 @@ uint32_t SimpleGraph::getNoLabels() const {
 void SimpleGraph::addEdge(uint32_t from, uint32_t to, uint32_t edgeLabel) {
 
 }
-
-

@@ -14,7 +14,7 @@ PathTree* PathTree::strToTree(std::string str) {
 
     // case /
     // most right '/' (but not inside '()') search and split
-    for(int i=(int) str.size()-1;i>=0;--i){
+    for(int i=(int) str.size()-1; i>=0; --i){
         char c = str[i];
         if(c == ')'){
             ++level;

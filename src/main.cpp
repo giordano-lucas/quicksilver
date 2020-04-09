@@ -6,16 +6,16 @@
 
 int main(int argc, char *argv[]) {
 
-    if(argc < 3) {
+    if (argc < 3) {
         std::cout << "Usage: quicksilver <graphFile> <queriesFile>" << std::endl;
-        argv[1] = "../workload/syn/1/graph.nt";
-        argv[2] = "../workload/syn/1/queries.csv";
+        argv[1] = "../testfiles/workload/syn/1/graph.nt";
+        argv[2] = "../testfiles/workload/syn/1/queries.csv";
         //return 0;
     }
 
     // args
-    std::string graphFile {argv[1]};
-    std::string queriesFile {argv[2]};
+    std::string graphFile{argv[1]};
+    std::string queriesFile{argv[2]};
 
     //estimatorBench(graphFile, queriesFile);
     auto result = evaluatorBench(graphFile, queriesFile);

@@ -7,6 +7,7 @@
 
 #include "iostream"
 #include <vector>
+
 struct Subtree {
 
     // this subtree is always of depth 1.
