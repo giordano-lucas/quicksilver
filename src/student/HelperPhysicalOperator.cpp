@@ -76,8 +76,6 @@ PhysicalOperator* ofPathTreeLargeCard(PathTree* tree, std::shared_ptr<SimpleGrap
     }
     else if (tree->isConcat()){
         return new IndexJoin(index->getNoVertices(),ofPathTree(tree->left, index, leftBounded, NONE),
-                //                        ofPathTree(tree->right, index, NONE, rightBounded));
-                //  return new MergeJoin(ofPathTree(tree->left, index, leftBounded, NONE),
                              ofPathTree(tree->right, index, NONE, rightBounded));
     }
     throw "Illegal argument";
