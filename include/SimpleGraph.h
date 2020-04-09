@@ -76,7 +76,7 @@ public:
     Iterator getEdgesTarget(QueryEdge queryEdge) const;
     /*Insertion methods*/
     void insertAll(std::vector<Edge> &edges, Label l);
-    void readFromContiguousFile(const std::string &fileName);
+    void readFromContiguousFile(const std::string &fileName) override ;
 
     uint32_t getNoVertices() const override;
 

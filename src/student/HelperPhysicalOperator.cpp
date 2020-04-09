@@ -1,12 +1,11 @@
 //
 // Created by Lucas Giordano on 27/03/2020.
 //
-
+#include "HelperPhysicalOperator.h"
 #include <student/IndexLookUp.h>
 #include <student/KleeneStar.h>
 #include <student/MergeJoin.h>
 #include <student/IndexJoin.h>
-#include "HelperPhysicalOperator.h"
 
 
 PhysicalOperator* ofPathTree(PathTree* tree, std::shared_ptr<SimpleGraph>& index, Node leftBounded, Node rightBounded){

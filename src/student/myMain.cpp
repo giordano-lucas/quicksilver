@@ -157,7 +157,7 @@ int main(int argc, char *argv[]) {
     PhysicalOperator* op = new KleeneStar(&index, Edge{NONE,l1,NONE},NOT_SORTED);
     op->eval().print();
 
-    //********************************************************************************
+    // ********************************************************************************
     //Try to compute the index
 
     EdgeIndex index;
@@ -320,7 +320,7 @@ int myEvaluatorBench(std::string &graphFile, std::string &queriesFile) {
 
     std::cout << "Time dif to read the graph into memory: " << std::chrono::duration<double, std::milli>(end2 - start2 - (end - start)).count() << " ms" << std::endl;
 
-    //***************** ESTIMATION CONSTRUCTION ******************
+    // ***************** ESTIMATION CONSTRUCTION ******************
 
     start = std::chrono::steady_clock::now();
     end = std::chrono::steady_clock::now();
@@ -337,7 +337,6 @@ int myEvaluatorBench(std::string &graphFile, std::string &queriesFile) {
     end2 = std::chrono::steady_clock::now();
     std::cout << "Time dif to prepare the evaluator: " << std::chrono::duration<double, std::milli>(end2 - start2 - (end - start)).count() << " ms" << std::endl;
 
-    //******************************  RUN WORK LOAD *************************************
 
     std::cout << "\n(2) Running the query workload..." << std::endl;
 

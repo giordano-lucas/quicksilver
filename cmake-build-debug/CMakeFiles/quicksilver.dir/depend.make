@@ -183,6 +183,7 @@ CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/SimpleGraph.h
 CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/student/BlockingQueue.h
 CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/student/Edge.h
 CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/student/HelperPhysicalOperator.h
+CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/student/IndexJoin.h
 CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/student/IndexLookUp.h
 CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/student/KleeneStar.h
 CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o: ../include/student/MergeJoin.h
