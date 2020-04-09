@@ -10,6 +10,7 @@
 #include "Subtree.h"
 #include "HelperPhysicalOperator.h"
 #include "PathTree.h"
+#include "IndexJoin.h"
 
 
 //std::vector<std::string>
