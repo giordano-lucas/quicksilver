@@ -13,39 +13,10 @@ void removeDuplicate(std::vector<Edge>& array, Edge& last){
 Edge MergeJoin::produceNextEdge() {
     if (!ready) out.pop();
     removeDuplicate(res,lastEdgeProduced);
-    removeDuplicate(extraOutput,lastEdgeProduced);
-       if (!res.empty() && !extraOutput.empty()){
-           if (!cmp(res.back(),extraOutput.back())) {
-               lastEdgeProduced = res.back();
-               res.pop_back();
-           }
-           else {
-               lastEdgeProduced = extraOutput.back();
-               extraOutput.pop_back();
-           }
-           return lastEdgeProduced;
-       }
-       else if (!res.empty()){
-           lastEdgeProduced = res.back();
-           res.pop_back();
-           return lastEdgeProduced;
-       }
-       else if (!extraOutput.empty()){
-           lastEdgeProduced = extraOutput.back();
-           extraOutput.pop_back();
-           return lastEdgeProduced;
-       }
- /*   if (!res.empty()) {
-        Edge r = res.back();
-        res.pop_back();
-        while (lastEdgeProduced == r && !res.empty()){
-            r = res.back();
-            res.pop_back();
-        }
-        bool isEnd = res.empty() && lastEdgeProduced == r;
-        lastEdgeProduced = r;
-        return (isEnd)?END_EDGE:r;
-    }*/
+    if (!res.empty()) {
+        lastEdgeProduced = res.back();
+        return lastEdgeProduced;
+    }
     return END_EDGE;
 }
 /*cardStat MergeJoin::eval() {
@@ -100,14 +71,13 @@ Edge MergeJoin::produceNextEdge() {
 }*/
 
 void MergeJoin::evalPipeline(ResultSorted resultSorted) {
-    cmp = (resultSorted==TARGET_SORTED)?targetCompDesc:sourceCompDesc;
     std::thread thdLeft([this] {
         left->evalPipeline(TARGET_SORTED);
     });
     std::thread thdRight([this] {
         right->evalPipeline(SOURCE_SORTED);
     });
-    std::thread* sortThd = nullptr;
+    std::thread sortThd;
     Edge r = right->produceNextEdge();
     Edge l = left->produceNextEdge();
     std::vector<Edge> setL;
@@ -130,16 +100,7 @@ void MergeJoin::evalPipeline(ResultSorted resultSorted) {
         }
         while (!(r == END_EDGE) && tl.target == r.source){
             for(auto tl : setL){
-                if (getCardinality().noPaths > MIN_SIZE_THREAD && extraOutput.size() < getCardinality().noPaths/2){
-                    extraOutput.push_back(Edge{tl.source,r.target});
-                    if (extraOutput.size() == getCardinality().noPaths/2){
-                        sortThd = new std::thread(([this, resultSorted] {
-                            std::sort(extraOutput.begin(),extraOutput.end(), cmp);}));
-                    }
-                }
-                else {
-                    res.push_back(Edge{tl.source,r.target});
-                }
+                res.push_back(Edge{tl.source,r.target});
             }
             r = right->produceNextEdge();
         }
@@ -148,8 +109,7 @@ void MergeJoin::evalPipeline(ResultSorted resultSorted) {
     right->terminate();
     thdLeft.join();
     thdRight.join();
-    std::sort(res.begin(),res.end(), cmp);
-    if (sortThd != nullptr) sortThd->join();
+    std::sort(res.begin(),res.end(), (resultSorted==TARGET_SORTED)?targetCompDesc:sourceCompDesc);
     ready = true;
     out.push(END_EDGE,true);
 }
@@ -175,3 +135,6 @@ MergeJoin::MergeJoin(PhysicalOperator *left, PhysicalOperator *right) : Physical
 std::ostream &MergeJoin::name(std::ostream &strm) const {
     return strm << "MergeJoin";
 }
+
+
+
