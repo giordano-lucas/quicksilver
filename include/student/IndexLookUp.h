@@ -18,6 +18,8 @@ private:
 public:
     IndexLookUp(std::shared_ptr<SimpleGraph>& index, QueryEdge queryEdge, bool reversed);
 
+    void skip(Node until) override;
+
     ~IndexLookUp();
     void evalPipeline(ResultSorted resultSorted)  override;
     uint32_t cost()  override;

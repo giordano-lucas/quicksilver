@@ -54,6 +54,8 @@ IndexLookUp::~IndexLookUp() {
  *
  */
 void IndexLookUp::evalPipeline(ResultSorted resultSorted) {
+    IndexLookUp::resultSorted = resultSorted;
+
     if (queryEdge.source == NONE && queryEdge.target == NONE){
         switch(resultSorted){
             case TARGET_SORTED: res = (reversed)?index->getEdgesSource(queryEdge,true):index->getEdgesTarget(queryEdge,true);break;
@@ -69,29 +71,12 @@ void IndexLookUp::evalPipeline(ResultSorted resultSorted) {
         res = (reversed)?index->getEdgesTarget(queryEdge):index->getEdgesTarget(queryEdge,true);
     }
     ready = true;
+    Syn1 syn = index->syn1[queryEdge.label];
+    if (!reversed) outCardStat = cardStat{syn.out,syn.path,syn.in};
+    else           outCardStat = cardStat{syn.in,syn.path,syn.out};
+
     out.push(END_EDGE, true);
 
-
-
-    /*
-    if (queryEdge.target == NONE && (queryEdge.source != NONE || !reversed)) //choose the right sub EdgeIndex
-        res = index->getEdgesSource(queryEdge);                     // source sorted index access
-    else res = index->getEdgesTarget(queryEdge);                    // targed sorted index access
-
-    if(( reversed && queryEdge.source != NONE && queryEdge.target == NONE) || // (n,l,*) & reversed
-       (!reversed && queryEdge.source == NONE && queryEdge.target != NONE)) { // (*,l,n) & !reversed
-                                                                                //  => reverse edges and resort
-        for (IndexIterator it = res.first ; it != res.second ; ++it) sortedResSource.push_back(reverse(it->first));
-        resValid = false;
-        if (resultSorted == SOURCE_SORTED)  //only need to sort on source if requested
-            std::sort(sortedResSource.begin(),sortedResSource.end(), sourceCompDesc);
-    } else if (resultSorted == TARGET_SORTED){
-        for (IndexIterator it = res.first ; it != res.second ; ++it) sortedResTarget.push_back(it->first);
-        resValid = false;
-        std::sort(sortedResTarget.begin(),sortedResTarget.end(), targetCompDesc);
-    }
-    ready = true;
-    out.push(END_EDGE, true);*/
 }
 
 Edge IndexLookUp::produceNextEdge() {
@@ -118,6 +103,11 @@ bool IndexLookUp::isRightBounded() const {
 
 std::ostream &IndexLookUp::name(std::ostream &strm) const {
     return strm << "IndexLookUp : " << reversed << "|"<< queryEdge.label;
+}
+
+#define get(e) ((resultSorted == SOURCE_SORTED)? (e).source : (e).target)
+void IndexLookUp::skip(Node until) {
+    while ( get((*res)) < until) res.skip();
 }
 
 

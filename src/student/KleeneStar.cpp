@@ -162,6 +162,10 @@ std::ostream &KleeneStar::name(std::ostream &strm) const {
     return strm << "KleeneStar";
 }
 
+void KleeneStar::skip(Node until) {
+    return;
+}
+
 
 /*void evalPipeline2() {
     IndexResult res = index->getEdgesSource(QueryEdge{NONE,queryEdge.label,NONE}); //get data from the database
