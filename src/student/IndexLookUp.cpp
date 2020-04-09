@@ -70,11 +70,12 @@ void IndexLookUp::evalPipeline(ResultSorted resultSorted) {
     else {
         res = (reversed)?index->getEdgesTarget(queryEdge):index->getEdgesTarget(queryEdge,true);
     }
+    if (queryEdge.source == NONE && queryEdge.target == NONE){
+        Syn1 syn = index->syn1[queryEdge.label];
+        if (!reversed) outCardStat = cardStat{syn.out,syn.path,syn.in};
+        else           outCardStat = cardStat{syn.in,syn.path,syn.out};
+    }
     ready = true;
-    Syn1 syn = index->syn1[queryEdge.label];
-    if (!reversed) outCardStat = cardStat{syn.out,syn.path,syn.in};
-    else           outCardStat = cardStat{syn.in,syn.path,syn.out};
-
     out.push(END_EDGE, true);
 
 }
