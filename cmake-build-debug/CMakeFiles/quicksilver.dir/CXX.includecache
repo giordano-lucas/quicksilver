@@ -224,6 +224,16 @@ SimpleEstimator.h
 SimpleEvaluator.h
 /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/SimpleEvaluator.h
 
+/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/main.cpp
+benches.h
+-
+iostream
+-
+rss.h
+-
+chrono
+-
+
 /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/HashJoin.cpp
 HashJoin.h
 /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/HashJoin.h

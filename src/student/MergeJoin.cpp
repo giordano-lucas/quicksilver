@@ -143,7 +143,6 @@ Edge MergeJoin::produceNextEdge() {
 
 #define get(e) ((resultSorted == SOURCE_SORTED)? (e).source : (e).target)
 size_t MergeJoin::binarySearch(std::vector<Edge>& arr, size_t  low, Node key){
-    assert(arr.size() > 0);
     size_t  high = arr.size()-1;
     size_t ans = -1;
 
