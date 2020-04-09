@@ -12,6 +12,10 @@ class KleeneStar : public PhysicalOperator{
 private:
     std::shared_ptr<SimpleGraph>& index;
     QueryEdge queryEdge;
+public:
+    void skip(Node until) override;
+
+private:
     bool done = false;
     void dfs(std::unordered_map<Node,bool>& discovered,Node n, Node source, bool reversed,std::vector<Edge>& output);
     void cacheDfs(std::unordered_map<Node,bool>& discovered,Node n ,bool reversed,bool firstIt);

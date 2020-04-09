@@ -4,21 +4,6 @@
 
 #include "MergeJoin.h"
 
-void removeDuplicate(std::vector<Edge>& array, Edge& last){
-    while (!array.empty()&& last == array.back()){
-        array.pop_back();
-    }
-}
-
-Edge MergeJoin::produceNextEdge() {
-    if (!ready) out.pop();
-    removeDuplicate(res,lastEdgeProduced);
-    if (!res.empty()) {
-        lastEdgeProduced = res.back();
-        return lastEdgeProduced;
-    }
-    return END_EDGE;
-}
 /*cardStat MergeJoin::eval() {
     std::thread thdLeft([this] {
         left->evalPipeline(TARGET_SORTED);
@@ -77,12 +62,13 @@ void MergeJoin::evalPipeline(ResultSorted resultSorted) {
     std::thread thdRight([this] {
         right->evalPipeline(SOURCE_SORTED);
     });
-    std::thread sortThd;
+    MergeJoin::resultSorted = resultSorted;
     Edge r = right->produceNextEdge();
     Edge l = left->produceNextEdge();
     std::vector<Edge> setL;
     while(r!=END_EDGE && l!=END_EDGE){
         while (l != END_EDGE && l.target < r.source) { //advance until we have a joining edge
+            left->skip(r.source);
             l = left->produceNextEdge();
         }
         setL.clear();
@@ -96,6 +82,7 @@ void MergeJoin::evalPipeline(ResultSorted resultSorted) {
             else done = true;
         }
         while (r!=END_EDGE && r.source < tl.target) { //advance until we have a joining edge
+            right->skip(tl.target);
             r = right->produceNextEdge();
         }
         while (!(r == END_EDGE) && tl.target == r.source){
@@ -109,7 +96,8 @@ void MergeJoin::evalPipeline(ResultSorted resultSorted) {
     right->terminate();
     thdLeft.join();
     thdRight.join();
-    std::sort(res.begin(),res.end(), (resultSorted==TARGET_SORTED)?targetCompDesc:sourceCompDesc);
+   // std::sort(res.begin(),res.end(), (resultSorted==TARGET_SORTED)?targetCompDesc:sourceCompDesc);
+    std::sort(res.begin(),res.end(), (resultSorted==TARGET_SORTED)?targetComp:sourceComp);
     ready = true;
     out.push(END_EDGE,true);
 }
@@ -134,6 +122,70 @@ MergeJoin::MergeJoin(PhysicalOperator *left, PhysicalOperator *right) : Physical
 
 std::ostream &MergeJoin::name(std::ostream &strm) const {
     return strm << "MergeJoin";
+}
+
+
+void MergeJoin::removeDuplicate(std::vector<Edge>& array, Edge& last){
+    while ( idx < array.size() && last == array[idx]){
+        idx++;
+    }
+}
+
+Edge MergeJoin::produceNextEdge() {
+    if (!ready) out.pop();
+    removeDuplicate(res,lastEdgeProduced);
+    if (idx < res.size() ) {
+        lastEdgeProduced = res[idx];
+        return lastEdgeProduced;
+    }
+    return END_EDGE;
+}
+
+#define get(e) ((resultSorted == SOURCE_SORTED)? (e).source : (e).target)
+size_t MergeJoin::binarySearch(std::vector<Edge>& arr, size_t  low, Node key){
+    assert(arr.size() > 0);
+    size_t  high = arr.size()-1;
+    size_t ans = -1;
+
+    while (low <= high) {
+        int mid = low + (high - low + 1) / 2;
+        Node midVal = get(arr[mid]);
+
+        if (midVal < key) {
+
+            // if mid is less than key, all elements
+            // in range [low, mid - 1] are < key
+            // we note down the last found index, then
+            // we search in right side of mid
+            // so we now search in [mid + 1, high]
+            ans = mid;
+            low = mid + 1;
+        }
+        else if (midVal > key) {
+
+            // if mid is greater than key, all elements
+            // in range [mid + 1, high] are > key
+            // then we search in left side of mid
+            // so we now search in [low, mid - 1]
+            high = mid - 1;
+        }
+        else if (midVal == key) {
+
+            // if mid is equal to key, all elements
+            // in range [mid + 1, high] are >= key
+            // then we search in left side of mid
+            // so we now search in [low, mid - 1]
+            high = mid - 1;
+        }
+    }
+    return ans + 1;
+}
+
+void MergeJoin::skip(Node until) {
+    if (idx >= res.size()) return;
+    size_t nextSource = binarySearch(res,idx, until);
+    assert(idx >= 0 && idx < res.size());
+    idx = nextSource;
 }
 
 

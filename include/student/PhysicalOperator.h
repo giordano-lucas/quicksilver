@@ -32,8 +32,10 @@ protected:
      std::shared_ptr<SimpleEstimator> est;
      cardStat card = cardStat{NONE,NONE,NONE};
      query_t query;
+     cardStat outCardStat = cardStat{NONE,NONE,NONE};
 public:
     ResultSorted defaultResultSorted;
+    ResultSorted resultSorted = NOT_SORTED;
     /**
      * Constructor
      **/
@@ -128,6 +130,12 @@ public:
          std::thread thd([this] {
             evalPipeline(defaultResultSorted);
          });
+         Edge e = produceNextEdge();
+         if (outCardStat.noPaths != NONE) {
+             thd.join();  //terminate execution of evalPipeline()
+             return outCardStat;
+         }
+
          uint32_t noOut  = 0;
          uint32_t noPath = 0;
          uint32_t noIn   = 0;
@@ -136,7 +144,7 @@ public:
          uint32_t lastOut = NONE;     std::unordered_map<uint32_t,bool> hashOut;   bool sortedOut  = defaultResultSorted == SOURCE_SORTED;
          Edge lastEdge = END_EDGE; std::unordered_map<Edge,bool,HashEdge> hashEdge; bool sortedPath = sortedIn || sortedOut;
 
-         for (Edge e = produceNextEdge() ; !(e == END_EDGE); e = produceNextEdge()){
+         for (;!(e == END_EDGE); e = produceNextEdge()){
              //std::cout << "PHY : " << e;
              update(e.target,lastIn,hashIn, sortedIn, noIn);
              update(e.source,lastOut,hashOut,sortedOut, noOut);
@@ -158,6 +166,7 @@ public:
      *  Interface linking the parent operator and the child.
      **/
     virtual Edge produceNextEdge() = 0;
+    virtual void skip(Node until) = 0;
 
     virtual std::ostream& name(std::ostream &strm) const = 0;
 
