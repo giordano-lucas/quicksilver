@@ -183,7 +183,7 @@ size_t MergeJoin::binarySearch(std::vector<Edge>& arr, size_t  low, Node key){
 void MergeJoin::skip(Node until) {
     if (idx >= res.size()) return;
     size_t nextSource = binarySearch(res,idx, until);
-    assert(idx >= 0 && idx < res.size());
+  //  assert(idx >= 0 && idx < res.size());
     idx = nextSource;
 }
 
