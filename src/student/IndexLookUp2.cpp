@@ -15,7 +15,8 @@ IndexLookUp2::~IndexLookUp2() {
 cardStat IndexLookUp2::eval() {
     cardStat stats {};
     std::vector<std::vector<Node>>& adj = index->adjLabel2[l1][l2];
-    std::vector<std::vector<Node>>& revadj = index->revAdjLabel2[l1][l2];
+    //std::vector<std::vector<Node>>& revadj = index->revAdjLabel2[l1][l2];
+    std::vector<bool> hashIn(index->getNoVertices(), false);
     for (auto sourceVec : adj) {
         std::sort(sourceVec.begin(), sourceVec.end());
         uint32_t prevTarget = 0;
@@ -25,15 +26,19 @@ cardStat IndexLookUp2::eval() {
                 first = false;
                 stats.noPaths++;
                 prevTarget = labelTgt;
+                if (hashIn[labelTgt] == false) {
+                    hashIn[labelTgt] = true;
+                    stats.noIn++;
+                }
             }
         }
     }
     for(int source = 0; source < index->getNoVertices(); source++) {
         if(!adj[source].empty()) stats.noOut++;
     }
-    for(int target = 0; target < index->getNoVertices(); target++) {
-        if(!revadj[target].empty()) stats.noIn++;
-    }
+//    for(int target = 0; target < index->getNoVertices(); target++) {
+ //       if(!revadj[target].empty()) stats.noIn++;
+ //   }
     return stats;
 }
 

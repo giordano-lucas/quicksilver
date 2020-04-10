@@ -140,8 +140,14 @@ void SimpleGraph::readFromContiguousFile(const std::string &fileName) {
                 Node t = target.target;
                 Label l2 = target.source;
                 adjLabel2[l1][l2][s].emplace_back(t);
-                revAdjLabel2[l1][l2][t].emplace_back(s);
+              //  revAdjLabel2[l1][l2][t].emplace_back(s);
             }
+        }
+    }
+    for (Label l1 = 0 ; l1 < L ; ++l1){
+        for (Label l2 = 0 ; l2 < L ; ++l2){
+            adjLabel2[l1][l2].resize(V);
+            revAdjLabel2[l1][l2].resize(V);
         }
     }
     ////////////////////////////////////
