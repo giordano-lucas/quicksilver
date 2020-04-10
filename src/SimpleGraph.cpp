@@ -131,7 +131,7 @@ void SimpleGraph::readFromContiguousFile(const std::string &fileName) {
             revAdjLabel2[l1][l2].resize(V);
         }
     }
-    for(uint32_t s = 0; s < V; s++) {
+  /*  for(uint32_t s = 0; s < V; s++) {
         for (auto mid : adj[s]) {
             Node join = mid.target;
             Label l1 = mid.source;
@@ -151,7 +151,7 @@ void SimpleGraph::readFromContiguousFile(const std::string &fileName) {
                 targets->erase( unique( targets->begin(), targets->end() ), targets->end());
             }
         }
-    }
+    }*/
     ////////////////////////////////////
     graphFile.close();
 }
