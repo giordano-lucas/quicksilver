@@ -104,8 +104,8 @@ PhysicalOperator* ofPathQueryLargeCard(PathQuery* pq, std::shared_ptr<SimpleGrap
     Node s = (pq->s.compare("*")==0)?NONE: (uint32_t) std::stoi(pq->s);
     Node t = (pq->t.compare("*")==0)?NONE: (uint32_t) std::stoi(pq->t);
     //std::cout << "(" << s << "," << t<< ")\n";
-   // return ofPathTreeLargeCard(pq->path, index,s,t, false);
+    return ofPathTreeLargeCard(pq->path, index,s,t, false);
     //*******************************************************************************
-    return ofPathTreeLargeCard(pq->path, index,s,t, true);
+  //  return ofPathTreeLargeCard(pq->path, index,s,t, true);
     //*******************************************************************************
 }
