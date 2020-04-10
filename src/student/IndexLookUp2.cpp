@@ -17,20 +17,14 @@ cardStat IndexLookUp2::eval() {
     std::vector<std::vector<Node>>& adj = index->adjLabel2[l1][l2];
     //std::vector<std::vector<Node>>& revadj = index->revAdjLabel2[l1][l2];
     std::vector<bool> hashIn(index->getNoVertices(), false);
+
     for (auto sourceVec : adj) {
-        std::sort(sourceVec.begin(), sourceVec.end());
-        uint32_t prevTarget = 0;
-        bool first = true;
+        stats.noPaths+= sourceVec.size();
         for (const auto &labelTgt: sourceVec) {
-            if (first || !(prevTarget == labelTgt)) {
-                first = false;
-                stats.noPaths++;
-                prevTarget = labelTgt;
                 if (hashIn[labelTgt] == false) {
                     hashIn[labelTgt] = true;
                     stats.noIn++;
                 }
-            }
         }
     }
     for(int source = 0; source < index->getNoVertices(); source++) {
