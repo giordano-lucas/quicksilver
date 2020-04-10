@@ -111,7 +111,7 @@ void IndexLookUp::skip(Node until) {
     while ( get((*res)) < until) res.skip();
 }
 
-std::vector<Node>& IndexLookUp::reachable(Node s) {
+IteratorReachable IndexLookUp::reachable(Node s) {
     switch(resultSorted){
         case TARGET_SORTED: return (!reversed)?index->sourcesReachable(queryEdge.label,s):index->targetsReachable(queryEdge.label,s);
         case ANY          :

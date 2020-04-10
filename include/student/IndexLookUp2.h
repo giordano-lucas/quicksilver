@@ -32,7 +32,7 @@ public:
 
     void skip(Node until) override;
 
-    std::vector<Node> &reachable(Node s) override;
+    IteratorReachable reachable(Node s) override;
 
     std::ostream &name(std::ostream &strm) const override;
 

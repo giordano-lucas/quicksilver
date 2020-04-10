@@ -167,7 +167,7 @@ public:
      **/
     virtual Edge produceNextEdge() = 0;
     virtual void skip(Node until) = 0;
-    virtual std::vector<Node>& reachable(Node s) {
+    virtual IteratorReachable reachable(Node s) {
         throw "unimplemented";
     }
     virtual std::ostream& name(std::ostream &strm) const = 0;

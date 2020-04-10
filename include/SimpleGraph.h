@@ -37,6 +37,7 @@ typedef struct{
 
 
 typedef LabelIndex* Index;
+typedef Node* RandomAccessTable;
 //********************** CLASS **********************
 class SimpleGraph : public Graph {
     ///// =============== Nested sub class => iterator ================
@@ -59,12 +60,24 @@ public:
         Iterator skip();
         bool hasNext() const;
     };
+    class IteratorReachable {
+    private:
+        Node* targets;
+        Node remainingTargets;
+    public:
+        IteratorReachable(LabelIndex* index, Node source, RandomAccessTable randomAccessTable);
+        IteratorReachable operator++();
+        Node operator*();
+        bool hasNext() const;
+    };
     //// ========================= Real class =========================
 private:
     uint32_t V=0;
     uint32_t L=0;
     Index sourceIndex; //array of L subIndex
     Index targetIndex; // array of L subIndex
+    RandomAccessTable* randomAccessTableSource;
+    RandomAccessTable* randomAccessTableTarget;
     Header* find(Index index, QueryEdge queryEdge) const;
     void insertAll(std::vector<Edge> &edges, Label l, bool reversed, Comparator cmp, Index index);
     Iterator getEdges(Index index, QueryEdge queryEdge, bool needReverse) const;
@@ -72,13 +85,13 @@ private:
     ////// **** SPEED UP INDEX JOIN ******* //////
     typedef std::vector<Node> Targets;
     typedef std::vector<Targets> Adj;
-    std::vector<Adj> adjLabel;
-    std::vector<Adj> revAdjLabel;
+   // std::vector<Adj> adjLabel;
+   // std::vector<Adj> revAdjLabel;
     ////// --------------------------------------//////
 public:
     std::vector<std::vector<Adj>> adjLabel2;
-    Targets& targetsReachable(Label label,Node source);
-    Targets& sourcesReachable(Label label,Node target);
+    IteratorReachable targetsReachable(Label label,Node source);
+    IteratorReachable sourcesReachable(Label label,Node target);
     ////// **** SPEED UP INDEX JOIN ******* //////
 
     ~SimpleGraph(); //destructor
@@ -107,4 +120,5 @@ public:
     std::vector<std::vector<Syn4>> syn4;
 };
 typedef SimpleGraph::Iterator IndexIterator;
+typedef SimpleGraph::IteratorReachable IteratorReachable;
 #endif //QS_SIMPLEGRAPH_H

@@ -27,13 +27,13 @@ void SimpleEvaluator::prepare() {
 }
 
 cardStat SimpleEvaluator::evaluate(PathQuery *query) {
-  /*  PhysicalOperator* op = ofPathQuery(query, graph);
+ /*   PhysicalOperator* op = ofPathQueryLargeCard(query, graph);
     op->attachEstimator(est);
-    std::cout << "COST = " << op->cost() << "\n";
+   // std::cout << *op << std::endl;
     auto res = op->eval();
     delete op;
-    return res;*/
-
+    return res;
+*/
     Planner* query_planner = new Planner();
     //auto start = std::chrono::steady_clock::now();
     PhysicalOperator* gen_plan = query_planner->generatePlan(query, graph, est);

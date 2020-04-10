@@ -54,8 +54,9 @@ void IndexLookUp2::skip(Node until) {
     while(source >= index->getNoVertices()&&adj[source].empty()) source++;
 }
 
-std::vector<Node> &IndexLookUp2::reachable(Node s) {
-    return adj[s];
+IteratorReachable IndexLookUp2::reachable(Node s) {
+    throw "rrrrrrrrr";
+    //return adj[s];
 }
 
 std::ostream &IndexLookUp2::name(std::ostream &strm) const {

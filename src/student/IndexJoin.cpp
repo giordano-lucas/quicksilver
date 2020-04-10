@@ -52,8 +52,8 @@ cardStat IndexJoin::eval() {
             l = left->produceNextEdge();
         }
         for (auto m : targets){
-            for (auto t : right->reachable(m)){
-                outputs.push_back(t);
+            for (auto t = right->reachable(m); t.hasNext();++t){
+                outputs.push_back(*t);
             }
         }
         std::sort(outputs.begin(),outputs.end());
@@ -107,8 +107,9 @@ void IndexJoin::evalPipelineLeft() {
             l = left->produceNextEdge();
         }
         for (auto m : targets){
-            for (auto t : right->reachable(m)){
-                outputs.push_back(t);
+
+            for (auto it = right->reachable(m) ; it.hasNext() ; ++it){
+                outputs.push_back(*it);
             }
         }
         std::sort(outputs.begin(),outputs.end());
