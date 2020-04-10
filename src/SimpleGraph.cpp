@@ -55,9 +55,9 @@ void SimpleGraph::readFromContiguousFile(const std::string &fileName) {
     std::unordered_map<Label,bool> labelMap;
     //////////////////////////////
     std::vector<std::vector<Edge>> adj;
-    std::vector<std::vector<Edge>> revAdj;
+   // std::vector<std::vector<Edge>> revAdj;
     adj.resize(V);
-    revAdj.resize(V);
+   // revAdj.resize(V);
     /////////////////////////////
 
     while(std::getline(graphFile, line)) {
@@ -74,7 +74,7 @@ void SimpleGraph::readFromContiguousFile(const std::string &fileName) {
             syn1[predicate].path++;
             ///////////////////////////////////
             adj[subject].emplace_back(Edge{predicate,object});
-            revAdj[object].emplace_back(Edge{predicate,subject});
+           // revAdj[object].emplace_back(Edge{predicate,subject});
             ///////////////////////////////////
         }
     }
@@ -121,17 +121,14 @@ void SimpleGraph::readFromContiguousFile(const std::string &fileName) {
     }
     ////////////////////////////////////
     adjLabel2.resize(L);
-    revAdjLabel2.resize(L);
     for (Label l1 = 0 ; l1 < L ; ++l1){
         adjLabel2[l1].resize(L);
-        revAdjLabel2[l1].resize(L);
         /////////////------------//////
         for (Label l2 = 0 ; l2 < L ; ++l2){
             adjLabel2[l1][l2].resize(V);
-            revAdjLabel2[l1][l2].resize(V);
         }
     }
-  /*  for(uint32_t s = 0; s < V; s++) {
+    for(uint32_t s = 0; s < V; s++) {
         for (auto mid : adj[s]) {
             Node join = mid.target;
             Label l1 = mid.source;
@@ -140,7 +137,6 @@ void SimpleGraph::readFromContiguousFile(const std::string &fileName) {
                 Node t = target.target;
                 Label l2 = target.source;
                 adjLabel2[l1][l2][s].emplace_back(t);
-              //  revAdjLabel2[l1][l2][t].emplace_back(s);
             }
         }
     }
@@ -151,7 +147,7 @@ void SimpleGraph::readFromContiguousFile(const std::string &fileName) {
                 targets->erase( unique( targets->begin(), targets->end() ), targets->end());
             }
         }
-    }*/
+    }
     ////////////////////////////////////
     graphFile.close();
 }

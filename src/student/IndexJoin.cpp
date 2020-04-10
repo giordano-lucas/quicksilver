@@ -27,6 +27,10 @@ std::ostream &IndexJoin::name(std::ostream &strm) const {
 /////***********************************************************
 
 
+
+
+
+
 cardStat IndexJoin::eval() {
     std::thread thdLeft([this] {
         left->evalPipeline(SOURCE_SORTED);

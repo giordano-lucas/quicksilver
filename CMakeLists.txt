@@ -33,7 +33,7 @@ set(HEADER_FILES
         src/student/MergeJoin.cpp include/student/MergeJoin.h
         include/PathQuery.h
         include/benches.h
-        include/rss.h include/student/Synopse.h src/student/HashJoin.cpp include/student/HashJoin.h src/student/Planner.cpp include/student/Planner.h include/student/Subtree.h src/student/IndexJoin.cpp include/student/IndexJoin.h src/student/IndexLookUp2.cpp include/student/IndexLookUp2.h)
+        include/rss.h include/student/Synopse.h src/student/HashJoin.cpp include/student/HashJoin.h src/student/Planner.cpp include/student/Planner.h include/student/Subtree.h src/student/IndexJoin.cpp include/student/IndexJoin.h src/student/IndexLookUp2.cpp include/student/IndexLookUp2.h include/student/AdjGraph.cpp include/student/AdjGraph.h)
 
 
 set(SOURCE_FILES
@@ -49,18 +49,18 @@ set(SOURCE_FILES
         src/student/MergeJoin.cpp include/student/MergeJoin.h
         src/student/KleeneStar.cpp include/student/KleeneStar.h
         src/benches.cpp
-        src/rss.c include/student/Synopse.h src/student/HashJoin.cpp include/student/HashJoin.h src/student/Planner.cpp include/student/Planner.h include/student/Subtree.h src/student/IndexJoin.cpp include/student/IndexJoin.h src/student/IndexLookUp2.cpp include/student/IndexLookUp2.h)
+        src/rss.c include/student/Synopse.h src/student/HashJoin.cpp include/student/HashJoin.h src/student/Planner.cpp include/student/Planner.h include/student/Subtree.h src/student/IndexJoin.cpp include/student/IndexJoin.h src/student/IndexLookUp2.cpp include/student/IndexLookUp2.h include/student/AdjGraph.cpp include/student/AdjGraph.h)
 
 
 
 file(GLOB_RECURSE STUDENT_HEADER_FILES CONFIGURE_DEPENDS include/student/*.h)
 file(GLOB_RECURSE STUDENT_SOURCE_FILES CONFIGURE_DEPENDS src/student/*.cpp)
 
-add_executable(quicksilver src/main.cpp ${SOURCE_FILES} ${HEADER_FILES} ${STUDENT_SOURCE_FILES} ${STUDENT_HEADER_FILES} include/student/Synopse.h src/student/HashJoin.cpp include/student/HashJoin.h src/student/Planner.cpp include/student/Planner.h include/student/Subtree.h src/student/IndexJoin.cpp include/student/IndexJoin.h src/student/IndexLookUp2.cpp include/student/IndexLookUp2.h)
+add_executable(quicksilver src/main.cpp ${SOURCE_FILES} ${HEADER_FILES} ${STUDENT_SOURCE_FILES} ${STUDENT_HEADER_FILES} include/student/Synopse.h src/student/HashJoin.cpp include/student/HashJoin.h src/student/Planner.cpp include/student/Planner.h include/student/Subtree.h src/student/IndexJoin.cpp include/student/IndexJoin.h src/student/IndexLookUp2.cpp include/student/IndexLookUp2.h include/student/AdjGraph.cpp include/student/AdjGraph.h)
 target_link_libraries(quicksilver Threads::Threads)
 
 if (Filesystem_FOUND)
-    add_executable(benchmarker src/benchmarker.cpp ${SOURCE_FILES} ${HEADER_FILES} ${STUDENT_SOURCE_FILES} ${STUDENT_HEADER_FILES} src/student/myMain.cpp include/student/HelperPhysicalOperator.h src/student/HelperPhysicalOperator.cpp include/student/HelperPhysicalOperator.h include/student/Synopse.h src/student/HashJoin.cpp include/student/HashJoin.h src/student/Planner.cpp include/student/Planner.h include/student/Subtree.h src/student/IndexJoin.cpp include/student/IndexJoin.h src/student/IndexLookUp2.cpp include/student/IndexLookUp2.h)
+    add_executable(benchmarker src/benchmarker.cpp ${SOURCE_FILES} ${HEADER_FILES} ${STUDENT_SOURCE_FILES} ${STUDENT_HEADER_FILES} src/student/myMain.cpp include/student/HelperPhysicalOperator.h src/student/HelperPhysicalOperator.cpp include/student/HelperPhysicalOperator.h include/student/Synopse.h src/student/HashJoin.cpp include/student/HashJoin.h src/student/Planner.cpp include/student/Planner.h include/student/Subtree.h src/student/IndexJoin.cpp include/student/IndexJoin.h src/student/IndexLookUp2.cpp include/student/IndexLookUp2.h include/student/AdjGraph.cpp include/student/AdjGraph.h)
     target_link_libraries(benchmarker Threads::Threads std::filesystem)
 endif()
 

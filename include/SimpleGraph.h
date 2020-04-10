@@ -77,7 +77,6 @@ private:
     ////// --------------------------------------//////
 public:
     std::vector<std::vector<Adj>> adjLabel2;
-    std::vector<std::vector<Adj>> revAdjLabel2;
     Targets& targetsReachable(Label label,Node source);
     Targets& sourcesReachable(Label label,Node target);
     ////// **** SPEED UP INDEX JOIN ******* //////

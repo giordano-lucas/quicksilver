@@ -170,6 +170,14 @@
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/AdjGraph.cpp">
+			<Option target="benchmarker"/>
+			<Option target="quicksilver"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/AdjGraph.h">
+			<Option target="benchmarker"/>
+			<Option target="quicksilver"/>
+		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/BlockingQueue.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
