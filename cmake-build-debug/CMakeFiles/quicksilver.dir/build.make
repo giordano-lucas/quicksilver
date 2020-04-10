@@ -239,22 +239,35 @@ CMakeFiles/quicksilver.dir/src/student/Planner.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/quicksilver.dir/src/student/Planner.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/Planner.cpp -o CMakeFiles/quicksilver.dir/src/student/Planner.cpp.s
 
-CMakeFiles/quicksilver.dir/include/student/IndexJoin.cpp.o: CMakeFiles/quicksilver.dir/flags.make
-CMakeFiles/quicksilver.dir/include/student/IndexJoin.cpp.o: ../include/student/IndexJoin.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/quicksilver.dir/include/student/IndexJoin.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/quicksilver.dir/include/student/IndexJoin.cpp.o -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/IndexJoin.cpp
+CMakeFiles/quicksilver.dir/src/student/IndexJoin.cpp.o: CMakeFiles/quicksilver.dir/flags.make
+CMakeFiles/quicksilver.dir/src/student/IndexJoin.cpp.o: ../src/student/IndexJoin.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/quicksilver.dir/src/student/IndexJoin.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/quicksilver.dir/src/student/IndexJoin.cpp.o -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/IndexJoin.cpp
 
-CMakeFiles/quicksilver.dir/include/student/IndexJoin.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/quicksilver.dir/include/student/IndexJoin.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/IndexJoin.cpp > CMakeFiles/quicksilver.dir/include/student/IndexJoin.cpp.i
+CMakeFiles/quicksilver.dir/src/student/IndexJoin.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/quicksilver.dir/src/student/IndexJoin.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/IndexJoin.cpp > CMakeFiles/quicksilver.dir/src/student/IndexJoin.cpp.i
 
-CMakeFiles/quicksilver.dir/include/student/IndexJoin.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/quicksilver.dir/include/student/IndexJoin.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/IndexJoin.cpp -o CMakeFiles/quicksilver.dir/include/student/IndexJoin.cpp.s
+CMakeFiles/quicksilver.dir/src/student/IndexJoin.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/quicksilver.dir/src/student/IndexJoin.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/IndexJoin.cpp -o CMakeFiles/quicksilver.dir/src/student/IndexJoin.cpp.s
+
+CMakeFiles/quicksilver.dir/src/student/IndexLookUp2.cpp.o: CMakeFiles/quicksilver.dir/flags.make
+CMakeFiles/quicksilver.dir/src/student/IndexLookUp2.cpp.o: ../src/student/IndexLookUp2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/quicksilver.dir/src/student/IndexLookUp2.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/quicksilver.dir/src/student/IndexLookUp2.cpp.o -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/IndexLookUp2.cpp
+
+CMakeFiles/quicksilver.dir/src/student/IndexLookUp2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/quicksilver.dir/src/student/IndexLookUp2.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/IndexLookUp2.cpp > CMakeFiles/quicksilver.dir/src/student/IndexLookUp2.cpp.i
+
+CMakeFiles/quicksilver.dir/src/student/IndexLookUp2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/quicksilver.dir/src/student/IndexLookUp2.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/IndexLookUp2.cpp -o CMakeFiles/quicksilver.dir/src/student/IndexLookUp2.cpp.s
 
 CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: CMakeFiles/quicksilver.dir/flags.make
 CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o: ../src/student/HelperPhysicalOperator.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/HelperPhysicalOperator.cpp
 
 CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.i: cmake_force
@@ -267,7 +280,7 @@ CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.s: cmake_force
 
 CMakeFiles/quicksilver.dir/src/student/myMain.cpp.o: CMakeFiles/quicksilver.dir/flags.make
 CMakeFiles/quicksilver.dir/src/student/myMain.cpp.o: ../src/student/myMain.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/quicksilver.dir/src/student/myMain.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/quicksilver.dir/src/student/myMain.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/quicksilver.dir/src/student/myMain.cpp.o -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/myMain.cpp
 
 CMakeFiles/quicksilver.dir/src/student/myMain.cpp.i: cmake_force
@@ -294,7 +307,8 @@ quicksilver_OBJECTS = \
 "CMakeFiles/quicksilver.dir/src/rss.c.o" \
 "CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o" \
 "CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o" \
-"CMakeFiles/quicksilver.dir/include/student/IndexJoin.cpp.o" \
+"CMakeFiles/quicksilver.dir/src/student/IndexJoin.cpp.o" \
+"CMakeFiles/quicksilver.dir/src/student/IndexLookUp2.cpp.o" \
 "CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o" \
 "CMakeFiles/quicksilver.dir/src/student/myMain.cpp.o"
 
@@ -315,12 +329,13 @@ quicksilver: CMakeFiles/quicksilver.dir/src/benches.cpp.o
 quicksilver: CMakeFiles/quicksilver.dir/src/rss.c.o
 quicksilver: CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o
 quicksilver: CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o
-quicksilver: CMakeFiles/quicksilver.dir/include/student/IndexJoin.cpp.o
+quicksilver: CMakeFiles/quicksilver.dir/src/student/IndexJoin.cpp.o
+quicksilver: CMakeFiles/quicksilver.dir/src/student/IndexLookUp2.cpp.o
 quicksilver: CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o
 quicksilver: CMakeFiles/quicksilver.dir/src/student/myMain.cpp.o
 quicksilver: CMakeFiles/quicksilver.dir/build.make
 quicksilver: CMakeFiles/quicksilver.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable quicksilver"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX executable quicksilver"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/quicksilver.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

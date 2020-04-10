@@ -1,5 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/quicksilver.dir/include/student/IndexJoin.cpp.o"
   "CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o"
   "CMakeFiles/quicksilver.dir/src/PathTree.cpp.o"
   "CMakeFiles/quicksilver.dir/src/SimpleEstimator.cpp.o"
@@ -11,7 +10,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/quicksilver.dir/src/student/Edge.cpp.o"
   "CMakeFiles/quicksilver.dir/src/student/HashJoin.cpp.o"
   "CMakeFiles/quicksilver.dir/src/student/HelperPhysicalOperator.cpp.o"
+  "CMakeFiles/quicksilver.dir/src/student/IndexJoin.cpp.o"
   "CMakeFiles/quicksilver.dir/src/student/IndexLookUp.cpp.o"
+  "CMakeFiles/quicksilver.dir/src/student/IndexLookUp2.cpp.o"
   "CMakeFiles/quicksilver.dir/src/student/KleeneStar.cpp.o"
   "CMakeFiles/quicksilver.dir/src/student/MergeJoin.cpp.o"
   "CMakeFiles/quicksilver.dir/src/student/Planner.cpp.o"

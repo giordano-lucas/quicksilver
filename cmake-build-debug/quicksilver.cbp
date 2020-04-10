@@ -186,15 +186,15 @@
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
-		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/IndexJoin.cpp">
-			<Option target="benchmarker"/>
-			<Option target="quicksilver"/>
-		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/IndexJoin.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/IndexLookUp.h">
+			<Option target="benchmarker"/>
+			<Option target="quicksilver"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/IndexLookUp2.h">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
@@ -268,7 +268,15 @@
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/IndexJoin.cpp">
+			<Option target="benchmarker"/>
+			<Option target="quicksilver"/>
+		</Unit>
 		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/IndexLookUp.cpp">
+			<Option target="benchmarker"/>
+			<Option target="quicksilver"/>
+		</Unit>
+		<Unit filename="/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/IndexLookUp2.cpp">
 			<Option target="benchmarker"/>
 			<Option target="quicksilver"/>
 		</Unit>

@@ -1,5 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o"
   "CMakeFiles/benchmarker.dir/src/PathQuery.cpp.o"
   "CMakeFiles/benchmarker.dir/src/PathTree.cpp.o"
   "CMakeFiles/benchmarker.dir/src/SimpleEstimator.cpp.o"
@@ -11,7 +10,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/benchmarker.dir/src/student/Edge.cpp.o"
   "CMakeFiles/benchmarker.dir/src/student/HashJoin.cpp.o"
   "CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o"
+  "CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o"
   "CMakeFiles/benchmarker.dir/src/student/IndexLookUp.cpp.o"
+  "CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o"
   "CMakeFiles/benchmarker.dir/src/student/KleeneStar.cpp.o"
   "CMakeFiles/benchmarker.dir/src/student/MergeJoin.cpp.o"
   "CMakeFiles/benchmarker.dir/src/student/Planner.cpp.o"

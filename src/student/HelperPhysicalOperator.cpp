@@ -6,6 +6,7 @@
 #include <student/KleeneStar.h>
 #include <student/MergeJoin.h>
 #include <student/IndexJoin.h>
+#include <student/IndexLookUp2.h>
 
 
 PhysicalOperator* ofPathTree(PathTree* tree, std::shared_ptr<SimpleGraph>& index, Node leftBounded, Node rightBounded){
@@ -50,7 +51,7 @@ PhysicalOperator* ofPathQuery(PathQuery* pq, std::shared_ptr<SimpleGraph>& index
 
 
 //**************************************************************************************
-PhysicalOperator* ofPathTreeLargeCard(PathTree* tree, std::shared_ptr<SimpleGraph>& index, Node leftBounded, Node rightBounded){
+PhysicalOperator* ofPathTreeLargeCard(PathTree* tree, std::shared_ptr<SimpleGraph>& index, Node leftBounded, Node rightBounded,bool allowIndexLookUp2){
     if (tree->isLeaf()){
         std::regex directLabel(R"((\d+)\>)");
         std::regex inverseLabel(R"((\d+)\<)");
@@ -74,8 +75,28 @@ PhysicalOperator* ofPathTreeLargeCard(PathTree* tree, std::shared_ptr<SimpleGrap
         }
     }
     else if (tree->isConcat()){
-        return new IndexJoin(index->getNoVertices(),ofPathTree(tree->left, index, leftBounded, NONE),
-                             ofPathTree(tree->right, index, NONE, rightBounded));
+        if (allowIndexLookUp2 && (tree->right->isLeaf() || tree->left->isLeaf() ||tree->left->right->isLeaf())){ // if we can use < < indexLookUp
+            std::regex directLabel(R"((\d+)\>)");
+            std::regex inverseLabel(R"((\d+)\<)");
+            std::regex kleeneStar(R"((\d+)\+)");
+
+            std::smatch matches;
+            std::smatch matches2;
+            if (std::regex_search(tree->right->data, matches, directLabel)) {
+                Label l2 = (uint32_t) std::stoul(matches[1]);
+                if (std::regex_search( (tree->left->isLeaf())?tree->left->data:tree->left->right->data, matches2, directLabel)){
+                    Label l1 = (uint32_t) std::stoul(matches2[1]);
+
+                    if (tree->left->isLeaf()) return new IndexLookUp2(index, l1,l2);
+                    else                      return new IndexJoin(index->getNoVertices(),
+                            ofPathTreeLargeCard(tree->left->left, index, leftBounded, NONE,false),
+                                                                   new IndexLookUp2(index, l1,l2));
+
+                }
+            }
+        }
+        return new IndexJoin(index->getNoVertices(),ofPathTreeLargeCard(tree->left, index, leftBounded, NONE,false),
+                             ofPathTreeLargeCard(tree->right, index, NONE, rightBounded,false));
     }
     throw "Illegal argument";
 }
@@ -83,5 +104,5 @@ PhysicalOperator* ofPathQueryLargeCard(PathQuery* pq, std::shared_ptr<SimpleGrap
     Node s = (pq->s.compare("*")==0)?NONE: (uint32_t) std::stoi(pq->s);
     Node t = (pq->t.compare("*")==0)?NONE: (uint32_t) std::stoi(pq->t);
     //std::cout << "(" << s << "," << t<< ")\n";
-    return ofPathTreeLargeCard(pq->path, index,s,t);
+    return ofPathTreeLargeCard(pq->path, index,s,t, true);
 }

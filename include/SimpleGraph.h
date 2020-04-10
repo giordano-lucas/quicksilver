@@ -68,7 +68,20 @@ private:
     Header* find(Index index, QueryEdge queryEdge) const;
     void insertAll(std::vector<Edge> &edges, Label l, bool reversed, Comparator cmp, Index index);
     Iterator getEdges(Index index, QueryEdge queryEdge, bool needReverse) const;
+
+    ////// **** SPEED UP INDEX JOIN ******* //////
+    typedef std::vector<Node> Targets;
+    typedef std::vector<Targets> Adj;
+    std::vector<Adj> adjLabel;
+    std::vector<Adj> revAdjLabel;
+    ////// --------------------------------------//////
 public:
+    std::vector<std::vector<Adj>> adjLabel2;
+    std::vector<std::vector<Adj>> revAdjLabel2;
+    Targets& targetsReachable(Label label,Node source);
+    Targets& sourcesReachable(Label label,Node target);
+    ////// **** SPEED UP INDEX JOIN ******* //////
+
     ~SimpleGraph(); //destructor
     Iterator getEdgesSource(QueryEdge queryEdge, bool needReverse) const;
     Iterator getEdgesTarget(QueryEdge queryEdge, bool needReverse) const;

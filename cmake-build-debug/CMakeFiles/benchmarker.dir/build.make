@@ -239,22 +239,35 @@ CMakeFiles/benchmarker.dir/src/student/Planner.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/benchmarker.dir/src/student/Planner.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/Planner.cpp -o CMakeFiles/benchmarker.dir/src/student/Planner.cpp.s
 
-CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o: CMakeFiles/benchmarker.dir/flags.make
-CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o: ../include/student/IndexJoin.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/IndexJoin.cpp
+CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o: CMakeFiles/benchmarker.dir/flags.make
+CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o: ../src/student/IndexJoin.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/IndexJoin.cpp
 
-CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/IndexJoin.cpp > CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.i
+CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/IndexJoin.cpp > CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.i
 
-CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/include/student/IndexJoin.cpp -o CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.s
+CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/IndexJoin.cpp -o CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.s
+
+CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o: CMakeFiles/benchmarker.dir/flags.make
+CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o: ../src/student/IndexLookUp2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/IndexLookUp2.cpp
+
+CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/IndexLookUp2.cpp > CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.i
+
+CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/IndexLookUp2.cpp -o CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.s
 
 CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o: CMakeFiles/benchmarker.dir/flags.make
 CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o: ../src/student/HelperPhysicalOperator.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/HelperPhysicalOperator.cpp
 
 CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.i: cmake_force
@@ -267,7 +280,7 @@ CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.s: cmake_force
 
 CMakeFiles/benchmarker.dir/src/student/myMain.cpp.o: CMakeFiles/benchmarker.dir/flags.make
 CMakeFiles/benchmarker.dir/src/student/myMain.cpp.o: ../src/student/myMain.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/benchmarker.dir/src/student/myMain.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/benchmarker.dir/src/student/myMain.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/benchmarker.dir/src/student/myMain.cpp.o -c /Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/src/student/myMain.cpp
 
 CMakeFiles/benchmarker.dir/src/student/myMain.cpp.i: cmake_force
@@ -294,7 +307,8 @@ benchmarker_OBJECTS = \
 "CMakeFiles/benchmarker.dir/src/rss.c.o" \
 "CMakeFiles/benchmarker.dir/src/student/HashJoin.cpp.o" \
 "CMakeFiles/benchmarker.dir/src/student/Planner.cpp.o" \
-"CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o" \
+"CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o" \
+"CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o" \
 "CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o" \
 "CMakeFiles/benchmarker.dir/src/student/myMain.cpp.o"
 
@@ -315,12 +329,13 @@ benchmarker: CMakeFiles/benchmarker.dir/src/benches.cpp.o
 benchmarker: CMakeFiles/benchmarker.dir/src/rss.c.o
 benchmarker: CMakeFiles/benchmarker.dir/src/student/HashJoin.cpp.o
 benchmarker: CMakeFiles/benchmarker.dir/src/student/Planner.cpp.o
-benchmarker: CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o
+benchmarker: CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o
+benchmarker: CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o
 benchmarker: CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o
 benchmarker: CMakeFiles/benchmarker.dir/src/student/myMain.cpp.o
 benchmarker: CMakeFiles/benchmarker.dir/build.make
 benchmarker: CMakeFiles/benchmarker.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable benchmarker"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/lucas/Desktop/EPFL/ECHANGE/Q3/databasesMain/quicksilver/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX executable benchmarker"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/benchmarker.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

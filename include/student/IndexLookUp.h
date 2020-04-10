@@ -18,6 +18,8 @@ private:
 public:
     IndexLookUp(std::shared_ptr<SimpleGraph>& index, QueryEdge queryEdge, bool reversed);
 
+    std::vector<Node>& reachable(Node s) override;
+
     void skip(Node until) override;
 
     ~IndexLookUp();

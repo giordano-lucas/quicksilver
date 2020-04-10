@@ -4,21 +4,6 @@
 CMakeFiles/benchmarker.dir/src/rss.c.o: ../include/rss.h
 CMakeFiles/benchmarker.dir/src/rss.c.o: ../src/rss.c
 
-CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o: ../include/Estimator.h
-CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o: ../include/Evaluator.h
-CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o: ../include/Graph.h
-CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o: ../include/PathQuery.h
-CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o: ../include/PathTree.h
-CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o: ../include/SimpleEstimator.h
-CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o: ../include/SimpleEvaluator.h
-CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o: ../include/SimpleGraph.h
-CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o: ../include/student/Synopse.h
-CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o: ../include/student/BlockingQueue.h
-CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o: ../include/student/Edge.h
-CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o: ../include/student/IndexJoin.cpp
-CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o: ../include/student/IndexJoin.h
-CMakeFiles/benchmarker.dir/include/student/IndexJoin.cpp.o: ../include/student/PhysicalOperator.h
-
 CMakeFiles/benchmarker.dir/src/PathQuery.cpp.o: ../include/PathQuery.h
 CMakeFiles/benchmarker.dir/src/PathQuery.cpp.o: ../include/PathTree.h
 CMakeFiles/benchmarker.dir/src/PathQuery.cpp.o: ../src/PathQuery.cpp
@@ -121,11 +106,27 @@ CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/
 CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/student/HelperPhysicalOperator.h
 CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/student/IndexJoin.h
 CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/student/IndexLookUp.h
+CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/student/IndexLookUp2.h
 CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/student/KleeneStar.h
 CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/student/MergeJoin.h
 CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/student/PhysicalOperator.h
 CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o: ../include/student/Synopse.h
 CMakeFiles/benchmarker.dir/src/student/HelperPhysicalOperator.cpp.o: ../src/student/HelperPhysicalOperator.cpp
+
+CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o: ../include/Estimator.h
+CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o: ../include/Evaluator.h
+CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o: ../include/Graph.h
+CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o: ../include/PathQuery.h
+CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o: ../include/PathTree.h
+CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o: ../include/SimpleEstimator.h
+CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o: ../include/SimpleEvaluator.h
+CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o: ../include/SimpleGraph.h
+CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o: ../include/student/BlockingQueue.h
+CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o: ../include/student/Edge.h
+CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o: ../include/student/IndexJoin.h
+CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o: ../include/student/PhysicalOperator.h
+CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o: ../include/student/Synopse.h
+CMakeFiles/benchmarker.dir/src/student/IndexJoin.cpp.o: ../src/student/IndexJoin.cpp
 
 CMakeFiles/benchmarker.dir/src/student/IndexLookUp.cpp.o: ../include/Estimator.h
 CMakeFiles/benchmarker.dir/src/student/IndexLookUp.cpp.o: ../include/Evaluator.h
@@ -141,6 +142,21 @@ CMakeFiles/benchmarker.dir/src/student/IndexLookUp.cpp.o: ../include/student/Ind
 CMakeFiles/benchmarker.dir/src/student/IndexLookUp.cpp.o: ../include/student/PhysicalOperator.h
 CMakeFiles/benchmarker.dir/src/student/IndexLookUp.cpp.o: ../include/student/Synopse.h
 CMakeFiles/benchmarker.dir/src/student/IndexLookUp.cpp.o: ../src/student/IndexLookUp.cpp
+
+CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o: ../include/Estimator.h
+CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o: ../include/Evaluator.h
+CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o: ../include/Graph.h
+CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o: ../include/PathQuery.h
+CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o: ../include/PathTree.h
+CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o: ../include/SimpleEstimator.h
+CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o: ../include/SimpleEvaluator.h
+CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o: ../include/SimpleGraph.h
+CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o: ../include/student/BlockingQueue.h
+CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o: ../include/student/Edge.h
+CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o: ../include/student/IndexLookUp2.h
+CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o: ../include/student/PhysicalOperator.h
+CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o: ../include/student/Synopse.h
+CMakeFiles/benchmarker.dir/src/student/IndexLookUp2.cpp.o: ../src/student/IndexLookUp2.cpp
 
 CMakeFiles/benchmarker.dir/src/student/KleeneStar.cpp.o: ../include/Estimator.h
 CMakeFiles/benchmarker.dir/src/student/KleeneStar.cpp.o: ../include/Evaluator.h

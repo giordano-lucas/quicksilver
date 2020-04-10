@@ -53,6 +53,12 @@ void SimpleGraph::readFromContiguousFile(const std::string &fileName) {
     std::vector<std::unordered_map<Node,bool>> inMap(L, std::unordered_map<Node,bool>());
     std::vector<std::unordered_map<Node,bool>> outMap(L, std::unordered_map<Node,bool>());
     std::unordered_map<Label,bool> labelMap;
+    //////////////////////////////
+    std::vector<std::vector<Edge>> adj;
+    std::vector<std::vector<Edge>> revAdj;
+    adj.resize(V);
+    revAdj.resize(V);
+    /////////////////////////////
 
     while(std::getline(graphFile, line)) {
 
@@ -66,10 +72,19 @@ void SimpleGraph::readFromContiguousFile(const std::string &fileName) {
             outMap[predicate].insert({subject,true});
             labelMap.insert({predicate,true});
             syn1[predicate].path++;
-
+            ///////////////////////////////////
+            adj[subject].emplace_back(Edge{predicate,object});
+            revAdj[object].emplace_back(Edge{predicate,subject});
+            ///////////////////////////////////
         }
     }
     L = labelMap.size();
+
+    ///////////////////////////////
+    adjLabel.resize(L);
+    revAdjLabel.resize(L);
+    ///////////////////////////////
+
     // some synapse computation
     syn2.resize(L);
     syn3.resize(L);
@@ -94,7 +109,42 @@ void SimpleGraph::readFromContiguousFile(const std::string &fileName) {
         /////*********************** Construction ********************************
         insertAll(edges[l],l);
         /////*********************** END ********************************
+
+        ///////////////////////////////
+        adjLabel[l].resize(V);
+        revAdjLabel[l].resize(V);
+        for (auto e : edges[l]){
+            adjLabel[l][e.source].emplace_back(e.target);
+            revAdjLabel[l][e.target].emplace_back(e.source);
+        }
+        ///////////////////////////////
     }
+    ////////////////////////////////////
+    adjLabel2.resize(L);
+    revAdjLabel2.resize(L);
+    for (Label l1 = 0 ; l1 < L ; ++l1){
+        adjLabel2[l1].resize(L);
+        revAdjLabel2[l1].resize(L);
+        /////////////------------//////
+        for (Label l2 = 0 ; l2 < L ; ++l2){
+            adjLabel2[l1][l2].resize(V);
+            revAdjLabel2[l1][l2].resize(V);
+        }
+    }
+    for(uint32_t s = 0; s < V; s++) {
+        for (auto mid : adj[s]) {
+            Node join = mid.target;
+            Label l1 = mid.source;
+            // < < queries
+            for (auto target : adj[join]) {
+                Node t = target.target;
+                Label l2 = target.source;
+                adjLabel2[l1][l2][s].emplace_back(t);
+                revAdjLabel2[l1][l2][t].emplace_back(s);
+            }
+        }
+    }
+    ////////////////////////////////////
     graphFile.close();
 }
 
@@ -262,3 +312,17 @@ uint32_t SimpleGraph::getNoLabels() const {
 void SimpleGraph::addEdge(uint32_t from, uint32_t to, uint32_t edgeLabel) {
 
 }
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+SimpleGraph::Targets &SimpleGraph::targetsReachable(Label label, Node source) {
+    return adjLabel[label][source];
+}
+
+SimpleGraph::Targets &SimpleGraph::sourcesReachable(Label label, Node target) {
+    return revAdjLabel[label][target];
+}
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////

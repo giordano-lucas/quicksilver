@@ -31,11 +31,11 @@ cardStat IndexJoin::eval() {
     std::thread thdLeft([this] {
         left->evalPipeline(SOURCE_SORTED);
     });
-    right->evalPipeline(SOURCE_SORTED); //assumed to be fast : indexLookUp for instance
+   /* right->evalPipeline(SOURCE_SORTED); //assumed to be fast : indexLookUp for instance
     std::vector<std::vector<Node>> adj(V, std::vector<Node>());
     for (Edge r = right->produceNextEdge(); r != END_EDGE ; r = right->produceNextEdge()){
         adj[r.source].emplace_back(r.target);
-    }
+    }*/
     Edge l = left->produceNextEdge();
     std::vector<bool> hashIn(V, false);
     outCardStat = cardStat{0,0,0};
@@ -48,7 +48,7 @@ cardStat IndexJoin::eval() {
             l = left->produceNextEdge();
         }
         for (auto m : targets){
-            for (auto t : adj[m]){
+            for (auto t : right->reachable(m)){
                 outputs.push_back(t);
             }
         }
@@ -87,11 +87,11 @@ void IndexJoin::evalPipelineLeft() {
     std::thread thdLeft([this] {
         left->evalPipeline(SOURCE_SORTED);
     });
-    right->evalPipeline(SOURCE_SORTED); //assumed to be fast : indexLookUp for instance
+   /* right->evalPipeline(SOURCE_SORTED); //assumed to be fast : indexLookUp for instance
     std::vector<std::vector<Node>> adj(V, std::vector<Node>());
     for (Edge r = right->produceNextEdge(); r != END_EDGE ; r = right->produceNextEdge()){
         adj[r.source].emplace_back(r.target);
-    }
+    }*/
     Edge l = left->produceNextEdge();
 
     while (l != END_EDGE){
@@ -103,7 +103,7 @@ void IndexJoin::evalPipelineLeft() {
             l = left->produceNextEdge();
         }
         for (auto m : targets){
-            for (auto t : adj[m]){
+            for (auto t : right->reachable(m)){
                 outputs.push_back(t);
             }
         }

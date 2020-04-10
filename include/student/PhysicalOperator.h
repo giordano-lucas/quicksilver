@@ -167,7 +167,9 @@ public:
      **/
     virtual Edge produceNextEdge() = 0;
     virtual void skip(Node until) = 0;
-
+    virtual std::vector<Node>& reachable(Node s) {
+        throw "unimplemented";
+    }
     virtual std::ostream& name(std::ostream &strm) const = 0;
 
     friend std::ostream &operator<<(std::ostream &strm, const PhysicalOperator &op) {
