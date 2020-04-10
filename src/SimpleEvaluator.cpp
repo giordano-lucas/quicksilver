@@ -44,6 +44,5 @@ cardStat SimpleEvaluator::evaluate(PathQuery *query) {
     auto res = gen_plan->eval();
     //std::cout << *gen_plan << std::endl;
     delete gen_plan;
-    res.noPaths++;
     return res;
 }
