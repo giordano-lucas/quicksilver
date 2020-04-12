@@ -4,9 +4,6 @@
 CMakeFiles/quicksilver.dir/src/rss.c.o: ../include/rss.h
 CMakeFiles/quicksilver.dir/src/rss.c.o: ../src/rss.c
 
-CMakeFiles/quicksilver.dir/include/student/AdjGraph.cpp.o: ../include/student/AdjGraph.cpp
-CMakeFiles/quicksilver.dir/include/student/AdjGraph.cpp.o: ../include/student/AdjGraph.h
-
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o: ../include/PathQuery.h
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o: ../include/PathTree.h
 CMakeFiles/quicksilver.dir/src/PathQuery.cpp.o: ../src/PathQuery.cpp

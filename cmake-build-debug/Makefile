@@ -137,36 +137,6 @@ quicksilver/fast:
 	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/build
 .PHONY : quicksilver/fast
 
-include/student/AdjGraph.o: include/student/AdjGraph.cpp.o
-
-.PHONY : include/student/AdjGraph.o
-
-# target to build an object file
-include/student/AdjGraph.cpp.o:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/include/student/AdjGraph.cpp.o
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/include/student/AdjGraph.cpp.o
-.PHONY : include/student/AdjGraph.cpp.o
-
-include/student/AdjGraph.i: include/student/AdjGraph.cpp.i
-
-.PHONY : include/student/AdjGraph.i
-
-# target to preprocess a source file
-include/student/AdjGraph.cpp.i:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/include/student/AdjGraph.cpp.i
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/include/student/AdjGraph.cpp.i
-.PHONY : include/student/AdjGraph.cpp.i
-
-include/student/AdjGraph.s: include/student/AdjGraph.cpp.s
-
-.PHONY : include/student/AdjGraph.s
-
-# target to generate assembly for a file
-include/student/AdjGraph.cpp.s:
-	$(MAKE) -f CMakeFiles/benchmarker.dir/build.make CMakeFiles/benchmarker.dir/include/student/AdjGraph.cpp.s
-	$(MAKE) -f CMakeFiles/quicksilver.dir/build.make CMakeFiles/quicksilver.dir/include/student/AdjGraph.cpp.s
-.PHONY : include/student/AdjGraph.cpp.s
-
 src/PathQuery.o: src/PathQuery.cpp.o
 
 .PHONY : src/PathQuery.o
@@ -741,9 +711,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... benchmarker"
 	@echo "... quicksilver"
-	@echo "... include/student/AdjGraph.o"
-	@echo "... include/student/AdjGraph.i"
-	@echo "... include/student/AdjGraph.s"
 	@echo "... src/PathQuery.o"
 	@echo "... src/PathQuery.i"
 	@echo "... src/PathQuery.s"
