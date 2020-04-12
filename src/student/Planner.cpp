@@ -252,7 +252,7 @@ Planner::generatePlan(PathQuery *query, std::shared_ptr<SimpleGraph> &index, std
              op->attachEstimator(e);
              Node card = op->getCardinality().noPaths;
            //  std::cout << "CARD ======================== " << card<< " \n";
-             if (card < 100000)  {
+             if (card < 100000 && !op->isLeaf())  {
                  op = generatePlanForUnboundedQuery(query, index, e);
              }
         }

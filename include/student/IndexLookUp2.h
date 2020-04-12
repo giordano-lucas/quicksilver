@@ -11,11 +11,10 @@
 class IndexLookUp2 : public PhysicalOperator{
 private:
     std::shared_ptr<SimpleGraph>& index;
-    std::vector<std::vector<Node>>& adj;
     Label l1;
     Label l2;
-    Node source = 0;
-    size_t idxTarget = 0;
+    IndexIterator res;
+    bool ready = false;
 
 public:
     IndexLookUp2(std::shared_ptr<SimpleGraph>& index, Label l1, Label l2);

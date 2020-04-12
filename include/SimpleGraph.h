@@ -78,20 +78,21 @@ private:
     Index targetIndex; // array of L subIndex
     RandomAccessTable* randomAccessTableSource;
     RandomAccessTable* randomAccessTableTarget;
-    Header* find(Index index, QueryEdge queryEdge) const;
+    static Header* find(LabelIndex* index, Node source);
     void insertAll(std::vector<Edge> &edges, Label l, bool reversed, Comparator cmp, Index index);
     Iterator getEdges(Index index, QueryEdge queryEdge, bool needReverse) const;
 
     ////// **** SPEED UP INDEX JOIN ******* //////
-    typedef std::vector<Node> Targets;
-    typedef std::vector<Targets> Adj;
-   // std::vector<Adj> adjLabel;
-   // std::vector<Adj> revAdjLabel;
-    ////// --------------------------------------//////
 public:
-    std::vector<std::vector<Adj>> adjLabel2;
+    Index* sourceIndex2; //array of L subIndex
+    RandomAccessTable** randomAccessTableSource2;
+    void insertAll2(Node source, Label l1,Label l2, std::vector<Node> &targets, LabelIndex* index, size_t& headerIndex, size_t& nextSpace);
+    IteratorReachable targetsReachable2(Label l1, Label l2, Node source);
+    Iterator getEdgesTarget2(Label l1, Label l2) const;
+public:
     IteratorReachable targetsReachable(Label label,Node source);
     IteratorReachable sourcesReachable(Label label,Node target);
+
     ////// **** SPEED UP INDEX JOIN ******* //////
 
     ~SimpleGraph(); //destructor
@@ -99,6 +100,7 @@ public:
     Iterator getEdgesTarget(QueryEdge queryEdge, bool needReverse) const;
     Iterator getEdgesSource(QueryEdge queryEdge) const;
     Iterator getEdgesTarget(QueryEdge queryEdge) const;
+
     /*Insertion methods*/
     void insertAll(std::vector<Edge> &edges, Label l);
     void readFromContiguousFile(const std::string &fileName) override ;

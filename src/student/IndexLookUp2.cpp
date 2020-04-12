@@ -13,50 +13,31 @@ IndexLookUp2::~IndexLookUp2() {
 }
 
 cardStat IndexLookUp2::eval() {
-    cardStat stats {};
-    std::vector<std::vector<Node>>& adj = index->adjLabel2[l1][l2];
-    //std::vector<std::vector<Node>>& revadj = index->revAdjLabel2[l1][l2];
-    std::vector<bool> hashIn(index->getNoVertices(), false);
-
-    for (auto sourceVec : adj) {
-        stats.noPaths+= sourceVec.size();
-        for (const auto &labelTgt: sourceVec) {
-                if (hashIn[labelTgt] == false) {
-                    hashIn[labelTgt] = true;
-                    stats.noIn++;
-                }
-        }
-    }
-    for(int source = 0; source < index->getNoVertices(); source++) {
-        if(!adj[source].empty()) stats.noOut++;
-    }
-//    for(int target = 0; target < index->getNoVertices(); target++) {
- //       if(!revadj[target].empty()) stats.noIn++;
- //   }
-    return stats;
+    return cardStat{index->sourceIndex2[l1][l2].nbHeaders, index->sourceIndex2[l1][l2].nbEdges, index->syn2[l1][l2].in};;
 }
 
 void IndexLookUp2::evalPipeline(ResultSorted resultSorted) {
-    // throw "uniplemented";
+    res = index->getEdgesTarget2(l1,l2);
+    ready = true;
+    out.push(END_EDGE, true);
 }
 
 Edge IndexLookUp2::produceNextEdge() {
-    if (source >= index->getNoVertices()) return END_EDGE;
-    while(source >= index->getNoVertices()&&adj[source].empty()) source++;
-    if (source >= index->getNoVertices()) return END_EDGE;
-    Edge r = Edge{source,adj[source][idxTarget]};
-    idxTarget++;
-    if (idxTarget >= adj[source].size()) {source++; idxTarget = 0;}
-    return r;
+    if (!ready) out.pop();
+    if (res.hasNext()) {
+        Edge r = *res;
+        ++res;
+        return r;
+    }
+    return END_EDGE;
 }
 
 void IndexLookUp2::skip(Node until) {
-    while(source >= index->getNoVertices()&&adj[source].empty()) source++;
+    while ( (*res).source < until) res.skip();
 }
 
 IteratorReachable IndexLookUp2::reachable(Node s) {
-    throw "rrrrrrrrr";
-    //return adj[s];
+   return index->targetsReachable2(l1,l2,s);
 }
 
 std::ostream &IndexLookUp2::name(std::ostream &strm) const {
@@ -64,7 +45,7 @@ std::ostream &IndexLookUp2::name(std::ostream &strm) const {
 }
 
 IndexLookUp2::IndexLookUp2(std::shared_ptr<SimpleGraph>& index, Label l1, Label l2)
-        : PhysicalOperator(nullptr, nullptr, NOT_SORTED), index(index),l1(l1),l2(l2), adj(index->adjLabel2[l1][l2]) {
+        : PhysicalOperator(nullptr, nullptr, SOURCE_SORTED), index(index),l1(l1),l2(l2){
 
     query.push_back(basic_query_t{greater, l1});
     query.push_back(basic_query_t{greater, l2});

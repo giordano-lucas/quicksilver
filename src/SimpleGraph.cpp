@@ -56,7 +56,14 @@ void SimpleGraph::readFromContiguousFile(const std::string &fileName) {
     std::vector<std::unordered_map<Node,bool>> inMap(L, std::unordered_map<Node,bool>());
     std::vector<std::unordered_map<Node,bool>> outMap(L, std::unordered_map<Node,bool>());
     std::unordered_map<Label,bool> labelMap;
-    //////////////////////////////
+    ////////////////////////////// L2 INDEX /////
+    std::vector<std::vector<Edge>> adj(V, std::vector<Edge>());
+    sourceIndex2 = static_cast<Index*>(calloc(L, sizeof(Index)));
+   // randomAccessTableSource2= static_cast<RandomAccessTable**>(calloc(L, sizeof(RandomAccessTable*)));
+    for (auto l = 0 ; l < L ;++l){
+        sourceIndex2[l] = static_cast<Index>(calloc(L, sizeof(LabelIndex)));
+       // randomAccessTableSource2[l]= static_cast<RandomAccessTable*>(calloc(L, sizeof(RandomAccessTable)));
+    }
     /////////////////////////////
 
     while(std::getline(graphFile, line)) {
@@ -72,6 +79,7 @@ void SimpleGraph::readFromContiguousFile(const std::string &fileName) {
             labelMap.insert({predicate,true});
             syn1[predicate].path++;
             ///////////////////////////////////
+            adj[subject].emplace_back(Edge{predicate,object});
             ///////////////////////////////////
         }
     }
@@ -113,6 +121,59 @@ void SimpleGraph::readFromContiguousFile(const std::string &fileName) {
         /////*********************** END ********************************
 
         ///////////////////////////////
+
+
+    }
+    ////////////////////////////////////
+    //*** allocation ***
+    std::vector<std::vector<std::vector<std::vector<Node>>>> adjLabel2(L, std::vector<std::vector<std::vector<Node>>>());
+    for (Label l1 = 0 ; l1 < L ; ++l1){
+        adjLabel2[l1].resize(L);
+        /////////////------------//////
+        for (Label l2 = 0 ; l2 < L ; ++l2){
+            adjLabel2[l1][l2].resize(V);
+        }
+    }
+    //*** join ***
+    for(uint32_t s = 0; s < V; s++) {
+        for (auto mid : adj[s]) {
+            Node join = mid.target;
+            Label l1 = mid.source;
+            // < < queries
+            for (auto target : adj[join]) {
+                Node t = target.target;
+                Label l2 = target.source;
+                adjLabel2[l1][l2][s].emplace_back(t);
+            }
+        }
+    }
+    //*** stats for index ****
+    for (Label l1 = 0 ; l1 < L ; ++l1){
+        for (Label l2 = 0 ; l2 < L ; ++l2){
+            sourceIndex2[l1][l2].nbEdges = 0;
+            sourceIndex2[l1][l2].nbHeaders = 0;
+            for (auto targets = adjLabel2[l1][l2].begin() ; targets != adjLabel2[l1][l2].end() ; ++targets){
+                if (!targets->empty()){
+                    std::sort(targets->begin(), targets->end());
+                    targets->erase( unique( targets->begin(), targets->end() ), targets->end());
+                    sourceIndex2[l1][l2].nbEdges += targets->size();
+                    sourceIndex2[l1][l2].nbHeaders++;
+                }
+            }
+            sourceIndex2[l1][l2].headers   = static_cast<Header*>(calloc(sourceIndex2[l1][l2].nbHeaders, sizeof(Header)));
+            sourceIndex2[l1][l2].edges     = static_cast<Node*>(calloc(sourceIndex2[l1][l2].nbEdges, sizeof(Node)));
+        }
+    }
+    for (Label l1 = 0 ; l1 < L ; ++l1){
+        for (Label l2 = 0 ; l2 < L ; ++l2){
+            size_t header = 0;
+            size_t nextSpace = 0;
+            for (auto source = 0 ; source < V ; source++){
+                if (!adjLabel2[l1][l2][source].empty()){
+                    insertAll2(source,l1,l2,adjLabel2[l1][l2][source], sourceIndex2[l1]+l2,header,nextSpace);
+                }
+            }
+        }
     }
 
     ////////////////////////////////////
@@ -171,19 +232,19 @@ void SimpleGraph::insertAll(std::vector<Edge> &edges, Label l) {
 //********************** Access **********************
 //****************************************************
 
-#define getHeader(i) (index[queryEdge.label].headers[i])
-Header* SimpleGraph::find(Index index,QueryEdge queryEdge) const {
+#define getHeader(i) (index->headers[i])
+Header* SimpleGraph::find(LabelIndex* index, Node source) {
     int lowerBound = 0;
-    int upperBound = index[queryEdge.label].nbHeaders -1;
+    int upperBound = index->nbHeaders -1;
     int midPoint = -1;
     Header* res = nullptr;
     while(lowerBound <= upperBound) {
         midPoint = lowerBound + (upperBound-lowerBound)/2;
-        if(getHeader(midPoint).source == queryEdge.source) {// data found
-            res = index[queryEdge.label].headers + midPoint;
+        if(getHeader(midPoint).source == source) {// data found
+            res = index->headers + midPoint;
             break;
         } else {
-            if(getHeader(midPoint).source < queryEdge.source) {lowerBound = midPoint + 1;}  // data is larger  => data is in upper half
+            if(getHeader(midPoint).source < source) {lowerBound = midPoint + 1;}  // data is larger  => data is in upper half
             else                                               {upperBound = midPoint -1;}  // data is smaller => data is in lower half
         }
     }
@@ -196,7 +257,7 @@ SimpleGraph::Iterator SimpleGraph::getEdges(Index index, QueryEdge queryEdge, bo
         return Iterator(index + queryEdge.label,start,needReverse);
     }
     else {
-        Header* start = find(index,queryEdge);
+        Header* start = find(index + queryEdge.label,queryEdge.source);
         if (start == nullptr) return Iterator();  //queryEdg.source is not in index
         Header* end   = start + 1;
         return Iterator(index + queryEdge.label,start,end,needReverse);
@@ -300,15 +361,24 @@ SimpleGraph::IteratorReachable SimpleGraph::sourcesReachable(Label label, Node t
   //  return revAdjLabel[label][target];
     return IteratorReachable(targetIndex+ label, target, randomAccessTableTarget[label]);
 }
+
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 SimpleGraph::IteratorReachable::IteratorReachable(LabelIndex *index, Node source, RandomAccessTable randomAccessTable) {
-    auto idx = randomAccessTable[source];
-    if (idx == NONE) {remainingTargets = 0; return;}
-    Header& h = index->headers[idx];
-    remainingTargets = h.nbTargets;
-    targets = index->edges + h.indexEdges;
+    if (randomAccessTable == nullptr) {
+        auto h = find(index,source);
+        if (h == nullptr) {remainingTargets = 0; return;}
+        remainingTargets = h->nbTargets;
+        targets = index->edges + h->indexEdges;
+    }
+    else {
+        auto idx = randomAccessTable[source];
+        if (idx == NONE) {remainingTargets = 0; return;}
+        Header& h = index->headers[idx];
+        remainingTargets = h.nbTargets;
+        targets = index->edges + h.indexEdges;
+    }
 }
 
 SimpleGraph::IteratorReachable SimpleGraph::IteratorReachable::operator++() {
@@ -324,3 +394,29 @@ Node SimpleGraph::IteratorReachable::operator*() {
 bool SimpleGraph::IteratorReachable::hasNext() const {
     return remainingTargets > 0;
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+void SimpleGraph::insertAll2(Node source, Label l1,Label l2, std::vector<Node> &targets, LabelIndex* index, size_t& headerIndex, size_t& nextSpace) {
+    ////////////////////////////
+    //randomAccessTableSource2[l1][l2][source] = headerIndex;
+    /////////////////////////////
+    index->headers[headerIndex].source      = source;
+    index->headers[headerIndex].indexEdges  = nextSpace;
+    index->headers[headerIndex].nbTargets   = targets.size();
+    for (auto t : targets){
+        index->edges[nextSpace] = t;
+        nextSpace++;
+    }
+    headerIndex++;
+}
+
+IteratorReachable SimpleGraph::targetsReachable2(Label l1, Label l2, Node source) {
+    return IteratorReachable(sourceIndex2[l1]+l2, source, nullptr);
+}
+
+SimpleGraph::Iterator SimpleGraph::getEdgesTarget2(Label l1, Label l2) const {
+        return Iterator(sourceIndex2[l1]+l2,sourceIndex2[l1][l2].headers,false);
+}
+

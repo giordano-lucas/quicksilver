@@ -66,6 +66,7 @@ void KleeneStar::dfs(std::unordered_map<Node,bool>& discovered,Node n, Node sour
     //else explore the graph
     if (output.size() > 0) discovered.insert({n,true});//set vertex n to discovered  /!\ in the first iteration output.size == 0 => we do not set (source) to be discovered yet (otherwise we won't allow (source,source) to be a part of the result)
     auto it = (!reversed)?index->getEdgesSource(QueryEdge{n,queryEdge.label,NONE}):index->getEdgesTarget(QueryEdge{NONE,queryEdge.label,n});
+    //auto it = (reversed)?index->sourcesReachable(queryEdge.label,n):index->targetsReachable(queryEdge.label,n);
     for (; it.hasNext(); ++it){     //explore all nodes in base.adj[n]
        Node target =(*it).target;
         if (discovered.find(target) == discovered.end()){    //if target has not been explored yet => explore
