@@ -7,7 +7,7 @@
 
 
 KleeneStar::KleeneStar(std::shared_ptr<SimpleGraph>& index, QueryEdge queryEdge) :
-        PhysicalOperator(nullptr, nullptr, SOURCE_SORTED), queryEdge(queryEdge), index(index) {
+        PhysicalOperator(nullptr, nullptr, SOURCE_SORTED,TC), queryEdge(queryEdge), index(index) {
     if (queryEdge.source != NONE) query.push_back(basic_query_t{selection, queryEdge.source});
     query.push_back(basic_query_t{kleene, queryEdge.label});
     if (queryEdge.target != NONE) query.push_back(basic_query_t{selection, queryEdge.target});

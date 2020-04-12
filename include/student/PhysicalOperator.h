@@ -23,24 +23,31 @@ enum ResultSorted {
     SOURCE_SORTED, TARGET_SORTED, NOT_SORTED, ANY
 };
 
+enum Type {
+    JOIN, LOOKUP, TC
+};
+
 class PhysicalOperator {
 protected:
      BlockingQueue<Edge> out;
-     PhysicalOperator* left;
-     PhysicalOperator* right;
+
      bool terminated = false;
      std::shared_ptr<SimpleEstimator> est;
      cardStat card = cardStat{NONE,NONE,NONE};
      query_t query;
      cardStat outCardStat = cardStat{NONE,NONE,NONE};
+
 public:
+    PhysicalOperator* left;
+    PhysicalOperator* right;
+    const Type type;
     ResultSorted defaultResultSorted;
     ResultSorted resultSorted = NOT_SORTED;
     /**
      * Constructor
      **/
-    PhysicalOperator(PhysicalOperator* left,PhysicalOperator* right,ResultSorted defaultResultSorted) :
-        out(), left(left), right(right),defaultResultSorted(defaultResultSorted) {
+    PhysicalOperator(PhysicalOperator* left,PhysicalOperator* right,ResultSorted defaultResultSorted, Type type) :
+        out(), left(left), right(right),defaultResultSorted(defaultResultSorted),type(type) {
 
         if (left != nullptr && right != nullptr){
             for (auto q : left->flatten()) query.push_back(q);

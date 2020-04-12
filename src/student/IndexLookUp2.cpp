@@ -45,7 +45,7 @@ std::ostream &IndexLookUp2::name(std::ostream &strm) const {
 }
 
 IndexLookUp2::IndexLookUp2(std::shared_ptr<SimpleGraph>& index, Label l1, Label l2)
-        : PhysicalOperator(nullptr, nullptr, SOURCE_SORTED), index(index),l1(l1),l2(l2){
+        : PhysicalOperator(nullptr, nullptr, SOURCE_SORTED, LOOKUP), index(index),l1(l1),l2(l2){
 
     query.push_back(basic_query_t{greater, l1});
     query.push_back(basic_query_t{greater, l2});

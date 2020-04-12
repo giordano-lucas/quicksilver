@@ -12,4 +12,5 @@ PhysicalOperator* ofPathTree(PathTree* tree, std::shared_ptr<SimpleGraph>& index
 PhysicalOperator* ofPathQuery(PathQuery* pq, std::shared_ptr<SimpleGraph>& index);
 PhysicalOperator* ofPathTreeLargeCard(PathTree* tree, std::shared_ptr<SimpleGraph>& index, Node leftBounded, Node rightBounded,bool allowIndexLookUp2);
 PhysicalOperator* ofPathQueryLargeCard(PathQuery* pq, std::shared_ptr<SimpleGraph>& index);
+PhysicalOperator* reduce(PhysicalOperator* op, PhysicalOperator* parent,std::shared_ptr<SimpleGraph>& index);
 #endif //QUICKSILVER_HELPERPHYSICALOPERATOR_H

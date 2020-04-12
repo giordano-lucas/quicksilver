@@ -6,7 +6,7 @@
 
 
 IndexLookUp::IndexLookUp(std::shared_ptr<SimpleGraph>& index,QueryEdge queryEdge, bool reversed) :
-        PhysicalOperator(nullptr, nullptr,ANY),
+        PhysicalOperator(nullptr, nullptr,ANY,LOOKUP),
         index(index), queryEdge(queryEdge), reversed(reversed),res() {
     if (queryEdge.source != NONE) query.push_back(basic_query_t{selection, queryEdge.source});
     query.push_back(basic_query_t{(reversed)?lower:greater, queryEdge.label});

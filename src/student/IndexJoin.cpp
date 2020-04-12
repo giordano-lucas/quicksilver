@@ -7,8 +7,8 @@
 uint32_t IndexJoin::cost() {
     return 0;
 }
-IndexJoin::IndexJoin(Node V,PhysicalOperator *left, PhysicalOperator *right): PhysicalOperator(left, right, SOURCE_SORTED),V(V) {}
-
+IndexJoin::IndexJoin(Node V,PhysicalOperator *left, PhysicalOperator *right): PhysicalOperator(left, right, SOURCE_SORTED,JOIN),V(V) {}
+IndexJoin::IndexJoin(Node V, PhysicalOperator *left, PhysicalOperator *right, ResultSorted res): PhysicalOperator(left, right, res,JOIN),V(V) {}
 IndexJoin::~IndexJoin() {}
 
 /////***********************************************************
@@ -166,6 +166,7 @@ void IndexJoin::evalPipelineRight() {
     right->terminate();
     thdRight.join();
 }
+
 
 
 

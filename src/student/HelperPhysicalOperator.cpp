@@ -109,3 +109,33 @@ PhysicalOperator* ofPathQueryLargeCard(PathQuery* pq, std::shared_ptr<SimpleGrap
     return ofPathTreeLargeCard(pq->path, index,s,t, true);
     //*******************************************************************************
 }
+
+PhysicalOperator* reduce(PhysicalOperator* op, PhysicalOperator* parent,std::shared_ptr<SimpleGraph>& index){
+    if (op->type == JOIN && op->getCardinality().noPaths > 50000){
+        IndexJoin* res = nullptr;
+        if      (op->right->type == LOOKUP) {res = new IndexJoin(index->getNoVertices(), op->left, op->right);}
+        else if (op->left->type  == LOOKUP) {res = new IndexJoin(index->getNoVertices(), op->left, op->right,TARGET_SORTED);}
+        else return op;
+        op->left = nullptr;op->right= nullptr;delete op;
+        return res;
+    }
+    return op;
+
+    /*if (op->isLeaf()) return;
+    else if (op->type == JOIN){
+        if (op->left->type == LOOKUP && op->right->type == LOOKUP){
+            basic_query_t l = op->left->flatten().front();
+            basic_query_t r = op->right->flatten().back();
+            if (l.op == greater && r.op == greater){
+                if (parent->right == op) {
+                    parent->right  = new IndexLookUp2(index,l.value,r.value);
+                    delete op;
+                }
+               // else                    parent->right = new IndexLookUp2(index,l.value,r.value);
+            }
+        } else {
+            reduce(op->left,op, index);
+            reduce(op->right,op, index);
+        }
+    }*/
+}

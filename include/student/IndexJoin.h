@@ -14,7 +14,7 @@ private:
     Node V = 0;
 public:
     IndexJoin(Node V,PhysicalOperator *left, PhysicalOperator *right);
-
+    IndexJoin(Node V,PhysicalOperator *left, PhysicalOperator *right, ResultSorted res);
     cardStat eval() override;
 
     uint32_t cost() override;

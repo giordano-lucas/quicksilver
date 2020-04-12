@@ -118,7 +118,7 @@ uint32_t MergeJoin::cost() {
 }
 
 MergeJoin::MergeJoin(PhysicalOperator *left, PhysicalOperator *right) : PhysicalOperator(
-        left, right,TARGET_SORTED), res() {}
+        left, right,TARGET_SORTED,JOIN), res() {}
 
 std::ostream &MergeJoin::name(std::ostream &strm) const {
     return strm << "MergeJoin";
