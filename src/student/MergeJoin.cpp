@@ -105,7 +105,7 @@ void MergeJoin::evalPipeline(ResultSorted resultSorted) {
 uint32_t MergeJoin::cost() {
     uint32_t  intermediateCost = left->cost() + right->cost();
     uint32_t  operatorCost = 0;
-    uint32_t  leftCard = left->getCardinality().noPaths;
+    uint32_t  leftCard =  left->getCardinality().noPaths;
     uint32_t  rightCard = right->getCardinality().noPaths;
     operatorCost = leftCard + rightCard; //merge join cost if results are sorted;
     if (!(left->defaultResultSorted == TARGET_SORTED || left->defaultResultSorted == ANY)) { //add cost to sort results if needed
