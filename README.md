@@ -1,6 +1,5 @@
 Quicksilver
 ======
-======
 
 # Abstract
 Massive graph-structured data collections are ubiquitous in contemporary data management scenarios such as social networks, Semantic Web, and data-driven exploration in life science such as chemical compound databases. Efficient implementations of graph database engines are the key ingredients to be able to extract and analyse data/patterns in that particular form. However, the lack of structural schema compared to relational databases makes it less straightorward to come up with good excution pipelines.   
@@ -70,6 +69,7 @@ Giordano Lucas. Quicksilver: A simple graph database engine.
 
 # Authors
 
+|                                                   |                                                      |                                                |
 |:-------------------------------------------------:|:----------------------------------------------------:|:----------------------------------------------:|
 |[Lucas Giordano](https://github.com/giordan-lucas) | [Karina Mankevic](https://github.com/KarinaMankevic) | [ Wessel van Liero](https://github.com/valepr) |
 
