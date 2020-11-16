@@ -8,6 +8,9 @@ To address this problem, we propose a simple but complete graph data base engine
 
 In this project we deal with data encoded in the RDF format :
 
+![alt text](https://techcrunch.com/wp-content/uploads/2020/02/cypher_graph_v2a.png?w=1390&crop=1 "Graph database example")
+
+
 | Source `s`    | Edge Label `l`| Target `t`|
 |:-------------:|:-------------:|:---------:|
 | John          | LIKES         | Java      |
@@ -19,8 +22,6 @@ In this project we deal with data encoded in the RDF format :
 | Jennifer      | IS_FRIEND_WITH| Melissa   |
 | ...           | ...           | ...       |
 
-![alt text](https://techcrunch.com/wp-content/uploads/2020/02/cypher_graph_v2a.png?w=1390&crop=1 "Graph database example")
-
 This engine is simple in the sense that it is only able to deal with integer data types and supports exclusively regular path queries. A query is always of the form 
 
 `(s,expr,t)`
@@ -29,10 +30,10 @@ where `s` and `t` belong to the set of nodes in the graph plus the special symbo
 
 The regular language `expr` has the following rules : 
 
-1. Simple path   : `l>`         : if it exists an edge with label `l` that does from the source vertext `s` to the target vertex `t` then `(s,t)` is in the language defined by `l>`
-2. Reversed path : `l<`         : same as before but with `s` and `t` reversed
-3. Concatenation : `expr1/expr2`: there exists a path linking expression 1 and 2, is other words if the tuple `(s1,t1)` is in expression 1 and `(s2,t2)` is in expression 2, `(s1,t2)` will be in the language of the resulting concatenation expression if and only if `t1=s2`
-4. Kleene Star   : `l+    `     : the transitive closure of label `l`, a.k.a. the set of all possible edges `(s,t)` such that `(s,l>,t)` is a valid RDF tuple. 
+1. `l>         `: **Simple path**. If it exists an edge with label `l` that does from the source vertext `s` to the target vertex `t` then `(s,t)` is in the language defined by `l>`
+2. `l<         `: **Reversed path**. Same as before but with `s` and `t` reversed
+3. `expr1/expr2`: **Concatenation**. There exists a path linking expression 1 and 2, is other words if the tuple `(s1,t1)` is in expression 1 and `(s2,t2)` is in expression 2, `(s1,t2)` will be in the language of the resulting concatenation expression if and only if `t1=s2`
+4. `l+         `: **Kleene Star**. The transitive closure of label `l`, a.k.a. the set of all possible edges `(s,t)` such that `(s,l>,t)` is a valid RDF tuple. 
 
 Using this language, we can, for instance construct the following queries 
 
