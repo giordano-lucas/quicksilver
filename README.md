@@ -69,6 +69,8 @@ Giordano Lucas. Quicksilver: A simple graph database engine.
 
 
 # Authors
+
 |---------------------------------------------------|------------------------------------------------------|------------------------------------------------|
+|:-------------------------------------------------:|:----------------------------------------------------:|:----------------------------------------------:|
 |[Lucas Giordano](https://github.com/giordan-lucas) | [Karina Mankevic](https://github.com/KarinaMankevic) | [ Wessel van Liero](https://github.com/valepr) |
 
