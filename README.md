@@ -30,7 +30,7 @@ where `s` and `t` belong to the set of nodes in the graph plus the special symbo
 
 The regular language `expr` has the following rules : 
 
-1. `l>` ` ` ` ` ` `         : **Simple path**. If it exists an edge with label `l` that does from the source vertext `s` to the target vertex `t` then `(s,t)` is in the language defined by `l>`
+1. `l>`` `` `` `         : **Simple path**. If it exists an edge with label `l` that does from the source vertext `s` to the target vertex `t` then `(s,t)` is in the language defined by `l>`
 2. `l<`         : **Reversed path**. Same as before but with `s` and `t` reversed
 3. `expr1/expr2`: **Concatenation**. There exists a path linking expression 1 and 2, is other words if the tuple `(s1,t1)` is in expression 1 and `(s2,t2)` is in expression 2, `(s1,t2)` will be in the language of the resulting concatenation expression if and only if `t1=s2`
 4. `l+`         : **Kleene Star**. The transitive closure of label `l`, a.k.a. the set of all possible edges `(s,t)` such that `(s,l>,t)` is a valid RDF tuple. 
