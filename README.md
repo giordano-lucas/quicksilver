@@ -1,7 +1,7 @@
 Quicksilver
 ======
 
-# Abstract
+## Abstract
 Massive graph-structured data collections are ubiquitous in contemporary data management scenarios such as social networks, Semantic Web, and data-driven exploration in life science such as chemical compound databases. Efficient implementations of graph database engines are the key ingredients to be able to extract and analyse data/patterns in that particular form. However, the lack of structural schema compared to relational databases makes it less straightorward to come up with good excution pipelines.   
 
 To address this problem, we propose a simple but complete graph data base engine, *Quicksilver*. 
@@ -30,7 +30,7 @@ where `s` and `t` belong to the set of nodes in the graph plus the special symbo
 
 The regular language `expr` has the following rules : 
 
-1. `l>`` `` `` `         : **Simple path**. If it exists an edge with label `l` that does from the source vertext `s` to the target vertex `t` then `(s,t)` is in the language defined by `l>`
+1. `l>     `         : **Simple path**. If it exists an edge with label `l` that does from the source vertext `s` to the target vertex `t` then `(s,t)` is in the language defined by `l>`
 2. `l<`         : **Reversed path**. Same as before but with `s` and `t` reversed
 3. `expr1/expr2`: **Concatenation**. There exists a path linking expression 1 and 2, is other words if the tuple `(s1,t1)` is in expression 1 and `(s2,t2)` is in expression 2, `(s1,t2)` will be in the language of the resulting concatenation expression if and only if `t1=s2`
 4. `l+`         : **Kleene Star**. The transitive closure of label `l`, a.k.a. the set of all possible edges `(s,t)` such that `(s,l>,t)` is a valid RDF tuple. 
@@ -62,13 +62,13 @@ Furthermore, this project is complete since a fully functional, Smart, Quick and
 * Query optimization through cardinality estimation (path synopses) and query planning
 * Special Query Evaluation operators : hash, merge and index joins as well as efficient transitive closure implementations.  
 
-# Credits
+## Credits
 
 Giordano Lucas. Quicksilver: A simple graph database engine.
 *Database Technology*, BSc Course. Department of Mathematics and Computer Science, Eindhoven University of Technology. 2019. [PDF](link)
 
 
-# Authors
+## Authors
 
 |                                                   |                                                      |                                                |
 |:-------------------------------------------------:|:----------------------------------------------------:|:----------------------------------------------:|
