@@ -65,7 +65,7 @@ Furthermore, this project is complete since a fully functional, Smart, Quick and
 ## Credits
 
 Giordano Lucas. Quicksilver: A simple graph database engine.
-*Database Technology*, BSc Course. Department of Mathematics and Computer Science, Eindhoven University of Technology. 2019. [PDF](link)
+*Database Technology*, BSc Course. Department of Mathematics and Computer Science, Eindhoven University of Technology. 2019. [PDF report](https://github.com/giordano-lucas/quicksilver/blob/master/2IMD10_Report.pdf)
 
 
 ## Authors
